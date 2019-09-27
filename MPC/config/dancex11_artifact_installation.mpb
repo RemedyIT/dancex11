@@ -1,0 +1,4 @@
+project : dancex11, dancex11_deployment_stub, dancex11_artifact_installation_stub, dancex11_tools {
+   after += dancex11_artifact_installation_impl
+   libs += dancex11_artifact_installation
+}

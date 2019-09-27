@@ -1,0 +1,27 @@
+project(dancex11_deployment_handler_impl) : dancex11_deployment_skel, dancex11_lib, \
+  dancex11_output, dancex11_deployment_scheduler, dancex11_deployment_configurator, \
+  install, dancex11_stub, dancex11_state {
+
+  dynamicflags += DANCE_DEPLOYMENT_HANDLER_BUILD_DLL
+  sharedname = dancex11_deployment_handler
+
+  Source_Files {
+    inst_handler_impl.cpp
+    interceptor_handler_impl.cpp
+    config_handler_impl.cpp
+    service_object_handler_impl.cpp
+    plugin_conf.cpp
+  }
+
+  Header_Files {
+    inst_handler_impl.h
+    interceptor_handler_impl.h
+    config_handler_impl.h
+    service_object_handler_impl.h
+    plugin_conf.h
+  }
+
+  specific {
+    install_dir = dancex11/handler
+  }
+}

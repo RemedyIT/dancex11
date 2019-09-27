@@ -1,0 +1,243 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 _CONFIG_ descriptor format
+
+== Introduction
+
+DnCX11 has support for a custom descriptor format used for both
+DnCX11 tool configuration as well as for _Deployment Plan_ and _Domain_
+descriptions: the DnCX11 _CONFIG_ format.
+
+Depending on the usage context DnCX11 will accept _CONFIG_ documents
+containing
+
+* only DnCX11 tool configuration descriptions
+* only _Deployment Plan_ descriptions
+* DnCX11 tool configuration *and* _Deployment Plan_ descriptions
+* only _Domain_ descriptions
+
+== CONFIG Document
+
+DnCX11 _CONFIG_ documents are 8-bit ASCII character streams containing
+_CONFIG_ tokens, whitespace (spaces, newlines, tabs etc.) and comments.
+
+The DnCX11 _CONFIG_ parser considers all character sequences *outside
+quoted strings* starting with either `#` or `//` up untill a newline
+character or end of file (whichever comes first) to be comments and will
+ignore these sequences.
+
+The _CONFIG_ format defines 6 kinds of tokens:
+
+* keys
+* identifiers
+* dotted-identifiers
+* values
+* types
+* separators
+
+[[key]]*keys* are predefined _CONFIG_ descriptor record identifier strings in
+the form `xx.xx.xx.xx` which identify and mark the start of _CONFIG_
+descriptor records.
+
+[[identifier]]*identifiers* are user defined, arbitrarily long sequences of ASCII
+alphabetic (`A-Z`,`a-z`), digit (`0-9`code) and underscore (`_`)
+characters. The first character must be an ASCII alphabet or underscore
+character.
+
+[[dotted-identifier]]*dotted-identifiers* are user defined, arbitrarily long sequences of
+ASCII alphabetic (`A-Z`,`a-z`), digit (`0-9`code), dot (`.`) and
+underscore (`_`) characters. The first character must be an ASCII
+alphabet or underscore character.
+
+[[value]]*values* are sequences of ASCII characters representing literal value
+constants. The following kinds of value literals are supported:
+
+* integer
++
+Integer literals consist either of a sequence of digit characters
+optionally preceded by a sign (`+` or `-`) (decimal integer), a sequence
+of characters starting with `0X`, `0x`, `X` or `x` and followed by digit
+characters (hexadecimal integer) or a sequence of characters starting
+with `0` followed by digit characters (octal integer). By default
+decimal integers are assumed to represent 64-bit signed (with a `-`
+prefix) or unsigned integer values while both hexadecimal and octal
+integers are assumed to represent 64-bit unsigned integer values.
+* floating-point
++
+A floating-point literal can consist of an optionally preceding sign
+(`+` or `-`) an integer part, a decimal point (`.`), a fraction part, an
+`e` or `E` and an integer exponent (optionally preceded by a sign). The
+integer and fraction parts both consist of a sequence of digit
+characters. Either the integer part or the fraction part (but not both)
+may be missing; either the decimal point or the character `e` (or `E`)
+with the exponent (but not both) may be missing. By default
+floating-point literals are assumed to represent double values.
+* boolean
++
+A boolean literal is either the character sequence `true` or `false`
+(case sensitive).
+* character
++
+Character literals consist of one or more characters enclosed by single
+quotes (`'`). A character value is an 8-bit ASCII character. Non-graphic
+characters (including the character with numeric value 0) can be
+represented using escape sequence as defined in the table below.
+* string
++
+String literals consist of one or more characters enclosed by double
+quotes (`"`). A string value is a sequence of any 8-bit ASCII characters
+with the exception of the character with numeric value 0. Non-graphic
+characters (excluding the character with numeric value 0) can be
+represented using escape sequence as defined in the table below.
+* array
++
+Array literals consist of sequences of one or more literals (not empty)
+enclosed by square brackets (`[]`) and separated by a comma (`,`). Each
+literal element in the array is assumed to represent the same value type
+determined for the first element (either the default or from explicit
+typing). In case of a mismatch between inherent literal type and implied
+value type coercion will be attempted (possibly involving type
+conversion).
+
+*types* are predefined identifiers that can be used to specify type
+coercion (explicit typing) for value literals. The following type ids
+are supported:
+
+* `char` representing an 8-bit signed byte
+* `octet` representing an 8-bit unsigned byte
+* `bool` representing a boolean
+* `int16` representing a 16-bit signed integer
+* `int32` representing a 32-bit signed integer
+* `int64` representing a 64-bit signed integer
+* `uint16` representing a 16-bit unsigned integer
+* `uint32` representing a 32-bit unsigned integer
+* `uint64` representing a 64-bit unsigned integer
+* `float` representing a 32-bit floating point
+* `double` representing a 64-bit double float
+* `string` representing a character string
+
+When used a type id should be prefixed to a literal separated by a colon
+(`:`) like:
+
+--------------------
+{type} ":" {literal}
+--------------------
+
+In case of explicitly typed arrays the type id is prefixed before the
+opening bracket (`[`) and applies to each element of the array like:
+
+----------------------------------------------------
+{type} ":" "[" {literal} [ "," {literal} [...] ] "]"
+----------------------------------------------------
+
+*separators* are single characters separating (or enclosing) a set of
+other tokens with an implied meaning. The following separators are
+supported:
+
+* `:` is the type separator which separates (or links) a type id from
+(to) a value literal
+* `<` and `>` are connection link separators (see
+<<config-plan/config-connection.adoc#,here>>)
+* `[` and `]` are the array bracket separators
+* `,` is the array element separator
+
+.Character escape sequences
+[cols="<1,<3",options="header",]
+|=======================================================================
+|Escape sequence |Description
+|`\n` |Newline
+
+|`\r` |Carriage return
+
+|`\f` |Formfeed
+
+|`\t` |Horizontal tab
+
+|`\v` |Vertical tab
+
+|`\b` |Backspace
+
+|`\a` |Alert
+
+|`\OOO` |Octal number. `OOO` is a sequence of 1, 2 or 3 digit
+characters.
+
+|`\xHH` |Hexadecimal number. `xHH` is a sequence of characters starting
+with `x` (or `X`) followed by 1 or 2 hexadecimal digits (`0-9`, `a-f` or
+`A-F`).
+
+|`\?` |Any other character. ? represents any graphic character except
+`n`,`r`,`f`,`t`,`v`, `b`,`a`,`0-9`,`x` or `X`
+|=======================================================================
+
+== Content
+
+_CONFIG_ tokens are organized in descriptor records. Each kind of
+descriptor record starts with and is identified by a *key* identifier.
+Descriptor records can contain other descriptor records (nesting).
+
+For each of the three kinds of _CONFIG_ descriptions, DnCX11 tool
+configuration, _Deployment Plan_ and _Domain_ descriptions, different
+(toplevel) descriptor records exist.
+
+A BNF-like specification of the _CONFIG_ format can be found
+<<config-plan/config-bnf.html#,here>>.
+
+=== Toplevel property descriptors
+
+In each _CONFIG_ descriptor document toplevel properties can be defined.
+These property descriptors are used to initialize either toplevel
+_infoProperties_ for __Deployment Plan__s or __Domain__s or the global
+configuration properties of the DnCX11 configuration manager (plugin
+manager). In case of a document containing both DnCX11 tool
+configuration descriptors as well as _Deployment Plan_ descriptors the
+same properties are used to initialize _infoProperties_ *and* DnCX11
+global configuration properties.
+
+Toplevel property descriptors are declared as described under
+<<config-plan/config-properties.adoc#_common_property_descriptors,Common Property
+descriptors>>.
+
+=== DnCX11 tool configuration descriptors
+
+DnCX11 tool configuration descriptor records describe the optional
+plugins and their properties that need to be configured (loaded) in the
+runtime environment of a DnCX11 deployment tool. The following toplevel
+descriptor records are currently defined:
+
+* <<config-plan/config-instance-handler.adoc#,Instance Deployment
+Handler descriptor>>
+* <<config-plan/config-interceptor.adoc#,Deployment Interceptor
+descriptor>>
+* <<config-plan/config-config-handler.adoc#,Deployment Configuration
+Handler descriptor>>
+* <<config-plan/config-service-object.adoc#,Service Object
+descriptor>>
+
+=== Deployment Plan descriptors
+
+These descriptors are used to describe the elements of a standard D&C
+_Deployment Plan_. The descriptors provide a simplified means of
+describing a plan without the full flexibility of the
+<<xml-plan.adoc#,XML descriptor>> format but with far greater ease of
+use and human readability. The following toplevel descriptor records are
+currently defined:
+
+* <<config-plan/config-component-instance.adoc#,Component Instance
+descriptor>>
+* <<config-plan/config-locality-instance.adoc#,Locality Instance
+descriptor>>
+* <<config-plan/config-container-instance.adoc#,Container Instance
+descriptor>>
+
+=== Domain descriptors
+
+These descriptors are used to describe the elements of a standard D&C
+_Domain_. The descriptors provide a simplified means of describing a
+plan without the full flexibility of the <<xml-plan.adoc#,XML
+descriptor>> format but with far greater ease of use and human
+readability. The following toplevel descriptor records are currently
+defined:
+
+* <<config-plan/config-domain-node.adoc#,Domain Node descriptor>>
+

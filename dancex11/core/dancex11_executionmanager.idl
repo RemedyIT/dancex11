@@ -1,0 +1,23 @@
+/**
+ * @file    dancex11_executionmanager.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_EXECUTIONMANAGER_IDL
+#define DANCEX11_EXECUTIONMANAGER_IDL
+
+#include "dancex11/deployment/deployment_executionmanager.idl"
+#include "dancex11/core/dancex11_shutdown_control.idl"
+
+module DAnCEX11
+{
+  interface ExecutionManager :
+    Deployment::ExecutionManager,
+    ShutdownControl
+  {
+  };
+};
+
+#endif /* DANCEX11_EXECUTIONMANAGER_IDL */

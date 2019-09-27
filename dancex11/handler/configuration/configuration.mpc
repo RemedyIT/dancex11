@@ -1,0 +1,21 @@
+project (dancex11_locality_configuration) : install, dancex11_deployment_stub, \
+      dancex11_lib, dancex11_output, dancex11_stub {
+
+  dynamicflags += DANCEX11_LOCALITY_CONFIGURATION_BUILD_DLL
+
+  Source_Files {
+    process_name.cpp
+    process_priority.cpp
+    cpu_affinity.cpp
+  }
+
+  Header_Files {
+    process_name.h
+    process_priority.h
+    cpu_affinity.h
+  }
+
+  specific {
+    install_dir = dancex11/localitymanager/configuration
+  }
+}

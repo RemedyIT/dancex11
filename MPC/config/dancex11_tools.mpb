@@ -1,0 +1,3 @@
+project : dancex11 {
+  includes += $(DANCEX11_ROOT)/tools
+}

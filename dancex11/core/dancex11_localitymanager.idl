@@ -1,0 +1,38 @@
+/**
+ * @file    dancex11_localitymanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_LOCALITYMANAGER_IDL
+#define DANCEX11_LOCALITYMANAGER_IDL
+
+#include "dancex11/deployment/deployment_application.idl"
+#include "dancex11/deployment/deployment_manager.idl"
+#include "dancex11/core/dancex11_shutdown_control.idl"
+
+module DAnCEX11
+{
+  interface LocalityManager :
+    Deployment::Application,
+    Deployment::ApplicationManager,
+    Deployment::Deployment_Manager,
+    ShutdownControl
+  {
+    readonly attribute ::Deployment::Properties configuration;
+
+    void configure (in ::Deployment::Properties config);
+  };
+
+  interface LocalityManagerActivator
+  {
+    void locality_manager_callback (in LocalityManager ref,
+                                    in string uuid,
+                                    out Deployment::Properties config);
+
+    void configuration_complete (in string uuid);
+  };
+};
+
+#endif /* DANCEX11_LOCALITYMANAGER_IDL */

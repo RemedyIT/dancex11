@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_deployment_stub.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_defaults, dancex11_lib {
+  libs += dancex11_deployment_stub
+  after += dancex11_deployment_stub
+}

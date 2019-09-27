@@ -1,0 +1,15 @@
+This test verifies the DnCX11 support for Node location maps
+either in Component Domain Definition (CDD) format or as
+CONFIG domain configuration node map.
+
+Also, two ways to specify the Node locations are tested:
+1. using a stringified IOR format (specifically the corbaloc
+   format here) in 'nodemap.{cdd,cfg}' used by 'run_test.pl'
+2. by specifying only network port and address (allowing the
+   Domain Manager to apply the most appropriate addressing
+   method) in 'nodemap_no_ior.{cdd,cfg}' used by
+   'run_test_no_ior.pl'
+
+In addition to testing cdd this test is also capable of testing
+the dancex11_convert_plan utility which can convert a plan
+or domain description from a cdr,cfg file to a cdr plan

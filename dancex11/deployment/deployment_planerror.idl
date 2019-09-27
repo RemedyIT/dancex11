@@ -1,0 +1,18 @@
+/**
+ * @file    deployment_planerror.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_PLANERROR_IDL
+#define DEPLOYMENT_PLANERROR_IDL
+
+module Deployment {
+  exception PlanError {
+    string name;
+    string reason;
+  };
+};
+
+#endif /* DEPLOYMENT_PLANERROR_IDL */

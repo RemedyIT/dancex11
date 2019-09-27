@@ -1,0 +1,53 @@
+= DnCX11
+
+== What is DnCX11?
+
+**D**eployment a**n**d **C**onfiguration for *X11* *(DnCX11)* is an
+implementation of the run-time infrastructure as defined by the
+https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification], which deals with
+the configuration and deployment of component-based applications.
+Currently DnCX11 is only used for the deployment & configuration of
+Lightweight CCM (LwCCM)-based applications, though the framework is
+capable of handling other component models as well.
+
+DnCX11 provides a runtime toolset with which distributed, component
+based applications can be deployed (installed, configured, and started)
+in a target Domain of computing nodes, network links and other
+resources.
+
+DnCX11 uses a Deployment Plan (as specified in the D&C specification) to
+drive the deployment it performs which can be provided to DnCX11 in
+multiple ways including the standardized XML based descriptor format and
+a DnCX11 only (easier) text based format (see
+<<deployment-planning.adoc#_the_plan,DnCX11 Plan descriptor formats>> for
+more information).
+
+Deployment Plan (and Domain) descriptors can be crafted by hand or
+automatically generated from Deployment models using tools like
+https://github.com/ZeligsoftDev/CX4CBDDS[Zeligsoft CX for CBDDS],
+https://www.dre.vanderbilt.edu/cosmic/index.shtml[CoSMIC],
+and https://www.ptc.com/en/products/plm/plm-products/windchill/modeler[PTC Windchill Modeler].
+
+== Why DnCX11?
+
+DnCX11 provides an improved toolset compared to DAnCE including the
+following improvements:
+
+* multiple (and user extensible) plan descriptor formats
+* standardized deployment manager loader executables with standardized
+arguments
+* improved extensibility of toolset through extended plugin options
+* dynamic deployment handler framework allows more flexibility in
+deployment like in-process localities
+* single plan launch option at all deployment levels (Domain, Node and
+Locality)
+* support for deployment of CIAOX11 components
+
+== OMG D&C compliance of DnCX11
+
+DnCX11 complies fully with the
+https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification] providing the
+possibility to easily integrate with other deployment tools complying to
+this specification.

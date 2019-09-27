@@ -1,0 +1,3 @@
+This test verifies the support for the "CPUAffinity" locality
+configuration property handled by the "create_cpu_affinity"
+Locality Configuration handler.

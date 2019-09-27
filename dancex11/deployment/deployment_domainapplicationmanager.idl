@@ -1,0 +1,24 @@
+/**
+ * @file    deployment_domainapplicationmanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DOMAINAPPLICATIONMANAGER_IDL
+#define DOMAINAPPLICATIONMANAGER_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+#include "dancex11/deployment/deployment_applicationmanager.idl"
+
+module Deployment {
+  interface DomainApplicationManager : ApplicationManager
+   {
+     Applications getApplications ();
+     DeploymentPlan getPlan ();
+   };
+
+   typedef sequence < DomainApplicationManager > DomainApplicationManagers;
+};
+
+#endif /* DOMAINAPPLICATIONMANAGER_IDL */

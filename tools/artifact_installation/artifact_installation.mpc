@@ -1,0 +1,88 @@
+project (dancex11_artifact_installation_idl) : install, dancex11_idl {
+  custom_only = 1
+  IDL_Files {
+    idlflags += -SS -Sci -Sna
+    dance_artifact_installation_handler.idl
+  }
+
+  specific {
+    install_dir = tools/artifact_installation
+  }
+}
+
+project (dancex11_artifact_installation_impl) : install, dancex11_lib, dynamicinterface, dancex11_output, \
+            dancex11_deployment_stub, dancex11_logger, dancex11_artifact_installation_stub, utils {
+  dynamicflags += DANCE_ARTIFACT_INSTALLATION_BUILD_DLL
+  sharedname = dancex11_artifact_installation
+  after += dancex11_artifact_installation_idl
+
+  IDL_Files {
+  }
+  Source_Files {
+    dance_artifact_installation_handlerC.cpp
+    dance_artifact_installation_handler.cpp
+    artifact_installation_impl.cpp
+    artifact_installation_handler_svc.cpp
+    installation_repository_manager.cpp
+  }
+  Template_Files {
+  }
+
+  specific {
+    install_dir = tools/artifact_installation
+  }
+}
+
+project (dancex11_installation_repository_manager_impl) : install, dancex11_lib, dynamicinterface, dancex11_artifact_installation, \
+            dancex11_logger, dancex11_output, utils {
+  dynamicflags += INSTALLATION_REPOSITORY_MANAGER_BUILD_DLL
+  sharedname = dancex11_installation_repository_manager
+
+  IDL_Files {
+  }
+  Source_Files {
+    installation_repository_manager_impl.cpp
+  }
+  Template_Files {
+  }
+
+  specific {
+    install_dir = tools/artifact_installation
+  }
+}
+
+project (dancex11_file_installation) : install, dancex11_lib, dynamicinterface, dancex11_artifact_installation, \
+            dancex11_logger, dancex11_output, utils {
+  dynamicflags += ARTIFACT_INSTALLATION_HANDLER_BUILD_DLL
+  sharedname = dancex11_file_installation
+
+  IDL_Files {
+  }
+  Source_Files {
+    file_installation_handler.cpp
+  }
+  Template_Files {
+  }
+
+  specific {
+    install_dir = tools/artifact_installation
+  }
+}
+
+project (dancex11_http_installation) : install, dancex11_lib, dynamicinterface, dancex11_artifact_installation, \
+            dancex11_logger, dancex11_output, utils, inet {
+  dynamicflags += ARTIFACT_INSTALLATION_HANDLER_BUILD_DLL
+  sharedname = dancex11_http_installation
+
+  IDL_Files {
+  }
+  Source_Files {
+    http_installation_handler.cpp
+  }
+  Template_Files {
+  }
+
+  specific {
+    install_dir = tools/artifact_installation
+  }
+}

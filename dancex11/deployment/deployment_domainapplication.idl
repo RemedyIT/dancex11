@@ -1,0 +1,22 @@
+/**
+ * @file    deployment_domainapplication.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_DOMAINAPPLICATION_IDL
+#define DEPLOYMENT_DOMAINAPPLICATION_IDL
+
+#include "dancex11/deployment/deployment_application.idl"
+
+module Deployment
+{
+  interface DomainApplication :
+    Application
+  {
+  };
+};
+
+
+#endif //DEPLOYMENT_DOMAINAPPLICATION_IDL

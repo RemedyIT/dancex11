@@ -1,0 +1,18 @@
+/**
+ * @file    deployment_invalidnodeexecparameter.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_INVALIDNODEEXECPARAMETER_IDL
+#define DEPLOYMENT_INVALIDNODEEXECPARAMETER_IDL
+
+module Deployment {
+  exception InvalidNodeExecParameter {
+    string name;
+    string reason;
+  };
+};
+
+#endif

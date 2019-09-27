@@ -1,0 +1,35 @@
+/**
+ * @file    deployment_applicationmanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_APPLICATIONMANAGER_IDL
+#define DEPLOYMENT_APPLICATIONMANAGER_IDL
+
+#include "dancex11/deployment/deployment.idl"
+#include "dancex11/deployment/deployment_invalidproperty.idl"
+#include "dancex11/deployment/deployment_application.idl"
+#include "dancex11/deployment/deployment_connection.idl"
+#include "dancex11/deployment/deployment_resourcenotavailable.idl"
+#include "dancex11/deployment/deployment_invalidnodeexecparameter.idl"
+#include "dancex11/deployment/deployment_invalidcomponentexecparameter.idl"
+
+module Deployment {
+
+  interface ApplicationManager {
+    Application startLaunch (in Properties configProperty,
+                             out Connections providedReference)
+      raises (ResourceNotAvailable,
+              StartError,
+              InvalidProperty,
+              InvalidNodeExecParameter,
+              InvalidComponentExecParameter);
+
+    void destroyApplication (in Application app)
+      raises (StopError);
+  }; //@CORBA (ami=true)
+};
+
+#endif /* DEPLOYMENT_APPLICATIONMANAGER_IDL */

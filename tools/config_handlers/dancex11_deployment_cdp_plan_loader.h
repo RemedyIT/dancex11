@@ -1,0 +1,61 @@
+// -*- C++ -*-
+/**
+ * @file dancex11_deployment_cdp_plan_loader.h
+ * @author Marijke Hengstmengel <mhengstmengel@remedy.nl>
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef DANCEX11_DEPLOYMENT_CDP_PLAN_LOADER_H
+#define DANCEX11_DEPLOYMENT_CDP_PLAN_LOADER_H
+
+#pragma once
+
+#include "ace/Service_Object.h"
+#include "config_handlers_export.h"
+#include "dancex11/core/dancex11_deployment_plan_loader.h"
+
+#include <string>
+
+namespace DAnCEX11
+{
+  class Config_Handlers_Export CDPPlan_Loader
+    : public Plan_Loader_base
+  {
+  public:
+    virtual ~CDPPlan_Loader () = default;
+
+    virtual bool read_plan (const std::string& filename,
+                            Deployment::DeploymentPlan& plan);
+
+    virtual bool read_domain (const std::string& filename,
+                              Deployment::Domain& domain);
+
+    static CDPPlan_Loader* instance ();
+
+  private:
+    CDPPlan_Loader () = default;
+  };
+
+  class Config_Handlers_Export CDPPlan_Loader_Svc
+    : public ACE_Service_Object
+  {
+  public:
+    virtual ~CDPPlan_Loader_Svc ();
+
+    /// Initializes object when dynamic linking occurs.
+    virtual int init (int argc, ACE_TCHAR *argv[]) override;
+
+    /// Terminates object when dynamic unlinking occurs.
+    virtual int fini () override;
+
+    static int Initializer ();
+  };
+
+  ACE_STATIC_SVC_DECLARE (CDPPlan_Loader_Svc)
+  ACE_FACTORY_DECLARE (Config_Handlers, CDPPlan_Loader_Svc)
+
+};
+
+#endif /* DANCEX11_DEPLOYMENT_CDP_PLAN_LOADER_H */

@@ -1,0 +1,23 @@
+/**
+ * @file    deployment_connection.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_CONNECTION_IDL
+#define DEPLOYMENT_CONNECTION_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+
+module Deployment
+{
+  typedef sequence < Object > Endpoints;
+  struct Connection {
+    string name;
+    Endpoints endpoint;
+  };
+
+  typedef sequence < Connection > Connections;
+};
+#endif /* DEPLOYMENT_CONNECTION_IDL */

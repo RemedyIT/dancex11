@@ -1,0 +1,25 @@
+/**
+ * @file    dancex11_shutdown_control.idl
+ * @author  Martin Corino
+ *
+ * @brief   Defines a Shutdown control interface for DM.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_SHUTDOWN_CONTROL_IDL
+#define DANCEX11_SHUTDOWN_CONTROL_IDL
+
+module DAnCEX11
+{
+  interface ShutdownControl
+  {
+    oneway void shutdown ();
+  };
+
+  local interface ShutdownHandler : ShutdownControl
+  {
+  };
+};
+
+#endif /* DANCEX11_SHUTDOWN_CONTROL_IDL */

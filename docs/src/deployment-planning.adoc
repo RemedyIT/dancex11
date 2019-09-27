@@ -1,0 +1,79 @@
+include::_{backend}_settings.adoc[]
+
+= Deployment planning
+
+== The process
+
+Deployment planning is the process in which the information from the
+application design is used to construct a _Deployment Plan_.
+
+For the purpose of the planning process the
+https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification] defines three
+separate data models that could be used in this process:
+
+* the Component Data model
+* the Target Data model
+* the Execution Data model
+
+The Component Data model is used to describe the end products of the
+application design and development process including the component
+types, their interfaces, implementations (multiple implementations for
+different environments can exist), requirements etc.
+
+The Target Data model is used to describe the environment in which
+components can be deployed as a _Domain_ with available __Node__s,
+__Interconnect__s, __Bridge__s and other resources as well as the respective
+requirements and properties.
+
+The Execution Data model is used to describe which components should be
+deployed where in what way in a _Deployment Plan_.
+
+DnCX11 currently has full support for __Deployment Plan__s and (partially)
+__Domain__s.
+
+DnCX11 itself does currently not provide support for the Component Data
+model but third party tools like https://github.com/ZeligsoftDev/CX4CBDDS[Zeligsoft CX for CBDDS],
+(https://www.dre.vanderbilt.edu/cosmic/index.shtml[CoSMIC]),
+and https://www.ptc.com/en/products/plm/plm-products/windchill/modeler[PTC Windchill Modeler]
+provide support for component
+deployment modeling and generating D&C compliant __Deployment Plan__s.
+
+== The plan
+
+The D&C PIM can be represented by various PSMs of which the spec itself
+defines two:
+
+* an XML representation
+* an IDL representation
+
+DnCX11 requires a D&C compliant _Deployment Plan_ to direct the
+deployment of the component instances of a distributed application and
+internally uses the IDL representation. To allow users to provide plans
+using other (human readable) representations or descriptor formats
+however, DnCX11 implements a flexible, dynamically configurable Plan
+Loader framework which currently supports the following descriptor
+formats:
+
+* the D&C standard XML format
+* a DnCX11 custom, text based format especially suited for easy human
+readability and construction (_CONFIG_)
+* a CORBA CDR streamed, binary, D&C IDL format
+
+The DnCX11 Plan Loader framework also allows for easy extensibility with
+user implemented loaders for use defined descriptor formats.
+
+Apart for the direct (configurable) support for loading different plan
+descriptor formats DnCX11 also provides tools for converting descriptor
+formats.
+
+Checkout the following pages for more details about the DnCX11 supported
+formats. +
+ <<xml-plan.adoc#,D&C XML descriptor format>> +
+ <<config-plan.adoc#,DnCX11 _CONFIG_ descriptor format>> +
+ <<cdr-plan.adoc#,IDL CDR descriptor format>> +
+
+DnCX11 supports a number of standard deployment plan configuration
+properties to configure component implementation and instance descriptors
+in a deployment plan. Checkout this <<dncx11-deployment-properties#,page>> for
+more information on these properties.

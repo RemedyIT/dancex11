@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_executionmanager_skel.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_deployment_skel, dancex11_executionmanager_stub {
+  libs += dancex11_executionmanager_skel
+  after += dancex11_executionmanager_skel
+}

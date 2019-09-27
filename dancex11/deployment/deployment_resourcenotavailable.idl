@@ -1,0 +1,21 @@
+/**
+ * @file    deployment_resourcenotavailable.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_RESOURCENOTAVAILABLE_IDL
+#define DEPLOYMENT_RESOURCENOTAVAILABLE_IDL
+
+module Deployment {
+  exception ResourceNotAvailable {
+    string name;
+    string resourceType;
+    string propertyName;
+    string elementName;
+    string resourceName;
+  };
+};
+
+#endif

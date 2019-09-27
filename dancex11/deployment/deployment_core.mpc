@@ -1,0 +1,705 @@
+project(dancex11_deployment_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_STUB_Export \
+                  -Wb,stub_export_include=Deployment_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_skel_export.h
+  after += dance_properties_idl
+
+  IDL_Files {
+    idlflags += -SS
+    deployment_packaging_data.idl
+    deployment_planerror.idl
+    deployment_invalidproperty.idl
+    deployment_invalidnodeexecparameter.idl
+    deployment_invalidcomponentexecparameter.idl
+    deployment_invalidconnection.idl
+    deployment_resourcenotavailable.idl
+    deployment_connection.idl
+    deployment_stoperror.idl
+    deployment_starterror.idl
+    deployment_deploymentplan.idl
+    deployment_data.idl
+    deployment_targetdata.idl
+    deployment.idl
+  }
+
+  IDL_Files {
+    idlflags += -SS
+    deployment_base.idl
+  }
+
+  IDL_Files {
+    idlflags += -Gxhst -Gxhsk -Gxhsta -GC \
+                -Wb,amic_export_macro=DEPLOYMENT_AMIC_Export \
+                -Wb,amic_export_include=Deployment_amic_export.h
+    deployment_application.idl
+  }
+
+  IDL_Files {
+    idlflags += -Ssi
+    deployment_resourcecommitmentmanager.idl
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_am_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_APPLICATIONMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_ApplicationManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_APPLICATIONMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_ApplicationManager_skel_export.h
+
+  IDL_Files {
+    idlflags += -Gxhst -Gxhsk -GC \
+                -Wb,amic_export_macro=DEPLOYMENT_AMIC_Export \
+                -Wb,amic_export_include=Deployment_amic_export.h
+    deployment_applicationmanager.idl
+  }
+
+  IDL_Files {
+    idlflags += -GC \
+                -Wb,amic_export_macro=DEPLOYMENT_AMIC_Export \
+                -Wb,amic_export_include=Deployment_amic_export.h
+    deployment_manager.idl
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_targetmanager_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_TARGETMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_TargetManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_TARGETMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_TargetManager_skel_export.h \
+                  -Gxhst -Gxhsk -Ssi
+
+  IDL_Files {
+    deployment_targetmanager.idl
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_rm_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_REPOSITORYMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_RepositoryManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_REPOSITORYMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_RepositoryManager_skel_export.h \
+                  -Gxhst -Gxhsk
+  IDL_Files {
+    deployment_repositorymanager.idl
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_em_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_EXECUTIONMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_ExecutionManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_EXECUTIONMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_ExecutionManager_skel_export.h \
+                  -Gxhst -Gxhsk
+
+  IDL_Files {
+    deployment_executionmanager.idl
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_dam_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_DOMAINAPPLICATIONMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_DomainApplicationManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_DOMAINAPPLICATIONMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_DomainApplicationManager_skel_export.h \
+                  -Gxhst -Gxhsk
+
+  IDL_Files {
+    deployment_domainapplicationmanager.idl
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_da_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_DOMAINAPPLICATION_STUB_Export \
+                  -Wb,stub_export_include=Deployment_DomainApplication_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_DOMAINAPPLICATION_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_DomainApplication_skel_export.h \
+                  -Gxhst -Gxhsk
+
+  IDL_Files {
+    deployment_domainapplication.idl
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_nam_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_NODEAPPLICATIONMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_NodeApplicationManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_NODEAPPLICATIONMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_NodeApplicationManager_skel_export.h \
+                  -Wb,amic_export_macro=DEPLOYMENT_NODE_AMIC_Export \
+                  -Wb,amic_export_include=Deployment_Node_amic_export.h \
+                  -Gxhst -Gxhsk -Gxhsta -GC
+
+  IDL_Files {
+    deployment_nodeapplicationmanager.idl
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_nodemanager_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_NODEMANAGER_STUB_Export \
+                  -Wb,stub_export_include=Deployment_NodeManager_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_NODEMANAGER_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_NodeManager_skel_export.h \
+                  -Wb,amic_export_macro=DEPLOYMENT_NODE_AMIC_Export \
+                  -Wb,amic_export_include=Deployment_Node_amic_export.h \
+                  -Gxhst -Gxhsk -Gxhsta -GC
+
+  IDL_Files {
+    deployment_nodemanager.idl
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_na_idl) : install, dancex11_idl {
+  custom_only = 1
+  idlflags     += -Wb,stub_export_macro=DEPLOYMENT_NODEAPPLICATION_STUB_Export \
+                  -Wb,stub_export_include=Deployment_NodeApplication_stub_export.h \
+                  -Wb,skel_export_macro=DEPLOYMENT_NODEAPPLICATION_SKEL_Export \
+                  -Wb,skel_export_include=Deployment_NodeApplication_skel_export.h \
+                  -Wb,amic_export_macro=DEPLOYMENT_NODE_AMIC_Export \
+                  -Wb,amic_export_include=Deployment_Node_amic_export.h \
+                  -Gxhst -Gxhsk -Gxhsta -GC
+
+  IDL_Files {
+    deployment_nodeapplication.idl
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_stub) : install, dancex11_lib_with_idl, dancex11_output, \
+                                    dancex11_lib {
+  sharedname   =  dancex11_deployment_stub
+  after += dancex11_deployment_idl
+
+  dynamicflags +=  DEPLOYMENT_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+  Source_Files {
+    deployment_stoperrorC.cpp
+    deployment_starterrorC.cpp
+    deployment_baseC.cpp
+    deployment_connectionC.cpp
+    deployment_dataC.cpp
+    deployment_deploymentplanC.cpp
+    deployment_targetdataC.cpp
+    deployment_applicationC.cpp
+    deployment_packaging_dataC.cpp
+    deployment_planerrorC.cpp
+    deploymentC.cpp
+    deployment_resourcecommitmentmanagerC.cpp
+    deployment_invalidpropertyC.cpp
+    deployment_invalidnodeexecparameterC.cpp
+    deployment_invalidcomponentexecparameterC.cpp
+    deployment_invalidconnectionC.cpp
+    deployment_resourcenotavailableC.cpp
+  }
+
+  Header_Files {
+    deployment_stoperrorC.h
+    deployment_starterrorC.h
+    deployment_baseC.h
+    deployment_connectionC.h
+    deployment_dataC.h
+    deployment_deploymentplanC.h
+    deployment_targetdataC.h
+    deployment_applicationC.h
+    deployment_packaging_dataC.h
+    deployment_planerrorC.h
+    deploymentC.h
+    deployment_resourcecommitmentmanagerC.h
+    deployment_invalidpropertyC.h
+    deployment_invalidnodeexecparameterC.h
+    deployment_invalidcomponentexecparameterC.h
+    deployment_invalidconnectionC.h
+    deployment_resourcenotavailableC.h
+
+    deployment_stoperrorS.h
+    deployment_starterrorS.h
+    deployment_baseS.h
+    deployment_connectionS.h
+    deployment_dataS.h
+    deployment_deploymentplanS.h
+    deployment_targetdataS.h
+    deployment_applicationS.h
+    deployment_packaging_dataS.h
+    deployment_planerrorS.h
+    deploymentS.h
+    deployment_resourcecommitmentmanagerS.h
+    deployment_invalidpropertyS.h
+    deployment_invalidnodeexecparameterS.h
+    deployment_invalidcomponentexecparameterS.h
+    deployment_invalidconnectionS.h
+    deployment_resourcenotavailableS.h
+
+    Deployment_stub_export.h
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_applicationmanager_stub) : install, dancex11_output, dancex11_deployment_stub {
+  sharedname = dancex11_applicationmanager_stub
+  after += dancex11_deployment_am_idl
+  dynamicflags += DEPLOYMENT_APPLICATIONMANAGER_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_applicationmanagerC.cpp
+    deployment_managerC.cpp
+  }
+  Header_Files {
+    deployment_applicationmanagerC.h
+    deployment_managerC.h
+    Deployment_ApplicationManager_stub_export.h
+  }
+  Inline_Files {
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_ami_stub) : install, dancex11_output, \
+      dancex11_deployment_stub, dancex11_applicationmanager_stub, \
+      taox11_messaging, taox11_portableserver \
+{
+  sharedname = dancex11_deployment_ami_stub
+  after += dancex11_deployment_am_idl dancex11_deployment_idl
+  dynamicflags += DEPLOYMENT_AMIC_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_applicationAmiC.cpp
+    deployment_applicationmanagerAmiC.cpp
+    deployment_managerAmiC.cpp
+  }
+  Header_Files {
+    deployment_applicationAmiC.h
+    deployment_applicationmanagerAmiC.h
+    deployment_managerAmiC.h
+    Deployment_amic_export.h
+  }
+  Inline_Files {
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_applicationmanager_skel) : install, dancex11_output, dancex11_deployment_skel, dancex11_applicationmanager_stub {
+  sharedname = dancex11_applicationmanager_skel
+  dynamicflags += DEPLOYMENT_APPLICATIONMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_applicationmanagerS.cpp
+    deployment_managerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  Header_Files {
+    deployment_applicationmanagerS.h
+    deployment_managerS.h
+    Deployment_ApplicationManager_skel_export.h
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_domainapplication_stub) : install, dancex11_output, dancex11_deployment_stub {
+  sharedname = dancex11_domainapplication_stub
+  after += dancex11_deployment_da_idl
+  dynamicflags += DEPLOYMENT_DOMAINAPPLICATION_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_domainapplicationC.cpp
+  }
+  Header_Files {
+    deployment_domainapplicationC.h
+    Deployment_DomainApplication_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_domainapplication_skel) : install, dancex11_output, dancex11_deployment_skel, \
+                                           dancex11_domainapplication_stub {
+  sharedname = dancex11_domainapplication_skel
+  dynamicflags += DEPLOYMENT_DOMAINAPPLICATION_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_domainapplicationS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_nodeapplication_stub) : install, dancex11_output, dancex11_deployment_stub {
+  sharedname = dancex11_nodeapplication_stub
+  after += dancex11_deployment_na_idl
+  dynamicflags += DEPLOYMENT_NODEAPPLICATION_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodeapplicationC.cpp
+  }
+  Header_Files {
+    deployment_nodeapplicationC.h
+    Deployment_NodeApplication_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_nodeapplication_skel) : install, dancex11_output, dancex11_deployment_skel, \
+                                           dancex11_nodeapplication_stub {
+  sharedname = dancex11_nodeapplication_skel
+  dynamicflags += DEPLOYMENT_NODEAPPLICATION_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodeapplicationS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_nodeapplicationmanager_stub) : install, dancex11_output, dancex11_deployment_stub, \
+      dancex11_applicationmanager_stub {
+  sharedname = dancex11_nodeapplicationmanager_stub
+  after += dancex11_deployment_nam_idl
+  dynamicflags += DEPLOYMENT_NODEAPPLICATIONMANAGER_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodeapplicationmanagerC.cpp
+  }
+  Header_Files {
+    deployment_nodeapplicationmanagerC.h
+    Deployment_NodeApplicationManager_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_node_amic_stub) : install, dancex11_output, dancex11_deployment_ami_stub, \
+      dancex11_nodeapplication_stub, dancex11_nodeapplicationmanager_stub, dancex11_nodemanager_stub \
+{
+  sharedname = dancex11_node_deployment_ami_stub
+  after += dancex11_deployment_nam_idl dancex11_deployment_na_idl dancex11_deployment_nodemanager_idl
+  dynamicflags += DEPLOYMENT_NODE_AMIC_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodeapplicationAmiC.cpp
+    deployment_nodeapplicationmanagerAmiC.cpp
+    deployment_nodemanagerAmiC.cpp
+  }
+  Header_Files {
+    deployment_nodeapplicationAmiC.h
+    deployment_nodeapplicationmanagerAmiC.h
+    deployment_nodemanagerAmiC.h
+    Deployment_Node_amic_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_nodeapplicationmanager_skel) : install, dancex11_output, dancex11_deployment_skel, \
+      dancex11_nodeapplicationmanager_stub, dancex11_applicationmanager_skel {
+  sharedname = dancex11_nodeapplicationmanager_skel
+  dynamicflags += DEPLOYMENT_NODEAPPLICATIONMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodeapplicationmanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_targetmanager_stub) : install, dancex11_output, dancex11_deployment_stub {
+  sharedname = dancex11_targetmanager_stub
+  after += dancex11_deployment_targetmanager_idl
+  dynamicflags += DEPLOYMENT_TARGETMANAGER_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_targetmanagerC.cpp
+  }
+  Header_Files {
+    deployment_targetmanagerC.h
+    Deployment_TargetManager_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_targetmanager_skel) : install, dancex11_output, dancex11_deployment_skel, \
+                                           dancex11_targetmanager_stub {
+  sharedname = dancex11_targetmanager_skel
+  dynamicflags += DEPLOYMENT_TARGETMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_targetmanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+//mh start
+project(dancex11_domainapplicationmanager_stub) : install, dancex11_output, dancex11_deployment_stub, \
+      dancex11_applicationmanager_stub {
+  sharedname = dancex11_domainapplicationmanager_stub
+  after += dancex11_deployment_dam_idl
+  dynamicflags += DEPLOYMENT_DOMAINAPPLICATIONMANAGER_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_domainapplicationmanagerC.cpp
+  }
+  Header_Files {
+    deployment_domainapplicationmanagerC.h
+    Deployment_DomainApplicationManager_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_domainapplicationmanager_skel) : install, dancex11_output, dancex11_deployment_skel, \
+      dancex11_domainapplicationmanager_stub, dancex11_applicationmanager_skel {
+  sharedname = dancex11_domainapplicationmanager_skel
+  after += dancex11_deployment_dam_idl
+  dynamicflags += DEPLOYMENT_DOMAINAPPLICATIONMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_domainapplicationmanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+
+project(dancex11_executionmanager_stub) : install, dancex11_output, dancex11_deployment_stub, \
+      dancex11_domainapplicationmanager_stub, dancex11_targetmanager_stub {
+  sharedname = dancex11_executionmanager_stub
+  after += dancex11_deployment_em_idl
+  dynamicflags += DEPLOYMENT_EXECUTIONMANAGER_STUB_BUILD_DLL
+
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_executionmanagerC.cpp
+  }
+  Header_Files {
+    deployment_executionmanagerC.h
+    Deployment_ExecutionManager_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_executionmanager_skel) : install, dancex11_output, dancex11_deployment_skel, \
+       dancex11_executionmanager_stub, dancex11_domainapplicationmanager_skel, dancex11_targetmanager_skel {
+  sharedname = dancex11_executionmanager_skel
+  dynamicflags += DEPLOYMENT_EXECUTIONMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_executionmanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+//mh end
+
+
+project(dancex11_nodemanager_stub) : install, dancex11_output, dancex11_deployment_stub, \
+      dancex11_nodeapplicationmanager_stub, dancex11_targetmanager_stub {
+  sharedname = dancex11_nodemanager_stub
+  after += dancex11_deployment_nodemanager_idl
+  dynamicflags += DEPLOYMENT_NODEMANAGER_STUB_BUILD_DLL
+
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodemanagerC.cpp
+  }
+  Header_Files {
+    deployment_nodemanagerC.h
+    Deployment_NodeManager_stub_export.h
+  }
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_nodemanager_skel) : install, dancex11_output, dancex11_deployment_skel, \
+       dancex11_nodemanager_stub, dancex11_nodeapplicationmanager_skel, dancex11_targetmanager_skel {
+  sharedname = dancex11_nodemanager_skel
+  dynamicflags += DEPLOYMENT_NODEMANAGER_SKEL_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_nodemanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}
+
+project(dancex11_deployment_skel) : install, dancex11_deployment_stub, dancex11_output, \
+                                    dancex11_lib_with_idl, taox11_portableserver, taox11_valuetype, \
+                                    dancex11_lib {
+  sharedname   =  dancex11_deployment_skel
+  dynamicflags +=  DEPLOYMENT_SKEL_BUILD_DLL
+  after += Deployment_IDL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    deployment_applicationS.cpp
+    deployment_resourcecommitmentmanagerS.cpp
+  }
+
+  Header_Files {
+    Deployment_skel_export.h
+  }
+
+  Inline_Files {
+  }
+
+  specific {
+    install_dir = dancex11/deployment
+  }
+}

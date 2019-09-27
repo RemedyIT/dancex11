@@ -1,0 +1,27 @@
+project (DANCEX11_XSC_DynAny_Handler) : \
+    install, xerces, dancex11_deployment_stub, dancex11_state, \
+    dancex11_xsc_xml_handlers, dancex11_output, \
+    taox11_dynamicany, taox11_typecodefactory \
+{
+  sharedname = dancex11_xsc_dynany_handlers
+  dynamicflags += DYNANY_HANDLER_BUILD_DLL
+  macros += XML_USE_PTHREADS
+
+  Source_Files {
+    dynany_handler.cpp
+    dynenum_handler.cpp
+    dynarray_handler.cpp
+    dynsequence_handler.cpp
+    dynstruct_handler.cpp
+    dynstring_handler.cpp
+    dynalias_handler.cpp
+  }
+
+  Header_Files {
+    dynany_handler_export.h
+  }
+
+  specific {
+    install_dir = tools/config_handlers/dynany_handler
+  }
+}

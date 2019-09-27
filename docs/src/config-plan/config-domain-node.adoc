@@ -1,0 +1,5 @@
+include::_{backend}_settings.adoc[]
+
+= _Domain_ descriptors
+
+== Domain Node descriptor

@@ -1,0 +1,33 @@
+/**
+ * @file    deployment_application.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_APPLICATION_IDL
+#define DEPLOYMENT_APPLICATION_IDL
+
+#include "dancex11/deployment/deployment_connection.idl"
+#include "dancex11/deployment/deployment_starterror.idl"
+#include "dancex11/deployment/deployment_stoperror.idl"
+#include "dancex11/deployment/deployment_invalidconnection.idl"
+
+module Deployment
+{
+  interface Application {
+    void finishLaunch (in Connections providedReference, in boolean start)
+      raises (StartError, InvalidConnection);
+
+    void start ()
+      raises (StartError);
+
+    // Non-standard extension to improve shutdown process.
+    void stop ()
+      raises (StopError);
+  }; //@CORBA (ami=true)
+
+  typedef sequence < Application > Applications;
+};
+
+#endif /* DEPLOYMENT_APPLICATION_IDL */

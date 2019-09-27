@@ -1,0 +1,20 @@
+This test verifies the support for specification of deployment properties
+on the deployment manager commandline.
+As this is "common" functionality for any process started with the
+DM (either Domain, Node or Locality managers) this test is valid for
+any of these.
+
+The test attempts to start the NM daemons providing customized property
+settings (instance name&ior file and numeric addresses) for LM spawning
+on the commandline.
+The "check_lm.sh" test script checks for the existence of the planned
+localities as proof that the customized property settings were properly
+parsed and propagated.
+As the "-N" (or "-ORBDottedDecimalAddresses 1") is *not* passed to the
+NM daemons the NM IORs should contain hostnames while the LM IORs should
+contain numeric IP addresses as the property
+"nl.remedy.it.DnCX11.DM.NumericAddresses" is set to 'true' and passed on
+effectively resulting in the addition of the "-N" switch to the LM
+commandline when spawned.
+The "check_lm.sh" test script checks the IORs exported by the NM and LM
+daemons for compliance with the options.

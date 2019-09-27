@@ -1,0 +1,166 @@
+/**
+ * @file    dancex11_properties.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Codifies properties used to configure the deployment engine.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_PROPERTIES_IDL
+#define DANCEX11_PROPERTIES_IDL
+
+module DAnCEX11
+{
+  // Home Configuration Properties
+  /// Describes the entrypoint for the home executor. Property value is string.
+  const string HOME_FACTORY = "nl.remedy.it.DnCX11.Home.Factory";
+
+  // Component Configuration Properties
+  /// Describes the entrypoint for the component executor. Property value is string.
+  const string COMPONENT_ARTIFACT = "nl.remedy.it.DnCX11.Executor.Artifact";
+  const string COMPONENT_FACTORY = "nl.remedy.it.DnCX11.Executor.Factory";
+  const string COMPONENT_SVNT_ARTIFACT = "nl.remedy.it.DnCX11.Servant.Artifact";
+  const string COMPONENT_SVNT_FACTORY = "nl.remedy.it.DnCX11.Servant.Factory";
+
+  const string COMPONENT_NODE = "nl.remedy.it.DnCX11.Node";
+  const string COMPONENT_LOCALITY = "nl.remedy.it.DnCX11.Locality";
+  const string COMPONENT_CONTAINER = "nl.remedy.it.CIAOX11.ContainerId";
+
+  /// Indicates that the component instance should be deployed using specified home ID.
+  /// Property value is string.
+  const string EXPLICIT_HOME = "nl.remedy.it.DnCX11.ExplicitHome";
+
+  // Instance (i.e., Home or Component) Properties
+  /// Indicates that the instance object reference should be registered in the
+  /// Instance naming context using a specified name. Property value is string.
+  const string REGISTER_NAMING = "nl.remedy.it.DnCX11.RegisterNaming";
+
+  /// Indicates that the instance object reference should be printed to a specified
+  /// file.  Property value is string.
+  const string INSTANCE_IOR_FILE = "nl.remedy.it.DnCX11.InstanceIOR";
+
+  /// Indicates the naming context for domain objects, which includes infrastructure
+  /// and redirection.
+  const string DOMAIN_NC = "nl.remedy.it.DnCX11.DomainNC";
+
+  /// Indicates the naming context used for instance objects.
+  const string INSTANCE_NC = "nl.remedy.it.DnCX11.InstanceNC";
+
+  /// Indicates node address used in Node_Locator.
+  const string NODE_RESOURCE_TYPE = "nl.remedy.it.DnCX11.NodeAddress";
+  const string NODE_IOR     = "nl.remedy.it.DnCX11.StringIOR";
+  const string NODE_PORT    = "nl.remedy.it.DnCX11.Node.Port";
+  const string NODE_HOST    = "nl.remedy.it.DnCX11.Node.Host";
+
+  // Common Deployment (Manager) properties
+  /// Specifies to use numeric IP addresses instead of hostnames in service
+  /// profiles/advertisements (like IORs) if true (boolean
+  const string DM_NUMERIC_ADDRESSES = "nl.remedy.it.DnCX11.DM.NumericAddresses";
+
+  /// Specify the running DM's characteristics
+  const string DM_INSTANCE_NAME = "nl.remedy.it.DnCX11.DM.InstanceName";
+  const string DM_INSTANCE_PORT = "nl.remedy.it.DnCX11.DM.InstancePort";
+  const string DM_INSTANCE_ADDRESS = "nl.remedy.it.DnCX11.DM.InstanceAddress";
+
+  // Locality Manager configuration properties
+  // can be provided as execParameter as default for all LM instances
+  // or configProperty for a specific instance
+
+  /// Locality activation mode
+  const string LOCALITY_ACTIVATION_MODE = "nl.remedy.it.DnCX11.Locality.ActivationMode";
+  /// Spawned LM (default) : activator spawns a new LM child process
+  const unsigned long LOCALITY_AM_SPAWN = 0;
+  /// Remote LM : activator connects a running, remote, LM process
+  const unsigned long LOCALITY_AM_REMOTE = 1;
+  /// Local LM : activator instantiates an in-process LM
+  const unsigned long LOCALITY_AM_LOCAL = 2;
+
+  // generic LM properties
+  /// Indicates the UUID that should be assigned to a locality instance
+  const string LOCALITY_UUID = "nl.remedy.it.DnCX11.Locality.UUID";
+
+  // Spawned LM properties
+  /// Indicates the maximum time that the locality manager will wait for any
+  /// deployment step to complete, in seconds.
+  const string LOCALITY_TIMEOUT = "nl.remedy.it.DnCX11.Locality.Timeout";
+  /// Indicates command line arguments that should be passed to locality managers
+  /// when spawned.
+  const string LOCALITY_ARGUMENTS = "nl.remedy.it.DnCX11.Locality.Arguments";
+  /// Indicates the executable (path-) name that should be used when spawing a locality manager
+  const string LOCALITY_EXECUTABLE = "nl.remedy.it.DnCX11.Locality.Exec";
+
+  // Properties for both spawned and local LM
+  /// Indicates the deployment manager handler that should be used when spawing a locality manager
+  const string LOCALITY_DM_HANDLER = "nl.remedy.it.DnCX11.Locality.DMHandler";
+  /// Specifies config file for locality instance
+  const string LOCALITY_CONFIGFILE = "nl.remedy.it.DnCX11.Locality.ConfigFile";
+
+  // Properties for both spawned and remote LM
+  /// Specifies the network port the locality manager instance should listen on
+  const string LOCALITY_PORT = "nl.remedy.it.DnCX11.Locality.Port";
+  /// Specifies the network address/hostname the locality manager instance should listen on
+  const string LOCALITY_ADDRESS = "nl.remedy.it.DnCX11.Locality.Address";
+
+  const string DANCE_LM_PATH = "nl.remedy.it.DnCX11.Locality.Path";
+  const string DANCE_LM_LIBPATH = "nl.remedy.it.DnCX11.Locality.LibPath";
+
+  // Property for remote LM
+  /// Specifies a stringified IOR (classic or URL style) for the remote locality manager
+  const string LOCALITY_IOR = "nl.remedy.it.DnCX11.Locality.IOR";
+
+  /// Indicates the locality manager (activator) should use multithreaded
+  /// deployment handling (not supported yet)
+  const string LOCALITY_MULTITHREAD = "nl.remedy.it.DnCX11.Locality.Multithread";
+
+  // Locality Manager execParameter properties (instance specific only)
+  const string DANCE_LM_PROCESSNAME = "nl.remedy.it.DnCX11.LocalityManager.ProcessName";
+  const string DANCE_LM_CPUAFFINITY = "nl.remedy.it.DnCX11.LocalityManager.CPUAffinity";
+  const string DANCE_LM_PROCESSPRIORITY = "nl.remedy.it.DnCX11.LocalityManager.ProcessPriority";
+
+  // not supported anymore
+  //const string DANCE_LM_INSTALLER = "nl.remedy.it.DnCX11.LocalityManager.installer";
+
+  /// Stringified IOR to be used as the naming context for a locality instance.
+  const string LOCALITY_NAMINGCONTEXT = "nl.remedy.it.DnCX11.LocalityNamingContext";
+
+  /// @Temporary: Indicate that the node/locality manager should load best-effort
+  /// interceptors rather than first-failure semantics.
+  const string LOCALITY_BESTEFFORT = "nl.remedy.it.DnCX11.BestEffort";
+
+  /// Name of deployment connection requirement listing optional runtime properties
+  /// Copied here as well as in CIAOX11 to prevent linkage dependencies between
+  /// deployment tooling and CIAOX11.
+  const string CONNECTION_PROPERTY = "nl.remedy.it.CIAOX11.Properties";
+
+  // Implementation Types
+  /// Property describing the implementation type of a monolithic implementation
+  const string IMPL_TYPE = "nl.remedy.it.DnCX11.ImplementationType";
+
+  const string CCM_CONTAINER = "nl.remedy.it.CCM.Container";
+  const string CCM_HOME = "nl.remedy.it.CCM.Home";
+  const string CCM_COMPONENT = "nl.remedy.it.CCM.Component";
+  const string CCM_HOMEDCOMPONENT = "nl.remedy.it.CCM.HomedComponent";
+  const string CCM_CONNECTOR = "nl.remedy.it.CCM.Connector";
+
+  const string DANCE_LOCALITYMANAGER = "nl.remedy.it.DnCX11.LocalityManager";
+  const string DANCE_INSTALLATIONHANDLER = "nl.remedy.it.DnCX11.InstanceHandler";
+  const string DANCE_DEPLOYMENTINTERCEPTOR = "nl.remedy.it.DnCX11.DeploymentInterceptor";
+  const string DANCE_CONFIGPLUGIN = "nl.remedy.it.DnCX11.ConfigPlugin";
+  const string DANCE_SERVICEOBJECT = "nl.remedy.it.DnCX11.ServiceObject";
+
+  const string DANCE_ARTIFACT = "nl.remedy.it.DnCX11.Artifact";
+
+  // Plan infoProperty : base path for artifact repository for a plan
+  const string DANCE_ARTIFACT_REPOSITORY_PATH = "nl.remedy.it.DnCX11.ArtifactRepo.Path";
+
+  // Instance Deployment Handler installation properties
+
+  /// Instance types that must be installed before the instance handled by the decorated handler
+  const string DANCE_PLUGIN_FACTORY = "nl.remedy.it.DnCX11.InstanceHandler.Factory";
+  const string DANCE_PLUGIN_ARTIFACT = "nl.remedy.it.DnCX11.InstanceHandler.Artifact";
+  const string DANCE_PLUGIN_OPENMODE = "nl.remedy.it.DnCX11.InstanceHandler.OpenMode";
+  const string DANCE_IDH_DEPENDSON = "nl.remedy.it.DnCX11.InstanceHandler.DependsOn";
+};
+
+#endif /* DANCEX11_PROPERTIES_IDL */

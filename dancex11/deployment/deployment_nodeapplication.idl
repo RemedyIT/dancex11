@@ -1,0 +1,19 @@
+/**
+ * @file    deployment_nodeapplication.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_NODEAPPLICATION_IDL
+#define DEPLOYMENT_NODEAPPLICATION_IDL
+
+#include "dancex11/deployment/deployment_application.idl"
+
+module Deployment {
+  interface NodeApplication : Application
+  {
+  }; //@CORBA (ami=true)
+};
+#endif /* DEPLOYMENT_NODEAPPLICATION_IDL */
+

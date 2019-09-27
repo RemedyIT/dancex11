@@ -1,0 +1,38 @@
+project(dancex11_domain_deployment_handler_impl) : taox11_cosnaming_stub, \
+      dancex11_lib, dancex11_output, dancex11_split_plan, install, \
+      dancex11_stub, dancex11_state, dancex11_plan_loader_stub, \
+      dancex11_deployment_handler, dancex11_targetmanager_skel, \
+      dancex11_node_deployment_ami_stub, \
+      dancex11_domainapplicationmanager_skel, dancex11_executionmanager_impl, \
+      dancex11_domainapplication_skel, dancex11_deploymentmanagerhandler_skel \
+{
+  dynamicflags += DANCEX11_DOMAIN_DH_BUILD_DLL
+  sharedname = dancex11_domain_dm_handler
+
+  Source_Files {
+    dancex11_domain_deployment_handler.cpp
+    dancex11_domain_dmh_loader.cpp
+    dancex11_execution_manager_impl.cpp
+    dancex11_ddh_application_manager_impl.cpp
+    dancex11_node_locator.cpp
+    dancex11_ddh_application_impl.cpp
+  }
+
+  Header_Files {
+    dancex11_domain_deployment_handler_export.h
+    dancex11_domain_deployment_handler.h
+    dancex11_domain_dmh_loader.h
+    dancex11_domain_dmh_static_svc.h
+    dancex11_execution_manager_impl.h
+    dancex11_ddh_application_manager_impl.h
+    dancex11_node_locator.h
+    dancex11_ddh_application_impl.h
+  }
+
+  Template_Files {
+  }
+
+  specific {
+    install_dir = dancex11/domain_deployment_handler
+  }
+}

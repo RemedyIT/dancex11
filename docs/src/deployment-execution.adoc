@@ -1,0 +1,159 @@
+include::_{backend}_settings.adoc[]
+
+= Deployment execution
+
+== The process
+
+Deployment execution is the process in which a constructed _Deployment
+Plan_ is used to direct a selection of runtime tools to distribute,
+instantiate, control and/or destruct the component instances described
+in the plan.
+
+For the purpose of the execution process the
+https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification] defines the
+Execution Management Model. +
+ This model specifies the management interfaces and their interaction
+patterns with which to implement a D&C compliant deployment runtime.
+
+The Execution Management model defines interfaces grouped according to
+the three deployment organization levels also mentioned in the
+<<d+c-overview.adoc#,Deployment & Configuration overview>>:
+
+* Domain
+* Node
+* Locality
+
+Within each of these three levels another subdivision have been made
+along the lines of the following separation of concerns: deployment
+(level) manager, application (class) manager and application instance
+manager. This results in the following defined interfaces:
+
+* At the Domain level:
+** ExecutionManager to manage deployment at the domain level
+** DomainApplicationManager to manage a plan at the domain level
+** DomainApplication to manage a launched plan (application/instance) at
+the domain level
+* At the Node level:
+** NodeManager to manage deployment at the node level
+** NodeApplicationManager to manage a plan at the node level
+** NodeApplication to manage a launched plan (application/instance) at
+the node level
+* At the Locality level:
+** _Manager_ to manage deployment at the locality level (this interface
+is not explicitly specified by D&C)
+** ApplicationManager to manage a plan at the locality level
+** Application to manage a launched plan (application/instance) at the
+locality level
+
+image:{images_root}/exec-model.png[www.remedy.nl]
+
+The deployment manager interfaces provide for the functionality to
+initiate launching an application (from a plan) and manage the
+application managers created. During launch initiation the plan is
+validated and analyzed to determine it's composition (nodes, localities,
+component instances etc.) and the resources required.
+
+The application manager interfaces provide for the functionality to
+start launching an application instance and manage the application
+instances created. During the start the application instance and the
+instances of all components are created.
+
+The application instance manager interfaces provide for the
+functionality to finish launching and starting the application instance.
+During launch finalization the created component instances are connected
+and configured. Finally the start will activate all component instances.
+
+For shutting down an application (plan) the application manager
+interfaces provide the functionality to request the destruction of an
+application instance and the deployment manager interfaces provide the
+functionality to request the destruction of application manager
+instances in turn.
+
+Although the D&C specification does not prohibit launching multiple
+application instances DnCX11 currently only supports launching one
+application instance for a single plan at anyone time. To relaunch a
+plan a previously launched instance has to be shutdown first.
+
+In addition to the functionality mentioned here D&C defines some
+additional interfaces aimed at providing functionality for target
+(domain) and resource management. DnCX11 does not currently provide
+support for these interfaces. For more information concerning these and
+the above mentioned interfaces please see the
+https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification].
+
+=== Implementation
+
+The described deployment interfaces for the different levels are most
+commonly provided by distinct daemon processes for each separate domain,
+node and locality instance specified in the deployment plan.
+
+So for a deployment plan describing a domain consisting of 3 nodes
+(NodeA, NodeB and NodeC) and 1 locality for each node a classic setup
+would be to have 7 processes running (eventually):
+
+* one Domain Manager process (also called Execution Manager) to direct
+the deployment at the domain level
+* three Node Manager processes to accept and manage node level
+deployment
+* three Locality Manager processes for locality level deployment control
+
+The deployment process for the full plan is directed from the Domain
+Manager daemon. In DnCX11 the initiator could either be the Domain
+Manager itself providing it the plan to deploy at startup *or* the
+special Plan Launcher tool which can be used to start a given plan
+through an already running Domain Manager daemon waiting in service
+mode.
+
+Typically the runtime environment for these processes would be provided
+by four separate computing devices, one (central) device for the Domain
+Manager and three other devices connected by network links for each
+combination of a Node Manager and Locality Manager daemon.
+
+The D&C specification however does not demand any specific implementation
+architecture and allows for other setups which may be useful for
+different use cases like running complete deployments on single
+computing nodes (common for testing) and/or combining deployment
+interfaces in a single runtime process.
+
+DnCX11 therefor provides a flexible deployment architecture which allows
+for deployments with or without a Plan Launcher, deployment at Domain,
+Node or Locality level and running Locality Managers in process with
+Node Managers.
+
+== The tools
+
+DnCX11 provides a flexible and configurable runtime framework
+implementing all the interfaces mentioned above in a set of executables
+and plugin modules.
+
+Although not formally specified the D&C specification leans towards the
+notion of centralized, domain level deployment as the default (only?)
+mode of deployment. The specification is open enough though to allow for
+other interpretations enabling the implementation of support for various
+modes of deployment at every conceivable level. The DnCX11 deployment
+framework provides such support ready to use.
+
+To drive the deployment process DnCX11 provides two deployment
+executables:
+
+* the <<deployment-tools.adoc#_plan_launcher,Plan Launcher>> - `dancex11_plan_launcher` +
+ This tool is targeted at multi plan/domain deployments, i.e.
+launching/shutting down instances of different deployment plans.
+* the <<deployment-tools.adoc#_deployment_manager,Deployment Manager>> - `dancex11_deployment_manager` +
+ This tool is the common loader executable for either deployment service
+daemons or single plan deployment launchers at the domain, node or
+locality level. The common loader integrates with a set of plugin
+handlers providing the deployment support for each specific level.
+
+These are supplemented by two plan manipulation tools:
+
+* the <<plan-tools.adoc#_plan_splitter,Plan Splitter>> - `dancex11_split_plan` +
+ This tool can be used to split a plan into separate subplans for single
+nodes or localities.
+* the <<plan-tools.adoc#_plan_converter,Plan Converter>> - `dancex11_convert_plan` +
+ This tool can be used to convert deployment plans and domain descriptions
+from one descriptor format to another.
+
+== Scenarios and examples

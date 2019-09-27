@@ -1,0 +1,22 @@
+This test verifies the support for specification of ORB options on the
+deployment manager commandline.
+As this is "common" functionality for any process started with the
+DM (either Domain, Node or Locality managers) this test is valid for
+any of these.
+
+The test attempts to start the NM daemons listening at specific ports
+specifying the interface and the ports to listen on by passing
+corresponding deployment manager switches while also passing (unsupported)
+"-ORBListenEndpoints" arguments with incorrect interface/port settings
+which should be filtered out to prevent the test from failing.
+The Domain Manager used to launch the test plan is provided with explicit
+corbaloc IORs for each NM with the specified ports.
+The "check_lm.sh" test script checks for the existence of the planned
+localities as proof that communication with the NM daemons was successfully
+established at the configured addresses/ports.
+
+In addition the "-ORBDottedDecimalAddresses 1" option (supported alternative
+for '-N') is passed to the NM daemons on the commandline which should result
+in numeric IP addresses in any IORs provided.
+The "check_lm.sh" test script checks the IORs exported by the NM daemons
+for compliance with this option.

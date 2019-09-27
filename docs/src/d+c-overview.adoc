@@ -1,0 +1,154 @@
+include::_{backend}_settings.adoc[]
+
+= D&C Overview
+
+== What is Deployment?
+
+Deployment in the context of DnCX11 refers to those activities required
+to make a distributed, component based application (which represents the
+end product of the development process) ready for use. DnCX11 also
+includes the activities involved in the reverse process (controlled
+shutdown of an application) in the definition. Typically this process
+involves configuration and installation of resources (computing nodes,
+network links, storage devices etc.) and application artifacts
+(libraries, executables, configuration files etc.) up until the point
+where the application code is executed (or, in reverse, from the point
+where the application code is stopped).
+
+From some viewpoints configuration can be seen as an integrated part of
+the deployment process while from other viewpoints it can be seen as a
+separate (sub-)process hence the term _Deployment & Configuration._
+
+== Where do we deploy?
+
+The target environment for deployment of a distributed component base
+application typically consists of a collection of computing nodes
+(devices or environments featuring a CPU and operating system capable of
+executing software component binaries) connected by a series of
+(network) links. Such an environment could possibly be augmented with
+special peripheral and/or embedded devices like printers, storage units,
+sensors of any kind and other resources.
+
+Conceptually D&C defines such a target environment as a _Domain_
+consisting of __Node__s, __Interconnect__s, __Bridge__s and other __Resource__s.
+
+image:{images_root}/domain.png[www.remedy.nl]
+
+Within the conceptual _Domain_ a _Node_ is the primary target location
+where component artifacts are installed to and subsequently configured
+and executed. An _Interconnect_ directly links one or more nodes
+(linking one node defines a loopback connection) and a _Bridge_ provides
+an indirect connection between nodes. +
+ Peripheral and/or embedded devices like storage units etc. are
+represented as _Resource_.
+
+Mapped to the physical reality a conceptual _Node_ typically represents
+a physically distinct computing device (PC, tablet, smartphone, embedded
+computing board etc.) but could also represent a fully virtualized
+computing environment or even simply a separate process in the same
+environment as other node processes. The _Interconnect_s can represent
+physical network connections between nodes (cabled or wireless) but also
+simple localhost loopback connections between processes on the same
+computing device.
+
+In the context of a single _Node_ one or more application component
+instances are executed in the context of what is called a _Locality_. A
+_Node_ can host application component instances in one or more
+_Localities_. Typically a _Locality_ equates with a separate process in
+the operating environment of the _Node_ (if such a thing is defined in
+that environment) but not necessarily. DnCX11 for example supports the
+creation of a _Locality_ in process with a _Node Manager_ (see
+<<dncx11-config.adoc#_locality_manager_configuration_properties,here>>).
+
+image:{images_root}/node.png[www.remedy.nl]
+
+See the https://www.omg.org/spec/DEPL[OMG Deployment
+& Configuration (D&C) specification] for more
+details concerning _Domain_ definitions.
+
+== What do we deploy?
+
+DnCX11 implements a runtime framework that supports deployment of
+distributed applications as described in the D&C specification (see
+above) which means that the description of what is to be deployed at
+which location is provided by a _Deployment Plan_ (or just _Plan_).
+
+The _Plan_ provides a description of the application component types and
+associated artifacts, their instances and the connections between them
+as well as how to distribute them over the _Domain_. +
+ The major elements in a _Plan_ are:
+
+* _Implementation_
+* _Instance_
+* _Connection_
+* _Artifact_
+* _LocalityConstraint_
+
+_Implementation_ elements describe the component implementation to
+install identifying the runtime artifacts required (libraries,
+executables, other objects) the artifact(s) and factory(-ies) with which
+to instantiate an _Instance_ and any configuration properties required.
+
+_Instance_ elements describe specific component instances for an
+_Implementation_ identifying on which _Node_ the instance needs to be
+created and any runtime configuration properties required.
+
+_Connection_ elements describe the connections to be set up between
+components _Instance_s identifying ports (interfaces) provided by
+instances and the peer ports or other type of endpoints these ports need
+to be connected to.
+
+_Artifact_ elements describe the actual binary objects (including
+libraries, executables, scripts etc.) required for component
+implementations identifying their source location and other properties.
+
+_LocalityConstraint_ elements describe the way component __Instance__s may
+be distributed over _Localities_ identifying which instances should be
+co-located in the same _Locality_ or which should explicitly not be
+co-located.
+
+For more information concerning deployment plans, how to create them and
+the support DnCX11 provides see <<deployment-planning.adoc#,Deployment
+planning>>.
+
+== How do we deploy?
+
+Looking at the _Domain_ concept and the _Deployment Plan_ we can
+recognize three organization levels for deployment:
+
+* the Domain level which includes all Nodes with all Localities
+* the Node level which includes a single Node with all Localities
+* the Locality level which includes a single Locality
+
+From a fully specified _Plan_ the deployment of a complete distributed
+application can be directed from the Domain level in a coordinated and
+synchronized way using a capable toolset. DnCX11 includes support for
+this type of deployment.
+
+image:{images_root}/domain-deploy.png[www.remedy.nl]
+
+This type of deployment has been the classic way of thinking about D&C
+style deployment and has proven to work well for highly structured
+distributed applications running in stable computing environments with
+fixed network links.
+
+Because Domain level deployment needs to coordinate the deployment to
+the distributed nodes from a central director (Domain Manager) this type
+of deployment has pretty strict requirements for stable network links
+between the central director and the nodes as well as requirements on
+the reliability and availability of the nodes. These requirements make
+Domain level deployments less applicable for more loosely coupled
+applications based on Service Oriented Architecture (SOA) designs or
+applications in the domain of mobile devices.
+
+The availability and connectivity of __Node__s and __Localities__ in these
+kind of application environments would not be predictable or stable
+enough to make effective use of centrally directed Domain level
+deployment. Instead these kind of application would be far better served
+by deployment at a _Node_ or even a single _Locality_ level.
+
+DnCX11 supports this kind of applications by providing the ability to
+launch plans at the _Domain_ level as well as at the _Node_ and even at
+the _Locality_ level. Supplementing this DnCX11 provides tools which can
+be used to split _Domain_ level __Plan__s into _Node_ level __Plan__s and
+from _Node_ into _Locality_ level __Plan__s.

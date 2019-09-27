@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// ciaox11_output.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project {
+  libout = $(DANCEX11_ROOT)/lib
+}
+

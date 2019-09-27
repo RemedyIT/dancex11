@@ -1,0 +1,42 @@
+# This is the list of run_test.pl's that need to be run by
+# auto_run_tests.pl.
+# Each line has its own test, and a test can be followed by a
+# list of configurations it does _not_ run on.
+#
+# Example: tests/foo/run_test.pl: !MINIMUM !CORBA_E_COMPACT !CORBA_E_MICRO !ST
+#
+tests/locality_manager/process_name/run_test.pl: LINUX !CROSS
+tests/locality_manager/process_name/run_test.pl -fmt cdp: LINUX !CROSS
+tests/locality_manager/process_name/run_test_snl.pl: LINUX !CROSS
+tests/locality_manager/process_name/run_test_snl.pl -fmt cdp: LINUX !CROSS
+tests/locality_manager/cpu_affinity/run_test.pl: LINUX !CROSS
+tests/locality_manager/cpu_affinity/run_test.pl -fmt cdp: LINUX !CROSS
+tests/locality_manager/invalid_plugin_config/run_test.pl:
+tests/locality_manager/invalid_plugin_config/run_test.pl -fmt cdp:
+tests/locality_manager/in_process/run_test.pl: LINUX !CROSS
+tests/locality_manager/in_process/run_test.pl -fmt cdp: LINUX !CROSS
+tests/locality_manager/remote/run_test.pl: LINUX !CROSS
+tests/locality_manager/remote/run_test.pl -fmt cdp: LINUX !CROSS
+tests/log_test_env/run_test.pl:
+tests/log_test/run_test.pl:
+tests/plan_launcher/domain_manager-delay/run_test.pl:
+tests/plan_launcher/domain_manager-delay/run_test_ns.pl:
+tests/plan_launcher/node_manager/run_test.pl:
+tests/plan_launcher/node_manager/run_test_ior.pl:
+tests/plan_launcher/locality_manager/run_test.pl:
+tests/plan_launcher/locality_manager/run_test_ior.pl:
+tests/domain_manager/cdd/run_test.pl: LINUX !CROSS
+tests/domain_manager/cdd/run_test.pl -fmt cdp: LINUX !CROSS
+tests/domain_manager/cdd/run_test.pl -c : LINUX !CROSS
+tests/domain_manager/cdd/run_test.pl -fmt cdp -c: LINUX !CROSS
+tests/domain_manager/cdd/run_test_no_ior.pl: LINUX !CROSS
+tests/domain_manager/cdd/run_test_no_ior.pl -fmt cdp: LINUX !CROSS
+tests/domain_manager/ignore-loaderror/run_test.pl: LINUX !CROSS
+tests/domain_manager/ignore-loaderror/run_test.pl -fmt cdp: LINUX !CROSS
+tests/domain_manager/node_ior/run_test.pl: LINUX !CROSS
+tests/domain_manager/node_ior/run_test_corbaloc.pl: LINUX !CROSS
+tests/artifact_installation/default/run_test.pl: LINUX !CROSS
+tests/artifact_installation/custom_plan_repo/run_test.pl: LINUX !CROSS
+tests/artifact_installation/custom_repo_base/run_test.pl: LINUX !CROSS
+tests/node_manager/orb_options/run_test.pl: LINUX !CROSS
+tests/node_manager/deployment_props/run_test.pl: LINUX !CROSS

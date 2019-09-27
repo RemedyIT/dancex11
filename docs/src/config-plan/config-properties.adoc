@@ -1,0 +1,75 @@
+include::_{backend}_settings.adoc[]
+
+= Property descriptors
+
+== Introduction
+
+All property descriptors have the same format where the key defines the
+type of property and is followed by a property identifier and a property
+value. DnCX11 stores the runtime values corresponding to the described
+value literals in IDL Any-type variables to allow generic structure and
+interface definitions for passing property values.
+
+== Common Property descriptors
+
+=== Definition
+
+A common property descriptor is defined as follows:
+
+-------------------------------------
+{property-key} {property-declaration}
+-------------------------------------
+
+Where
+
+* \{property-key} := `nl.remedy.it.DnCX11.Property`
+* \{property-declaration} := a <<Property declaration,declaration>> (see
+below) of the property id and the property value
+
+== Deployment Property descriptors
+
+=== Definition
+
+A Deployment property descriptor is defined as follows:
+
+------------------------------------------------
+{deployment-property-key} {property-declaration}
+------------------------------------------------
+
+Where
+
+* \{deployment-property-key} := `nl.remedy.it.DnCX11.ExecParameter` or
+`nl.remedy.it.DnCX11.ConfigProperty`
+* \{property-declaration} := a <<Property declaration,declaration>> (see
+below) of the property id and the property value
+
+=== Description
+
+In the case of link:./config-component-instance.html[Component Instance descriptors] or
+link:./config-locality-instance.html[Locality Instance descriptors]
+ExecParameter properties are assigned to D&C Component Implementation
+definitions while ConfigProperty properties are assigned to D&C
+Component Instance descriptions. At instance deployment time
+ConfigProperty property values will overrule identically named
+ExecParameter properties for the configuration of the created instance
+(ConfigProperty values do not play a role in the creation of an
+instance, here only ExecParameter properties play a role).
+
+In the case of link:../config-plan.html#plugin_descriptors[DnCX11 tool
+configuration descriptors] both kinds of properties are currently
+interchangeable.
+
+== Property declaration
+
+A Property declaration should be defined as follows:
+
+------------------------------
+{property-id} {property-value}
+------------------------------
+
+Where
+
+* \{property-id} :=
+<<{parent_dir}/config-plan.adoc#dotted-identifier,dotted-identifier>>
+* \{property-value} := <<{parent_dir}/config-plan.adoc#value,value>>
+

@@ -1,0 +1,154 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 _CONFIG_ descriptor format
+
+== DnCX11 CONFIG format specification
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+config-document               :== deployment-decls |
+                                  domain-decls
+deployment-decls              :== deployment-decl |
+                                  deployment-decl deployment-decls
+deployment-decl               :== deployment-property-decl |
+                                  deployment-plugin-decl |
+                                  deployment-component-decl
+
+deployment-property-decl      :== common-property
+
+deployment-plugin-decl        :== deployment-plugin-id-decl |
+                                  deployment-plugin-id-decl deployment-properties
+deployment-plugin-id-decl     :== deployment-plugin-id deployment-artifact deployment-factory |
+                                  deployment-plugin-id deployment-artifact deployment-factory deployment-openmode
+
+deployment-plugin-id          :== "nl.remedy.it.DnCX11.InstanceHandler" |
+                                  "nl.remedy.it.DnCX11.DeploymentInterceptor" |
+                                  "nl.remedy.it.DnCX11.ConfigPlugin" |
+                                  "nl.remedy.it.DnCX11.ServiceObject"
+
+deployment-component-decl     :== deployment-component-instance |
+                                  deployment-locality-instance
+
+deployment-component-instance :== deployment-component-id-decl |
+                                  deployment-component-id-decl deployment-component-props
+
+deployment-component-id-decl  :== "nl.remedy.it.CCM.Component" deployment-instance-id deployment-artifact deployment-factory |
+                                  "nl.remedy.it.CCM.Component" deployment-instance-id deployment-artifact deployment-factory deployment-openmode
+
+deployment-locality-instance  :== deployment-locality-id-decl |
+                                  deployment-locality-id-decl deployment-locality-props
+
+deployment-locality-id-decl   :== "nl.remedy.it.DnCX11.LocalityManager" deployment-instance-id
+
+deployment-instance-id        :== dotted-identifier
+
+deployment-artifact           :== identifier
+deployment-factory            :== identifier
+deployment-openmode           :== integer
+
+deployment-component-props    :== deployment-component-property |
+                                  deployment-property |
+                                  deployment-component-property deployment-component-props |
+                                  deployment-property deployment-component-props
+deployment-locality-props     :== deployment-locality-property |
+                                  deployment-property |
+                                  deployment-locality-property deployment-locality-props |
+                                  deployment-property deployment-locality-props
+deployment-properties         :== deployment-property |
+                                  deployment-property deployment-properties
+deployment-component-property :== component-node-decl |
+                                  component-locality-decl |
+                                  component-artifact-decl |
+                                  component-connection-decl
+deployment-locality-property  :== component-node-decl |
+                                  component-locality-decl |
+                                  component-artifact-decl
+component-node-decl           :== "nl.remedy.it.DnCX11.Node" string
+component-locality-decl       :== "nl.remedy.it.DnCX11.Locality" string
+component-artifact-decl       :== component-artifact-id-decl |
+                                  component-artifact-id-decl component-artifact-props
+component-artifact_id-decl    :== "nl.remedy.it.DnCX11.Artifact" component-artifact-id component-artifact-location |
+                                  "nl.remedy.it.DnCX11.Artifact" component-artifact-id component-artifact-location component-artifact-node
+component-artifact-id         :== identifier
+component-artifact-location   :== string
+component-artifact-node       :== string
+component-artifact-props      :== common-property |
+                                  common-property component-artifact-props
+component-connection-decl     :== "nl.remedy.it.DnCX11.Connection" component-connection-decl |
+                                  "nl.remedy.it.DnCX11.ExternalConnection" component-ext-connection-defs
+component-connection-decl     :== component-peer-instance component-connection-defs
+component-connection-defs     :== component-connection-def |
+                                  component-connection-def component-connection-props |
+                                  component-connection-def component-connection-defs |
+                                  component-connection-def component-connection-props component-connection-defs
+component-connection-def      :== component-receptacle-id "" component-receptacle-id
+component-ext-connection-defs :== component-ext-connection-def
+                                  component_ext-connection-def component-connection-props |
+                                  component-ext-connection-def component-ext-connection-defs |
+                                  component-ext-connection-def component-connection-props component-ext-connection-defs
+component-ext-connection-def  :== component-receptacle-id "" component-connection-location |
+                                  component-facet-id ">" component-external-port-id component-connection-location
+component-connection-location :== string
+component-external-port-id    :== identifier
+component-connection-props    :== component-connection-prop |
+                                  component-connection-prop component-connection-props
+component-connection-prop     :== common-property
+component-connection-id       :== dotted-identifier
+component-receptacle-id       :== identifier
+component-peer-instance       :== dotted-identifier
+component-facet-id            :== identifier
+
+domain-decls                  :== domain-decl |
+                                  domain-decl domain-decls
+domain-decl                   :== domain-node-decl |
+                                  domain-property-decl
+
+domain-property-decl          :== common-property
+
+domain-node-decl              :== domain-node-id-decl |
+                                  domain-node-id-decl domain-node-props
+domain-node-id-decl           :== "nl.remedy.it.DnCX11.Node" domain-node-id
+domain-node-id                :== string
+
+domain-node-props             :== domain-node-prop |
+                                  domain-node-prop domain-node-props
+domain-node-prop              :== domain-node-ior |
+                                  domain-node-port |
+                                  domain-node-host
+domain-node-ior               :== "nl.remedy.it.DnCX11.StringIOR" string
+domain-node-port              :== "nl.remedy.it.DnCX11.Node.Port" integer
+domain-node-host              :== "nl.remedy.it.DnCX11.Node.Host" string
+
+common-property               :== "nl.remedy.it.DnCX11.Property" property-decl
+
+deployment-property           :== property-type-id property-decl
+property-type-id              :== "nl.remedy.it.DnCX11.ExecParameter" |
+                                  "nl.remedy.it.DnCX11.ConfigProperty"
+
+property-decl                 :== property-id property-value
+property-id                   :== dotted-identifier
+property-value                :== value |
+                                  type ":" value
+value                         :== literal |
+                                  array
+literal                       :== number |
+                                  string |
+                                  boolean |
+                                  char
+number                        :== integer |
+                                  decimal
+integer                       :== digital |
+                                  hexadecimal
+string                        :== '"' characters '"'
+boolean                       :== "false" | "true"
+char                          :== "'" character "'"
+array                         :== "[" literal-list "]"
+literal-list                  :== literal |
+                                  literal "," literal-list
+type                          :== "char" |
+                                  "octet" |
+                                  "bool" |
+                                  "int16" | "int32 | "int64" |
+                                  "uint16" | "uint32" | "uint64" |
+                                  "float" | "double" |
+                                  "string"
+------------------------------------------------------------------------------------------------------------------------------------------------

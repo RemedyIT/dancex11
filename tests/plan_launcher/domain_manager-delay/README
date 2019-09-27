@@ -1,0 +1,8 @@
+This test verifies the support of the Plan Launcher for delayed domain manager activation.
+
+The test script *first* spawns the Plan Launcher with a DM resolving timeout
+argument and *then* after a delay spawns the DM.
+
+The run_test.pl script specifies an explicit IOR file for the resolution of the EM.
+
+The run_test_ns.pl script lets the PL resolve the EM through the Naming Service.

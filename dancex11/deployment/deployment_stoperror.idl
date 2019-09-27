@@ -1,0 +1,18 @@
+/**
+ * @file    deployment_stoperror.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_STOPERROR_IDL
+#define DEPLOYMENT_STOPERROR_IDL
+
+module Deployment {
+  exception StopError {
+    string name;
+    string reason;
+  };
+};
+#endif /* DEPLOYMENT_STOPERROR_IDL */
+

@@ -1,0 +1,30 @@
+/**
+ * @file    deployment_manager.idl
+ * @author  Martin Corino
+ * @brief   Non-standard base for Execution-,Node- and LocalityManager.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_MANAGER_IDL
+#define DEPLOYMENT_MANAGER_IDL
+
+#include "dancex11/deployment/deployment.idl"
+#include "dancex11/deployment/deployment_applicationmanager.idl"
+#include "dancex11/deployment/deployment_resourcecommitmentmanager.idl"
+#include "dancex11/deployment/deployment_resourcenotavailable.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+
+module Deployment
+{
+  interface Deployment_Manager
+  {
+    ApplicationManager preparePlan (in DeploymentPlan plan,
+                                    in ResourceCommitmentManager resourceCommitment)
+                        raises (ResourceNotAvailable, PlanError, StartError);
+    void destroyManager (in ApplicationManager manager)
+                        raises (StopError);
+  }; //@CORBA (ami=true)
+};
+
+#endif /* DEPLOYMENT_MANAGER_IDL */

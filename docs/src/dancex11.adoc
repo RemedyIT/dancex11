@@ -1,0 +1,36 @@
+include::_{backend}_settings.adoc[]
+
+include::{dancex11_src_root}/README.adoc[]
+
+== Deploying with DnCX11
+
+The requirements and steps to take for deployment using the DnCX11
+toolset are described in detail in the following sections:
+
+* <<d+c-overview.adoc#,Deployment & Configuration overview>>
+* <<deployment-planning.adoc#,Deployment planning>>
+* <<deployment-execution.adoc#,Deployment execution>>
+* <<dncx11-config.adoc#,DnCX11 configuration>>
+
+== Developing with DnCX11
+
+* <<debugging-components.adoc#,Debugging components>>
+
+== Support
+
+DnCX11, CIAOX11, TAOX11, and BRIX11 are supported by Remedy IT. Please
+read the <<{xref_docs_root}/taox11/taox11_faq.adoc#,FAQ-section>> first
+before asking a question. +
+ If your problem was not listed in the FAQ, you can submit your issue by
+using the link:../../../PROBLEM-REPORT-FORM[PROBLEM-REPORT-FORM]. The PRF
+is available in the root directory of the package. Please make
+sure to follow the directions in the PRF.
+
+== Training material
+
+The free CORBA Programming with
+TAOX11] tutorial and Comparing IDL to C++ with IDL to
+C++11 are available for free from the https://www.axcioma.com[AXCIOMA] website.
+
+Remedy IT also offers a https://www.axcioma.com/services/training.html[Component Based
+Development using AXCIOMA] course.

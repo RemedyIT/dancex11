@@ -1,0 +1,653 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 Deployment tools
+
+== Plan Launcher
+
+The DnCX11 Plan Launcher tool is intended to propagate deployment plan
+launch or tear down requests to a running (set of) deployment manager
+service daemon(s).
+
+Unlike the deployment manager processes the Plan Launcher will only stay
+'active' as long as it takes to finish launching or shutting down a
+deployment plan instance. When finished the Plan Launcher process will
+exit.
+
+The Plan Launcher requires at least one actively running deployment
+manager daemon to direct it's launch or shutdown request to. It will not
+spawn deployment manager child processes.
+
+The DnCX11 Plan Launcher can direct plan launches or shutdowns at all
+deployment levels, domain, node or locality. Depending on the level of
+deployment the deployment manager at which the request is directed has
+to be started as Domain, Node or Locality Manager (see
+<<Deployment Manager>>). Also, depending on the
+level, there may be more actively running deployment manager service
+daemons required to execute the deployment request (like running Node
+Manager daemons apart from a Domain Manager with dull domain
+deployments).
+
+=== Commandline options
+
+Executing the command `dancex11_plan_launcher -h` on the commandline
+will show the following information:
+
+--------------------------------------------------------------------------------------------------------
+dancex11_plan_launcher -l PLAN [-f FMT] [-c CFG] [-n NAME] [-r IOR] [-a ADDR] [-p PORT] [-d NC]
+                      [-t TIMEOUT] [-m IORFILE] [-i IORFILE]
+ or
+dancex11_plan_launcher -x [PLAN] [-u UUID] [--force] [-f FMT] [-n NAME] [-r IOR] [-a ADDR] [-p PORT]
+                      [-d NC] [-t TIMEOUT] [-m IOR] [-i IOR]
+
+Plan Launcher Options:
+        -l|--launch PLAN                 Launch the deployment plan read from PLAN.
+        -f|--plan-format FMT             Specify the deployment plan format to read from PLAN.
+        -n|--mgr-name NAME               Specify the name for the deployment manager instance
+        -r|--mgr-ior IOR                 Specify the IOR for the deployment manager instance
+        -p|--mgr-port PORT               Specify the port the Deployment Manager listens on.
+        -a|--mgr-address ADDR            Specify the network interface address on which the Deployment
+                                         Manager listens (default 'localhost').
+        -d|--deployment-nc NC            Specify naming context for deployment manager instance
+                                         registration.
+        -t|--timeout SEC                 Specify number of seconds to wait for valid deployment manager
+                                         reference.
+        -c|--config CFG                  Provide a deployment configuration file used to initialize the
+                                         Plan Launcher.
+        -x|--teardown [PLAN]             Teardown a previously launched plan.
+           --force                       Force complete teardown in case of errors.
+        -u|--uuid UUID                   Specify UUID of plan to tear down (required if no PLAN
+                                         specified).
+        -m|--am-ior IOR                  Specify IOR(-file) of Application Manager to write on launch or
+                                         resolve for teardown.
+        -i|--app-ior IOR                 Specify IOR(-file) of Application instance to write on launch
+                                         or resolve for teardown.
+        -h|--help                        print this help message
+--------------------------------------------------------------------------------------------------------
+
+==== Options
+
+-l|--launch PLAN::
+This option is used to direct the Plan Launcher to read a deployment
+plan from the file `PLAN` and issue a plan launch request to the
+deployment manager.
+
+-f|--plan-format FMT::
+Specifies the descriptor format to expect for the plan in file `PLAN`.
+By default this is determined based on the extension of file name `PLAN`
+if possible. The currently supported descriptor formats are:
+
+- *cdp* - specifies the D&C standard <<xml-plan.adoc#,XML format>> +
+- *config* - specifies the DnCX11 <<config-plan.adoc#,CONFIG format>> +
+- *cdr* - specifies the <<cdr-plan.adoc#,IDL CDR format>>
+
+-n|--mgr-name NAME::
+Specifies the name of the deployment manager servant instance to connect
+to. By default this is *DeploymentManager* (see also the
+<<Deployment Manager>> `-n` option).
+
+-r|--mgr-ior IOR::
+Specifies the IOR of the deployment manager servant instance to connect
+to. This can use any of the formats supported by the
+`CORBA::ORB::string_to_object` method like IOR::xxx, corbaloc::xxx,
+\file:///xxx ...
+
+-p|--mgr-port PORT::
+Specifies the port number the deployment manager servant instance to
+connect to is listening on.
+
+-a|--mgr-address ADDR::
+Specifies the network interface address the deployment manager servant
+instance to connect to is listening on. By default this is assumed to be
+*localhost*.
+
+-d|--deployment-nc NC::
+Specifies the IOR of the NamingContext to use for resolving the
+reference to the deployment manager servant instance to connect to (uses
+`NAME` to lookup the reference in the NC). This can use any of the
+formats supported by the `CORBA::ORB::string_to_object` method like
+IOR::xxx, corbaloc::xxx, \file:///xxx ...
+
+-t|--timeout SEC::
+Specifies the time in seconds to wait for a valid deployment manager
+servant instance reference to become available. By default the timeout
+is 0 (zero) and only a single attempt to resolve the reference will be
+made.
+
+-c|--config CFG::
+Specifies the deployment configuration file (CONFIG format; see
+<<config-plan.adoc#_dncx11_tool_configuration_descriptors,DnCX11 tool configuration
+descriptors>>) to initialize the Plan Launcher. By default the filename
+`plan_launcher.config` will be used.
+
+-x|--teardown [PLAN]::
+This option is used to direct the Plan Launcher to issue a plan shutdown
+request to the deployment manager. The UUID of the plan to shutdown is
+either read from the file `PLAN` or must be provided by the
+`-u\|--uuid UUID` option
+
+--force::
+Forces completion of full shutdown process even if intermediate errors
+occur.
+
+-u|--uuid UUID::
+Specifies UUID of the deployment plan to shut down. Used only when no
+`PLAN` is specified with the `-x|--teardown` option.
+
+-m|--am-ior IOR::
+Specifies the IOR of the ApplicationManager servant instance when
+tearing down a plan or the file to write the IOR of the
+ApplicationManager servant instance to when launching a plan. This is
+not normally used for Domain level launches or teardowns. By default
+(for non-Domain level launches) the filename to write or read the IOR
+to/from will be set to `appmgr-<plan UUID>.ior`.
+
+-i|--app-ior IOR::
+Specifies the IOR of the Application servant instance when tearing down
+a plan or the file to write the IOR of the Application servant instance
+to when launching a plan. This is not normally used for Domain level
+launches or teardowns. By default (for non-Domain level launches) the
+filename to write or read the IOR to/from will be set to
+`app-<plan UUID>.ior`.
+
+-h|--help::
+Prints the help message shown above.
+
+Specifying one of the options `-l|--launch` and `-x|--teardown` is
+mandatory. These options are also mutually exclusive.
+
+Additionally either `-r|--mgr-ior` or `-n|--mgr-name` combined with
+either `-d|--deployment-nc` or `-p|--mgr-port` and (optionally)
+`-a|--mgr-address` are required.
+
+When tearing down a plan without specifying `PLAN` with `-x|--teardown`
+specifying `-|--uuid UUID` is required as well.
+
+== Deployment Manager
+
+The DnCX11 Deployment Manager tool (`dancex11_deployment_manager`) is a
+generic launcher executable for the different deployment manager types;
+Domain (or Execution) Manager, Node Manager and Locality Manager. DnCX11
+has combined all common functionality of the different managers in a
+single launcher executable thereby providing a single, consistent user
+interface.
+
+The DnCX11 Deployment Manager creates a specific manager instance by
+loading one of three Deployment Handler service objects as directed on
+the commandline. Each of these three Deployment Handlers implements the
+functionality for a specific manager type:
+
+* the `dancex11_domain_dm_handler` implements functionality for a Domain
+Manager
+* the `dancex11_node_dm_handler` implements functionality for a Node
+Manager
+* the `dancex11_locality_dm_handler` implements functionality for a
+Locality Manager
+
+By implementing deployment managers through a single launcher executable
+with loadable manager type service objects DnCX11 achieves greater usage
+consistency as well as enhanced flexibility like for instance the
+ability to load multiple manager type instances in a single process
+space as we will see further on.
+
+=== Commandline options
+
+Executing the command `dancex11_deployment_manager -h` on the
+commandline will show the following information:
+
+-------------------------------------------------------------------------------------------------------
+dancex11_deployment_manager --handler LIB [-c CFG] [-n NAME[=IORFILE] [-a ADDR] [-p PORT] [-d NC]
+                            [-l[ PLAN] [-f FMT]] [-- <handler-args>]
+ or
+dancex11_deployment_manager -x [-n NAME[=IORFILE] [-k KIND] [-a ADDR] [-p PORT] [-d NC]
+
+Deployment Manager Options:
+        --handler LIB                            Specify the shared library to load the Deployment
+                                                 Handler implementation from
+        <handler-args>                           Specify (a list of space separated) switches for the
+                                                 Deployment Handler implementation
+        -n|--instance-name NAME[=IORFILE]        Specify the name for the deployment manager instance
+                                                 and (optionally) the file to write (read) the IOR to
+                                                 (from).
+        -d|--deployment-nc NC                    Specify naming context for deployment manager instance
+                                                 registration.
+        -c|--config CFG                          Provide a deployment configuration file used to
+                                                 initialize the Deployment Manager.
+        -a|--listen-address ADDR                 Provide the network interface address on which the
+                                                 Deployment Manager listens (default "", i.e. all
+                                                 interfaces).
+        -p|--listen-port PORT                    Provide the port for the Deployment Manager to listen
+                                                 on.
+        -N|--numeric-addresses                   Use numeric IP addresses (dotted decimal) in service
+                                                 advertisement/profiles/IOR.
+        -l|--launch [PLAN]                       Launch the deployment plan read from PLAN.
+        -f|--plan-format FMT                     Specify the deployment plan format to read from PLAN.
+        -P|--property PROPID=PROPVAL             Specifies a deployment property definition. Can be
+                                                 specified more than once.
+        -x|--teardown                            Teardown a previously launched Deployment Manager
+                                                 instance.
+        -k|--kind KIND                           Specify the kind of the deployment manager instance in
+                                                 case no IORFILE specified.
+                                                 Possible KINDs are: Launcher (default),
+                                                 ExecutionManager, NodeManager and LocalityManager.
+        -h|--help                                print this help message
+-------------------------------------------------------------------------------------------------------
+
+==== Options
+
+--handler LIB::
+
+Specifies the dynamic module (shared library) name to
+load the Deployment Handler implementation from. Required unless
+`-x||--teardown` is specified. Currently this can be one of
+*dancex11_domain_dm_handler*, *dancex11_node_dm_handler* and
+*dancex11_locality_dm_handler*.
+
+-n|--instance-name NAME[=IORFILE]::
+
+Specifies the name for the
+deployment manager instance to register with and (optionally) the file
+to write (read) the IOR to (from). By default `NAME` is set to
+*DeploymentManager*
+
+-d|--deployment-nc NC::
+
+Specifies the IOR of the NamingContext to use
+for registering the reference of the deployment manager instance (uses
+`NAME.KIND` to register the reference in the NC). This can use any of
+the formats supported by the `CORBA::ORB::string_to_object` method like
+IOR::xxx, corbaloc::xxx, \file:///xxx ...
+
+-c|--config CFG::
+
+Specifies the deployment configuration file (CONFIG
+format; see <<config-plan.adoc#_dncx11_tool_configuration_descriptors,DnCX11 tool
+configuration descriptors>>) to initialize the Deployment Manager. When
+not specified a handler dependent default (*domain_manager.config*,
+*node_manager.config* or *locality_manager.config*) will be used.
+
+-a|--listen-address ADDR::
+
+Specifies the network interface address on
+which the deployment manager instance will listen. By default the
+deployment manager instance will listen on all interfaces.
+
+-p|--listen-port PORT::
+
+Specifies the network port on which the
+deployment manager instance will listen. By default the deployment
+manager instance will listen on a random, OS determined port.
+
+-N|--numeric-addresses::
+
+Specifies to use numeric IP addresses (dotted decimal) in DM service
+advertisement/profiles/IOR (directs DM to pass _-ORBDottedDecimalAddresses 1_
+when initializing the deployment ORB instance.
+
+-l|--launch [PLAN]::
+
+Specifies to launch the deployment plan read from
+`PLAN`. In case no `PLAN` is specified the deployment manager will
+attempt to launch any <<config-plan.adoc#_deployment_plan_descriptors,Deployment
+Plan descriptors>> included in the deployment configuration file (`CFG`).
+
+-f|--plan-format FMT::
+
+Specifies the descriptor format to expect for the plan in file PLAN.
+By default this is determined based on the extension of file name
+`PLAN` if possible. The currently supported descriptor formats are:
+
+- *cdp* - specifies the D&C standard <<xml-plan.adoc#,XML format>>
+- *config* - specifies the DnCX11 <<config-plan.adoc#,CONFIG format>>
+- *cdr* - specifies the <<cdr-plan.adoc#,IDL CDR format>>
+
+-P|--property PROPID=PROPVAL::
+
+Specifies a deployment property definition. Can be specified more
+than once.
+Property IDs should use the <<config-plan.adoc#dotted-identifier,CONFIG dotted-identifier format>>
+and can identify known deployment properties like
+<<dncx11-config.adoc#_locality_manager_configuration_properties,LM configuration properties>>.
+Property definitions should use <<config-plan.adoc#value,CONFIG style value definitions>>.
+The properties defined here are passed on to the Deployment Manager handler and used in configuring
+plugins.
+
+-x|--teardown::
+
+Specifies to shutdown a previously started deployment
+manager instance and any deployment plan it may have launched.
+
+-k|--kind KIND::
+
+Specifies the kind of the deployment manager instance
+to shutdown in case no `IORFILE` is specified. Possible KINDs are:
+*Launcher* (default), *ExecutionManager* (in case of a previously
+started instance with Domain handler), *NodeManager* (in case of a
+previously started instance with Node handler) and LocalityManager (in
+case of a previously started instance with Locality handler).
+
+-h|--help::
+
+Prints the help message shown above.
+
+-- <handler-args>::
+
+Specifies any optional Deployment Handler options.
+Can only be specified *after* the last specified Deployment Manager
+options.
+
+[WARNING]
+.ORB options
+--
+The current implementation of the Deployment Manager accepts the specification of ORB options
+(`-ORBxxx xxx`) on the commandline. These arguments are collected and passed on at ORB initialization time.
+Beware this is intended as a convenience legacy support option and *not* guaranteed for Long-Term support.
+For most of the historically often-used ORB options the DnCX11 deployment tools provide replacement options
+that are less framework implementation dependent. These include:
+
+* *-N* as a replacement for `-ORBDottedDecimalAddresses 1` +
+* *-p|--listen-port* and *-a|--listen-address* as a replacement for `-ORBListenEndpoints iiop://<addr>:<port>` +
+
+For LTS compatibility it is advised to use the DnCX11 options instead of ORB options.
+--
+
+=== Deployment Handler options
+
+Currently only the Domain Deployment Handler
+(*dancex11_domain_dm_handler*) and the Locality Deployment Handler
+(*dancex11_locality_dm_handler*) define a set of additional handler
+options.
+
+==== Domain Deployment Handler options
+
+Executing the command
+`dancex11_deployment_manager --handler dancex11_domain_handler -h` will
+print the commandline options of the Deployment Manager as shown above
+supplemented with the following output:
+
+--------------------------------------------------------------------------------------------------------
+Domain Deployment Handler options: -- [--node NODE=IOR [--node ...]] [--nodemap CDD] [--mapfmt FMT] [-h]
+        --node NODE=IOR                          Specify IOR for node with name NODE
+        --nodemap CDD                            Specify domain description file (.cdd) CDD
+        --mapfmt FMT                             Specify domain description file format FMT
+        -h|--help                                Show this info
+
+--------------------------------------------------------------------------------------------------------
+
+===== Options
+
+--node NODE=IOR::
+
+Specifies an IOR to use for resolving the reference to
+the deployment manager instance of node `NODE`. This can use any of the
+formats supported by the `CORBA::ORB::string_to_object` method like
+IOR::xxx, corbaloc::xxx, \file:///xxx ...
+
+--nodemap CDD::
+
+Specifies a file `CDD` to load for retrieving node
+mapping information to use in resolving the references of the deployment
+manager instances for node names referenced in the deployment plan(s).
+DnCX11 supports D&C Domain Definition files (`.cdd` XML format; partial
+support) and _CONFIG_ format files containing
+<<config-plan/config-domain-node.adoc#,Domain Node descriptors>>.
+
+--mapfmt FMT::
+
+Specifies the descriptor format to expect for the file CDD.
+By default this is determined based on the extension of file name CDD
+if possible. The currently supported descriptor formats are:
+
+- *cdd* - specifies the D&C standard <<xml-cdd.adoc#,XML format>>
+- *config* - specifies the DnCX11 <<config-plan.adoc#,CONFIG format>>
+
+
+-h|--help::
+
+Prints the help message shown above.
+
+==== Locality Deployment Handler options
+
+Executing the command
+`dancex11_deployment_manager --handler dancex11_locality_handler -h`
+will print the commandline options of the Deployment Manager as shown
+above supplemented with the following output:
+
+----------------------------------------------------------------------------------
+Locality Deployment Handler options: -- [--uuid UUID] [--activator ACTIVATOR] [-h]
+        -u|--uuid UUID                           Specify locality instance UUID
+        -r|--activator ACTIVATOR                 Specify Activator instance IOR
+        -h                                       Show this info
+
+----------------------------------------------------------------------------------
+
+===== Options
+
+-u|--uuid UUID::
+
+Specifies a UUID to use for identifying the LM instance
+in communications with the Locality Activator instance. This option is
+only used by LM instances spawned by NM instances as child processes
+which also get the `-r|--activator` option passed.
+
+-r|--activator ACTIVATOR::
+
+Specifies an IOR to use for resolving the
+reference to the Locality Activator instance of the Locality
+Installation handler loaded as part of an NM instance. This option is
+used to pass the the Locality Activator instance's reference to spawned
+LM instances by the NM instance and is normally only useful in that
+context. This can use any of the formats supported by the
+ORBA::ORB::string_to_object method like IOR::xxx, corbaloc::xxx,
+\file:///xxx ...
+
+-h|--help::
+
+Prints the help message shown above.
+
+=== Startup modes
+
+The Deployment Manager can be started in one of three modes:
+
+* as a Deployment Manager services daemon
+* as a single Plan launch controller
+* to shutdown a running Deployment Manager in either of the above modes
+
+==== Deployment Manager services daemon
+
+Starting the Deployment Manager with a Deployment Handler module
+specified on the commandline (`--handler LIB`) *without* the launch
+option (`-l PLAN`) will initialize the DM instance as a service daemon
+providing the standard <<deployment-execution.adoc#_the_process,D&C
+Execution Model interfaces for remote invocation>>. The specific
+interfaces provided depend on the Deployment Handler being loaded.
+
+A Deployment Manager services daemon provides deployment services to
+either a higher level Deployment Manager (like a Domain level DM which
+uses the services of a Node level DM which in turn uses the services of
+a Locality DM) or to a Plan Launcher and passively waits for incoming
+deployment requests.
+
+===== Domain deployment manager
+
+With the `dancex11_domain_dm_handler` loaded the daemon will implement a
+Domain level deployment manager and provide _ExecutionManager_,
+_DomainApplicationManager_ and _DomainApplication_ interfaces. +
+ For this setup you would start the deployment manager most commonly
+like:
+
+-------------------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_domain_dm_handler \
+        -n MyDomainManager -d corbaloc:iiop:<ns_hostname_or_ip>:<ns_port>/NameService
+
+-------------------------------------------------------------------------------------
+
+This uses the default *domain_manager.config* configuration, registers
+the deployment manager as *MyDomainManager.ExecutionManager* in the
+specified NamingContext and listens at a system defined port on all
+available network interfaces.
+
+===== Node deployment manager
+
+With the `dancex11_node_dm_handler` loaded the daemon will implement a
+Node level deployment manager and provide _NodeManager_,
+_NodeApplicationManager_ and _NodeApplication_ interfaces.
+
+For this setup you would start the deployment manager most commonly
+like:
+
+---------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_node_dm_handler \
+        -n Node1 -d corbaloc:iiop:<ns_hostname_or_ip>:<ns_port>/NameService
+
+---------------------------------------------------------------------------
+
+This uses the default *node_manager.config* configuration, registers the
+deployment manager as *Node1.NodeManager* in the specified NamingContext
+and listens at a system defined port on all available network
+interfaces. In these cases the `NAME` used (*Node1*) would correspond to
+the node name used in the deployment plan to target this node.
+
+===== Locality deployment manager
+
+As Locality deployment manager instances are normally spawned by Node
+deployment managers according to the localities configured in the
+deployment plan for nodes managed by these, there is, as a rule, no need
+to start Locality deployment manager daemons by hand. There are however
+scenarios in which this option can be useful (f.i. for single locality
+deployment using a Plan Launcher or for debugging purposes, see
+<<debugging-components.adoc#,here>> for more information).
+
+With the `dancex11_locality_dm_handler` loaded the daemon will implement
+a Locality level deployment manager and provide _LocalityManager_,
+_ApplicationManager_ and _Application_ interfaces.
+
+For this setup you would start the deployment manager most commonly
+like:
+
+-------------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_locality_dm_handler \
+        -n Locality1 -d corbaloc:iiop:<ns_hostname_or_ip>:<ns_port>/NameService
+
+-------------------------------------------------------------------------------
+
+This uses the default *locality_manager.config* configuration, registers
+the deployment manager as *Locality1.LocalityManager* in the specified
+NamingContext and listens at a system defined port on all available
+network interfaces.
+
+Once started a DM services daemon will keep running until it's process
+is ``killed'' or it is shut down using a <<DM Shutdown controller>>.
+
+==== Single Plan launcher
+
+Starting the Deployment Manager with a Deployment Handler module
+specified on the commandline (`--handler LIB`) *with* the launch option
+(`-l PLAN`) also specified will initialize the DM instance as a Single
+Plan Launcher daemon. The loaded Deployment Handler will launch the
+_Deployment Plan_ specified with the `-l` option and remain running
+until directed to shutdown the plan by a DM Shutdown controller of until
+it's process is ``killed''.
+
+The running launcher daemon will *not* provide the standard
+<<deployment-execution.adoc#_the_process,D&C Execution Model interfaces for
+remote invocation>>. However, in case the DM launcher is started with
+either the `dancex11_domain_dm_handler` or the
+`dancex11_node_dm_handler` Deployment Handler the launcher will require
+the existence of other DM instances started as DM services daemon
+providing Node level deployment services (in case of
+`dancex11_domain_dm_handler`) and Locality level deployment services
+(which normally get spawned automatically by the Locality Installation
+handler loaded by the Node launcher).
+
+===== Single Domain Plan launcher
+
+With the `dancex11_domain_dm_handler` loaded the launcher will perform a
+Domain level launch involving all Nodes and Localities specified in the
+_Deployment Plan_.
+
+For this setup you could start the deployment manager like:
+
+---------------------------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_domain_dm_handler -l myplan.cdp \
+        -n MyLauncher=launcher.ior -d corbaloc:iiop:<ns_hostname_or_ip>:<ns_port>/NameService
+
+---------------------------------------------------------------------------------------------
+
+This uses the default *domain_manager.config* configuration, registers
+the deployment manager as *MyLauncher.ExecutionManager* in the specified
+NamingContext and launches the plan loaded from file `myplan.cdp`. In
+addition the IOR for the deployment manager reference is written to file
+`launcher.ior`. The references to the deployment manager instances for
+each node are resolved through the specified NamingContext using
+`<nodename>.NodeManager` as lookup ids. This assumes the node names
+referenced in the plan correspond to the names specified for the started
+NM instances.
+
+===== Single Node Plan launcher
+
+With the `dancex11_node_dm_handler` loaded the launcher will perform a
+Node level launch involving all Localities specified in the _Deployment
+Plan_ which is assumed to specify deployment instances for a single Node
+only. Any node references in the plan are ignored.
+
+For this setup you could start the deployment manager like:
+
+-------------------------------------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_node_dm_handler -l myplan.cdp -n MyLauncher=launcher.ior
+
+-------------------------------------------------------------------------------------------------------
+
+This uses the default *node_manager.config* configuration, writes the
+IOR for the deployment manager reference is to file `launcher.ior` and
+launches the plan loaded from file `myplan.cdp`. Any LM instances
+required for deployment to localities defined in the plan are
+automatically spawned as child processes of the Node Launcher (unless
+the deployment configuration file or the plan specify differently; see
+also <<dncx11-config.adoc#_configuring_the_locality_manager,here>>).
+
+===== Single Locality Plan launcher
+
+With the `dancex11_locality_dm_handler` loaded the launcher will perform
+a Locality level launch from the _Deployment Plan_ which is assumed to
+specify deployment instances for a single Locality only. Any node
+references or locality constraints in the plan are ignored.
+
+For this setup you could start the deployment manager like:
+
+-----------------------------------------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_locality_dm_handler -l myplan.cdp -n MyLauncher=launcher.ior
+
+-----------------------------------------------------------------------------------------------------------
+
+This uses the default *locality_manager.config* configuration, writes
+the IOR for the deployment manager reference is to file `launcher.ior`
+and launches the plan loaded from file `myplan.cdp`.
+
+==== Deployment Manager Shutdown controller
+
+Starting the Deployment Manager with the teardown option (`-x`)
+specified on the commandline will initialize the DM instance as a
+Shutdown controller. After startup a DM Shutdown controller will attempt
+to contact a previously started DM services daemon or Single Plan
+launcher daemon and direct it to tear down any application (plan)
+instance still running and shutdown it's process. This is functionality
+common to the Deployment Manager irrespective of loaded deployment
+handler and does not require any Deployment Manager Handler loaded.
+
+The Shutdown controller itself will terminate immediately after
+requesting shutdown of the running daemon instance.
+
+To run as Shutdown controller you could start the deployment manager
+like:
+
+---------------------------------------------------------
+dancex11_deployment_manager -x -n MyLauncher=launcher.ior
+
+---------------------------------------------------------
+
+This reads the IOR for the deployment manager reference from the file
+`launcher.ior`, shuts down any running application (plan) instance and
+directs the running Deployment Manager instance to terminate after that.
+The Shutdown controller instance terminates after the Deployment Manager
+instance has finished the shutdown request. The Shutdown controller uses
+no deployment configuration files.

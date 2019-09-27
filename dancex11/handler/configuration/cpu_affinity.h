@@ -1,0 +1,57 @@
+// -*- C++ -*-
+/**
+ * @file    cpu_affinity.h
+ * @author  Johnny Willemsen, Martin Corino
+ *
+ * @brief   A simple configuration plugin
+ *
+ * It'll change the process name as represented by PS.
+ * It is only functional on Linux
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DAnCEX11_CPU_AFFINITY_H
+#define DAnCEX11_CPU_AFFINITY_H
+
+#include "dancex11/core/dancex11_deploymentconfiguratorsC.h"
+
+#include "dancex11_locality_configuration_export.h"
+
+namespace DAnCEX11
+{
+  class DAnCEX11_Locality_Configuration_Export CPU_Affinity final
+    : public DAnCEX11::DeploymentConfiguration
+  {
+  public:
+    CPU_Affinity () = default;
+
+    virtual ~CPU_Affinity () = default;
+
+    virtual std::string
+    type () override;
+
+    virtual void
+    configure (const ::Deployment::Property &prop) override;
+
+    virtual void
+    close () override;
+
+    //@{
+    /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    CPU_Affinity (const CPU_Affinity&) = delete;
+    CPU_Affinity (CPU_Affinity&&) = delete;
+    CPU_Affinity& operator= (const CPU_Affinity& x) = delete;
+    CPU_Affinity& operator= (CPU_Affinity&& x) = delete;
+    //@}
+  };
+}
+
+extern "C"
+{
+  void
+  DAnCEX11_Locality_Configuration_Export create_cpu_affinity (
+    IDL::traits<DAnCEX11::DeploymentConfiguration>::ref_type& plugin);
+}
+
+#endif /* DAnCEX11_CPU_AFFINITY_H */

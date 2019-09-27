@@ -1,0 +1,51 @@
+project(dancex11_deployment_scheduler_impl) : dancex11_lib, dancex11_output, \
+        dancex11_deployment_stub, dancex11_stub, dancex11_state, install {
+  dynamicflags += DEPLOYMENT_SCHEDULER_BUILD_DLL
+  sharedname = dancex11_deployment_scheduler
+
+  Source_Files {
+    deployment_event.cpp
+    deployment_scheduler.cpp
+    dependency_sorter.cpp
+    events/plugin_manager.cpp
+    events/action_base.cpp
+    events/install.cpp
+    events/remove.cpp
+    events/connect.cpp
+    events/disconnect.cpp
+    events/endpoint.cpp
+    events/start.cpp
+    events/passivate.cpp
+    events/configured.cpp
+  }
+
+  Header_Files {
+    deployment_event.h
+    deployment_scheduler.h
+    deployment_scheduler_export.h
+    dependency_sorter.h
+    deployment_completion.h
+    events/plugin_manager.h
+    events/action_base.h
+    events/install.h
+    events/remove.h
+    events/connect.h
+    events/disconnect.h
+    events/endpoint.h
+    completion_counter_base.h
+    completion_base.h
+    deployment_default_wait_strategy.h
+    deployment_orb_wait_strategy.h
+    events/plugin_event_scheduler.h
+  }
+
+  Template_Files {
+    completion_counter_base.cpp
+    deployment_orb_wait_strategy.cpp
+    deployment_default_wait_strategy.cpp
+  }
+
+  specific {
+    install_dir = dancex11/scheduler
+  }
+}

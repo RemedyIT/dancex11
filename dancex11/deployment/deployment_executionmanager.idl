@@ -1,0 +1,24 @@
+/**
+ * @file    deployment_executionmanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef EXECUTIONMANAGER_IDL
+#define EXECUTIONMANAGER_IDL
+
+#include "dancex11/deployment/deployment_manager.idl"
+#include "dancex11/deployment/deployment_domainapplicationmanager.idl"
+#include "dancex11/deployment/deployment_resourcecommitmentmanager.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+
+module Deployment
+{
+  interface ExecutionManager : Deployment_Manager
+  {
+    DomainApplicationManagers getManagers ();
+  };
+};
+
+#endif /* EXECUTIONMANAGER_IDL */

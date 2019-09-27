@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_xsc_dynany_handlers.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ace_xml_utils, taox11_dynamicany, taox11_typecodefactory, dancex11, dancex11_logger, dancex11_xsc_xml_handlers {
+  after += DANCEX11_XSC_DynAny_Handler
+  libs  += dancex11_xsc_dynany_handlers
+}

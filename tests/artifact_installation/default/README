@@ -1,0 +1,14 @@
+This test checks default artifact installation support.
+By default the DnCX11 Artifact Installation registry creates a repository
+base folder in the working directory of the node manager from which it
+is triggered called:
+
+".dancex11_artifacts"
+
+Under this folder the repository creates separate repository directories
+for each plan having artifacts installed named after the plan UUID.
+
+This test deploys a plan with default installation settings and 2 artifacts
+defined for the LM instance of the single locality.
+The "check_artifacts" script tests if the 2 artifacts have been installed
+under the default installation repository folder after plan launch.

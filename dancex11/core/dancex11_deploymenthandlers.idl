@@ -1,0 +1,85 @@
+/**
+ * @file    dancex11_deploymenthandlers.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_DEPLOYMENTHANDLERS_IDL
+#define DANCEX11_DEPLOYMENTHANDLERS_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+#include "dancex11/deployment/deployment_invalidproperty.idl"
+#include "dancex11/deployment/deployment_invalidnodeexecparameter.idl"
+#include "dancex11/deployment/deployment_invalidcomponentexecparameter.idl"
+#include "dancex11/deployment/deployment_invalidconnection.idl"
+#include "dancex11/deployment/deployment_starterror.idl"
+#include "dancex11/deployment/deployment_stoperror.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+
+module DAnCEX11
+{
+  /**
+   * @interface InstanceDeploymentHandler
+   * @brief Interface used to manage the lifecycle of instances.
+   *
+   * This interface is used by a Deployment Manager to manage the lifecycle
+   * of various instance types.  Each instance type requires a separate IDH.
+   */
+  local interface InstanceDeploymentHandler
+  {
+    readonly attribute string instance_type;
+
+    readonly attribute ::CORBA::StringSeq dependencies;
+
+    void configure (in ::Deployment::Properties config);
+
+    void install_instance (in Deployment::DeploymentPlan plan,
+                           in unsigned long instanceRef,
+                           out any instance_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidProperty,
+              Deployment::InvalidNodeExecParameter,
+              Deployment::InvalidComponentExecParameter);
+
+    void provide_endpoint_reference (in Deployment::DeploymentPlan plan,
+                                     in unsigned long connectionRef,
+                                     out any endpoint_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidProperty);
+
+    void connect_instance (in Deployment::DeploymentPlan plan,
+                           in unsigned long connectionRef,
+                           in any provided_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidConnection);
+
+    void disconnect_instance (in Deployment::DeploymentPlan plan,
+                              in unsigned long connectionRef)
+      raises (::Deployment::StopError);
+
+    void instance_configured (in Deployment::DeploymentPlan plan,
+                              in unsigned long instanceRef)
+      raises (Deployment::StartError);
+
+    void activate_instance (in Deployment::DeploymentPlan plan,
+                            in unsigned long instanceRef,
+                            in any instance_reference)
+      raises (Deployment::StartError);
+
+    void passivate_instance (in Deployment::DeploymentPlan plan,
+                             in unsigned long instanceRef,
+                             in any instance_reference)
+      raises (Deployment::StopError);
+
+    void remove_instance (in Deployment::DeploymentPlan plan,
+                          in unsigned long instanceRef,
+                          in any instance_reference)
+      raises (::Deployment::StopError);
+
+    /// Instruct the handler to release any resources prior to deallocation.
+    void close ();
+  };
+};
+
+#endif /* DANCEX11_DEPLOYMENTHANDLERS_IDL */

@@ -1,0 +1,2 @@
+This test verifies the DnCX11 support for creating LM
+instances in-process with an NM instance.

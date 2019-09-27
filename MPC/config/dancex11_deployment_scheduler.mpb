@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_deployment_scheduler.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_stub, dancex11_deployment_stub {
+  libs += dancex11_deployment_scheduler
+  after += dancex11_deployment_scheduler_impl
+}

@@ -1,0 +1,9 @@
+This test verifies the support for the "ProcessName" locality
+configuration property handled by the "create_process_name"
+Locality Configuration handler.
+
+run_test.pl performs a regular Domain + Node + Locality
+deployment.
+
+run_test_snl.pl performs a Single Node (Node + Locality)
+deployment.

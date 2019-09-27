@@ -1,0 +1,119 @@
+
+project (DANCEX11_XSC_XML_Generation) : install, xscdefaults {
+  requires += xsc
+
+  xscflags += --cxx-banner-file $(DANCEX11_ROOT)/etc/schema/xsc-banner.cpp
+  xscflags += --cxx-header-banner-file $(DANCEX11_ROOT)/etc/schema/xsc-banner.h
+  xscflags += --cxx-export-symbol XSC_XML_Handlers_Export
+  xscflags += --cxx-namespace-regex "/.*Deployment.*/DAnCE::Config_Handlers/"
+  xscflags += --cxx-export-header xsc_xml_handlers_export.h
+  xscflags += --cxx-char-type char
+  xscflags += --search-path "$(DANCEX11_ROOT)/etc/schema"
+  xscflags += --cxx-cpp11 --cxx-enable-random-access-sequences
+
+  custom_only = 1
+
+  XSC_Files {
+    gendir = .
+    $(DANCEX11_ROOT)/etc/schema/Basic_Deployment_Data.xsd
+    $(DANCEX11_ROOT)/etc/schema/Deployment.xsd
+    $(DANCEX11_ROOT)/etc/schema/XMI.xsd
+    $(DANCEX11_ROOT)/etc/schema/ccd.xsd
+    $(DANCEX11_ROOT)/etc/schema/cdd.xsd
+    $(DANCEX11_ROOT)/etc/schema/cdp.xsd
+    $(DANCEX11_ROOT)/etc/schema/cid.xsd
+    $(DANCEX11_ROOT)/etc/schema/cpd.xsd
+    $(DANCEX11_ROOT)/etc/schema/iad.xsd
+    $(DANCEX11_ROOT)/etc/schema/pcd.xsd
+    $(DANCEX11_ROOT)/etc/schema/toplevel.xsd
+  }
+
+  Source_Files {
+  }
+
+  specific {
+    install_dir = tools/config_handlers
+  }
+}
+
+project (DANCEX11_XSC_XML_Handlers) : install, acelib, xerces, dancex11, dancex11_lib, dancex11_output \
+{
+  sharedname   = dancex11_xsc_xml_handlers
+  dynamicflags += XSC_XML_HANDLERS_BUILD_DLL
+  macros += XML_USE_PTHREADS
+  includes += $(DANCEX11_ROOT)/tools/config_handlers
+  after += DANCEX11_XSC_XML_Generation
+
+  Source_Files {
+    XMI.cpp
+    Deployment.cpp
+    ccd.cpp
+    cdd.cpp
+    cdp.cpp
+    cid.cpp
+    cpd.cpp
+    iad.cpp
+    pcd.cpp
+    toplevel.cpp
+    Basic_Deployment_Data.cpp
+  }
+
+  Header_Files {
+    xsc_xml_handlers_export.h
+  }
+
+  specific {
+    install_dir = tools/config_handlers
+  }
+}
+
+project (DANCEX11_XSC_Config_Handlers) : \
+    install, dancex11_deployment_stub, dancex11_xsc_xml_handlers, \
+    dancex11_plan_loader_stub, dancex11_lib, dancex11_output, \
+    dancex11_xsc_dynany_handlers \
+{
+  sharedname = dancex11_xsc_config_handlers
+  dynamicflags += CONFIG_HANDLERS_BUILD_DLL
+  includes += $(DANCEX11_ROOT)/tools/config_handlers
+
+  Source_Files {
+    ere_handler.cpp
+    req_handler.cpp
+    datatype_handler.cpp
+    property_handler.cpp
+    satisfierproperty_handler.cpp
+    cpd_handler.cpp
+    cepe_handler.cpp
+    any_handler.cpp
+    rdd_handler.cpp
+    dp_handler.cpp
+    ccd_handler.cpp
+    componentpropertydescription_handler.cpp
+    mdd_handler.cpp
+    mdd_handler.cpp
+    pspe_handler.cpp
+    crdd_handler.cpp
+    idd_handler.cpp
+    add_handler.cpp
+    id_handler.cpp
+    pl_handler.cpp
+    xml_file_intf.cpp
+    node_handler.cpp
+    pcd_handler.cpp
+    irdd_handler.cpp
+    dd_handler.cpp
+    dancex11_deployment_cdp_plan_loader.cpp
+    config_xml_error_handler.cpp
+    config_xml_typedefs.cpp
+  }
+
+  Header_Files {
+    config_handlers_export.h
+    config_xml_typedefs.h
+    common.h
+  }
+
+  specific {
+    install_dir = tools/config_handlers
+  }
+}

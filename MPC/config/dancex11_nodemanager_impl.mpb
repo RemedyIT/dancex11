@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_nodemanager_impl.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_deployment_skel, dancex11_deploymentmanagerhandler_skel, dancex11_nodemanager_skel {
+  libs += dancex11_nodemanager_impl
+  after += dancex11_core_nm_base
+}

@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------
+// dancex11_localitymanager_skel.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11 {
+  specific (prop:microsoft) {
+    Debug::install = $(DANCEX11_ROOT)/bin/Debug
+    Release::install = $(DANCEX11_ROOT)/bin
+  } else {
+    install = $(DANCEX11_ROOT)/bin
+  }
+}

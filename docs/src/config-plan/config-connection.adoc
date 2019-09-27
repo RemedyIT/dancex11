@@ -1,0 +1,194 @@
+include::_{backend}_settings.adoc[]
+
+= _Deployment Plan_ Connection descriptors
+
+== Plan Connection Descriptor
+
+=== Introduction
+
+This descriptor provides the specification for the definition of one or
+more D&C Connection description(s) in a _Deployment Plan_ referencing
+two endpoints (ports) of component instances that are part of the same
+plan as the connection (internal endpoint connection).
+
+=== Definition
+
+A Plan Connection descriptor is defined as follows:
+
+-------------------------------------------------------------------
+{plan-connection-key} {connection-peer-instance}
+    {connection-port} {connection-link-type} {connection-peer-port}
+    [ {connection-port} ... ]
+-------------------------------------------------------------------
+
+Where
+
+* \{plan-connection-key} := `nl.remedy.it.DnCX11.Connection`
+* \{connection-peer-instance} := a
+<<{parent_dir}/config-plan.adoc#dotted-identifier,dotted-identifier>>
+* \{connection-port} := an
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{connection-link-type} := a `<` or `>`
+link:../config-plan.html#separator[separator]
+* \{connection-peer-port} := an
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+
+=== Description
+
+The component instance whose declaration the Plan Connection descriptor
+declaration is part of is called the _defining instance_.
+
+A separate D&C Connection description is defined for each ``link
+declaration'' (triplet of
+`{connection-port} {connection-link-type} {connection-peer-port}`). The
+_name_ of the D&C Connection description(s) is (are) automatically
+generated from the name of the defining instance, it's port, the name of
+the peer instance and it's (peer-)port like:
+`instance.port:peer_instance.peer_port`.
+
+The `{connection-peer-instance}` identifier specifies the name of a
+component instance with which a connection(s) is (are) defined. This
+identifier must equal the `{component-instance-id}` of a Component
+Instance descriptor declared elsewhere in the _CONFIG_ document.
+
+A `{connection-port}` identifier specifies the name of a port of the
+_defining instance_.
+
+A `{connection-peer-port}` identifier specifies the name of a port of
+the _peer instance_.
+
+The `{connection-link-type}` specifies the nature of the connection:
+
+* `<` specifies a ``using'' connection. It defines the
+_internalEndpoint_ description for `{connection-port}` to be a
+*SimplexReceptacle* and the _internalEndpoint_ for the
+`{connection-peer-port}` to be a *Facet*.
+* `>` specifies a ``providing'' connection. It defines the
+_internalEndpoint_ description for `{connection-port}` to be a *Facet*
+and the _internalEndpoint_ for the `{connection-peer-port}` to be a
+*SimplexReceptacle*.
+
+=== Example
+
+The following descriptor declarations
+
+----------------------------------------------------------------------------------------------
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Connection Hello_ReceiverComponent
+      run_my_foo < do_my_foo        # synch_foo_connection
+        
+----------------------------------------------------------------------------------------------
+
+would define one D&C Connection description with _name_
+`Hello_SenderComponent.run_my_foo:Hello_ReceiverComponent.do_my_foo` and
+two _internalEndpoint_ descriptions:
+
+1.  with
+* _portName_ = `run_my_foo`
+* _kind_ = `SimplexReceptacle`
+* _instance_ = reference to instance `Hello_SenderComponent`
+2.  with
+* _portName_ = `do_my_foo`
+* _kind_ = `Facet`
+* _instance_ = reference to instance `Hello_ReceiverComponent`
+
+== External Connection Descriptor
+
+=== Introduction
+
+This descriptor provides the specification for the definition of one or
+more D&C Connection description(s) in a _Deployment Plan_ referencing
+one endpoint (port) of a component instance which is part of the
+defining plan (internal endpoint) and an external ``address'' of an
+entity outside the plan (external reference endpoint).
+
+=== Definition
+
+An External Connection descriptor is defined as follows:
+
+----------------------------------------------------------------------------------------------------------
+{external-connection-key}
+    {connection-port} {connection-link-type} [ {connection-external-port} ] {connection-external-location}
+    [ {connection-port} ... ]
+----------------------------------------------------------------------------------------------------------
+
+Where
+
+* \{external-connection-key} := `nl.remedy.it.DnCX11.ExternalConnection`
+* \{connection-port} := an
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{connection-link-type} := a `<` or `>`
+link:../config-plan.html#separator[separator]
+* \{connection-external-port} := an
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{connection-external-location} := a string
+<<{parent_dir}/config-plan.adoc#value,value>>
+
+=== Description
+
+The component instance whose declaration the External Connection
+descriptor declaration is part of is called the _defining instance_.
+
+A separate D&C Connection description is defined for each ``link
+declaration'' (triplet/quartet of
+`{connection-port} {connection-link-type} {connection-external-location} and optionally {connection-external-port}`).
+The _name_ of the D&C Connection description(s) is (are) automatically
+generated from the name of the defining instance, it's port, the
+external location reference value and it's (external-)port (if
+specified) like: `instance.port:external_port@external_location`.
+
+A `{connection-port}` identifier specifies the name of a port of the
+_defining instance_.
+
+The `{connection-external-location}` string value specifies a
+stringified connection reference of an external entity for the _defining
+instance_ to resolve and connect. The format of this string value is
+specific to the (kind of the) defining instance.
+
+A `{connection-external-port}` identifier, if defined, specifies the
+name of a port of the external entity to connect to and implies that the
+external entity is a component instance.
+
+The `{connection-link-type}` specifies the nature of the connection:
+
+* `<` specifies a ``using'' connection. It defines the
+_internalEndpoint_ description for `{connection-port}` to be a
+*SimplexReceptacle* and the _externalReferenceEndpoint_ for the external
+entity to be a *Facet*.
+* `>` specifies a ``providing'' connection. It defines the
+_internalEndpoint_ description for `{connection-port}` to be a *Facet*
+and the _externalReferenceEndpoint_ for the external entity to be a
+*SimplexReceptacle*.
+
+=== Example
+
+The following descriptor declarations
+
+----------------------------------------------------------------------------------------------
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.ExternalConnection
+      run_my_foo < "corbaloc:iiop:myhost:60001/do_my_foo"        # synch_foo_connection
+        
+----------------------------------------------------------------------------------------------
+
+would define one D&C Connection description with _name_
+`Hello_SenderComponent.run_my_foo:@corbaloc:iiop:myhost:60001/do_my_foo`
+and one _internalEndpoint_ description with:
+
+* _portName_ = `run_my_foo`
+* _kind_ = `SimplexReceptacle`
+* _instance_ = reference to instance `Hello_SenderComponent`
+
+and one _externalReferenceEndpoint_ with
+
+* _kind_ = `Facet`
+* _location_ = `corbaloc:iiop:myhost:60001/do_my_foo`
+

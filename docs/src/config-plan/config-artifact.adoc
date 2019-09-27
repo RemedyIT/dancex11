@@ -1,0 +1,91 @@
+include::_{backend}_settings.adoc[]
+
+= _Deployment Plan_ descriptors
+
+== Deployment Artifact Descriptor
+
+=== Introduction
+
+This descriptor provides the specification for the definition of a D&C
+Artifact description in a _Deployment Plan_ referenced by the D&C
+Implementation description for the instance declaration the artifact
+descriptor declaration in part of.
+
+=== Definition
+
+A Deployment Artifact descriptor is defined as follows:
+
+----------------------------------------------------------------------------------------------------------------------
+{deployment-artifact-key} {deployment-artifact-id} {deployment-artifact-location} [ {deployment-artifact-exclusive} ] 
+    [ {deployment-artifact-properties} ]
+----------------------------------------------------------------------------------------------------------------------
+
+Where
+
+* \{deployment-artifact-key} := `nl.remedy.it.DnCX11.Artifact`
+* \{deployment-artifact-id} := an
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{deployment-artifact-location} := a literal string
+<<{parent_dir}/config-plan.adoc#value,value>>
+* \{deployment-artifact-exclusive} := a boolean value
+<<{parent_dir}/config-plan.adoc#value,value>>
+* \{deployment-artifact-properties} := a sequence of zero or more
+link:./config-properties.html#common_props[Common Property descriptors]
+
+=== Description
+
+The `{deployment-artifact-id}` identifier specifies the name for the D&C
+Artifact description and should be unique in the context of the defined
+_Deployment Plan_.
+
+The `{deployment-artifact-location}` value specifies a source location
+(possibly URL) for the artifact. DnCX11 provides optional artifact
+installation support (configurable plugins) to enable artifact
+loading/copying during deployment based on the location values.
+
+The `{deployment-artifact-exclusive}` value specifies whether the
+artifact described by the D&C Artifact description should be deployed
+only to the node where the component instance described by the
+containing _Component Instance descriptor_ is deployed (_exclusive_ ==
+*true*) or deployed to all nodes where component instances with the same
+implementation (same `{component-artifact}` and `{component-factory}`
+identifiers) are deployed (_non-exclusive_ == *false*). By default the
+artifact is considered _non-exclusive_.
+
+Any declared `{deployment-artifact-properties}` Property descriptors
+will define _execParameter_ properties for the D&C Artifact description
+
+=== Example
+
+The following descriptor declarations
+
+--------------------------------------------------------------------------------------------------------------------
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Artifact hello_ex_sender_lib "http://app.server.org/dncrepo/libhello_ex_sender_exec.so" true
+
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderComponent2 hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode2"
+    nl.remedy.it.DnCX11.Artifact hello_ex_sender_lib2 "http://app.server.org/dncrepo/hello_ex_sender_exec.dll" true
+        
+--------------------------------------------------------------------------------------------------------------------
+
+would define two D&C Artifact descriptions referenced by the
+Implementation description defined for the two component instances.
+
+1.  with
+* _name_ = `hello_ex_sender_lib`
+* _node_ = `SenderNode`
+* _location_ =
+`http://app.server.org/dncrepo/libhello_ex_sender_exec.so`
+2.  with
+* _name_ = `hello_ex_sender_lib2`
+* _node_ = `SenderNode2`
+* _location_ = `http://app.server.org/dncrepo/hello_ex_sender_exec.dll`
+

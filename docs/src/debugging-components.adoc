@@ -1,0 +1,183 @@
+include::_{backend}_settings.adoc[]
+
+= Debugging Components with DnCX11
+
+User developed components deployed with DnCX11 are installed and
+activated in component containers managed by a Locality Deployment
+Manager (LM) instance. Debugging these components would therefor have to
+be done by loading and running the LM instance inside a debugger (like
+GDB or the MSVC Debugger). However, as these LM instances are normally
+automatically spawned by the Node Deployment Manager (NM) instances
+controlling the node where the locality needs to be deployed this will
+require alternate deployment configurations to configure the handling of
+LM instances to fit debugging purposes. The available options for
+configuring LM instances are described
+<<dncx11-config.adoc#_configuring_the_locality_manager,here>>.
+
+DnCX11 provides two alternate LM deployment options that make user
+component debugging feasible
+
+1.  a _REMOTE_ LM activation mode which directs the NM to connect to an
+already running LM instance for deployment;
+2.  a _LOCAL_ LM activation mode which directs the NM to load an LM
+instance in the same process space as the NM and connect to that
+instance for deployment.
+
+Option 1 would enable starting the LM instance in a debugger where
+option 2 would enable starting the NM instance in a debugger.
+
+== Remote Locality Deployment Manager activation
+
+For this option the deployment information needs to be provided with an
+LM instance configuration for the instance planned to have the
+components deployed to. This can be achieved by configuring the LM
+instance as a deployable component in the deployment plan.
+
+Below is an example configuration for a CDP type deploymentplan:
+
+--------------------------------------------------------------
+  <implementation xmi:id="LocalityManagerImpl001">
+    <name>LocalityManagerImpl</name>
+    <source />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Locality.ActivationMode</name>
+      <value>
+        <type>
+          <kind>tk_ulong</kind>
+        </type>
+        <value>
+          <ulong>1</ulong>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="LocalityInstance001">
+    <name>ContainerProcess01_LocalityManager</name>
+    <node>Node01</node>
+    <source />
+    <implementation xmi:idref="LocalityManagerImpl001" />
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.Locality.Port</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>60121</ushort>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+--------------------------------------------------------------
+
+Below is an example configuration for a config type deploymentplan:
+
+--------------------------------------------------------------
+
+nl.remedy.it.DnCX11.LocalityManager ContainerProcess01_LocalityManager
+    nl.remedy.it.DnCX11.Node "Node01"
+    nl.remedy.it.DnCX11.Locality "LocalityManagerImpl"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.ActivationMode uint32:1
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Port uint16:60121
+
+--------------------------------------------------------------
+
+This would configure the NM instance for node _Node01_ to connect to an
+(already running) LM instance listening on network port _60121_ on the
+local network interface.
+
+To provide the required LM instance the Deployment Manager (see here)
+would have to be started (*before* the NM instance attempts to execute
+deployment requests) as follows:
+
+---------------------------------------------------------------------------
+dancex11_deployment_manager --handler dancex11_locality_dm_handler -p 60121
+
+---------------------------------------------------------------------------
+
+By changing this to start in a debugger like this:
+
+----------------------------------------------------------------------------------------
+$ gdb --args dancex11_deployment_manager --handler dancex11_locality_dm_handler -p 60121
+(gdb) run
+
+----------------------------------------------------------------------------------------
+
+it would become possible to debug components deployed in the debugged LM
+instance.
+
+== Local Locality Deployment Manager activation
+
+For this option a slightly different LM instance configuration needs to
+be entered into the deployment plan.
+
+Below is an example configuration for a CDP type deploymentplan:
+
+--------------------------------------------------------------
+  <implementation xmi:id="LocalityManagerImpl001">
+    <name>LocalityManagerImpl</name>
+    <source />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Locality.ActivationMode</name>
+      <value>
+        <type>
+          <kind>tk_ulong</kind>
+        </type>
+        <value>
+          <ulong>2</ulong>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="LocalityInstance001">
+    <name>ContainerProcess01_LocalityManager</name>
+    <node>Node01</node>
+    <source />
+    <implementation xmi:idref="LocalityManagerImpl001" />
+  </instance>
+
+--------------------------------------------------------------
+
+Below is an example configuration for a config type deploymentplan:
+
+--------------------------------------------------------------
+
+nl.remedy.it.DnCX11.LocalityManager ContainerProcess01_LocalityManager
+    nl.remedy.it.DnCX11.Node "Node01"
+    nl.remedy.it.DnCX11.Locality "LocalityManagerImpl"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.ActivationMode uint32:2
+
+--------------------------------------------------------------
+
+This would configure the NM instance for node _Node01_ to load the
+Locality Deployment handler in the NM process and create an in-process
+LM instance with which to connect.
+
+This enables the possibility to start a Node Deployment Manager (see
+also <<deployment-tools.adoc#_node_deployment_manager,here>>) in a debugger to
+debug components deployed in the in-process LM instance.

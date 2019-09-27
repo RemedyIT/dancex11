@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_deployment_ami_stub.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_applicationmanager_stub, taox11_messaging, taox11_portableserver {
+  libs += dancex11_deployment_ami_stub
+  after += dancex11_ami_stub
+}

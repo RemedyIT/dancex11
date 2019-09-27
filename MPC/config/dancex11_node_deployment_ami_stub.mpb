@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------
+// dancex11_node_deployment_ami_stub.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_deployment_ami_stub, \
+          dancex11_nodeapplication_stub, \
+          dancex11_nodeapplicationmanager_stub, \
+          dancex11_nodemanager_stub \
+{
+  libs += dancex11_node_deployment_ami_stub
+  after += dancex11_node_amic_stub
+}

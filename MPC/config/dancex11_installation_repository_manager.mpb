@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_installation_repository_manager.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11, dancex11_deployment_stub, dancex11_tools {
+   after += dancex11_installation_repository_manager_impl
+   libs += dancex11_installation_repository_manager
+}

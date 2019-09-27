@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_deployment_configurator.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_stub {
+  libs += dancex11_deployment_configurator
+  after += dancex11_deployment_configurator_impl
+}

@@ -1,0 +1,270 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 deployment plan configuration properties
+
+DnCX11 supports a number of standard deployment plan configuration
+properties which can be divided into common properties which can be
+applied to all deployment plan formats and plan specific properties
+(i.e. properties applicable to certain plan formats only).
+
+== Overview
+
+.DnCX11 common deployment properties
+[cols="<,<,<,<",options="header",]
+|=======================================================================
+|Property ID |CDP/XML |CONFIG |CIAO/DAnCE counterpart
+|nl.remedy.it.DnCX11.Executor.Artifact |X |O
+|edu.vanderbilt.dre.CIAO.ExecutorArtifact
+
+|nl.remedy.it.DnCX11.Executor.Factory |X |O |component factory
+
+|nl.remedy.it.DnCX11.Servant.Artifact |X |X
+|edu.vanderbilt.dre.CIAO.ServantArtifact
+
+|nl.remedy.it.DnCX11.Servant.Factory |X |X
+|edu.vanderbilt.dre.CIAO.ServantEntrypoint
+
+|nl.remedy.it.DnCX11.RegisterNaming |X |X
+|edu.vanderbilt.dre.DAnCE.RegisterNaming
+
+|nl.remedy.it.DnCX11.InstanceIOR |X |X
+|edu.vanderbilt.dre.DAnCE.InstanceIOR
+
+|nl.remedy.it.DnCX11.ImplementationType |X |O
+|edu.vanderbilt.dre.DAnCE.ImplementationType
+
+|nl.remedy.it.DnCX11.InstanceHandler.OpenMode |X |X
+|edu.vanderbilt.dre.CIAO.OpenMode
+
+|nl.remedy.it.CIAOX11.ContainerId |X |X
+|edu.vanderbilt.dre.CIAO.ContainerId
+
+|nl.remedy.it.DnCX11.Node |O |X |_NA_
+
+|nl.remedy.it.DnCX11.Locality |O |X |_NA_
+|=======================================================================
+
+== Details
+
+=== nl.remedy.it.DnCX11.Executor.Artifact
+
+Description::
+
+Specifies the loadable/executable module artifact to load for this
+component executor providing the executor entrypoint.
+
+Type::
+
+execParameter
+
+Value::
+
+String providing undecorated (no prefix/postfix/extension) module
+(library) name.
+
+Remarks::
+
+Either nl.remedy.it.DnCX11.Executor.Artifact or
+nl.remedy.it.DnCX11.Servant.Artifact can be omitted when the loadable
+module for the respective entrypoints is the same (single library
+exporting both entrypoints).
+
+=== nl.remedy.it.DnCX11.Executor.Factory
+
+Description::
+
+Specifies the name of the entrypoint (factory method) to use for
+creating an instance of this component executor.
+
+Type::
+
+execParameter
+
+Value::
+
+String providing exported name of factory method.
+
+Remarks::
+
+Required
+
+=== nl.remedy.it.DnCX11.Servant.Artifact
+
+Description::
+
+Specifies the loadable/executable module artifact to load for this
+component servant providing the servant entrypoint.
+
+Type::
+
+execParameter
+
+Value::
+
+String providing undecorated (no prefix/postfix/extension) module
+(library) name.
+
+Remarks::
+
+Either nl.remedy.it.DnCX11.Executor.Artifact or
+nl.remedy.it.DnCX11.Servant.Artifact can be omitted when the loadable
+module for the respective entrypoints is the same (single library
+exporting both entrypoints).
+
+=== nl.remedy.it.DnCX11.Servant.Factory
+
+Description::
+
+Specifies the name of the entrypoint (factory method) to use for
+creating an instance of this component servant.
+
+Type::
+
+execParameter
+
+Value::
+
+String providing exported name of factory method.
+
+Remarks::
+
+Required
+
+=== nl.remedy.it.DnCX11.RegisterNaming
+
+Description::
+
+Indicates that the instance object reference should be registered in the
+Instance naming context using the specified name.
+
+Type::
+
+configProperty
+
+Value::
+
+String providing the name to register the component instance with.
+
+Remarks::
+
+Optional.
+
+=== nl.remedy.it.DnCX11.InstanceIOR
+
+Description::
+
+Indicates that the instance object reference should be printed to a file
+with the specified name.
+
+Type::
+
+configProperty
+
+Value::
+
+String providing the name of the file to print to.
+
+Remarks::
+
+Optional.
+
+=== nl.remedy.it.DnCX11.ImplementationType
+
+Description::
+
+Property describing the implementation type of the software component.
+
+Type::
+
+execParameter
+
+Value::
+
+String providing one of the standard type Ids:
+
+* nl.remedy.it.CCM.Container
+* nl.remedy.it.CCM.Component (*default*)
+* nl.remedy.it.DnCX11.LocalityManager
+
+Remarks::
+
+Optional. By default assumed to be `nl.remedy.it.CCM.Component`. Only
+used when explicitly configuring containers and/or localities.
+
+=== nl.remedy.it.DnCX11.InstanceHandler.OpenMode
+
+Description::
+
+Specifies the opening mode to use for the factory artifacts.
+
+Type::
+
+execParameter
+
+Value::
+
+Integer (unsigned) value representing a valid opening mode for dynamic
+loadable modules.
+
+Remarks::
+
+Optional. Not normally used.
+
+=== nl.remedy.it.CIAOX11.ContainerId
+
+Description::
+
+Specifies the Id of the component container instance in the context of a
+single locality in which the component instance should be installed.
+
+Type::
+
+execParameter or configProperty
+
+Value::
+
+String value providing the container Id.
+
+Remarks::
+
+When specified as execParameter all instances of the implementation
+containing the parameter will be installed in a container with the
+specified Id (unless overruled by the specification of a configProperty
+with the same property Id)
+
+=== nl.remedy.it.DnCX11.Node
+
+Description::
+
+Specifies the node to deploy the component instance on.
+
+Type::
+
+configProperty
+
+Value::
+
+String providing node Id.
+
+Remarks::
+
+Required
+
+=== nl.remedy.it.DnCX11.Locality
+
+Description::
+
+Specifies the locality to deploy the component instance in.
+
+Type::
+
+configProperty
+
+Value::
+
+String providing locality Id.
+
+Remarks::
+
+Optional. By default all component instances not specifying a locality
+Id are deployed together in a default locality.

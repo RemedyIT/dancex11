@@ -1,0 +1,15 @@
+// --------------------------------------------------------------------
+// dancex11_domainapplicationmanager.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_domainapplicationmanager_skel, \
+          dancex11_domainapplication, \
+          dancex11_nodeapplicationmanager_stub {
+  libs += dancex11_domain_application_manager
+  after += dancex11_domain_application_manager_impl
+}

@@ -1,0 +1,36 @@
+project(dancex11_node_deployment_handler_impl) : \
+      dancex11_lib, dancex11_output, dancex11_split_plan, install, \
+      dancex11_stub, dancex11_state, dancex11_deployment_configurator, \
+      dancex11_deployment_scheduler, dancex11_deployment_handler, \
+      dancex11_lm_skel, dancex11_targetmanager_skel, \
+      dancex11_nodeapplicationmanager_skel, dancex11_nodemanager_impl, \
+      dancex11_nodeapplication_skel, dancex11_deploymentmanagerhandler_skel \
+{
+  dynamicflags += DANCEX11_NODE_DH_BUILD_DLL
+  sharedname = dancex11_node_dm_handler
+
+  Source_Files {
+    dancex11_node_deployment_handler.cpp
+    dancex11_node_dmh_loader.cpp
+    dancex11_ndh_manager_impl.cpp
+    dancex11_ndh_application_manager_impl.cpp
+    dancex11_ndh_application_impl.cpp
+  }
+
+  Header_Files {
+    dancex11_node_deployment_handler_export.h
+    dancex11_node_deployment_handler.h
+    dancex11_node_dmh_loader.h
+    dancex11_node_dmh_static_svc.h
+    dancex11_ndh_manager_impl.h
+    dancex11_ndh_application_manager_impl.h
+    dancex11_ndh_application_impl.h
+  }
+
+  Template_Files {
+  }
+
+  specific {
+    install_dir = dancex11/node_deployment_handler
+  }
+}

@@ -1,0 +1,250 @@
+include::_{backend}_settings.adoc[]
+
+= _Deployment Plan_ descriptors
+
+== Component Instance descriptor
+
+=== Introduction
+
+This descriptor provides the configuration for D&C Component
+Implementation, Instance, Connection, LocalityConstraint and Artifact
+descriptions for a _Deployment Plan_.
+
+Unlike the standard D&C XML descriptor format the DnCX11 _CONFIG_ format
+does not provide separate toplevel descriptors for Implementation,
+Instance, Connection, Artifact and LocalityConstraint but rather only
+defines a toplevel descriptor for Instances and defines nested
+descriptors as part of that descriptor to define any necessary
+information for the other elements (or automatically derives them).
+
+=== Definition
+
+A Component Instance descriptor is defined as follows:
+
+-------------------------------------------------------------------------------------------------------------------
+{component-instance-key} {component-instance-id} {component-artifact} {component-factory} [ {deployment-openmode} ]
+    [ {deployment-node} ]
+    [ {deployment-locality} ]
+    [ {deployment-container} ]
+    [ {deployment-artifacts} ]
+    [ {deployment-connections} ]
+    [ {deployment-properties} ]
+-------------------------------------------------------------------------------------------------------------------
+
+Where
+
+* \{component-instance-key} := `nl.remedy.it.CCM.Component`
+* \{component-instance-id} :=
+<<{parent_dir}/config-plan.adoc#dotted-identifier,dotted-identifier>>
+* \{component-artifact} :=
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{component-factory} :=
+<<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{deployment-openmode} := integer
+<<{parent_dir}/config-plan.adoc#value,literal value>>
+* \{deployment-node} := a <<config-other.adoc#_deployment_node_descriptor,Deployment Node
+descriptor>>
+* \{deployment-locality} := a
+<<config-other.adoc#_deployment_locality_descriptor,Deployment Locality descriptor>>
+* \{deployment-container} := a
+<<config-other.adoc#_deployment_container_descriptor,Deployment Container descriptor>>
+* \{deployment-artifacts} := a sequence of zero or more
+<<config-artifact.adoc#,Deployment Artifact descriptors>>
+* \{deployment-connections} := a sequence of zero or more
+<<config-connection.adoc#,Plan Connection descriptors>>
+* \{deployment-properties} := a sequence of zero or more
+<<config-properties.adoc#_deployment_property_descriptors,Deployment Property
+descriptors>>
+
+The order in which the nested descriptors appear in an actual
+declaration is not prescribed. Each declared (nested) descriptor must
+however be complete before starting the declaration of another (nested
+or toplevel) descriptor declaration.
+
+The line breaks shown in the format definition above are not mandatory
+but only there for display formatting purposes (newlines are simply
+considered whitespace separating _CONFIG_ tokens).
+
+=== Description
+
+The `{component-instance-id}` identifier specifies the name for the D&C
+Instance description and should be unique in the context of the defined
+_Deployment Plan_.
+
+The `{component-artifact}` identifier specifies the implementation
+artifact (library) from which the component Instance can be
+instantiated. The format of this identifier depends on the deployment
+runtime platform for which the component is configured. For the current
+DnCX11 deployment tool runtime environment this should be a shared
+library name compatible with the ACE DLL loader, i.e. without path,
+without platform dependent prefix (f.i. 'lib') and without extension(s).
+
+The `{component-factory}` identifier specifies the factory (method) with
+which the component Instance can be instantiated from the loaded
+artifact. The format of this identifier depends on the deployment
+runtime platform for which the component is configured.
+
+The DnCX11 _CONFIG_ loader will automatically identify a D&C
+Implementation description for the defined component Instance. The name
+for the implementation will be determined by concatenating the
+`{component-artifact}` and `{component-factory}` identifiers by a dot
+like: `{component-artifact}.{component-factory}`. In case no
+Implementation description with this name yet exists in the context of
+the defined plan an new Implementation description with this name will
+be created.
+
+In addition the `{component-artifact}` and `{component-factory}`
+identifiers are converted to the _execParameter_ properties
+`nl.remedy.it.DnCX11.Executor.Artifact` and
+`nl.remedy.it.DnCX11.Executor.Factory` of the D&C Implementation
+description created for the defined component Instance.
+
+Any explicitly declared ExecParameter property descriptors as part of
+the optional `{deployment-properties}` for a component Instance
+descriptor are also added as _execParameter_ properties of the D&C
+Implementation description created/used.
+
+In the case of multiple component Instance descriptor declarations for
+the same implementation (same `{component-artifact}` and
+`{component-factory}` identifiers) the referred Implementation
+description will be the same for each instance and therefor explicit
+ExecParameter property descriptors are only required on the first
+instance descriptor declaration.
+
+The *optional* `{deployment-openmode}` integer literal specifies an
+artifact loader dependent flag value. For the current DnCX11 deployment
+tool runtime environment this should be a shared library openmode value
+as used by the ACE DLL loader. It is normally not necessary to specify
+this value.
+
+Based on the locality and node assignments for each instance description
+in the plan one *SameProcess* _localityConstraint_ will be defined for
+each combination of node and locality assignments listing all instances
+matching that combination. In addition a single *DifferentProcess*
+_localityConstraint_s will be defined for each node listing the first
+instances of each *SameProcess* constraint for that node.
+
+=== Example
+
+The following descriptor declarations
+
+----------------------------------------------------------------------------------------------------
+#=====================================================
+# Definitions for Receiver Node
+#-----------------------------------------------------
+
+# ReceiverComponent instance
+nl.remedy.it.CCM.Component Hello_ReceiverComponent hello_ex_receiver_exec create_Hello_Receiver_Impl
+    ##nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Artifact
+    ##    "hello_ex_receiver_exec"
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Receiver_Servant"
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.InstanceIOR
+        "Receiver.ior"
+
+#=====================================================
+# Definitions for Sender Node
+#-----------------------------------------------------
+
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory
+        "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.InstanceIOR
+        "Sender.ior"
+    nl.remedy.it.DnCX11.Connection Hello_ReceiverComponent
+      run_my_foo < do_my_foo        # synch_foo_connection
+
+# SenderComponentTwo instance
+nl.remedy.it.CCM.Component Hello_SenderComponentTwo hello_ex_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.InstanceIOR
+        "Sender2.ior"
+    nl.remedy.it.DnCX11.Connection Hello_ReceiverComponent
+      run_my_foo < do_my_foo        # synch_foo_connection
+----------------------------------------------------------------------------------------------------
+
+would define two D&C Implementation descriptions:
+
+.  `hello_ex_receiver_exec.create_Hello_Receiver_Impl`
++
+with three _execParameter_ properties:
+* `nl.remedy.it.DnCX11.Executor.Artifact` with value
+`"hello_ex_receiver_exec"`
+* `nl.remedy.it.DnCX11.Executor.Factory` with value
+`"create_Hello_Receiver_Impl"`
+* `nl.remedy.it.DnCX11.Servant.Factory` with value
+`"create_Hello_Receiver_Servant"`
+
+.  `hello_ex_sender_exec.create_Hello_Sender_Impl`
++
+with three _execParameter_ properties:
+* `nl.remedy.it.DnCX11.Executor.Artifact` with value
+`"hello_ex_sender_exec"`
+* `nl.remedy.it.DnCX11.Executor.Factory` with value
+`"create_Hello_Sender_Impl"`
+* `nl.remedy.it.DnCX11.Servant.Factory` with value
+`"create_Hello_Sender_Servant"`
++
+
+For the first implementation one D&C Instance description is defined
+with:
+
+* _name_ = `Hello_ReceiverComponent`
+* _node_ = `ReceiverNode`
+* one _configProperty_ `nl.remedy.it.DnCX11.InstanceIOR` with value
+`"Receiver.ior"`
+
+For the second implementation two D&C Instance descriptions are defined:
+
+.  with
+* _name_ = `Hello_SenderComponent`
+* _node_ = `SenderNode`
+* one _configProperty_ `nl.remedy.it.DnCX11.InstanceIOR` with value
+`"Sender.ior"`
+.  with
+* _name_ = `Hello_SenderComponentTwo`
+* _node_ = `SenderNode`
+* one _configProperty_ `nl.remedy.it.DnCX11.InstanceIOR` with value
+`"Sender2.ior"`
+
+The two Connection descriptor declarations will result in the definition
+of two D&C Connection descriptions:
+
+.  with
+* _name_ =
+`Hello_SenderComponent.run_my_foo:Hello_ReceiverComponent.do_my_foo`
+* one _internalEndpoint_ description for _SimplexReceptacle_
+`run_my_foo` of instance `Hello_SenderComponent`
+* one _internalEndpoint_ description for _Facet_ `do_my_foo` of instance
+`Hello_ReceiverComponent`
+.  with
+* _name_ =
+`Hello_SenderComponentTwo.run_my_foo:Hello_ReceiverComponent.do_my_foo`
+* one _internalEndpoint_ description for _SimplexReceptacle_
+`run_my_foo` of instance `Hello_SenderComponentTwo`
+* one _internalEndpoint_ description for _Facet_ `do_my_foo` of instance
+`Hello_ReceiverComponent`
+
+Based on the locality definitions for each instance a *SameProcess*
+_localityConstraint_ will be defined including the two Sender component
+instances. Furthermore a *DifferentProcess* _localityConstraint_ will be
+defined including the Receiver component instance and the first Sender
+component instance (in actuality the first component instance for every
+explicitly defined locality is included in this constraint).
+
+Note that there is no servant artifact defined (the declaration on the
+Receiver component is commented out). DnCX11 allows the omission of the
+servant artifact in case this artifact is identical to the executor
+artifact and will use the defined executor artifact to resolve the
+servant factory.
+
+Also note that on the declaration of the second instance of the Sender
+component implementation the servant factory declaration is also omitted
+as this instance declaration will refer to the component Implementation
+description of the first instance declaration.

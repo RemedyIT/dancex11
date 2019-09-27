@@ -1,0 +1,2 @@
+This test verifies the DnCX11 support for connecting
+pre-started (remote) LM instances from an NM instance.

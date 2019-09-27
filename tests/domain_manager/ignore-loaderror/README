@@ -1,0 +1,13 @@
+This test verifies the DnCX11 Deployment Manager's support for
+ignoring load errors for plugins configured for that.
+
+The test utilizes a Domain Manager configuration where the module
+name of the CDP plan loader plugin has been changed to an invalid
+name and the property nl.remedy.it.DnCX11.ServiceObject.IgnoreLoadError
+for the plugin set to true.
+
+The invalid name will cause a load error that should be ignored so the
+Domain manager starts successfully.
+
+Launching a CONFIG plan should function properly while launching a CDP
+plan should fail (since the CDP loader plugin failed to load).

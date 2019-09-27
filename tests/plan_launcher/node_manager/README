@@ -1,0 +1,11 @@
+This test verifies the support of the Plan Launcher for launching a plan directly through
+a Node Manager daemon.
+
+The test spawns *no* Domain Manager but only a Node Manager daemon and has
+the Plan Launcher connect to the NM directly.
+
+The run_test.pl script uses defaults for the resolution of the NM ApplicationManager and
+Application.
+
+The run_test_ior.pl script specifies explicit arguments for the resolution of the NM
+ApplicationManager and Application.

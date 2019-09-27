@@ -1,0 +1,21 @@
+project(dancex11_artifact_deployment_handler_impl) : \
+  dancex11_lib, dancex11_deployment_stub, \
+  dancex11_output, dancex11_deployment_scheduler, install, \
+  dancex11_deployment_scheduler, dancex11_artifact_installation {
+
+  dynamicflags += DANCE_ARTIFACT_HANDLER_BUILD_DLL
+  sharedname = dancex11_artifact_deployment_handler
+
+  Source_Files {
+    artifact_deployment_handler.cpp
+  }
+
+  Header_Files {
+    artifact_deployment_handler.h
+    dancex11_artifact_deployment_handler_export.h
+  }
+
+  specific {
+    install_dir = dancex11/handler
+  }
+}

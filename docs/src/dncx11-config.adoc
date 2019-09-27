@@ -1,0 +1,954 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 configuration
+
+== DnCX11 configuration files
+
+All deployment tools for DnCX11 support dynamic tool configuration
+through a tool specific configuration file. These configuration files
+are expected to contain a document using the
+link:config-plan.html[DnCX11 CONFIG descriptor format].
+
+As a rule these _CONFIG_ documents will only contain
+<<config-plan.adoc#_dncx11_tool_configuration_descriptors,DnCX11 tool configuration
+descriptors>> but in rare cases (when combining tool configuration and
+deployment plan for Deployment Manager configuration) these might also
+contain <<config-plan.adoc#_deployment_plan_descriptors,Deployment Plan
+descriptors>>. In this document we will only describe the plugins and properties
+corresponding to the tool configuration descriptors.
+
+== DnCX11 plugins
+
+DnCX11 tool configuration descriptor records describe the optional
+plugins and their properties that need to be configured (loaded) in the
+runtime environment of a DnCX11 deployment tool. +
+This document describes the available DnCX11 deployment plugins and their properties.
+
+=== Instance deployment handlers
+
+_Instance Deployment Handler_ (IDH) plugins provide (dynamically loaded) handler objects
+implementing the IDL defined (local) interface `DAnCX11::InstanceDeploymentHandler`
+shown below.
+
+.IDL declaration for DAnCX11::InstanceDeploymentHandler interface
+[source,idl]
+----------------------------------------------------------------------------
+module DAnCEX11
+{
+  local interface InstanceDeploymentHandler
+  {
+    readonly attribute string instance_type;
+
+    readonly attribute CORBA::StringSeq dependencies;
+
+    void configure (in Deployment::Properties config);
+
+    void install_instance (in Deployment::DeploymentPlan plan,
+                           in unsigned long instanceRef,
+                           out any instance_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidProperty,
+              Deployment::InvalidNodeExecParameter,
+              Deployment::InvalidComponentExecParameter);
+
+    void provide_endpoint_reference (in Deployment::DeploymentPlan plan,
+                                     in unsigned long connectionRef,
+                                     out any endpoint_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidProperty);
+
+    void connect_instance (in Deployment::DeploymentPlan plan,
+                           in unsigned long connectionRef,
+                           in any provided_reference)
+      raises (Deployment::StartError,
+              Deployment::InvalidConnection);
+
+    void disconnect_instance (in Deployment::DeploymentPlan plan,
+                              in unsigned long connectionRef)
+      raises (::Deployment::StopError);
+
+    void instance_configured (in Deployment::DeploymentPlan plan,
+                              in unsigned long instanceRef)
+      raises (Deployment::StartError);
+
+    void activate_instance (in Deployment::DeploymentPlan plan,
+                            in unsigned long instanceRef,
+                            in any instance_reference)
+      raises (Deployment::StartError);
+
+    void passivate_instance (in Deployment::DeploymentPlan plan,
+                             in unsigned long instanceRef,
+                             in any instance_reference)
+      raises (Deployment::StopError);
+
+    void remove_instance (in Deployment::DeploymentPlan plan,
+                          in unsigned longinstanceRef,
+                          in any instance_reference)
+      raises (::Deployment::StopError);
+
+    /// Instruct the handler to release any resources prior to deallocation.
+    void close ();
+  };
+};
+
+----------------------------------------------------------------------------
+
+This interface defines component instance lifecycle event callback
+methods that will be triggered by the DnCX11 deployment tools during
+different stages of the deployment for component instance types matching
+the instance type of the IDH.
+
+
+==== DnCX11 Locality Installation Handler
+
+Dynamic module::
+  `dancex11_locality_handler`
+
+Factory::
+  `create_DAnCEX11_Locality_Handler`
+
+CONFIG descriptor::
+  <<config-plan/config-instance-handler#,nl.remedy.it.DnCX11.InstanceHandler>>
+
+Description::
+  This instance deployment plugin handles life cycle management (instantiation, monitoring, removal) for
+  locality instances implicitly or explicitly defined in the deployment plan. This plugin is intended to be loaded by a
+  node deployment manager instance (see <<deployment-tools#_deployment_manager,here>> for more
+  details) by adding an appropriate entry in the CONFIG file for that manager. +
+  By default AXCIOMA ships with `nodemanager*.config` files including this entry.
+
+Configuration::
+  This plugin can be configured with the properties shown in the table below. These properties can
+  be specified either as <<config-plan/config-properties#_deployment_property_descriptors,deployment properties>>
+  for the Locality instance handler descriptor in the deployment tool configuration *or* for a Locality instance
+  definition in the deployment plan. See <<Configuring the Locality Manager,here>> for more detailed information. +
++
+[width="100%",cols="<34%a,<10%a,<55%a",options="header",]
+|=======================================================================
+|Property ID |Type |Description
+|nl.remedy.it.DnCX11.Locality.ActivationMode |uint32
+|Specifies the way the NM instance will load/connect to the LM instance. Currently supports 3 values:
+
+* 0 : configures an LM instance in a spawned child process
+* 1 : configures an out-of-process, remote, LM instance; i.e an LM instance in a separate process not under control of the NM instance
+* 2 : configures an in-process LM instance; i.e. an LM instance loaded at runtime into the NM instance process space
+
+
+|nl.remedy.it.DnCX11.Locality.Exec |string |Specifies the name of the
+executable to spawn for creating an LM instance process. Only applies to
+ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.Arguments |string |Specified commandline
+arguments to pass on to spawned LM executable. These are prepended to
+the standard arguments. Only applies to ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.ConfigFile |string |Specifies the
+(Deployment tool) configuration file that should be used by the LM
+executable. Passed on with standard commandline argument _-c CONFIG_.
+Only applies to ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.Port |uint16 |Specifies the network port
+the LM instance should/will listen on. Applies to ActivationMode-s 0 and
+1. When specified for ActivationMode 0 this is passed on with standard
+commandline argument _-p PORT_.
+
+|nl.remedy.it.DnCX11.Locality.Address |string |Specifies the network address\hostname
+the LM instance should/will listen on. Applies to ActivationMode-s 0 and
+1. When specified for ActivationMode 0 this is passed on with standard
+commandline argument _-a ADDRESS_.
+
+|nl.remedy.it.DnCX11.DM.NumericAddresses |boolean |Specifies whether to
+use numeric IP addresses (dotted decimal; if _true_) or hostnames (if
+_false_ or not defined) in service advertisements or profiles (like IOR).
+Only applies to ActivationMode 0. When specified this is passed on with
+standard commandline argument _-N_.
+
+|nl.remedy.it.DnCX11.Locality.DMHandler |string |Specifies the name of
+the Deployment Handler module (shared library) that should be loaded to
+create an LM instance. By default this is
+*dancex11_locality_dm_handler*. Applies to ActivationMode-s 0 and 2.
+With ActivationMode 0 this is passed on with standard commandline option
+_--handler HANDLER_. When the value defined for this property is empty
+no commandline option is passed to the LM executable.
+
+|nl.remedy.it.DnCX11.Locality.Path |string |Specifies an
+additional executable search path to use for the environment in which
+the LM executable is spawned. The value is appended to the regular
+environment value. Only applies to ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.LibPath |string |Specifies an
+additional library search path to use for the environment in which the
+LM executable is spawned. The value is appended to the regular
+environment value. Only applies to ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.UUID |string |Specifies a UUID to use for
+identification of spawned LM child instances. By default a UUID is
+auto-generated. The value is passed on to the executable with standard
+commandline option _-u UUID_. Only applies to ActivationMode 0.
+
+|nl.remedy.it.DnCX11.Locality.IOR |string |Specifies the IOR of a remote
+LM instance (this can use any of the formats supported by the
+`CORBA::ORB::string_to_object` method like `IOR::xxx`, `corbaloc::xxx`,
+`\file:///xxx` etc.). Only applies to ActivationMode 1. +
+ Either this property or *nl.remedy.it.DnCX11.Locality.Port* is required
+for ActivationMode 1.
+|=======================================================================
+
+
+==== CIAOX11 Container Installation Handler
+
+Dynamic module::
+  `ciaox11_deployment_handlers`
+
+Factory::
+  `create_CIAOX11_Container_Handler`
+
+CONFIG descriptor::
+  <<config-plan/config-instance-handler#,nl.remedy.it.DnCX11.InstanceHandler>>
+
+Description::
+  This instance deployment plugin handles life cycle management of session container instances in
+  a deployed locality. By default all localities will have a single container instance created
+  for management of component instances deployed to the locality but explicit container instances
+  can be specified in the deployment plan (see <<Configuring Container instances in the Deployment Plan>> for more details). +
+  This plugin is intended to be loaded by a
+  locality deployment manager instance (see <<deployment-tools#_deployment_manager,here>> for more
+  details) by adding an appropriate entry in the CONFIG file for that manager. +
+  By default AXCIOMA ships with `localitymanager*.config` files including this entry.
+
+//Configuration::
+
+==== CIAOX11 Component Installation Handler
+
+Dynamic module::
+  `ciaox11_deployment_handlers`
+
+Factory::
+  `create_CIAOX11_Component_Handler`
+
+CONFIG descriptor::
+  <<config-plan/config-instance-handler#,nl.remedy.it.DnCX11.InstanceHandler>>
+
+Description::
+  This instance deployment plugin handles life cycle management of component instances in
+  a deployed session container instance. By default all component instances will be installed into
+  the default container instance but other, explicitly configured, container instances
+  can be specified in the deployment plan. +
+  This plugin is intended to be loaded by a
+  locality deployment manager instance (see <<deployment-tools#_deployment_manager,here>> for more
+  details) by adding an appropriate entry in the CONFIG file for that manager. +
+  By default AXCIOMA ships with `localitymanager*.config` files including this entry.
+
+//Configuration::
+
+==== DnCX11 Artifact Installation Handler
+
+Dynamic module::
+  `dancex11_artifact_deployment_handler`
+
+Factory::
+  `create_DAnCEX11_Artifact_Deployment_Handler`
+
+CONFIG descriptor::
+  <<config-plan/config-instance-handler#,nl.remedy.it.DnCX11.InstanceHandler>>
+
+Description::
+  This instance deployment plugin handles life cycle management of component artifacts required for
+  installation of a component instance using a pluggable artifact installation service. This plugin
+  requires the activation of other plugins to handle artifact repository handling and specific URL
+  based installation (download, decompress, copy etc.). +
+  This plugin is intended to be loaded by a
+  node deployment manager instance (see <<deployment-tools#_deployment_manager,here>> for more
+  details) by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA ships this plugin (and it's associated plugins) with selected distribution editions but by default
+  the plugins are *not* enabled in any of the included `nodemanager.config` files.
+
+//Configuration::
+
+include::{ciaox11_src_root}/exf/docs/src/dncx11-config.asc[tag=instancedeploymenthandlers,opts=optional]
+
+'''
+
+=== Deployment interceptors
+
+_Deployment Interceptor_ (DI) plugins provide (dynamically loaded) handler objects implementing the
+IDL defined (local) interface `DAnCX11::DeploymentInterceptor` as shown below.
+
+.IDL declaration for DAnCX11::DeploymentInterceptor interface
+[source,idl]
+--------------------------------------------------------------------------------
+module DAnCEX11
+{
+  local interface DeploymentInterceptor
+  {
+    /// Invoked when the interceptor is loaded, before any other
+    /// event.
+    void configure (in Deployment::Properties config);
+
+
+    void preprocess_plan (inout Deployment::DeploymentPlan plan)
+      raises (Deployment::PlanError);
+
+    void pre_install (inout Deployment::DeploymentPlan plan,
+                      in unsigned long instanceRef)
+      raises (Deployment::PlanError,
+              Deployment::InvalidProperty,
+              Deployment::InvalidNodeExecParameter,
+              Deployment::InvalidComponentExecParameter);
+
+    void post_install (in Deployment::DeploymentPlan plan,
+                       in unsigned long instance_index,
+                       in any instance_reference,
+                       in any exception_thrown)
+      raises (Deployment::PlanError,
+              Deployment::InvalidProperty,
+              Deployment::InvalidNodeExecParameter,
+              Deployment::InvalidComponentExecParameter);
+
+    void post_endpoint_reference (in Deployment::DeploymentPlan plan,
+                                  in unsigned long connectionRef,
+                                  in any endpoint_reference,
+                                  in any exception_thrown)
+      raises (Deployment::InvalidConnection);
+
+    void pre_connect (inout Deployment::DeploymentPlan plan,
+                      in unsigned long connection_index,
+                      inout any provided_reference)
+      raises (Deployment::InvalidConnection);
+
+    void post_connect (in Deployment::DeploymentPlan plan,
+                       in unsigned long connectionRef,
+                       in any exceptionThrown)
+      raises (Deployment::InvalidConnection);
+
+    void pre_disconnect (inout Deployment::DeploymentPlan plan,
+                         in unsigned long connection_index)
+      raises (Deployment::InvalidConnection);
+
+    void post_disconnect (in Deployment::DeploymentPlan plan,
+                          in unsigned long connectionRef,
+                          in any exceptionThrown)
+      raises (Deployment::InvalidConnection);
+
+    void post_configured (in Deployment::DeploymentPlan plan,
+                          in unsigned long instanceRef,
+                          in any exception_thrown)
+      raises (Deployment::StartError);
+
+    void post_activate (in Deployment::DeploymentPlan plan,
+                        in unsigned long instanceRef,
+                        in any exception_thrown)
+      raises (Deployment::StartError);
+
+    void post_passivate (in Deployment::DeploymentPlan plan,
+                         in unsigned long instanceRef,
+                         in any exception_thrown)
+      raises (Deployment::StopError);
+    void post_remove (in Deployment::DeploymentPlan plan,
+                      in unsigned long instanceRef,
+                      in any exception_thrown)
+      raises (Deployment::StopError);
+
+    void unexpected_event (in Deployment::DeploymentPlan plan,
+                           in unsigned long instanceRef,
+                           in any exception_thrown,
+                           in string error);
+
+    /// Instruct the interceptor to release any resources prior to deallocation.
+    void close ();
+  };
+};
+
+--------------------------------------------------------------------------------
+
+This interface defines component instance lifecycle event pre- and
+post-processing callback methods that will be triggered by the DnCX11
+deployment tools during different stages of the deployment.
+
+==== DnCX11 Standard Error Interceptor
+
+Dynamic module::
+  `dancex11_error_interceptors`
+
+Factory::
+  `create_DAnCEX11_Standard_Error`
+
+CONFIG descriptor::
+  <<config-plan/config-interceptor#,nl.remedy.it.DnCX11.DeploymentInterceptor>>
+
+Description::
+  This deployment interceptor plugin handles deployment errors by capturing exceptions, logging them and
+  propagating the error thereby in most cases canceling the deployment process. +
+  This plugin is intended to be loaded by node deployment manager instances as well as locality deployment
+  manager instances (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `nodemanager*.config` and `localitymanager*.config` files with this plugin
+  included.
+
+//Configuration::
+
+==== DnCX11 Best Effort Interceptor
+
+Dynamic module::
+  `dancex11_error_interceptors`
+
+Factory::
+  `create_DAnCEX11_Best_Effort`
+
+CONFIG descriptor::
+  <<config-plan/config-interceptor#,nl.remedy.it.DnCX11.DeploymentInterceptor>>
+
+Description::
+  This deployment interceptor plugin handles deployment errors by capturing exceptions and logging them. No
+  errors are propagated allowing the deployment process to continue. +
+  This plugin is intended to be loaded by node deployment manager instances as well as locality deployment
+  manager instances (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA ships this plugin by default without including it in any CONFIG files.
+
+//Configuration::
+
+==== CIAOX11 Component Reference Storage Interceptor
+
+Dynamic module::
+  `ciaox11_deployment_interceptors`
+
+Factory::
+  `create_CIAOX11_StoreReferences`
+
+CONFIG descriptor::
+  <<config-plan/config-interceptor#,nl.remedy.it.DnCX11.DeploymentInterceptor>>
+
+Description::
+  This deployment interceptor plugin handles the retrieval and registration of component servant
+  references after component instance installation. +
+  This plugin is intended to be loaded by locality deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `localitymanager*.config` files with this plugin included.
+
+//Configuration::
+
+==== CIAOX11 Component Reference Lookup Interceptor
+
+Dynamic module::
+  `ciaox11_deployment_interceptors`
+
+Factory::
+  `create_CIAOX11_ReferenceLookup`
+
+CONFIG descriptor::
+  <<config-plan/config-interceptor#,nl.remedy.it.DnCX11.DeploymentInterceptor>>
+
+Description::
+  This deployment interceptor plugin handles resolving external component (facet) references
+  before component connection setup. +
+  This plugin is intended to be loaded by locality deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `localitymanager*.config` files with this plugin included.
+
+//Configuration::
+
+==== DnCX11 Artifact Installation Initializer
+
+Dynamic module::
+  `dancex11_artifact_deployment_handler`
+
+Factory::
+  `create_DAnCEX11_Artifact_Deployment_Initializer`
+
+CONFIG descriptor::
+  <<config-plan/config-interceptor#,nl.remedy.it.DnCX11.DeploymentInterceptor>>
+
+Description::
+  This deployment interceptor plugin provides artifact installation service configuration and
+  initialization support. +
+  This plugin is intended to be loaded by node deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA ships this plugin (and it's associated plugins) with selected distribution editions but by default
+  the plugins are *not* included in any of the included `nodemanager.config` files.
+
+//Configuration::
+
+'''
+
+=== Deployment configuration handlers
+
+_Deployment Configuration Handler_ (DCH) plugins provide (dynamically loaded) handler objects implementing
+the IDL defined (local) interface `DAnCEX11::DeploymentConfiguration` as shown below.
+
+.IDL declaration for DAnCEX11::DeploymentConfiguration interface
+[source,idl]
+---------------------------------------------------------------------------------
+module DAnCEX11
+{
+  local interface DeploymentConfiguration
+  {
+    readonly attribute string type;
+
+    void configure (in Deployment::Property prop);
+
+    /// Instruct the configurator to release any resources prior to deallocation.
+    void close ();
+  };
+};
+---------------------------------------------------------------------------------
+
+This interface defines a deployment configuration callback method that
+will be triggered by the DnCX11 deployment tools during certain stages
+of the deployment for instances with properties that match the type of
+the DCH (currently DnCX11 only supports configuration of locality
+instances).
+
+==== DnCX11 CPU Affinity Configuration Handler
+
+Dynamic module::
+  `dancex11_locality_configuration`
+
+Factory::
+  `create_cpu_affinity`
+
+CONFIG descriptor::
+  <<config-plan/config-config-handler#,nl.remedy.it.DnCX11.ConfigPlugin>>
+
+Description::
+  This deployment configuration plugin provides support for locality CPU affiliation configuration. +
+  This plugin is intended to be loaded by locality deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `localitymanager*.config` files with this plugin included.
+  Currently this plugin only works on Linux.
+
+Configuration::
+  This plugin is triggered by the specification of the `nl.remedy.it.DnCX11.LocalityManager.CPUAffinity`
+  deployment property for a Locality instance in the deployment plan.
+
+==== DnCX11 Process Name Configuration Handler
+
+Dynamic module::
+  `dancex11_locality_configuration`
+
+Factory::
+  `create_process_name`
+
+CONFIG descriptor::
+  <<config-plan/config-config-handler#,nl.remedy.it.DnCX11.ConfigPlugin>>
+
+Description::
+  This deployment configuration plugin provides support for locality process name configuration. +
+  This plugin is intended to be loaded by locality deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `localitymanager*.config` files with this plugin included.
+  Currently this plugin only works on Linux.
+
+Configuration::
+  This plugin is triggered by the specification of the `nl.remedy.it.DnCX11.LocalityManager.ProcessName`
+  deployment property for a Locality instance in the deployment plan.
+
+==== DnCX11 Process Priority Configuration Handler
+
+Dynamic module::
+  `dancex11_locality_configuration`
+
+Factory::
+  `create_process_priority`
+
+CONFIG descriptor::
+  <<config-plan/config-config-handler#,nl.remedy.it.DnCX11.ConfigPlugin>>
+
+Description::
+  This deployment configuration plugin provides support for locality process priority configuration. +
+  This plugin is intended to be loaded by locality deployment manager instances (see
+  <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that manager. +
+  AXCIOMA by default ships `localitymanager*.config` files with this plugin included.
+  Currently this plugin only works on Linux.
+
+Configuration::
+  This plugin is triggered by the specification of the `nl.remedy.it.DnCX11.LocalityManager.ProcessPriority`
+  deployment property for a Locality instance in the deployment plan.
+
+'''
+
+=== Service Objects
+
+_Service Object_ (SVO) plugins provide (dynamically loaded) arbitrary service objects
+implementing some add-on functionality for the DnCX11 deployment platform. SVO plugins
+are transparent to the main DnCX11 runtime environment in that they initialize and install
+them selves after loading without any intervention of the DnCX11 runtime environment.
+Examples of SVO's are DnCX11 Plan descriptor format loaders, DnCX11 artifact installation
+handlers etc.
+
+All SVO's can potentially be configured (if supported by it's implementation) through the
+specification of a standard deployment property for the <<config-plan/config-service-object#,Service object descriptor>>.
+The property id for such a property should be `nl.remedy.it.DnCX11.ServiceObject.Arguments` and the property should define
+a string value.
+
+By default a deployment error will be thrown when a configured SVO can't be loaded.
+In case a load error should be ignored the `nl.remedy.it.DnCX11.ServiceObject.IgnoreLoadErrror` property should be
+defined with a value of *true*.
+
+==== DnCX11 CDR Plan loader service
+
+Dynamic module::
+  `dancex11_cdr_plan_loader`
+
+Factory::
+  `_make_CDRPlan_Loader_Svc`
+
+CONFIG descriptor::
+  <<config-plan/config-service-object#,nl.remedy.it.DnCX11.ServiceObject>>
+
+Description::
+  This deployment service plugin provides support for loading deployment plans in <<cdr-plan#,CDR descriptor format>>. +
+  This plugin is intended to be loaded by plan launchers (see <<deployment-tools#_plan_launcher,here>> for more details) or
+  deployment manager instances used as plan launchers (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that tool. +
+  AXCIOMA by default ships the `plan_launcher.config` and `localitymanager*.config` files with this plugin included.
+
+//Configuration::
+
+==== DnCX11 CDP (XML) Plan loader service
+
+Dynamic module::
+  `dancex11_cdr_plan_loader`
+
+Factory::
+  `_make_CDPPlan_Loader_Svc`
+
+CONFIG descriptor::
+  <<config-plan/config-service-object#,nl.remedy.it.DnCX11.ServiceObject>>
+
+Description::
+  This deployment service plugin provides support for loading deployment plans in <<xml-plan#,D&C CDP descriptor format>>. +
+  This plugin is intended to be loaded by plan launchers (see <<deployment-tools#_plan_launcher,here>> for more details) or
+  deployment manager instances used as plan launchers (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that tool. +
+  AXCIOMA by default ships the `plan_launcher.config` file with this plugin included.
+
+//Configuration::
+
+==== DnCX11 Artifact Installation Repository service
+
+Dynamic module::
+  `dancex11_installation_repository_manager`
+
+Factory::
+  `_make_InstallationRepositoryManagerSvc_Impl`
+
+CONFIG descriptor::
+  <<config-plan/config-service-object#,nl.remedy.it.DnCX11.ServiceObject>>
+
+Description::
+  This deployment service plugin provides an implementation of the artifact repository services required by the
+  <<DnCX11 Artifact Installation Handler,artifact installation handler>> . +
+  This plugin is intended to be loaded by deployment node manager instances (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that tool. +
+  AXCIOMA ships this plugin (and it's associated plugins) with selected distribution editions but by default
+  the plugins are *not* enabled in any of the included `nodemanager.config` files.
+
+Configuration::
+  By default the root for the repository will be `./.dancex11_artifacts`. This can be changed by specifying the
+  deployment property `nl.remedy.it.DnCX11.ServiceObject.Arguments` with a value like `"-b <root_path>"` where
+  `<root_path>` is an absolute or relative (to the working directory of the process loading the SVO) path specification. +
+  Alternatively a custom repository root path can be specified by setting the environment variable `DANCE_INSTALLATION_REPO_BASEDIR`
+  to the desired path.
+
+
+==== DnCX11 Artifact Installation Filesystem transport service
+
+Dynamic module::
+  `dancex11_file_installation`
+
+Factory::
+  `_make_FileInstallationHandlerSvc`
+
+CONFIG descriptor::
+  <<config-plan/config-service-object#,nl.remedy.it.DnCX11.ServiceObject>>
+
+Description::
+  This deployment service plugin provides an implementation of the artifact installation/transport service for
+  filesystem (`file://`) URLs used by the <<DnCX11 Artifact Installation Handler,artifact installation handler>> . +
+  This plugin is intended to be loaded by deployment node manager instances (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that tool. +
+  AXCIOMA ships this plugin (and it's associated plugins) with selected distribution editions but by default
+  the plugins are *not* enabled in any of the included `nodemanager.config` files.
+
+//Configuration::
+
+==== DnCX11 Artifact Installation HTTP transport service
+
+Dynamic module::
+  `dancex11_http_installation`
+
+Factory::
+  `_make_HttpInstallationHandlerSvc`
+
+CONFIG descriptor::
+  <<config-plan/config-service-object#,nl.remedy.it.DnCX11.ServiceObject>>
+
+Description::
+  This deployment service plugin provides an implementation of the artifact installation/transport service for
+  HTTP protocol (`http://`) URLs used by the <<DnCX11 Artifact Installation Handler,artifact installation handler>> . +
+  This plugin is intended to be loaded by deployment node manager instances (see <<deployment-tools#_deployment_manager,here>> for more details)
+  by adding an appropriate entry in the CONFIG file for that tool. +
+  AXCIOMA ships this plugin (and it's associated plugins) with selected distribution editions but by default
+  the plugins are *not* enabled in any of the included `nodemanager.config` files.
+
+//Configuration::
+
+include::{ciaox11_src_root}/exf/docs/src/dncx11-config.asc[tag=serviceobjects,opts=optional]
+
+== Configuring the Locality Manager
+
+In addition to the (common) configuration options of the DnCX11
+deployment tools through commandline switches and _CONFIG_ configuration
+files there is one other way in which the behavior of the deployment
+tools can be adapted. In this case this is a specific option for
+configuring the Locality Deployment Manager (LM) instance(s) used by the
+Node Deployment Manager (NM) instance to manage one (or more) of the
+localities configured in the deployment plan.
+
+Through this mechanism it is possible to configure the executable used
+to start the LM instance, the arguments passed to it, the port and/or
+address to listen on etc.
+
+DnCX11 provides two ways in which to configure the LM instance:
+
+1.  through the configuration of the Locality Installation handler (see
+above)
+2.  through the addition of LM component instance descriptors in the
+deployment plan
+
+=== Configuring the Locality Installation Handler
+
+By configuring the Locality Installation Handler the default
+configuration for the LM instance used by *any* NM instance using this
+config file for *any* locality configured in a deployment plan will be
+affected.
+
+LM configurations in a deployment plan will overrule the Locality
+Installation Handler configuration.
+
+This configuration approach is most useful when you want to make a
+generic change in the configuration of LM instances for all or a
+standard subset of your nodes.
+
+LM instance configuration can be added to the Locality Installation
+Handler configuration in the NM configuration file as follows:
+
+---------------------------------------------------------------------------------------------------------
+# DnCX11 standard Locality instantiation plugin
+nl.remedy.it.DnCX11.InstanceHandler dancex11_locality_handler create_DAnCEX11_Locality_Handler
+  ## Customization properties for spawned locality
+  ## ---------------------------------------------
+  # These are used when spawning a custom executable
+  # (f.i. when starting deployment_manager through valgrind)
+  # - executable name (optionally with path)
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Exec "valgrind"
+  # - arguments to pass on (this is prepended to standard arguments)
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Arguments "dancex11_deployment_manager"
+  ## ---------------------------------------------
+  # These are best used when spawning a standard deployment_manager
+  # (or spawning it through a starter like valgrind) since these get
+  # translated into the standard arguments "-c", "-p" and "--handler"
+  # For default behavior they are not needed.
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.ConfigFile ""
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Port uint16:xxx
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Address ""
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.DMHandler ""
+  ## ---------------------------------------------
+  # These can be used to customize the executable and library search path for the spawned process
+  # The values are appended to the active environment values
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Path ""
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.LibPath ""
+  ## ---------------------------------------------
+  # NOTE: In any case the spawned process must accept and handle two standard arguments
+  #       that will get appended to the argument list constructed from the settings above:
+  #       "-u " and "-r "
+  ## ---------------------------------------------
+
+---------------------------------------------------------------------------------------------------------
+
+This example shows a configuration that will start all LM instances
+through the _valgrind_ memory checker tool unless overruled by LM
+configurations in the deployment plan.
+
+The available properties to configure an LM instance are described
+<<DnCX11 Locality Installation Handler,above>>.
+
+=== Configuring Locality Manager instances in the Deployment Plan
+
+By configuring (an) LM instance(s) in the deployment you can very
+specifically alter the setup for one or more specific LM instances
+without having to alter any common deployment tool configurations.
+
+Configuring an LM instance in a deployment plan requires adding a (set
+of) component descriptor(s) to the plan with the implementation type
+*nl.remedy.it.DnCX11.LocalityManager* where the actual entries depend on
+the descriptor format used.
+
+In CDP type plans (using the <<xml-plan.adoc#,D&C XML descriptor
+format>>) this requires adding an _<implementation>_ descriptor with an
+_<execParameter>_ entry with id *nl.remedy.it.DnCX11.ImplementationType*
+and value *nl.remedy.it.DnCX11.LocalityManager* as follows:
+
+--------------------------------------------------------------
+  <implementation xmi:id="LocalityManagerImpl001">
+    <name>LocalityManagerImpl</name>
+    <source />
+    ...
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+    ...
+  </implementation>
+
+--------------------------------------------------------------
+
+In addition the plan will need (an) _<instance>_ descriptor entrie(s)
+referencing the LM _<implementation>_ descriptor as follows:
+
+---------------------------------------------------------
+  <instance xmi:id="LocalityInstance001">
+    <name>ReceiverLocality</name>
+    <node>Node01</node>
+    <source />
+    <implementation xmi:idref="LocalityManagerImpl001" />
+    ...
+  </instance>
+
+---------------------------------------------------------
+
+In case the plan specifies locality constraints that will result in
+multiple deployment localities for nodes where you wish to configure LM
+instances for you will have to add the LM _<instance>_ references to the
+locality constraints to declare the specific LM instance part of the
+deployment locality with the intended component instances.
+
+By adding _<execParameter>_ and/or _<configProperty>_ entries to the
+_<implementation>_ or _<instance>_ descriptors you can configure the LM
+instances. The available properties to configure an LM instance are
+described <<DnCX11 Locality Installation Handler,above>>.
+
+In CONFIG type plans configuring an LM instance requires adding an
+*nl.remedy.it.DnCX11.LocalityManager* descriptor record like:
+
+----------------------------------------------------------------------------------
+# locality manager instance for locality "ReceiverLocality" on Node "ReceiverNode"
+nl.remedy.it.DnCX11.LocalityManager ReceiverLocality
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    # add properties to configure
+    # nl.remedy.it.DnCX11.ConfigProperty ...
+
+----------------------------------------------------------------------------------
+
+The *nl.remedy.it.DnCX11.Node* constraint property determines the actual deployment target
+for the LM instance.
+
+By adding *nl.remedy.it.DnCX11.ExecParameter* or *nl.remedy.it.DnCX11.ConfigProperty*
+entries to the *nl.remedy.it.DnCX11.LocalityManager* descriptor record you can
+configure an LM instance. The available properties to configure an LM
+instance are described <<DnCX11 Locality Installation Handler,above>>.
+
+=== Configuring Container instances in the Deployment Plan
+
+In addition to configuring specific LM instances in the deployment plan *AXCIOMA* also allows
+the configuration of user defined Container instances in the deployment plan.
+These Container instances are created in addition to the default Container instance automatically
+created by the framework on startup of every LM instance.
+
+User defined Container instances can be specifically configured to provide tailored services
+to the Component instances installed in them.
+
+Configuring a Container instance in a deployment plan requires adding a (set
+of) component descriptor(s) to the plan with the implementation type
+*nl.remedy.it.CCM.Container* where the actual entries depend on
+the descriptor format used.
+
+In CDP type plans (using the <<xml-plan.adoc#,D&C XML descriptor
+format>>) this requires adding an _<implementation>_ descriptor with an
+_<execParameter>_ entry with id *nl.remedy.it.DnCX11.ImplementationType*
+and value *nl.remedy.it.CCM.Container* as follows:
+
+--------------------------------------------------------------
+  <implementation xmi:id="ContainerImpl001">
+    <name>ContainerImpl01</name>
+    <source />
+    ...
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Container</string>
+        </value>
+      </value>
+    </execParameter>
+    ...
+  </implementation>
+
+--------------------------------------------------------------
+
+In addition the plan will need (an) _<instance>_ descriptor entrie(s)
+referencing the Container _<implementation>_ descriptor as follows:
+
+---------------------------------------------------------
+  <instance xmi:id="ContainerInstance001">
+    <name>ContainerInst01</name>
+    <node>Node01</node>
+    <source />
+    <implementation xmi:idref="ContainerImpl001" />
+    ...
+  </instance>
+
+---------------------------------------------------------
+
+In case the plan specifies multiple LM instances to deploy for the node
+configured for a Container instance the Container instance will need to
+be added to 1 or more locality constraints such that the instance gets
+deployed with the intended LM instance (in the same way this works for
+'regular' Component instances).
+
+By adding _<execParameter>_ and/or _<configProperty>_ entries to the
+_<implementation>_ or _<instance>_ descriptors you can configure the Container
+instances.
+
+include::{ciaox11_src_root}/exf/docs/src/dncx11-config.asc[tag=refertoexfcontainer,opts=optional]
+
+In CONFIG type plans configuring a Container instance requires adding an
+*nl.remedy.it.CCM.Container* descriptor record like:
+
+----------------------------------------------------------------------------------
+# Container instance for locality "ReceiverLocality" on Node "ReceiverNode"
+nl.remedy.it.CCM.Container ContainerInstance001
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+    # add properties to configure
+    # nl.remedy.it.DnCX11.ConfigProperty ...
+
+----------------------------------------------------------------------------------
+
+The *nl.remedy.it.DnCX11.Node* and *nl.remedy.it.DnCX11.Locality*
+constraint properties determine the actual deployment target for the Container
+instance.
+
+By adding *nl.remedy.it.DnCX11.ExecParameter* or *nl.remedy.it.DnCX11.ConfigProperty*
+entries to the *nl.remedy.it.CCM.Container* descriptor record you can
+configure a Container instance.
+
+include::{ciaox11_src_root}/exf/docs/src/dncx11-config.asc[tag=refertoexfcontainer,opts=optional]
+

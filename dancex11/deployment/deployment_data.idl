@@ -1,0 +1,46 @@
+/**
+ * @file    deployment_data.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_DATA_IDL
+#define DEPLOYMENT_DATA_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+
+module Deployment {
+  struct ComponentPackageReference {
+    string requiredUUID;
+    string requiredName;
+    ComponentInterfaceDescription requiredType;
+  };
+
+  typedef sequence < ComponentPackageReference > ComponentPackageReferences;
+
+  typedef sequence < ResourceUsageKind > ResourceUsageKinds;
+
+  struct ImplementationRequirement {
+    ResourceUsageKinds resourceUsage;
+    string resourcePort;
+    string componentPort;
+    string name;
+    string resourceType;
+    Properties property;
+  };
+
+  typedef sequence < ImplementationRequirement > ImplementationRequirements;
+
+  struct Capability {
+    string name;
+    CORBA::StringSeq resourceType;
+    SatisfierProperties property;
+  };
+
+  typedef sequence < Capability > Capabilities;
+};
+
+#endif /* DEPLOYMENT_DATA_IDL */
+
+

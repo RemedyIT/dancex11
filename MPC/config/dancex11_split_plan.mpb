@@ -1,0 +1,4 @@
+project : dancex11, dancex11_stub, dancex11_deployment_stub, dancex11_tools, openmp {
+   after += dancex11_split_plan_impl
+   libs += dancex11_split_plan
+}

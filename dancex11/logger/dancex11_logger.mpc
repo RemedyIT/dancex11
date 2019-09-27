@@ -1,0 +1,20 @@
+project(dancex11_logger) : x11_logger, dancex11_output {
+  requires     += x11_logging
+  sharedname    = dancex11_logger
+  dynamicflags  = DANCEX11_LOGGER_BUILD_DLL
+
+  includes += $(DANCEX11_ROOT)
+
+  Source_Files {
+    log.cpp
+  }
+
+  Header_Files {
+    dancex11_logger_export.h
+    log.h
+  }
+
+  specific {
+    install_dir = dancex11/logger
+  }
+}

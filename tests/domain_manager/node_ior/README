@@ -1,0 +1,9 @@
+This test verifies the DnCX11 Domain Manager's support for
+specifying Node IORs on the commandline.
+
+Also, two ways to specify the Node IORs are tested:
+1. by providing a 'file://' URL referencing the files into
+   which each NM stored it's stringified IOR
+2. by specifying a corbaloc URL directly on the commandline
+   for each NM
+

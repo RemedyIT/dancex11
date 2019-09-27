@@ -1,0 +1,18 @@
+/**
+ * @file    deployment_invalidconnection.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_INVALIDCONNECTION_IDL
+#define DEPLOYMENT_INVALIDCONNECTION_IDL
+
+module Deployment {
+  exception InvalidConnection {
+    string name;
+    string reason;
+  };
+};
+
+#endif

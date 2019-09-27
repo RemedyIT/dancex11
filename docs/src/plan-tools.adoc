@@ -1,0 +1,45 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 Plan conversion tools
+
+== Plan Splitter
+
+The DnCX11 Plan Splitter is a utility application to assist in splitting
+_Deployment Plan_s.
+
+=== Commandline options
+
+Executing the command `dancex11_split_plan -h` on the commandline will
+show the following information:
+
+------------------------------------------------------------------------------------
+usage:  dancex11_split_plan [options]
+        Applies the split plan algorithm and saves the result to CDR encoded plans
+        -i PLAN          Input plan
+        -f FMT           Input plan format (default: determined from PLAN extension)
+        -t SPLIT         Type of split to perform; N=node (default), L=locality
+        -c CFG           Plugin configuration file
+------------------------------------------------------------------------------------
+
+== Plan Converter
+
+The DnCX11 Plan Converter is a utility application to assist in
+converting _Deployment Plan_s and _Domain_ descriptions from one descriptor format to another.
+
+Currently the _CDR_ format is the only format supported as target format
+for the conversion.
+
+=== Commandline options
+
+Executing the command `dancex11_convert_plan -h` on the commandline will
+show the following information:
+
+---------------------------------------------------------------------------------------------------------
+usage:  dancex11_convert_plan [options]
+        Converts a provided input file to CDR.
+        If no output file is nominated, the input file will be read and validated and the program will exit
+        -i PLAN          Input file
+        -f FMT           Input file format (default: determined from input file extension)
+        -o FILE          Output destination
+        -c CFG           Plugin configuration file
+---------------------------------------------------------------------------------------------------------

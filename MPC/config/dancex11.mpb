@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project {
+  includes += $(DANCEX11_ROOT)
+  libpaths += $(DANCEX11_ROOT)/lib
+}

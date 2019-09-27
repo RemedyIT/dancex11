@@ -1,0 +1,39 @@
+/**
+ * @file    deployment_targetmanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef TARGETMANAGER_IDL
+#define TARGETMANAGER_IDL
+
+#include "dancex11/deployment/deployment_targetdata.idl"
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+#include "dancex11/deployment/deployment_resourcecommitmentmanager.idl"
+
+module Deployment {
+  enum DomainUpdateKind {
+    Add,
+    Delete,
+    UpdateAll,
+    UpdateDynamic
+  };
+
+  interface TargetManager {
+    Domain getAllResources ();
+
+    Domain getAvailableResources ();
+
+    ResourceCommitmentManager createResourceCommitment (in ResourceAllocations resources)
+      raises (ResourceCommitmentFailure);
+
+    void destroyResourceCommitment (in ResourceCommitmentManager manager);
+
+    void updateDomain ( in CORBA::StringSeq elements,
+                        in Domain domainSubset,
+                        in DomainUpdateKind updateKind);
+  };
+};
+
+#endif /* TARGETMANAGER_IDL */

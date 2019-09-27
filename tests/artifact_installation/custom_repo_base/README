@@ -1,0 +1,16 @@
+This test checks customized artifact installation repository support.
+The test uses a custom NM config that defines an argument for the
+Artifact Installation Repository Manager specifying to use a custom
+repository base folder. The folder indicated is "." which results in
+plan repository directories being created directly under the working
+directory of the NM launching the plans.
+The deployment plan for this test also defines a custom repository folder
+named: "my_repo_plan".
+
+This folder is created under the repository base folder
+"." on deployment (i.e. in the working directory).
+
+This test deploys a plan with 2 artifacts defined for the LM instance
+of the single locality.
+The "check_artifacts" script tests if the 2 artifacts have been installed
+under the custom installation repository folder after plan launch.

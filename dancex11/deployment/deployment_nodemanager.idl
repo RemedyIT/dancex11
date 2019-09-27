@@ -1,0 +1,36 @@
+/**
+ * @file    deployment_nodemanager.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_NODEMANAGER_IDL
+#define DEPLOYMENT_NODEMANAGER_IDL
+
+#include "dancex11/deployment/deployment.idl"
+#include "dancex11/deployment/deployment_targetmanager.idl"
+#include "dancex11/deployment/deployment_manager.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+
+module Deployment
+{
+
+  interface Logger
+  {
+  };
+
+  interface NodeManager : Deployment_Manager
+  {
+    void joinDomain (in Domain theDomain,
+                     in TargetManager manager,
+                     in Logger log,
+                     in long updateInterval);
+
+    void leaveDomain ();
+
+    Resources getDynamicResources ();
+  }; //@CORBA (ami=true)
+};
+
+#endif /* DEPLOYMENT_NODEMANAGER_IDL */

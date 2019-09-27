@@ -1,0 +1,11 @@
+This test checks customized artifact installation support.
+The deployment plan for this test defines a custom repository folder
+named: "my_repo_plan".
+
+This folder is created under the default repository base folder
+".dancex11_artifacts" on deployment.
+
+This test deploys a plan with 2 artifacts defined for the LM instance
+of the single locality.
+The "check_artifacts" script tests if the 2 artifacts have been installed
+under the custom installation repository folder after plan launch.

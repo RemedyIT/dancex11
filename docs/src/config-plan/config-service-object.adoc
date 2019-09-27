@@ -1,0 +1,67 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 tool configuration descriptors
+
+== Service Object descriptor
+
+=== Introduction
+
+This descriptor provides the configuration for a _Service Object_ (SVO)
+plugin to be loaded as part of the DnCX11 tool runtime environment.
+See <<../dncx11-config#_service_objects,here>> for more information.
+
+=== Definition
+
+An SVO descriptor is defined as follows:
+
+-------------------------------------------------------------------------------------------------------
+{svo-descriptor-key} {svo-artifact} {svo-factory} [ {deployment-openmode} ] [ {deployment-properties} ]
+-------------------------------------------------------------------------------------------------------
+
+Where
+
+* \{svo-descriptor-key} := `nl.remedy.it.DnCX11.ServiceObject`
+* \{svo-artifact} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{svo-factory} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{deployment-openmode} := integer
+<<{parent_dir}/config-plan.adoc#value,literal value>>
+* \{deployment-properties} := a sequence of zero or more
+<<config-properties.adoc#_deployment_property_descriptors,Deployment Property
+descriptors>>
+
+=== Description
+
+The `{svo-artifact}` identifier specifies the implementation artifact
+(library) from which the SVO object can be instantiated. The format of
+this identifier depends on the deployment runtime platform for which the
+plugin is configured. For the current DnCX11 deployment tool runtime
+environment this should be a shared library name compatible with the ACE
+DLL loader, i.e. without path, without platform dependent prefix (f.i.
+'lib') and without extension(s).
+
+The `{svo-factory}` identifier specifies the factory (method) with which
+the SVO object can be instantiated from the loaded artifact. The format
+of this identifier depends on the deployment runtime platform for which
+the plugin is configured. Currently DnCX11 only supports ACE
+Service_Config SVOs for which the factory should conform to the ACE
+Service_Config specification.
+
+The *optional* `{deployment-openmode}` integer literal specifies an
+artifact loader dependent flag value. Currently DnCX11 ignores any
+specified `{deployment-openmode}` values for SVO descriptors.
+
+=== Example
+
+The following descriptor declaration
+
+-----------------------------------------------------------------------------------
+# DnCX11 CDR format plan loader service
+nl.remedy.it.DnCX11.ServiceObject dancex11_cdr_plan_loader _make_CDRPlan_Loader_Svc
+-----------------------------------------------------------------------------------
+
+would direct the DnCX11 deployment runtime to load the shared library
+specified by `dancex11_cdr_plan_loader` (resulting in
+`libdancex11_cdr_plan_loader.so` on Linux and
+`dancex11_cdr_plan_loader.dll` on Windows) and instantiate an SVO object
+by calling the ACE Service_Object factory method
+`_make_CDRPlan_Loader_Svc` which must return an SVO reference.

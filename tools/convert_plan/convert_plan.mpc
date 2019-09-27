@@ -1,0 +1,30 @@
+project (dancex11_convert_plan_impl) : install, dancex11_lib, dancex11_output, \
+        dancex11_logger, dancex11_deployment_stub \
+{
+  sharedname = dancex11_convert_plan
+  dynamicflags += DANCEX11_CONVERT_PLAN_BUILD_DLL
+
+  Source_Files {
+     convert_plan_impl.cpp
+  }
+
+  specific {
+     install_dir = tools/convert_plan
+  }
+}
+
+
+project (dancex11_convert_plan_exec) : install, dancex11_exe, dancex11_output, dancex11_state, \
+        dancex11_convert_plan, dancex11_plan_loader_stub, dancex11_deployment_scheduler, \
+        dancex11_deployment_configurator, dancex11_deployment_handler \
+{
+  exename = dancex11_convert_plan
+
+  Source_Files {
+    convert_plan.cpp
+  }
+
+  specific {
+     install_dir = tools/convert_plan
+  }
+}

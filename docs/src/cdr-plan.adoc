@@ -1,0 +1,31 @@
+include::_{backend}_settings.adoc[]
+
+= IDL CDR descriptor format
+
+== Introduction
+
+The https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification] provides a model transformation
+definition for transforming the PSM into an IDL model.
+
+The resulting IDL model is what the DnCX11 deployment tools use as runtime representation
+for the _Deployment Plan_ and _Domain_ descriptions loaded from the descriptor documents
+provided at deployment execution time.
+
+In the communication between the different actors in the deployment process (PL, EM, NM and LM)
+deployment plan information is shared using the Common Data Representation (CDR) format specified
+for CORBA base communication.
+
+== CDR Document
+
+DnCX11 CDR documents are binary representations of the D&C IDL model information in CORBA CDR format
+streamed and persistently stored in a disk file.
+
+DnCX11 currently only has support for _Deployment Plan_ descriptor documents in CDR format.
+
+== Content
+
+DnCX11 CDR _Deployment Plan_ documents contain binary representations of the D&C IDL representation of the
+Execution Data model.
+See https://www.omg.org/spec/DEPL[here] for more information on the Execution Data model.
+See https://www.omg.org/spec/CORBA[here] for more information about the CORBA CDR specification (part 2, Chapter 9).

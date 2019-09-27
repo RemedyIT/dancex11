@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_deploymentmanagerhandler_skel.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_deploymentmanagerhandler_stub, dancex11_applicationmanager_skel {
+  libs += dancex11_deploymentmanagerhandler_skel
+  after += dancex11_core_dmh_skel
+}

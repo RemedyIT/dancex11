@@ -1,0 +1,20 @@
+project (dancex11_error_interceptors) : install, dancex11_deployment_stub, \
+      dancex11_lib, dancex11_stub, dancex11_output {
+
+  dynamicflags += DANCEX11_LOG_ERROR_INTERCEPTORS_BUILD_DLL
+
+  Source_Files {
+    standard_error.cpp
+    best_effort.cpp
+  }
+
+  Header_Files {
+    standard_error.h
+    best_effort.h
+    dance_error_interceptors_export.h
+  }
+
+  specific {
+     install_dir = dancex11/localitymanager/interceptors
+  }
+}

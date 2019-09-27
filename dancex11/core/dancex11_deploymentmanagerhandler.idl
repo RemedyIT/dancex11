@@ -1,0 +1,51 @@
+/**
+ * @file    dancex11_deploymentmanagerhandler.idl
+ * @author  Martin Corino
+ *
+ * @brief   Defines the interfaces of the DM handler.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_DEPLOYMENTMANAGER_HANDLER_IDL
+#define DANCEX11_DEPLOYMENTMANAGER_HANDLER_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+#include "dancex11/deployment/deployment_starterror.idl"
+#include "dancex11/deployment/deployment_stoperror.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+#include "dancex11/deployment/deployment_manager.idl"
+#include "dancex11/core/dancex11_shutdown_control.idl"
+
+module DAnCEX11
+{
+  interface DeploymentLaunchManager : ShutdownControl
+  {
+    attribute Deployment::DeploymentPlan plan;
+
+    void launch ()
+      raises (Deployment::StartError, Deployment::PlanError);
+  };
+
+  local interface DeploymentManagerHandler : ShutdownControl
+  {
+    readonly attribute string handler_type;
+
+    void configure (in string config,
+                    in Deployment::Properties prop,
+                    in ShutdownHandler sh)
+      raises (Deployment::StartError);
+
+    /// Starts the deployment manager handler in standard daemon mode.
+    /// Registers and activates a DM of which the reference is returned.
+    Deployment::Deployment_Manager activate_manager (in string name)
+      raises (Deployment::StartError);
+
+    /// Starts the deployment manager handler in single plan launcher mode.
+    /// Registers and activates a DLM and returns the reference of the DLM.
+    DeploymentLaunchManager activate_launcher (in string name)
+      raises (Deployment::StartError);
+  };
+};
+
+#endif /* DANCEX11_DEPLOYMENTMANAGER_HANDLER_IDL */

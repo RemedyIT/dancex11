@@ -1,0 +1,18 @@
+#
+# configure setup for DnCX11
+#
+
+configure :dancex11 do
+
+  depends_on :ciaox11
+
+  mpc do
+    include '$DANCEX11_ROOT/MPC/config'
+
+    mwc_include %w{
+      $(DANCEX11_ROOT)/dancex11
+      $(DANCEX11_ROOT)/tools
+    }
+  end
+
+end

@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_installation_handlers.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_artifact_installation, inet {
+  libs += dancex11_file_installation dancex11_http_installation
+  after += dancex11_file_installation dancex11_http_installation
+}

@@ -1,0 +1,11 @@
+This test verifies the support of the Plan Launcher for launching a plan directly through
+a Locality Manager daemon.
+
+The test spawns *no* Domain Manager or Node Managers but only a Locality Manager and has
+the Plan Launcher connect to the LM directly.
+
+The run_test.pl script uses defaults for the resolution of the LM ApplicationManager and
+Application.
+
+The run_test_ior.pl script specifies explicit arguments for the resolution of the LM
+ApplicationManager and Application.

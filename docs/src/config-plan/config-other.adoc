@@ -1,0 +1,97 @@
+include::_{backend}_settings.adoc[]
+
+= _Deployment Plan_ descriptors
+
+== Deployment Node Descriptor
+
+=== Introduction
+
+This descriptor provides the specification of the target Node an
+(component) instance should be deployed on.
+
+=== Definition
+
+A Deployment Node descriptor is defined as follows:
+
+------------------------------------------
+{deployment-node-key} {deployment-node-id}
+------------------------------------------
+
+Where
+
+* \{deployment-node-key} := `nl.remedy.it.DnCX11.Node`
+* \{deployment-node-id} := a literal string
+<<{parent_dir}/config-plan.adoc#value,value>>
+
+=== Description
+
+The `{deployment-node-id}` value is used to define the _node_ of a D&C
+Instance description.
+
+== Deployment Locality Descriptor
+
+=== Introduction
+
+This descriptor provides the specification of the target Locality an
+(component) instance should be deployed in.
+
+=== Definition
+
+A Deployment Locality descriptor is defined as follows:
+
+--------------------------------------------------
+{deployment-locality-key} {deployment-locality-id}
+--------------------------------------------------
+
+Where
+
+* \{deployment-locality-key} := `nl.remedy.it.DnCX11.Locality`
+* \{deployment-locality-id} := a literal string
+<<{parent_dir}/config-plan.adoc#value,value>>
+
+=== Description
+
+The `{deployment-locality-id}` value is used in combination with the
+_node_ value to select instances for inclusion in _localityConstraint_s.
+
+Based on the locality and node assignments for each instance description
+in the plan one *SameProcess* _localityConstraint_ will be defined for
+each combination of node and locality assignments listing all instances
+matching that combination. In addition a single *DifferentProcess*
+_localityConstraint_s will be defined for each node listing the first
+instances of each *SameProcess* constraint for that node.
+
+
+== Deployment Container Descriptor
+
+=== Introduction
+
+This descriptor provides the specification of the target Container an
+(component) instance should be installed in.
+
+=== Definition
+
+A Deployment Container descriptor is defined as follows:
+
+--------------------------------------------------
+{deployment-container-key} {deployment-container-id}
+--------------------------------------------------
+
+Where
+
+* \{deployment-container-key} := `nl.remedy.it.DnCX11.Container`
+* \{deployment-container-id} := a literal string
+<<{parent_dir}/config-plan.adoc#value,value>>
+
+=== Description
+
+The `{deployment-container-id}` value is used to lookup the container
+instance in a locality into which to install a component instance.
+This *requires* the declaration of a matching
+<<config-plan/config-container-instance.adoc#,Container Instance descriptor>>
+for the node + locality for which the component instance is declared.
+
+In case the Deployment Container Descriptor is part of a
+<<config-plan/config-container-instance.adoc#,Container Instance descriptor>>
+the `{deployment-container-id}` value will be used as identifier for the container
+instance in the locality.

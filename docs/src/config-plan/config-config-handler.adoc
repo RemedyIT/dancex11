@@ -1,0 +1,68 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 tool configuration descriptors
+
+== Deployment Configuration Handler descriptor
+
+=== Introduction
+
+This descriptor provides the configuration for a _Deployment
+Configuration Handler_ (DCH) plugin to be loaded as part of the DnCX11
+tool runtime environment. +
+See <<../dncx11-config#_deployment_configuration_handlers,here>> for more information.
+
+=== Definition
+
+An DCH descriptor is defined as follows:
+
+-------------------------------------------------------------------------------------------------------
+{dch-descriptor-key} {dch-artifact} {dch-factory} [ {deployment-openmode} ] [ {deployment-properties} ]
+-------------------------------------------------------------------------------------------------------
+
+Where
+
+* \{dch-descriptor-key} := `nl.remedy.it.DnCX11.ConfigPlugin`
+* \{dch-artifact} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{dch-factory} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{deployment-openmode} := integer
+<<{parent_dir}/config-plan.adoc#value,literal value>>
+* \{deployment-properties} := a sequence of zero or more
+<<config-properties.adoc#_deployment_property_descriptors,Deployment Property
+descriptors>>
+
+=== Description
+
+The `{dch-artifact}` identifier specifies the implementation artifact
+(library) from which the DCH object can be instantiated. The format of
+this identifier depends on the deployment runtime platform for which the
+plugin is configured. For the current DnCX11 deployment tool runtime
+environment this should be a shared library name compatible with the ACE
+DLL loader, i.e. without path, without platform dependent prefix (f.i.
+'lib') and without extension(s).
+
+The `{dch-factory}` identifier specifies the factory (method) with which
+the DCH object can be instantiated from the loaded artifact. The format
+of this identifier depends on the deployment runtime platform for which
+the plugin is configured.
+
+The *optional* `{deployment-openmode}` integer literal specifies an
+artifact loader dependent flag value. For the current DnCX11 deployment
+tool runtime environment this should be a shared library openmode value
+as used by the ACE DLL loader. It is normally not necessary to specify
+this value.
+
+=== Example
+
+The following descriptor declaration
+
+------------------------------------------------------------------------------------
+# DnCX11 CPU affinity configuration plugin
+nl.remedy.it.DnCX11.ConfigPlugin dancex11_locality_configuration create_cpu_affinity
+------------------------------------------------------------------------------------
+
+would direct the DnCX11 deployment runtime to load the shared library
+specified by `dancex11_locality_configuration` (resulting in
+`libdancex11_locality_configuration.so` on Linux and
+`dancex11_locality_configuration.dll` on Windows) and instantiate a DCH
+object by calling the `void` method `create_cpu_affinity` which must
+return a DCH reference.

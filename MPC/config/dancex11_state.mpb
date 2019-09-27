@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_state.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_defaults, taox11_portableserver, dancex11_lib, dancex11_logger {
+  libs  += dancex11_state
+  after += dancex11_core_state
+}

@@ -1,0 +1,12 @@
+These tests verify DnCX11 Artifact installation support.
+
+To enable this support a NM config must be used that loads the following plugins:
+
+- the Artifact Installation Repository Manager service
+- 1 or more Artifact Installation protocol handlers (like for file:// or http:// urls)
+- the Artifact Instance deployment handler
+- optionally; the Artifact Installation initialization interceptor handler
+  (provides support for Artifact Installation repository customization)
+
+The "nodemanager.config" file in this directory loads the first three plugins.
+The 'custom_repo_base' test has another config file which also loads the last plugin.

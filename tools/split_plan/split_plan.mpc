@@ -1,0 +1,26 @@
+project (dancex11_split_plan_impl) : dancex11_lib, dancex11_stub, dancex11_deployment_stub, dancex11_output, dancex11_logger, install {
+  dynamicflags += DANCE_SPLIT_PLAN_BUILD_DLL
+  sharedname = dancex11_split_plan
+
+  Source_Files {
+    locality_splitter.cpp
+    node_splitter.cpp
+    sub_uuid_generator.cpp
+  }
+
+  specific {
+    install_dir = tools/split_plan
+  }
+}
+
+project (dancex11_split_plan_exec) : dancex11_exe, dancex11_output, dancex11_state, \
+        dancex11_split_plan, dancex11_convert_plan, \
+        dancex11_plan_loader_stub, dancex11_deployment_scheduler, \
+        dancex11_deployment_configurator, dancex11_deployment_handler, \
+        avoids_ace_for_tao, dancex11_logger, install, openmp {
+  exename = dancex11_split_plan
+
+  Source_Files {
+    split_plan_exec.cpp
+  }
+}

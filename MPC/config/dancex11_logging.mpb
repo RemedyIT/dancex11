@@ -1,0 +1,5 @@
+// feature project for dancex11_logging
+feature(x11_logging) {
+  libs += dancex11_logger
+  after += dancex11_logger
+}

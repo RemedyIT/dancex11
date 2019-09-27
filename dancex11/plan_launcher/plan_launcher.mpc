@@ -1,0 +1,20 @@
+project(dancex11_plan_launcher_exec) : \
+      avoids_ace_for_tao, install, utils, \
+      taox11_cosnaming_stub, dancex11_plan_loader_stub, \
+      dancex11_deployment_scheduler, \
+      dancex11_deployment_configurator, \
+      dancex11_deployment_handler, \
+      dancex11_executionmanager_stub, \
+      dancex11_nodemanager_stub, \
+      dancex11_applicationmanager_stub, \
+      dancex11_domainapplicationmanager_stub, \
+      dancex11_nodeapplicationmanager_stub, \
+      dancex11_exe, dancex11_stub, dancex11_state, dancex11_logger {
+  exename = dancex11_plan_launcher
+
+  Source_Files {
+    plan_launcher_module.cpp
+    plan_launcher_exec.cpp
+    launcher_impl.cpp
+  }
+}

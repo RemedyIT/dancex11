@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_lm_stub.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_applicationmanager_stub {
+  libs += dancex11_localitymanager_stub
+  after += dancex11_core_lm_stub
+}

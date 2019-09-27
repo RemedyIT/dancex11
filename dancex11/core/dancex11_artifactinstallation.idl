@@ -1,0 +1,47 @@
+/**
+ * @file    dancex11_artifactinstallation.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_ARTIFACT_INSTALLATION_IDL
+#define DANCEX11_ARTIFACT_INSTALLATION_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+#include "dancex11/deployment/deployment_planerror.idl"
+
+module DAnCEX11
+{
+  local interface ArtifactInstallation
+  {
+    void initialize ()
+      raises (::Deployment::PlanError);
+
+    void clear ()
+      raises (::Deployment::PlanError);
+
+    void prepare (in ::Deployment::DeploymentPlan plan)
+      raises (::Deployment::PlanError);
+
+    /// Acts as a front end to the ArtifactInstallationHandlers
+    /// that were installed at object creation. Each InstallationHandler
+    /// is capable of handling a single URI type;
+    void install (in string plan_uuid,
+                  in ::Deployment::ArtifactDeploymentDescription artifact)
+      raises (::Deployment::PlanError);
+
+    void remove (in string plan_uuid,
+                 in string artifact_name)
+      raises (::Deployment::PlanError);
+
+    void remove_all (in string plan_uuid)
+      raises (::Deployment::PlanError);
+
+    /// Used by component/locality server to query location of a given artifact
+    string get_artifact_location (in string uuid,
+                                  in string artifact_name);
+  };
+};
+
+#endif /* DANCEX11_ARTIFACT_INSTALLATION_IDL */

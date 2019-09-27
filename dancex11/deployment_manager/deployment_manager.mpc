@@ -1,0 +1,13 @@
+project(dancex11_deployment_manager_exec) : \
+      avoids_ace_for_tao, install, utils, \
+      taox11_cosnaming_stub, taox11_ior_table, \
+      dancex11_deploymentmanagerhandler_stub, \
+      dancex11_plan_loader_stub, \
+      dancex11_exe, dancex11_stub, dancex11_state, dancex11_logger {
+  exename = dancex11_deployment_manager
+
+  Source_Files {
+    deployment_manager_module.cpp
+    deployment_manager_exec.cpp
+  }
+}

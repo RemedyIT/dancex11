@@ -1,0 +1,63 @@
+<!--
+ * @file   deployment.cdp
+ * @author Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<Deployment:DeploymentPlan
+ xmlns:Deployment="http://www.omg.org/Deployment"
+ xmlns:xmi="http://www.omg.org/XMI"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>LocalityManager_Process_Name</label>
+  <UUID>LocalityManager_Process_Name</UUID>
+
+  <infoProperty>
+    <name>nl.remedy.it.DnCX11.ArtifactRepo.Path</name>
+    <value>
+      <type>
+        <kind>tk_string</kind>
+      </type>
+      <value>
+        <string>my_plan_repo</string>
+      </value>
+    </value>
+  </infoProperty>
+
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="CompSvrInst">
+    <name>LocalityInstance</name>
+    <node>LocalityOne</node>
+    <source />
+    <implementation xmi:idref="CompSvrImpl" />
+  </instance>
+
+  <artifact xmi:id="loc1_resource">
+    <name>loc1_resource</name>
+    <source />
+    <node />
+    <location>file://../artifacts/test_resource.dat</location>
+  </artifact>
+  <artifact xmi:id="loc1_readme">
+    <name>loc1_readme</name>
+    <source />
+    <node />
+    <location>file://../artifacts/readme.txt</location>
+  </artifact>
+</Deployment:DeploymentPlan>

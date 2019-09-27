@@ -1,0 +1,44 @@
+project(dancex11_deployment_configurator_impl) : \
+      dancex11_lib, dancex11_output, install, \
+      dancex11_stub {
+
+  dynamicflags += DANCE_CONFIGURATOR_BUILD_DLL
+  sharedname = dancex11_deployment_configurator
+
+  Source_Files {
+    dancex11_config_stream.cpp
+    dancex11_config_loader.cpp
+  }
+
+  Header_Files {
+    dancex11_configurator_export.h
+    dancex11_config_loader.h
+    dancex11_config_stream.h
+    dancex11_config_parser.h
+  }
+
+  Template_Files {
+    dancex11_config_parser.cpp
+    dancex11_config_util.h
+  }
+
+  specific {
+    install_dir = dancex11/configurator
+  }
+}
+
+project(dancex11_deployment_configurator_test) : \
+      avoids_ace_for_tao, install, utils, \
+      dancex11_exe, dancex11_stub, dancex11_logger \
+{
+  requires += dummy_label
+
+  after += dancex11_deployment_configurator_impl
+
+  exename = config_test
+  libs += dancex11_deployment_configurator
+
+  Source_Files {
+    config_test.cpp
+  }
+}

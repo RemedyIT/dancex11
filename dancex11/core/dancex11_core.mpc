@@ -1,0 +1,311 @@
+project(dancex11_core_idl) : dancex11_idl, dancex11_output, \
+      taox11_anytypecode, install \
+{
+  custom_only = 1
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_STUB_Export \
+                -Wb,stub_export_include=dancex11_stub_export.h
+    idlflags += -SS -Sci
+    idlflags += -Gxhst
+    dancex11_properties.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_STUB_Export \
+                -Wb,stub_export_include=dancex11_stub_export.h
+    idlflags += -SS -Sci
+    dancex11_deploymentconfigurators.idl
+    dancex11_deploymentinterceptors.idl
+    dancex11_deploymenthandlers.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_LM_STUB_Export \
+                -Wb,stub_export_include=dancex11_lm_stub_export.h \
+                -Wb,skel_export_macro=DANCEX11_LM_SKEL_Export \
+                -Wb,skel_export_include=dancex11_lm_skel_export.h
+    idlflags += -Gxhst -Gxhsk
+    dancex11_localitymanager.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_ARTINS_STUB_Export \
+                -Wb,stub_export_include=dancex11_artins_stub_export.h
+    idlflags += -SS -Sci
+    idlflags += -Gxhst
+    dancex11_artifactinstallation.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_DMH_STUB_Export \
+                -Wb,stub_export_include=dancex11_deploymentmanagerhandler_stub_export.h \
+                -Wb,skel_export_macro=DANCEX11_DMH_SKEL_Export \
+                -Wb,skel_export_include=dancex11_deploymentmanagerhandler_skel_export.h
+    idlflags += -Gxhst -Gxhsk
+    dancex11_deploymentmanagerhandler.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_DMH_STUB_Export \
+                -Wb,stub_export_include=dancex11_deploymentmanagerhandler_stub_export.h \
+                -Wb,skel_export_macro=DANCEX11_DMH_SKEL_Export \
+                -Wb,skel_export_include=dancex11_deploymentmanagerhandler_skel_export.h
+    dancex11_shutdown_control.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_NM_STUB_Export \
+                -Wb,stub_export_include=dancex11_nodemanager_stub_export.h \
+                -Wb,skel_export_macro=DANCEX11_NM_SKEL_Export \
+                -Wb,skel_export_include=dancex11_nodemanager_skel_export.h
+    idlflags += -Gxhst -Gxhsk
+    dancex11_nodemanager.idl
+  }
+
+  IDL_Files {
+    idlflags += -Wb,stub_export_macro=DANCEX11_EM_STUB_Export \
+                -Wb,stub_export_include=dancex11_executionmanager_stub_export.h \
+                -Wb,skel_export_macro=DANCEX11_EM_SKEL_Export \
+                -Wb,skel_export_include=dancex11_executionmanager_skel_export.h
+    idlflags += -Gxhst -Gxhsk
+    dancex11_executionmanager.idl
+  }
+}
+
+project (dancex11_core_stub) : dancex11_lib, dancex11_output, \
+         dancex11_applicationmanager_stub, dancex11_deployment_stub, \
+         dancex11_logger, install \
+{
+  after += dancex11_core_idl
+  dynamicflags += DANCEX11_STUB_BUILD_DLL
+  sharedname = dancex11_stub
+
+  Source_Files {
+    dancex11_deploymentconfiguratorsC.cpp
+    dancex11_deploymentinterceptorsC.cpp
+    dancex11_deploymenthandlersC.cpp
+    dancex11_dynamic_loader.cpp
+    dancex11_propertiesC.cpp
+    dancex11_utility.cpp
+    dancex11_deploymentinterceptors_base_impl.cpp
+  }
+
+  Header_Files {
+    dancex11_utility.h
+    dancex11_stub_export.h
+    dancex11_deploymentconfiguratorsC.h
+    dancex11_deploymentinterceptorsC.h
+    dancex11_deploymenthandlersC.h
+    dancex11_dynamic_loader.h
+    dancex11_propertiesC.h
+  }
+
+  Template_Files {
+    dancex11_utility_t.cpp
+  }
+
+  InstallData_Files {
+    gendir = bin
+    ../bin/ciao.localityconfig
+    ../bin/nodemanager.localityconfig
+  }
+}
+
+project (dancex11_core_state) : ciaox11, dancex11_lib, dancex11_output, \
+        dancex11_logger, install, taox11_defaults, taox11_portableserver \
+{
+  dynamicflags += DANCEX11_STATE_BUILD_DLL
+  sharedname = dancex11_state
+
+  Source_Files {
+    dancex11_deployment_state.cpp
+  }
+
+  Header_Files {
+    dancex11_state_export.h
+    dancex11_deployment_state.h
+  }
+}
+
+project (dancex11_core_lm_stub) : dancex11_lib, dancex11_output, \
+         dancex11_applicationmanager_stub, dancex11_deployment_stub, \
+         dancex11_deploymentmanagerhandler_stub, dancex11_logger, install \
+{
+  after += dancex11_core_idl
+  dynamicflags += DANCEX11_LM_STUB_BUILD_DLL
+  sharedname = dancex11_localitymanager_stub
+
+  Source_Files {
+    dancex11_localitymanagerC.cpp
+  }
+
+  Header_Files {
+    dancex11_lm_stub_export.h
+    dancex11_deploymenthandlersC.h
+  }
+}
+
+project (dancex11_core_lm_skel) : dancex11_lib, dancex11_output, dancex11_deployment_stub, \
+         dancex11_applicationmanager_skel, dancex11_deployment_skel, install, \
+         dancex11_deploymentmanagerhandler_skel, dancex11_lm_stub \
+{
+  after += dancex11_core_lm_stub
+  dynamicflags += DANCEX11_LM_SKEL_BUILD_DLL
+  sharedname = dancex11_localitymanager_skel
+
+  Source_Files {
+    dancex11_localitymanagerS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  Header_Files {
+    dancex11_localitymanagerS.h
+    dancex11_lm_skel_export.h
+  }
+}
+
+project (dancex11_core_artins_stub) : dancex11_lib, dancex11_output, \
+         dancex11_applicationmanager_stub, dancex11_deployment_stub, \
+         dancex11_logger, install \
+{
+  after += dancex11_core_idl
+  dynamicflags += DANCEX11_ARTINS_STUB_BUILD_DLL
+  sharedname = dancex11_artifactinstallation_stub
+
+  Source_Files {
+    dancex11_artifactinstallationC.cpp
+  }
+
+  Header_Files {
+    dancex11_artins_stub_export.h
+    dancex11_artifactinstallationC.h
+  }
+}
+
+project (dancex11_core_plan_loader_stub) : dancex11_lib, dancex11_output, \
+         dancex11_deployment_stub, dancex11_deployment_configurator, \
+         dancex11_logger, install \
+{
+  dynamicflags += DANCEX11_PLAN_LOADER_STUB_BUILD_DLL
+  sharedname = dancex11_plan_loader
+
+  Source_Files {
+    dancex11_deployment_plan_loader.cpp
+  dancex11_deployment_config_plan_loader.cpp
+  }
+
+  Header_Files {
+    dancex11_plan_loader_stub_export.h
+    dancex11_deployment_plan_loader.h
+    dancex11_deployment_config_plan_loader.h
+  }
+}
+
+project (dancex11_core_dmh_stub) : dancex11_lib, dancex11_output, \
+         dancex11_applicationmanager_stub, dancex11_deployment_stub, \
+         dancex11_logger, install \
+{
+  after += dancex11_core_idl
+  dynamicflags += DANCEX11_DMH_STUB_BUILD_DLL
+  sharedname = dancex11_deploymentmanagerhandler_stub
+
+  Source_Files {
+    dancex11_deploymentmanagerhandlerC.cpp
+    dancex11_shutdown_controlC.cpp
+    dancex11_dmh_loader.cpp
+  }
+
+  Header_Files {
+    dancex11_deploymentmanagerhandler_stub_export.h
+    dancex11_deploymentmanagerhandlerC.h
+    dancex11_shutdown_controlC.h
+    dancex11_dmh_loader.h
+  }
+}
+
+project (dancex11_core_dmh_skel) : dancex11_lib, dancex11_output, dancex11_deployment_stub, \
+         dancex11_applicationmanager_skel, dancex11_deployment_skel, install, \
+         dancex11_deploymentmanagerhandler_stub \
+{
+  after += dancex11_core_dmh_stub
+  dynamicflags += DANCEX11_DMH_SKEL_BUILD_DLL
+  sharedname = dancex11_deploymentmanagerhandler_skel
+
+  Source_Files {
+    dancex11_deploymentmanagerhandlerS.cpp
+    dancex11_shutdown_controlS.cpp
+  }
+
+  Inline_Files {
+  }
+
+  Header_Files {
+    dancex11_deploymentmanagerhandlerS.h
+    dancex11_shutdown_controlS.h
+    dancex11_deploymentmanagerhandler_skel_export.h
+  }
+}
+
+project (dancex11_core_nm_base) : dancex11_lib, dancex11_output, \
+         dancex11_deploymentmanagerhandler_skel, dancex11_nodemanager_skel, \
+         dancex11_logger, install \
+{
+  dynamicflags += DANCEX11_NM_STUB_BUILD_DLL
+  dynamicflags += DANCEX11_NM_SKEL_BUILD_DLL
+  sharedname = dancex11_nodemanager_impl
+
+  Source_Files {
+    dancex11_nodemanagerC.cpp
+    dancex11_nodemanagerS.cpp
+  }
+
+  Header_Files {
+    dancex11_nodemanagerC.h
+    dancex11_nodemanager_stub_export.h
+    dancex11_nodemanagerS.h
+    dancex11_nodemanager_skel_export.h
+  }
+}
+
+project (dancex11_core_em_base) : dancex11_lib, dancex11_output, \
+         dancex11_deploymentmanagerhandler_skel, dancex11_executionmanager_skel, \
+         dancex11_logger, install \
+{
+  dynamicflags += DANCEX11_EM_STUB_BUILD_DLL
+  dynamicflags += DANCEX11_EM_SKEL_BUILD_DLL
+  sharedname = dancex11_executionmanager_impl
+
+  Source_Files {
+    dancex11_executionmanagerC.cpp
+    dancex11_executionmanagerS.cpp
+  }
+
+  Header_Files {
+    dancex11_executionmanagerC.h
+    dancex11_executionmanager_stub_export.h
+    dancex11_executionmanagerS.h
+    dancex11_executionmanager_skel_export.h
+  }
+}
+
+project (dancex11_core_cdrplan_loader) : dancex11_lib, dancex11_output, \
+         dancex11_deploymentmanagerhandler_stub, dancex11_deployment_stub, \
+         dancex11_plan_loader_stub, dancex11_logger, install \
+{
+  after += dancex11_core_dmh_stub
+  dynamicflags += DANCEX11_CDRPLAN_LOADER_BUILD_DLL
+  sharedname = dancex11_cdr_plan_loader
+
+  Source_Files {
+    dancex11_deployment_cdr_plan_loader.cpp
+  }
+
+  Header_Files {
+    dancex11_deployment_cdrplanloader_export.h
+    dancex11_deployment_cdr_plan_loader.h
+    dancex11_deployment_cdr_plan_loader_static.h
+  }
+}

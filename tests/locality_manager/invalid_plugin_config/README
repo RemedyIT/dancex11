@@ -1,0 +1,3 @@
+This test verifies the expected result of a deployment where the
+LM configuration file is invalid.
+The deployment is expected to result in a controlled failure.

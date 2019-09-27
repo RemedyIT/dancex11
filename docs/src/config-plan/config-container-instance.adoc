@@ -1,0 +1,111 @@
+include::_{backend}_settings.adoc[]
+
+= _Deployment Plan_ descriptors
+
+== Container Instance descriptor
+
+=== Introduction
+
+This descriptor provides the configuration for a Component Container
+instance as a set of D&C Component Implementation, Instance,
+LocalityConstraint and Artifact descriptions for a _Deployment Plan_.
+
+Although a Component Container is not a Component as such DnCX11 allows
+the definition of Container instances in a way similar to regular
+components to be able to configure runtime settings, locality constraints
+and provide lifecycle interception points.
+
+Declaring Container Instance descriptors is optional.
+DnCX11 localities will always have a default container available in which
+all component instances are installed that do not define an explicit
+deployment container.
+Any Container Instance descriptors declared will create additional container
+instances besides the default container instance.
+
+=== Definition
+
+A Container Instance descriptor is defined as follows:
+
+----------------------------------
+{ccm-container-key} {ccm-container-id}
+    [ {deployment-node} ]
+    [ {deployment-location} ]
+    [ {deployment-artifacts} ]
+    [ {deployment-properties} ]
+----------------------------------
+
+Where
+
+* \{ccm-container-key} := `nl.remedy.it.CCM.Container`
+* \{ccm-container-id} :=
+<<{parent_dir}/config-plan.adoc#dotted-identifier,dotted-identifier>>
+* \{deployment-node} := a <<config-other.adoc#_deployment_node_descriptor,Deployment Node
+descriptor>>
+* \{deployment-location} := a
+<<config-other.adoc#_deployment_locality_descriptor,Deployment Locality descriptor>>
+* \{deployment-artifacts} := a sequence of zero or more
+<<config-artifact.adoc#,Deployment Artifact descriptors>>
+* \{deployment-properties} := a sequence of zero or more
+<<config-properties.adoc#_deployment_property_descriptors,Deployment Property
+descriptors>>
+
+The order in which the nested descriptors appear in an actual
+declaration is not prescribed. Each declared (nested) descriptor must
+however be complete before starting the declaration of another (nested
+or toplevel) descriptor declaration.
+
+The line breaks shown in the format definition above are not mandatory
+but only there for display formatting purposes (newlines are simply
+considered whitespace separating _CONFIG_ tokens).
+
+=== Description
+
+The `{ccm-container-id}` identifier specifies the name for the D&C
+Instance description and should be unique in the context of the defined
+_Deployment Plan_.
+
+The DnCX11 _CONFIG_ loader will automatically identify a D&C
+Implementation description for the defined LM instance using the
+standard name `_AXCIOMA_CCMContainer_`. In case no Implementation
+description with this name yet exists in the context of the defined plan
+an new Implementation description with this name will be created.
+
+Any explicitly declared ExecParameter property descriptors as part of
+the optional `{deployment-properties}` for a Container Instance descriptor are
+also added as _execParameter_ properties of the D&C Implementation
+description created/used for the LM.
+
+In the case of multiple Container Instance descriptor declarations the referred
+Implementation description will be the same for each instance and
+therefor explicit ExecParameter property descriptors are only required
+on the first instance descriptor declaration.
+
+In case the optional `{deployment-container}` descriptor is missing the
+container id for the define LM instance is assumed to be equal to the
+name of the Container instance (i.e. `{ccm-container-id}`).
+
+=== Example
+
+The following descriptor declarations
+
+----------------------------------------------------------------------------------------------------
+
+# container instance for locality "LocalityInstance1" on Node "LocalityOne"
+nl.remedy.it.CCM.Container LM1_ContainerX
+    nl.remedy.it.DnCX11.Node "LocalityOne"
+    nl.remedy.it.DnCX11.Locality "LocalityInstance1"
+
+----------------------------------------------------------------------------------------------------
+
+would define one D&C Implementation description named
+`_AXCIOMA_CCMContainer_` referred to by one D&C Instance description:
+
+.  with
+* _name_ = `LM1_ContainerX`
+* _node_ = `LocalityOne`
+* one _configProperty_ `nl.remedy.it.DnCX11.Locality` with
+value `"LocalityInstance1"`
+
+As an explicit `{deployment-container}` descriptor declarations is absent
+the container id for the container instance is assumed to be
+`LM1_ContainerX`.

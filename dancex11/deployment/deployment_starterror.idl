@@ -1,0 +1,18 @@
+/**
+ * @file    deployment_starterror.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEPLOYMENT_STARTERROR_IDL
+#define DEPLOYMENT_STARTERROR_IDL
+
+module Deployment {
+  exception StartError {
+    string name;
+    string reason;
+ };
+};
+#endif /* DEPLOYMENT_STARTERROR_IDL */
+

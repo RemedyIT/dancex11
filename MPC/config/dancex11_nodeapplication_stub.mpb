@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// dancex11_nodeapplication_stub.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : dancex11_nodeapplicationmanager_stub {
+  libs += dancex11_nodeapplication_stub
+  after += dancex11_nodeapplication_stub
+}

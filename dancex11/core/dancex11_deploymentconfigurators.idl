@@ -1,0 +1,26 @@
+/**
+ * @file    dancex11_deploymentconfigurators.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DANCEX11_DEPLOYMENTCONFIGURATORS_IDL
+#define DANCEX11_DEPLOYMENTCONFIGURATORS_IDL
+
+#include "dancex11/deployment/deployment_deploymentplan.idl"
+
+module DAnCEX11
+{
+  local interface DeploymentConfiguration
+  {
+    readonly attribute string type;
+
+    void configure (in ::Deployment::Property prop);
+
+    /// Instruct the configurator to release any resources prior to deallocation.
+    void close ();
+  };
+};
+
+#endif /* DANCEX11_DEPLOYMENTCONFIGURATORS_IDL */

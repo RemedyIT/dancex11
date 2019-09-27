@@ -1,0 +1,68 @@
+include::_{backend}_settings.adoc[]
+
+= DnCX11 tool configuration descriptors
+
+== Deployment Interceptor descriptor
+
+=== Introduction
+
+This descriptor provides the configuration for an _Deployment
+Interceptor_ (DI) plugin to be loaded as part of the DnCX11 tool runtime
+environment. +
+See <<../dncx11-config#_deployment_interceptors,here>> for more information.
+
+=== Definition
+
+An DI descriptor is defined as follows:
+
+----------------------------------------------------------------------------------------------------
+{di-descriptor-key} {di-artifact} {di-factory} [ {deployment-openmode} ] [ {deployment-properties} ]
+----------------------------------------------------------------------------------------------------
+
+Where
+
+* \{di-descriptor-key} := `nl.remedy.it.DnCX11.DeploymentInterceptor`
+* \{di-artifact} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{di-factory} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{deployment-openmode} := integer
+<<{parent_dir}/config-plan.adoc#value,literal value>>
+* \{deployment-properties} := a sequence of zero or more
+<<config-properties.adoc#_deployment_property_descriptors,Deployment Property
+descriptors>>
+
+=== Description
+
+The `{di-artifact}` identifier specifies the implementation artifact
+(library) from which the DI object can be instantiated. The format of
+this identifier depends on the deployment runtime platform for which the
+plugin is configured. For the current DnCX11 deployment tool runtime
+environment this should be a shared library name compatible with the ACE
+DLL loader, i.e. without path, without platform dependent prefix (f.i.
+'lib') and without extension(s).
+
+The `{di-factory}` identifier specifies the factory (method) with which
+the DI object can be instantiated from the loaded artifact. The format
+of this identifier depends on the deployment runtime platform for which
+the plugin is configured.
+
+The *optional* `{deployment-openmode}` integer literal specifies an
+artifact loader dependent flag value. For the current DnCX11 deployment
+tool runtime environment this should be a shared library openmode value
+as used by the ACE DLL loader. It is normally not necessary to specify
+this value.
+
+=== Example
+
+The following descriptor declaration
+
+----------------------------------------------------------------------------------------------------
+# DnCX11 standard error interceptor plugin
+nl.remedy.it.DnCX11.DeploymentInterceptor dancex11_error_interceptors create_DAnCEX11_Standard_Error
+----------------------------------------------------------------------------------------------------
+
+would direct the DnCX11 deployment runtime to load the shared library
+specified by `dancex11_error_interceptors` (resulting in
+`libdancex11_error_interceptors.so` on Linux and
+`dancex11_error_interceptors.dll` on Windows) and instantiate a DI
+object by calling the `void` method `create_DAnCEX11_Standard_Error`
+which must return a DI reference.

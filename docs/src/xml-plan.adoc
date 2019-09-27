@@ -1,0 +1,637 @@
+include::_{backend}_settings.adoc[]
+
+= D&C XML descriptor format
+
+== Introduction
+
+The https://www.omg.org/spec/DEPL[OMG Deployment &
+Configuration (D&C) specification] defines formal
+transformations and mappings from the Component and Target Data model
+PIMs to XML descriptor formats.
+
+This page will not provide any details concerning the transformation and
+mapping rules but instead will present an overview of the implementation
+details of the XML descriptor documents. For information concerning the
+formal transformation rules and mappings see chapter 10 of the above
+mentioned specification.
+
+== XML Document
+
+DnCX11 provides an implementation of it's Plan Loader framework for
+loading XML descriptor documents for __Deployment Plan__s and __Domain__s
+that automatically recognizes documents with the following extensions:
+
+* *cdp* (typically used for __Deployment Plan__s)
+* *cdd* (typically used for __Domain__s)
+* *xml*
+
+Any XML documents provided to DnCX11 should describe either a
+_Deployment Plan_ *or* a _Domain_ description according to the intended
+use for deployment but never both.
+
+== XML Schema Definition (xsd)
+
+The DnC XML schema definition files can be found in the `$DANCEX11_ROOT/etc/schema`
+directory as part of the AXCIOMA package.
+
+At runtime the DnCX11 tools search the `$DANCEX11_ROOT/etc/schema` and
+`$DNC_SCHEMA_ROOT/schema` directories for the necessary xsd files.
+
+== Content
+
+=== Deployment Plan description
+
+A _Plan_ description should always contain one instance of the following
+toplevel element:
+
+-------------------------------------------------------------------
+<Deployment:DeploymentPlan
+ xmlns:Deployment="http://www.omg.org/Deployment"
+ xmlns:xmi="http://www.omg.org/XMI"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+...
+</Deployment:DeploymentPlan>
+
+-------------------------------------------------------------------
+
+Instances of the following elements can be defined for a _Plan_
+description:
+
+[cols="<3,<6,<1",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<xml-plan/xml-elements.adoc#label,label>> |Descriptive label |0/1
+
+|<<xml-plan/xml-elements.adoc#uuid,UUID>> |Unique identifier |0/1
+
+|<<implementation-desc>> |Component
+implementation description |0-*
+
+|<<instance-desc>> |Component instance
+description |0-*
+
+|<<connection-desc>> |Component connection
+description |0-*
+
+|<<artifact-desc>> |Component artifact
+description |0-*
+
+|<<localityconstraint-desc>>
+|Component locality constraint |0-*
+
+|<<infoproperty-desc>> |Property
+definition |0-*
+
+|realizes |Reference to description of Component Interface implemented
+(realized) by the application (plan). Not currently supported |0/1
+
+|dependsOn |Not currently supported |0-*
+|=======================================================================
+
+=== Domain description
+
+A _Domain_ description should always contain one instance of the
+following toplevel element:
+
+-------------------------------------------------------------------
+<Deployment:domain
+ xmlns:Deployment="http://www.omg.org/Deployment"
+ xmlns:xmi="http://www.omg.org/XMI"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+...
+</Deployment:domain>
+
+-------------------------------------------------------------------
+
+=== Descriptor elements
+
+[[implementation-desc,implementation]]
+==== <implementation> descriptor
+
+===== Definition
+
+---------------------------------------------
+          <implementation xmi:id="unique_id">
+          ...
+          </implementation>
+
+---------------------------------------------
+
+Defines a component implementation description. The *xmi:id* attribute
+should define an identifier which is unique within the context of the
+_Plan_.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+implementation description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<name-desc>> |Unique name within the plan |1
+
+|<<artifact-ref>> |Artifact reference |0-*
+
+|<<execparameter-desc>> |Configuration
+parameter |0-*
+
+|source |Not currently supported |0-*
+
+|deployRequirement |Not currently supported |0-*
+
+|deployedResource |Not currently supported |0-*
+|=======================================================================
+
+[[instance-desc,instance]]
+==== <instance> descriptor
+
+===== Definition
+
+---------------------------------------
+          <instance xmi:id="unique_id">
+          ...
+          </instance>
+
+---------------------------------------
+
+Defines a component instance description. The *xmi:id* attribute should
+define an identifier which is unique within the context of the _Plan_.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+instance description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<name-desc>> |Unique name within the plan |1
+
+|<<node-desc>> |Target node identifier |1
+
+|<<implementation-ref>> |Component
+implementation reference |0-*
+
+|<<configproperty-desc>> |Runtime
+Configuration property |0-*
+
+|source |Not currently supported |0-*
+
+|deployedResource |Not currently supported |0-*
+
+|deployedSharedResource |Not currently supported |0-*
+|=======================================================================
+
+[[connection-desc,connection]]
+==== <connection> descriptor
+
+===== Definition
+
+-----------------------
+          <connection>
+          ...
+          </connection>
+
+-----------------------
+
+Defines a component connection description.
+
+===== Content
+
+Instances of the following elements can be defined as part of a
+connection description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<name-desc>> |Unique name within the plan |1
+
+|<<internalendpoint-desc>> |Internal endpoint description
+|0-*
+
+|<<externalreference-desc>> |External reference
+description |0-*
+
+|<<externalendpoint-desc>> |External endpoint description
+|0-*
+
+|source |Not currently supported |0-*
+
+|deployRequirement |Not currently supported |0-*
+
+|deployedResource |Not currently supported |0-*
+|=======================================================================
+
+[[internalendpoint-desc,internalEndpoint]]
+==== <internalEndpoint> descriptor
+
+===== Definition
+
+-----------------------------
+          <internalEndpoint>
+          ...
+          </internalEndpoint>
+
+-----------------------------
+
+Defines an internal (local to the defined plan) component connection
+endpoint description.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+internal endpoint description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<portname-desc>> |Specifies the name of the
+component port providing the endpoint |1
+
+|<<kind-desc>> |Specified kind of connection
+endpoint |1
+
+|<<provider-desc>> |Indicated whether or not
+the endpoint represents a provider or not |1
+
+|<<instance-ref>> |Component instance reference |1
+|=======================================================================
+
+[[externalreference-desc,externalReference]]
+==== <externalReference> descriptor
+
+===== Definition
+
+------------------------------
+          <externalReference>
+          ...
+          </externalReference>
+
+------------------------------
+
+Defines an external (outside the defined plan) (component) connection
+endpoint description.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+external reference description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<portname-desc>> |Specifies the name of a
+component port providing the endpoint (implies that the entity providing
+the endpoint is a component) |0/1
+
+|<<provider-desc>> |Indicated whether or not
+the endpoint represents a provider or not |1
+
+|<<location-desc>> |Specifies stringified
+information concerning the location of the endpoint (f.i. like an URL)
+|1
+|=======================================================================
+
+[[externalendpoint-desc,externalEndpoint]]
+==== <externalEndpoint> descriptor
+
+===== Definition
+
+-----------------------------
+          <externalEndpoint>
+          ...
+          </externalEndpoint>
+
+-----------------------------
+
+Defines an endpoint description for a port of the component that is
+implemented (realized) by the application (plan).
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+external endpoint description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<portname-desc>> |Specifies the name of the
+component port providing the endpoint |1
+|=======================================================================
+
+[[artifact-desc,artifact]]
+==== <artifact> descriptor
+
+===== Definition
+
+---------------------------------------
+          <artifact xmi:id="unique_id">
+          ...
+          </artifact>
+
+---------------------------------------
+
+Defines a component artifact description. The *xmi:id* attribute should
+define an identifier which is unique within the context of the _Plan_.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+artifact description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<name-desc>> |Unique name within the plan |1
+
+|<<node-desc>> |Target node identifier |0/1
+
+|<<location-desc>> |Artifact source location
+description/url |1-*
+
+|<<execparameter-desc>> |Configuration
+parameter |0-*
+
+|source |Not currently supported |0-*
+
+|deployRequirement |Not currently supported |0-*
+
+|deployedResource |Not currently supported |0-*
+|=======================================================================
+
+[[localityconstraint-desc,localityConstraint]]
+==== <localityConstraint> descriptor
+
+===== Definition
+
+-------------------------------
+          <localityConstraint>
+          ...
+          </localityConstraint>
+
+-------------------------------
+
+Defines a localization constraint description for component instances.
+
+===== Content
+
+Instances of the following elements can be defined as part of a
+localityConstraint description:
+
+[cols="<,<,<",options="header",]
+|=======================================================================
+|Tag |Description |Multiplicity
+|<<constraint-desc>> |Constraint type |1
+
+|<<constrainedinstance-ref>>
+|Instance reference |0-*
+|=======================================================================
+
+[[infoproperty-desc,infoProperty]]
+==== <infoProperty> descriptor
+
+===== Definition
+
+-------------------------
+          <infoProperty>
+          ...
+          </infoProperty>
+
+-------------------------
+
+Defines an infoProperty description.
+
+===== Content
+
+Instances of the following elements can be defined as part of an
+infoProperty description:
+
+[cols="<,<,<",options="header",]
+|=====================================================
+|Tag |Description |Multiplicity
+|<<name-desc>> |Property name |1
+|<<value-desc>> |Property value description |1
+|=====================================================
+
+[[configproperty-desc,configProperty]]
+==== <configProperty> descriptor
+
+===== Definition
+
+---------------------------
+          <configProperty>
+          ...
+          </configProperty>
+
+---------------------------
+
+Defines a configProperty description.
+
+===== Content
+
+See <<infoproperty-desc>>
+
+[[execparameter-desc,execParameter]]
+==== <execParameter> descriptor
+
+===== Definition
+
+--------------------------
+          <execParameter>
+          ...
+          </execParameter>
+
+--------------------------
+
+Defines an execParameter description.
+
+===== Content
+
+See <<infoproperty-desc>>
+
+[[value-desc,value]]
+==== <value> descriptor
+
+===== Definition
+
+------------------
+          <value>
+          ...
+          </value>
+
+------------------
+
+Defines a property value description.
+
+===== Content
+
+Instances of the following elements can be defined as part of a value
+description:
+
+[cols="<,<,<",options="header",]
+|=============================================
+|Tag |Description |Multiplicity
+|<<type-desc>> |Property value type |1
+|<<value-desc>> |Property value content |1
+|=============================================
+
+[[type-desc,type]]
+==== <type> descriptor
+
+===== Definition
+
+-----------------
+          <type>
+          ...
+          </type>
+
+-----------------
+
+Defines a property value type description.
+
+===== Content
+
+Instances of the following elements can be defined as part of a value
+type description:
+
+[cols="<,<,<",options="header",]
+|===========================================================
+|Tag |Description |Multiplicity
+|<<kind-desc>> |Property value kind |1
+|link:#typecode[\{typecode}] |Property value typecode |0/1
+|===========================================================
+
+==== Simple elements
+
+[[label-desc,label]]
+===== <label>
+
+----------------------------------
+<label>a descriptive label</label>
+----------------------------------
+
+Defines an optional descriptive label for the _Plan_.
+
+[[uuid-desc,UUID]]
+===== <UUID>
+
+--------------------------------
+<UUID>a_unique_identifier</UUID>
+--------------------------------
+
+Defines a globally unique identifier.
+
+[[name-desc,name]]
+===== <name>
+
+--------------------------
+<name>a_unique_name</name>
+--------------------------
+
+Defines a unique name for the description in the context of the plan.
+
+[[node-desc,node]]
+===== <node>
+
+-----------------------------------
+<node>target_node_identifier</node>
+-----------------------------------
+
+Defines the target node identifier for the component instance/artifact.
+
+[[portname-desc,portName]]
+===== <portName>
+
+--------------------------------
+<portName>a_port_name</portName>
+--------------------------------
+
+Specifies a port name of a component.
+
+[[constraint-desc,constraint]]
+===== <constraint>
+
+-------------------
+<constraint>{constraint}</constraint>
+-------------------
+
+Specifies the \{constraint} type for the <<localityconstraint-desc>>. Currently supported: +
+
+* SameProcess
+* DifferentProcess
+
+
+[[kind-desc,kind]]
+===== <kind>
+
+-------------------
+<kind>{kind}</kind>
+-------------------
+
+.  Specifies the \{kind} of the endpoint. Currently supported:
+
+* Facet
+* SimplexReceptacle
+* MultiplexReceptacle
+
+.  Specifies \{kind} of a value. +
+  Currently supported: tk_null, tk_void,
+  tk_short, tk_long, tk_ushort, tk_ulong, tk_float, tk_double, tk_boolean,
+  tk_char, tk_octet, tk_any, tk_TypeCode, tk_Principal, tk_objref,
+  tk_struct, tk_union, tk_enum, tk_string, tk_sequence, tk_array,
+  tk_alias, tk_except, tk_longlong, tk_ulonglong, tk_longdouble, tk_wchar,
+  tk_wstring, tk_fixed, tk_value, tk_value_box, tk_native,
+  tk_abstract_interface, tk_local_interface, tk_component, tk_home,
+  tk_event.
+
+[[provider-desc,provider]]
+===== <provider>
+
+-------------------------------
+<provider>true|false</provider>
+-------------------------------
+
+Specifies whether the endpoint connects a provider or not.
+
+[[location-desc,location]]
+===== <location>
+
+----------------------------------
+<location>location_info</location>
+----------------------------------
+
+Specifies a stringified location reference where to retrieve/resolve the
+resource.
+
+=== Descriptor instance references
+
+[[instance-ref,instance]]
+==== <instance> reference
+
+-------------------------------
+<instance xmi:idref="{instance xmi:id}"/>
+-------------------------------
+
+[[implementation-ref,implementation]]
+==== <implementation> reference
+
+-------------------------------
+<implementation xmi:idref="{implementation xmi:id}"/>
+-------------------------------
+
+[[artifact-ref,artifact]]
+==== <artifact> reference
+
+-------------------------------
+<artifact xmi:idref="{artifact xmi:id}"/>
+-------------------------------
+
+[[constrainedinstance-ref,constrainedInstance]]
+==== <constrainedInstance> reference
+
+-------------------------------
+<constrainedInstance xmi:idref="{instance xmi:id}"/>
+-------------------------------
