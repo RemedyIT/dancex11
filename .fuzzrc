@@ -1,0 +1,10 @@
+---
+:follow_symlink: true
+:add_files: true
+:excludes:
+- tools\/config_handlers\/(XMI|Deployment|ccd|cdd|cdp|cid|cpd|iad|pcd|toplevel|Basic_Deployment_Data)\.(cpp|hpp)
+:fzzr_paths:
+- $TAOX11_ROOT/bin/fuzzers
+:fzzr_opts:
+  :check_whitespace: {}
+:fzzr_excludes: []
