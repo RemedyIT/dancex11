@@ -7,6 +7,7 @@ implementation of the run-time infrastructure as defined by the
 https://www.omg.org/spec/DEPL[OMG Deployment &
 Configuration (D&C) specification], which deals with
 the configuration and deployment of component-based applications.
+DnCX11 is created and maintained by https://www.remedy.nl[Remedy IT].
 
 == Install DnCX11
 
