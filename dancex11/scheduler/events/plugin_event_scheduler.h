@@ -6,7 +6,6 @@
  *          to a specific Plugin_Manager instance.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef PLUGIN_EVENT_SCHEDULER_H_

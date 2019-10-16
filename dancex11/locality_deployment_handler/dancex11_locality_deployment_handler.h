@@ -5,7 +5,6 @@
  * @brief   DAnCEX11 Locality DeploymentManagerHandler implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_LOCALITY_DEPLOYMENT_HANDLER_H_

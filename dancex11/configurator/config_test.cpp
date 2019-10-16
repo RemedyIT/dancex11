@@ -5,7 +5,6 @@
  * @brief   Primary tester for DAnCEX11 Configurator
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11_config_loader.h"

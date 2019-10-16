@@ -5,7 +5,6 @@
  * @brief   Utility templates for Config_Loader
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_CONFIG_UTIL_H_

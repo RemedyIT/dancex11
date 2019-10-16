@@ -9,7 +9,6 @@
  * It is only functional on Linux
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_CPU_AFFINITY_H
 #define DAnCEX11_CPU_AFFINITY_H

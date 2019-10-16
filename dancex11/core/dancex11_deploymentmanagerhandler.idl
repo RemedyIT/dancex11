@@ -5,7 +5,6 @@
  * @brief   Defines the interfaces of the DM handler.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_DEPLOYMENTMANAGER_HANDLER_IDL
 #define DANCEX11_DEPLOYMENTMANAGER_HANDLER_IDL

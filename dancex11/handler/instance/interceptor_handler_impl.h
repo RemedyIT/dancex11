@@ -6,7 +6,6 @@
  * @brief   Installation handler implementation for spawning LocalityManagers.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_INTERCEPTOR_HANDLER_H
 #define DAnCEX11_INTERCEPTOR_HANDLER_H

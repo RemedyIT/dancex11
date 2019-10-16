@@ -4,7 +4,6 @@
  *
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_CONFIG_HANDLERS_CCD_HANDLER_H
 #define DANCEX11_CONFIG_HANDLERS_CCD_HANDLER_H

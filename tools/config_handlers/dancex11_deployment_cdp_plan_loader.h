@@ -4,7 +4,6 @@
  * @author Marijke Hengstmengel <mhengstmengel@remedy.nl>
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_DEPLOYMENT_CDP_PLAN_LOADER_H

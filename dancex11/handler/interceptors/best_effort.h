@@ -5,7 +5,6 @@
  * @brief   Interceptors which implement a Best Effort error handling mechanism.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_INTERCEPTORS_BEST_EFFORT_H
 #define DAnCEX11_INTERCEPTORS_BEST_EFFORT_H

@@ -5,7 +5,6 @@
  * @brief  Implementation of Deployment::NodeManager
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_NDH_MANAGER_IMPL_H_

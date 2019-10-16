@@ -5,7 +5,6 @@
  * @brief   Custom stream class for DAnCEX11 deployment config
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11/configurator/dancex11_config_stream.h"

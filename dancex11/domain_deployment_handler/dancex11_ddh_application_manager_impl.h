@@ -5,7 +5,6 @@
  * @brief  Implementation of domain application manager
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_DDH_APPLICATIONMANAGER_IMPL_H_

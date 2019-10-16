@@ -3,7 +3,6 @@
  * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_UTILITY_T_CPP
 #define DANCEX11_UTILITY_T_CPP

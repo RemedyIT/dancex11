@@ -4,7 +4,6 @@
  * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DEPLOYMENT_SCHEDULER_EXPORT_H
 #define DEPLOYMENT_SCHEDULER_EXPORT_H

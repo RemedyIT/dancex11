@@ -5,7 +5,6 @@
  * @brief   DAnCEX11 Node DeploymentManagerHandler implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11_node_deployment_handler.h"

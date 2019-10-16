@@ -3,7 +3,6 @@
  * @author  Marijke Hengstmengel
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef XSC_XML_HANDLERS_EXPORT_H
 #define XSC_XML_HANDLERS_EXPORT_H

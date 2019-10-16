@@ -4,7 +4,6 @@
  *
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "ccd_handler.h"
 #include "property_handler.h"

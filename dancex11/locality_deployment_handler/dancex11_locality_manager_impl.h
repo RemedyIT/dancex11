@@ -4,7 +4,6 @@
  * @author  Johnny Willemsen, Martin Corino
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_LOCALITYMANAGER_IMPL_H_
 #define DAnCEX11_LOCALITYMANAGER_IMPL_H_

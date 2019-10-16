@@ -5,7 +5,6 @@
  * @brief  Implementation of Execution manager
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_EXECUTIONMANAGER_IMPL_H_
 #define DANCEX11_EXECUTIONMANAGER_IMPL_H_

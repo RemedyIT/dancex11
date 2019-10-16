@@ -6,7 +6,6 @@
  * @brief   Generated
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_DANCEX11_PLAN_LOADER_STUB_EXPORT_H_INCLUDED__
 #define __RIDL_DANCEX11_PLAN_LOADER_STUB_EXPORT_H_INCLUDED__

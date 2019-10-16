@@ -4,7 +4,6 @@
  * @author Martin Corino <mcorino@remedy.nl>
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_HTTP_INSTALLATION_HANDLER_H
