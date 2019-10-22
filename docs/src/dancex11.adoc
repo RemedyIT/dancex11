@@ -80,7 +80,7 @@ sure to follow the directions in the PRF.
 
 The free CORBA Programming with
 TAOX11] tutorial and Comparing IDL to C++ with IDL to
-C++11 are available for free from the https://www.axcioma.com[AXCIOMA] website.
+C++11 are available for free from the https://www.axcioma.org[AXCIOMA] website.
 
-Remedy IT also offers a https://www.axcioma.com/services/training.html[Component Based
+Remedy IT also offers a https://www.axcioma.org/services/training.html[Component Based
 Development using AXCIOMA] course.
