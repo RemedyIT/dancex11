@@ -5,7 +5,6 @@
  * @brief This file is generated automatically by generate_export_file.pl DANCEX11_Logger
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_LOGGER_EXPORT_H
 #define DANCEX11_LOGGER_EXPORT_H

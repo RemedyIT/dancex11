@@ -3,7 +3,6 @@
  * @author Martin Corino
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_DYNAMIC_LOADER_H
 #define DAnCEX11_DYNAMIC_LOADER_H

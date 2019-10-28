@@ -5,7 +5,6 @@
  * @brief   Service loader for Locality DMH implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_LOCALITY_DMH_LOADER_H_

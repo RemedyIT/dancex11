@@ -5,7 +5,6 @@
  * @brief   DANCEX11 logger stream implementations
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_LOGGER_LOG_H

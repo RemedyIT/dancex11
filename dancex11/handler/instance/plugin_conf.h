@@ -5,7 +5,6 @@
  * @brief   Handles installation of plugins from a configuration file.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DAnCEX11_PLUGIN_CONF_H
 #define DAnCEX11_PLUGIN_CONF_H

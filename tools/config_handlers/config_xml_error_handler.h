@@ -5,7 +5,6 @@
  * @brief  DANCEX11 version  error handler for Xerces
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_XML_ERROR_HANDLER_H
 #define DANCEX11_XML_ERROR_HANDLER_H

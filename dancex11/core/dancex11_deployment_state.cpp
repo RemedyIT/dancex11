@@ -5,7 +5,6 @@
  * @brief   DAnCEX11 deployment state singleton
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11_deployment_state.h"

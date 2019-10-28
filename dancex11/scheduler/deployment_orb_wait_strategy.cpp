@@ -6,7 +6,6 @@
  *          async CORBA requests.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DEPLOYMENT_ORB_WAIT_STRATEGY_CPP_

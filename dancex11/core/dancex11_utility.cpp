@@ -3,7 +3,6 @@
  * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11/core/dancex11_utility.h"

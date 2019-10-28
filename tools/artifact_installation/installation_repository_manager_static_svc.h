@@ -5,7 +5,6 @@
  * @brief   Static service loader for Installation Repository Manager service.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_INSTALLATION_REPOMAN_STATIC_SVC_H_

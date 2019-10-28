@@ -5,7 +5,6 @@
  * @brief  Implementation of Execution manager
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dancex11_execution_manager_impl.h"

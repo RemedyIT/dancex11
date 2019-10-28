@@ -5,7 +5,6 @@
  * @brief   Default deployment event completion wait strategy.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "deployment_default_wait_strategy.h"

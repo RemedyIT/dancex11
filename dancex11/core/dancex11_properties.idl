@@ -5,7 +5,6 @@
  * @brief   Codifies properties used to configure the deployment engine.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_PROPERTIES_IDL
 #define DANCEX11_PROPERTIES_IDL

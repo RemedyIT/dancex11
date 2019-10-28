@@ -5,7 +5,6 @@
  * @brief   Some common definitions for all config_handlers.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CONFIG_HANDLERS_COMMON_H

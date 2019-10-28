@@ -4,7 +4,6 @@
  * @brief  locate nodes
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_NODE_LOCATOR_H_
 #define DANCEX11_NODE_LOCATOR_H_

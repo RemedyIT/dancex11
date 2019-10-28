@@ -5,7 +5,6 @@
  * @brief   Default deployment event completion wait strategy.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DEPLOYMENT_DEFAULT_WAIT_STRATEGY_H_

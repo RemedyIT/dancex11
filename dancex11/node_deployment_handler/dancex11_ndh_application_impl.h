@@ -5,7 +5,6 @@
  * @brief  Implementation of Deployment::NodeApplication
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef DANCEX11_NDH_APPLICATION_IMPL_H_

@@ -5,7 +5,6 @@
  * @brief  Implementation of Deployment::NodeApplication
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dancex11_ndh_application_impl.h"
 

@@ -5,7 +5,6 @@
  * @brief  DANCEX11 version of the typedefs from the XML Utilities.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DANCEX11_XML_TYPEDEFS_H
 #define DANCEX11_XML_TYPEDEFS_H

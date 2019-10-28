@@ -4,7 +4,6 @@
  * @brief   Non-standard base for Execution-,Node- and LocalityManager.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DEPLOYMENT_MANAGER_IDL
 #define DEPLOYMENT_MANAGER_IDL
