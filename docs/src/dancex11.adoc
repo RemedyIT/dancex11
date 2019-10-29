@@ -68,13 +68,16 @@ toolset are described in detail in the following sections:
 
 == Support
 
-DnCX11, CIAOX11, TAOX11, and BRIX11 are supported by Remedy IT. Please
-read the <<{xref_docs_root}/taox11/taox11_faq.adoc#,FAQ-section>> first
-before asking a question. +
- If your problem was not listed in the FAQ, you can submit your issue by
-using the link:../../../PROBLEM-REPORT-FORM[PROBLEM-REPORT-FORM]. The PRF
-is available in the root directory of the package. Please make
-sure to follow the directions in the PRF.
+DnCX11 is supported by the user community and Remedy IT. Please read the
+<<{xref_docs_root}/taox11/taox11_faq.adoc#,FAQ-section>> first before asking a
+question.
+
+Open source best effort support for DnCX11 is provided through
+https://github.com/RemedyIT/dancex11/issues[github issues].
+
+Commercial support services are provided by Remedy IT. For more
+details about the services Remedy IT provides check
+the https://www.axcioma.org/services/overview.html[AXCIOMA website].
 
 == Training material
 
