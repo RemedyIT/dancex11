@@ -89,7 +89,7 @@ namespace DAnCEX11
             sub_plan.infoProperty ().push_back (parent_property);
 
             // initialize locality constraints
-            uint32_t num_localities =
+            uint32_t const num_localities =
                 ACE_Utils::truncate_cast<uint32_t> (plan.localityConstraint ().size ());
             Deployment::PlanLocalities default_loc;
 
@@ -191,14 +191,14 @@ namespace DAnCEX11
               Deployment::MonolithicDeploymentDescription const & my_implementation
                 = plan.implementation ()[my_instance.implementationRef ()];
 
-              uint32_t index_imp =
+              uint32_t const index_imp =
                   ACE_Utils::truncate_cast<uint32_t> (sub_plan.implementation ().size ());
               sub_plan.implementation ().push_back (my_implementation);
 
               // update the "ArtifactDeploymentDescriptions" <artifact> field
               // of the sub plan with the artifacts referenced by the <artifactRef>
               // sequence of the added implementation
-              // NOTE: if the artifact descripton defines a node value it should only
+              // NOTE: if the artifact description defines a node value it should only
               //       be copied to the subplan if the node value matches the node
               //       value of the instance referenced by <my_instance>
 
@@ -216,7 +216,7 @@ namespace DAnCEX11
                    iter < impl_length;
                    iter ++)
                 {
-                  uint32_t artifact_ref = my_implementation.artifactRef ()[iter];
+                  uint32_t const artifact_ref = my_implementation.artifactRef ()[iter];
 
                   const Deployment::ArtifactDeploymentDescription &add =
                       plan.artifact ()[artifact_ref];
@@ -240,7 +240,7 @@ namespace DAnCEX11
               // Append the "InstanceDeploymentDescription instance" field with
               // an "instance" copy which is almost the same as the "instance" in
               // the global plan except the <implementationRef> field.
-              uint32_t index_ins =
+              uint32_t const index_ins =
                   ACE_Utils::truncate_cast<uint32_t> (sub_plan.instance ().size ());
               sub_plan.instance ().push_back (my_instance);
 
@@ -318,8 +318,8 @@ namespace DAnCEX11
                       if (loc.constrainedInstanceRef ()[k] == pos)
                         {
                           // add the reference to the added instance to the sub plan's
-                          // corresponding contraint.
-                          uint32_t sub_loc_len =
+                          // corresponding constraint.
+                          uint32_t const sub_loc_len =
                               ACE_Utils::truncate_cast<uint32_t> (
                                   sub_plan.localityConstraint ()[j].constrainedInstanceRef ().size ());
 
@@ -332,7 +332,7 @@ namespace DAnCEX11
                           sub_plan.localityConstraint ()[j].constraint (
                             loc.constraint ());
 
-                          // add instance reference to matched contraint
+                          // add instance reference to matched constraint
                           // thank god someone made an 18 and 20+ char
                           // member variable...
                           sub_plan.localityConstraint ()[j].constrainedInstanceRef ().push_back (index_ins);
