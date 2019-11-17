@@ -6,6 +6,10 @@ configure :dancex11 do
 
   depends_on :ciaox11
 
+  brix11 do
+    include '..'
+  end
+
   mpc do
     include '$DANCEX11_ROOT/MPC/config'
 
