@@ -17,7 +17,7 @@
 
 namespace DAnCEX11
 {
-  Node_Locator::Node_Locator (std::string nc)
+  Node_Locator::Node_Locator (const std::string& nc)
     : orb_(DAnCEX11::State::instance ()->orb ())
   {
     DANCEX11_LOG_TRACE ("Node_Locator::Node_Locator");
@@ -58,7 +58,7 @@ namespace DAnCEX11
   }
 
   IDL::traits< ::Deployment::NodeManager>::ref_type
-  Node_Locator::locate_node (const std::string name)
+  Node_Locator::locate_node (const std::string& name)
   {
     std::string ior;
 
@@ -173,7 +173,7 @@ namespace DAnCEX11
   }
 
   IDL::traits< ::Deployment::NodeManager>::ref_type
-  Node_Locator::resolve_ior (const std::string name, const std::string ior)
+  Node_Locator::resolve_ior (const std::string& name, const std::string& ior)
   {
     DANCEX11_LOG_TRACE ("Node_Locator::resolve_ior");
 
@@ -194,7 +194,7 @@ namespace DAnCEX11
   }
 
   void
-  Node_Locator::store_ior (const std::string name, const std::string ior)
+  Node_Locator::store_ior (const std::string& name, const std::string& ior)
   {
     DANCEX11_LOG_TRACE ("Node_Locator::store_ior");
 
@@ -202,7 +202,7 @@ namespace DAnCEX11
   }
 
   IDL::traits< ::Deployment::NodeManager>::ref_type
-  Node_Locator::ns_lookup (const std::string nodename)
+  Node_Locator::ns_lookup (const std::string& nodename)
   {
     DANCEX11_LOG_TRACE ("Node_Locator::ns_lookup");
     IDL::traits< ::Deployment::NodeManager>::ref_type nm ;
@@ -249,7 +249,7 @@ namespace DAnCEX11
   }
 
   bool
-  Node_Locator::get_resource_value (const std::string type,
+  Node_Locator::get_resource_value (const std::string& type,
                                     const ::Deployment::Resources &resources,
                                     ::Deployment::Resource  &val)
   {
