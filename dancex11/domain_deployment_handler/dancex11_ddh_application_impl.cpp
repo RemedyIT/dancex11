@@ -66,7 +66,7 @@ namespace DAnCEX11
       this->result_.set ({this->nam_, this->node_, ami_return_val, providedReference});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -134,7 +134,7 @@ namespace DAnCEX11
       this->result_.set ({this->nam_, this->node_});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -224,7 +224,7 @@ namespace DAnCEX11
       this->result_.set ({this->node_});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -289,7 +289,7 @@ namespace DAnCEX11
       this->result_.set ({this->node_});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -333,7 +333,7 @@ namespace DAnCEX11
       }
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -344,7 +344,7 @@ namespace DAnCEX11
       this->result_.set ({this->node_});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
 
@@ -439,7 +439,7 @@ namespace DAnCEX11
           iter != this->node_applications_.end();
           ++iter)
       {
-        const std::string node_id = findNodeTApp2Id(iter->first);
+        std::string const node_id = findNodeTApp2Id(iter->first);
 
         // narrow to async interface
         CORBA::amic_traits<Deployment::NodeApplication>::ref_type app_async =
@@ -588,7 +588,7 @@ namespace DAnCEX11
           iter != this->node_applications_.end();
           ++iter)
       {
-        const std::string node_id = findNodeTApp2Id(iter->first);
+        std::string const node_id = findNodeTApp2Id(iter->first);
 
         // narrow to async interface
         CORBA::amic_traits<Deployment::NodeApplication>::ref_type app_async =
