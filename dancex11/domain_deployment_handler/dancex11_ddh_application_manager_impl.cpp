@@ -165,7 +165,7 @@ namespace DAnCEX11
       this->result_.set ({nullptr, this->node_, nullptr});
 
       // deactivate
-      PortableServer::ObjectId oid = this->poa_->servant_to_id (this->_lock ());
+      PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
     virtual
@@ -248,7 +248,7 @@ namespace DAnCEX11
                           this->getPlanUUID ());
       IDL::traits<CORBA::Object>::ref_type app =
         this->poa_->servant_to_reference (da);
-      PortableServer::ObjectId id = this->poa_->reference_to_id (app);
+      PortableServer::ObjectId const id = this->poa_->reference_to_id (app);
       this->poa_->deactivate_object (id);
       da.reset ();
     }
@@ -264,7 +264,6 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE("DomainApplicationManager_Impl::startLaunch");
 
-
     try
     {
       DANCEX11_LOG_DEBUG ("DomainApplicationManager_Impl::startLaunch - "
@@ -273,20 +272,19 @@ namespace DAnCEX11
 
 
       // Creating Domainpplication object
-        DANCEX11_LOG_TRACE ("DomainApplicationManager_impl::startLaunch - " <<
-                            "Initializing DomainApplication");
+      DANCEX11_LOG_TRACE ("DomainApplicationManager_impl::startLaunch - " <<
+                          "Initializing DomainApplication");
 
-        //app
-        CORBA::servant_reference<DAnCEX11::DomainApplication_Impl> app_impl_ =
-            CORBA::make_reference<DomainApplication_Impl> (
-                  this->getPlanUUID (),
-                  this->poa_,
-                  this->sub_app_mgr_,
-                  this->node_ids_);
+      //app
+      CORBA::servant_reference<DAnCEX11::DomainApplication_Impl> app_impl_ =
+          CORBA::make_reference<DomainApplication_Impl> (
+                this->getPlanUUID (),
+                this->poa_,
+                this->sub_app_mgr_,
+                this->node_ids_);
 
-        if (!app_impl_)
-          throw CORBA::NO_MEMORY ();
-
+      if (!app_impl_)
+        throw CORBA::NO_MEMORY ();
 
       DANCEX11_LOG_DEBUG ("DomainApplicationManager_Impl::startLaunch - "
                            "Successfully created DomainApplication for plan "
@@ -655,7 +653,7 @@ namespace DAnCEX11
             = nampair.second;
 
         // Find corresponding node name
-        std::string node = this->findNode4NM (nm);
+        std::string const node = this->findNode4NM (nm);
 
         // narrow to async interface
         CORBA::amic_traits<Deployment::NodeManager>::ref_type nm_async =

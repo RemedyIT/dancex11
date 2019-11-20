@@ -18,21 +18,21 @@ namespace DAnCEX11
   class Node_Locator
   {
   public:
-    Node_Locator (std::string nc);
+    explicit Node_Locator (const std::string& nc);
 
-    IDL::traits<Deployment::NodeManager>::ref_type locate_node (const std::string node);
+    IDL::traits<Deployment::NodeManager>::ref_type locate_node (const std::string& node);
 
     bool process_cdd (const std::string &file, const std::string& = {});
 
-    void store_ior (const std::string name, const std::string ior);
+    void store_ior (const std::string& name, const std::string& ior);
 
   private:
-    IDL::traits<Deployment::NodeManager>::ref_type resolve_ior (const std::string name,
-                                               const std::string ior);
+    IDL::traits<Deployment::NodeManager>::ref_type resolve_ior (const std::string& name,
+                                               const std::string& ior);
 
-    IDL::traits<Deployment::NodeManager>::ref_type ns_lookup (const std::string name);
+    IDL::traits<Deployment::NodeManager>::ref_type ns_lookup (const std::string& name);
 
-    bool get_resource_value (const std::string type,
+    bool get_resource_value (const std::string& type,
                              const ::Deployment::Resources &resources,
                              ::Deployment::Resource &val);
 

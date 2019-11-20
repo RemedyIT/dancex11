@@ -35,7 +35,7 @@ namespace DAnCEX11
     {
       try
       {
-        PortableServer::ObjectId id = this->poa_->servant_to_id (iter->second);
+        PortableServer::ObjectId const id = this->poa_->servant_to_id (iter->second);
         DANCEX11_LOG_TRACE ("ExecutionManager_impl::~ExecutionManager_impl - Deactivating DomainApplicationManager " <<
                             iter->first);
         this->poa_->deactivate_object (id);
@@ -139,7 +139,7 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_DEBUG ("ExecutionManager_impl::destroyManager - " <<
                             "deactivating DomainApplicationManager");
-        PortableServer::ObjectId id = this->poa_->reference_to_id (manager);
+        PortableServer::ObjectId const id = this->poa_->reference_to_id (manager);
         this->poa_->deactivate_object (id);
 
         DANCEX11_LOG_DEBUG ("ExecutionManager_impl::destroyManager - " <<
@@ -188,7 +188,9 @@ namespace DAnCEX11
 
     // call shutdown handler
     if (this->sh_)
+    {
       this->sh_->shutdown ();
+    }
 
     if (DAnCEX11::State::instance ()->orb ())
     {
