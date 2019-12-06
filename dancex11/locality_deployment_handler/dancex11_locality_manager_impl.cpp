@@ -126,7 +126,7 @@ namespace DAnCEX11
       i < this->plan_.instance ().size ();
       i++)
     {
-      uint32_t implRef = this->plan_.instance ()[i].implementationRef ();
+      uint32_t const implRef = this->plan_.instance ()[i].implementationRef ();
 
       std::string const &inst_type =
         Utility::get_instance_type (
@@ -289,7 +289,7 @@ namespace DAnCEX11
           // in the locality where they are deployed
           if (ep.provider ())
           {
-            uint32_t implRef =
+            uint32_t const implRef =
               this->plan_.instance ()[ep.instanceRef ()].implementationRef ();
 
             std::string const &inst_type =
@@ -445,9 +445,9 @@ namespace DAnCEX11
 
       reference <<= connection.endpoint ()[0];
 
-      uint32_t instRef =
+      uint32_t const instRef =
         conn.internalEndpoint ()[j].instanceRef ();
-      uint32_t implRef =
+      uint32_t const implRef =
         this->plan_.instance ()[instRef].implementationRef ();
       std::string const &inst_type =
         Utility::get_instance_type (
@@ -648,9 +648,9 @@ namespace DAnCEX11
       DANCEX11_LOG_DEBUG ("LocalityManager_i::disconnect_connections - "
                           "Starting disconnect connection <" << conn.name () << ">");
 
-      uint32_t instRef =
+      uint32_t const instRef =
         conn.internalEndpoint ()[j].instanceRef ();
-      uint32_t implRef =
+      uint32_t const implRef =
         this->plan_.instance ()[instRef].implementationRef ();
       std::string const &inst_type =
         Utility::get_instance_type (
