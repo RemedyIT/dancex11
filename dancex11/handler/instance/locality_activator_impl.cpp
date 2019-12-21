@@ -723,12 +723,6 @@ namespace DAnCEX11
                           domain_nc);
     }
 
-    // in case no explicit listen address is specified we'll default to locahost
-    if (listen_addr.empty ())
-    {
-      listen_addr = numeric_addr ? "127.0.0.1" : "localhost";
-    }
-
     // Build our command line to launch the component server
     std::ostringstream cmd_os;
     cmd_os << args;
