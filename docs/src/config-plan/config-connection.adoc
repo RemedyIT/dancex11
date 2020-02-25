@@ -80,7 +80,7 @@ nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hel
     nl.remedy.it.DnCX11.Node "SenderNode"
     nl.remedy.it.DnCX11.Connection Hello_ReceiverComponent
       run_my_foo < do_my_foo        # synch_foo_connection
-        
+
 ----------------------------------------------------------------------------------------------
 
 would define one D&C Connection description with _name_
@@ -176,7 +176,7 @@ nl.remedy.it.CCM.Component Hello_SenderComponent hello_ex_sender_exec create_Hel
     nl.remedy.it.DnCX11.Node "SenderNode"
     nl.remedy.it.DnCX11.ExternalConnection
       run_my_foo < "corbaloc:iiop:myhost:60001/do_my_foo"        # synch_foo_connection
-        
+
 ----------------------------------------------------------------------------------------------
 
 would define one D&C Connection description with _name_

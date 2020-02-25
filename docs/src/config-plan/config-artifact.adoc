@@ -16,7 +16,7 @@ descriptor declaration in part of.
 A Deployment Artifact descriptor is defined as follows:
 
 ----------------------------------------------------------------------------------------------------------------------
-{deployment-artifact-key} {deployment-artifact-id} {deployment-artifact-location} [ {deployment-artifact-exclusive} ] 
+{deployment-artifact-key} {deployment-artifact-id} {deployment-artifact-location} [ {deployment-artifact-exclusive} ]
     [ {deployment-artifact-properties} ]
 ----------------------------------------------------------------------------------------------------------------------
 
@@ -73,7 +73,7 @@ nl.remedy.it.CCM.Component Hello_SenderComponent2 hello_ex_sender_exec create_He
         "create_Hello_Sender_Servant"
     nl.remedy.it.DnCX11.Node "SenderNode2"
     nl.remedy.it.DnCX11.Artifact hello_ex_sender_lib2 "http://app.server.org/dncrepo/hello_ex_sender_exec.dll" true
-        
+
 --------------------------------------------------------------------------------------------------------------------
 
 would define two D&C Artifact descriptions referenced by the
