@@ -366,7 +366,7 @@ namespace DAnCE
           referencedArtifact_ = std::make_unique< ::DAnCE::Config_Handlers::ImplementationArtifactDescription> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -434,7 +434,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -449,7 +449,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }

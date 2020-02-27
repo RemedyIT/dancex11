@@ -499,7 +499,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::InstanceDeploymentDescription> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -541,7 +541,7 @@ namespace DAnCE
           delegatesTo_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -627,7 +627,7 @@ namespace DAnCE
           localityConstraint_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }

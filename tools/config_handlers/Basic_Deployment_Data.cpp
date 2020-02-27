@@ -4131,7 +4131,7 @@ namespace DAnCE
           idref (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4182,7 +4182,7 @@ namespace DAnCE
       else if (v ==  ("tk_component")) v_ = tk_component_l;
       else if (v ==  ("tk_home")) v_ = tk_home_l;
       else if (v ==  ("tk_event")) v_ = tk_event_l;
-      else 
+      else
       {
       }
     }
@@ -4230,7 +4230,7 @@ namespace DAnCE
       else if (v ==  ("tk_component")) v_ = tk_component_l;
       else if (v ==  ("tk_home")) v_ = tk_home_l;
       else if (v ==  ("tk_event")) v_ = tk_event_l;
-      else 
+      else
       {
       }
     }
@@ -4334,7 +4334,7 @@ namespace DAnCE
           boundedString (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4349,7 +4349,7 @@ namespace DAnCE
           id (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4459,7 +4459,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4494,7 +4494,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4530,7 +4530,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4556,7 +4556,7 @@ namespace DAnCE
           bound_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4592,7 +4592,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4622,7 +4622,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4668,7 +4668,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4703,7 +4703,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4733,7 +4733,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::DataValue> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4763,7 +4763,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4794,7 +4794,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4824,7 +4824,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::DataValue> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4854,7 +4854,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::Any> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4874,7 +4874,7 @@ namespace DAnCE
       else if (v ==  ("Maximum")) v_ = Maximum_l;
       else if (v ==  ("Attribute")) v_ = Attribute_l;
       else if (v ==  ("Selection")) v_ = Selection_l;
-      else 
+      else
       {
       }
     }
@@ -4891,7 +4891,7 @@ namespace DAnCE
       else if (v ==  ("Maximum")) v_ = Maximum_l;
       else if (v ==  ("Attribute")) v_ = Attribute_l;
       else if (v ==  ("Selection")) v_ = Selection_l;
-      else 
+      else
       {
       }
     }
@@ -4937,7 +4937,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::Any> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -4974,7 +4974,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5010,7 +5010,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5046,7 +5046,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5106,7 +5106,7 @@ namespace DAnCE
           deployedResource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5121,7 +5121,7 @@ namespace DAnCE
           id (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5170,7 +5170,7 @@ namespace DAnCE
           deployRequirement_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5185,7 +5185,7 @@ namespace DAnCE
           id (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5204,7 +5204,7 @@ namespace DAnCE
       else if (v ==  ("ResourceUsesInstance")) v_ = ResourceUsesInstance_l;
       else if (v ==  ("PortUsesResource")) v_ = PortUsesResource_l;
       else if (v ==  ("ResourceUsesPort")) v_ = ResourceUsesPort_l;
-      else 
+      else
       {
       }
     }
@@ -5220,7 +5220,7 @@ namespace DAnCE
       else if (v ==  ("ResourceUsesInstance")) v_ = ResourceUsesInstance_l;
       else if (v ==  ("PortUsesResource")) v_ = PortUsesResource_l;
       else if (v ==  ("ResourceUsesPort")) v_ = ResourceUsesPort_l;
-      else 
+      else
       {
       }
     }
@@ -5266,7 +5266,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5324,7 +5324,7 @@ namespace DAnCE
           deployedSharedResource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5339,7 +5339,7 @@ namespace DAnCE
           id (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5361,7 +5361,7 @@ namespace DAnCE
       else if (v ==  ("EventConsumer")) v_ = EventConsumer_l;
       else if (v ==  ("ExtendedPort")) v_ = ExtendedPort_l;
       else if (v ==  ("MirrorPort")) v_ = MirrorPort_l;
-      else 
+      else
       {
       }
     }
@@ -5380,7 +5380,7 @@ namespace DAnCE
       else if (v ==  ("EventConsumer")) v_ = EventConsumer_l;
       else if (v ==  ("ExtendedPort")) v_ = ExtendedPort_l;
       else if (v ==  ("MirrorPort")) v_ = MirrorPort_l;
-      else 
+      else
       {
       }
     }
@@ -5456,7 +5456,7 @@ namespace DAnCE
           templateParam_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5486,7 +5486,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5511,7 +5511,7 @@ namespace DAnCE
           portName_ = std::make_unique< ::XMLSchema::string<char>> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5552,7 +5552,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5594,7 +5594,7 @@ namespace DAnCE
           supportedType_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5635,7 +5635,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5696,7 +5696,7 @@ namespace DAnCE
           deployedResource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5721,7 +5721,7 @@ namespace DAnCE
           requiredType_ = std::make_unique< ::XMLSchema::string<char>> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5758,7 +5758,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5812,7 +5812,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5842,7 +5842,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5891,7 +5891,7 @@ namespace DAnCE
           externalReference_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -5908,7 +5908,7 @@ namespace DAnCE
       if (v ==  ("SameProcess")) v_ = SameProcess_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else 
+      else
       {
       }
     }
@@ -5922,7 +5922,7 @@ namespace DAnCE
       if (v ==  ("SameProcess")) v_ = SameProcess_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else 
+      else
       {
       }
     }
@@ -5956,7 +5956,7 @@ namespace DAnCE
           constrainedInstance_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
