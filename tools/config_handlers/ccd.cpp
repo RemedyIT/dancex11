@@ -413,7 +413,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -428,7 +428,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }

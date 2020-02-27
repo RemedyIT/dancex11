@@ -547,7 +547,7 @@ namespace DAnCE
           referencedImplementation_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentImplementationDescription> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -603,7 +603,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -618,7 +618,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -674,7 +674,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -689,7 +689,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }

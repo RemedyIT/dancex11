@@ -160,10 +160,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (TCKind const& a, TCKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (TCKind const& a, TCKind const& b);
 
       private:
@@ -972,10 +972,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (SatisfierPropertyKind const& a, SatisfierPropertyKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (SatisfierPropertyKind const& a, SatisfierPropertyKind const& b);
 
       private:
@@ -1386,10 +1386,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (ResourceUsageKind const& a, ResourceUsageKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (ResourceUsageKind const& a, ResourceUsageKind const& b);
 
       private:
@@ -1582,10 +1582,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (CCMComponentPortKind const& a, CCMComponentPortKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (CCMComponentPortKind const& a, CCMComponentPortKind const& b);
 
       private:
@@ -2294,10 +2294,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (PlanLocalityKind const& a, PlanLocalityKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (PlanLocalityKind const& a, PlanLocalityKind const& b);
 
       private:

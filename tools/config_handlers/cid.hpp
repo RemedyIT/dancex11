@@ -290,10 +290,10 @@ namespace DAnCE
       Value
       integral () const;
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator== (LocalityKind const& a, LocalityKind const& b);
 
-      friend bool XSC_XML_Handlers_Export 
+      friend bool XSC_XML_Handlers_Export
       operator!= (LocalityKind const& a, LocalityKind const& b);
 
       private:
