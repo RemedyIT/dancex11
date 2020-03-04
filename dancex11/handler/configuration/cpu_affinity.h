@@ -27,14 +27,11 @@ namespace DAnCEX11
 
     virtual ~CPU_Affinity () = default;
 
-    virtual std::string
-    type () override;
+    std::string type () override;
 
-    virtual void
-    configure (const ::Deployment::Property &prop) override;
+    void configure (const ::Deployment::Property &prop) override;
 
-    virtual void
-    close () override;
+    void close () override;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */

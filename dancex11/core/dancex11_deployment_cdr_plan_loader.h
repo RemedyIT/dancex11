@@ -26,11 +26,11 @@ namespace DAnCEX11
   public:
     virtual ~CDRPlan_Loader () = default;
 
-    virtual bool read_plan (const std::string& filename,
-                            Deployment::DeploymentPlan& plan) override;
+    bool read_plan (const std::string& filename,
+                    Deployment::DeploymentPlan& plan) override;
 
-    virtual bool read_domain (const std::string& filename,
-                              Deployment::Domain& dom) override;
+    bool read_domain (const std::string& filename,
+                      Deployment::Domain& dom) override;
 
     static CDRPlan_Loader* instance ();
 
@@ -45,10 +45,10 @@ namespace DAnCEX11
     virtual ~CDRPlan_Loader_Svc ();
 
     /// Initializes object when dynamic linking occurs.
-    virtual int init (int argc, ACE_TCHAR *argv[]) override;
+    int init (int argc, ACE_TCHAR *argv[]) override;
 
     /// Terminates object when dynamic unlinking occurs.
-    virtual int fini () override;
+    int fini () override;
 
     static int Initializer ();
   };

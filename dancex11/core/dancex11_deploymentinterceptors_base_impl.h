@@ -27,74 +27,72 @@ namespace DAnCEX11
 
     virtual ~DeploymentInterceptor_Base ();
 
-    virtual void
-    configure (const Deployment::Properties & config) override;
+    void configure (const Deployment::Properties & config) override;
 
-    virtual void
-    preprocess_plan (Deployment::DeploymentPlan & plan) override;
+    void preprocess_plan (Deployment::DeploymentPlan & plan) override;
 
-    virtual void
+    void
     pre_install (Deployment::DeploymentPlan & plan,
       uint32_t instanceRef) override;
 
-    virtual void
+    void
     post_install (const Deployment::DeploymentPlan & plan,
       uint32_t index,
       const CORBA::Any & reference,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     post_endpoint_reference (const Deployment::DeploymentPlan & plan,
       uint32_t connectionRef,
       const CORBA::Any & endpoint_reference,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     pre_connect (Deployment::DeploymentPlan & plan,
       uint32_t connection_index,
       CORBA::Any & provided_reference) override;
 
-    virtual void
+    void
     post_connect (const Deployment::DeploymentPlan & plan,
       uint32_t connectionRef,
       const CORBA::Any & exceptionThrown) override;
 
-    virtual void
+    void
     pre_disconnect (Deployment::DeploymentPlan & plan,
       uint32_t connection_index) override;
 
-    virtual void
+    void
     post_disconnect (const Deployment::DeploymentPlan & plan,
       uint32_t connectionRef,
       const CORBA::Any & exceptionThrown) override;
 
-    virtual void
+    void
     post_configured (const Deployment::DeploymentPlan & plan,
       uint32_t instanceRef,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     post_activate (const Deployment::DeploymentPlan & plan,
       uint32_t instanceRef,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     post_passivate (const Deployment::DeploymentPlan & plan,
       uint32_t instanceRef,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     post_remove (const Deployment::DeploymentPlan & plan,
       uint32_t instanceRef,
       const CORBA::Any & exception_thrown) override;
 
-    virtual void
+    void
     unexpected_event (const Deployment::DeploymentPlan & plan,
       uint32_t instanceRef,
       const CORBA::Any & exception_thrown,
       const std::string& error) override;
 
-    virtual void close () override;
+    void close () override;
   };
 }
 
