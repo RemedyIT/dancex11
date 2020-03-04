@@ -23,18 +23,18 @@ namespace DAnCEX11
 
           virtual ~FileInstallationHandler () = default;
 
-          virtual const std::string& protocol_prefix () override;
+          const std::string& protocol_prefix () override;
 
-          virtual void initialize () override;
+          void initialize () override;
 
-          virtual void clear () override;
+          void clear () override;
 
-          virtual void install (const std::string& plan_uuid,
-                                std::string& location,
-                                const TPropertyMap& properties) override;
+          void install (const std::string& plan_uuid,
+                        std::string& location,
+                        const TPropertyMap& properties) override;
 
-          virtual void remove (const std::string& plan_uuid,
-                               const std::string& location) override;
+          void remove (const std::string& plan_uuid,
+                       const std::string& location) override;
 
           static FileInstallationHandler* getInstance ();
         private:
@@ -48,7 +48,7 @@ namespace DAnCEX11
           FileInstallationHandlerSvc () = default;
           virtual ~FileInstallationHandlerSvc () = default;
 
-          virtual ArtifactInstallationHandler* handler_instance () override;
+          ArtifactInstallationHandler* handler_instance () override;
 
           static int Initializer ();
       };

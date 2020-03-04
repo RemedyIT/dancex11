@@ -32,23 +32,23 @@ namespace DAnCEX11
 
     virtual ~NodeManager_Impl();
 
-    virtual void joinDomain (const ::Deployment::Domain & theDomain,
-                             IDL::traits< ::Deployment::TargetManager>::ref_type manager,
-                             IDL::traits< ::Deployment::Logger>::ref_type log,
-                             int32_t updateInterval) override;
+    void joinDomain (const ::Deployment::Domain & theDomain,
+                     IDL::traits< ::Deployment::TargetManager>::ref_type manager,
+                     IDL::traits< ::Deployment::Logger>::ref_type log,
+                     int32_t updateInterval) override;
 
-    virtual void leaveDomain () override;
+    void leaveDomain () override;
 
-    virtual IDL::traits< ::Deployment::ApplicationManager>::ref_type preparePlan (
+    IDL::traits< ::Deployment::ApplicationManager>::ref_type preparePlan (
             const ::Deployment::DeploymentPlan & plan,
             IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
 
-    virtual void destroyManager (
+    void destroyManager (
             IDL::traits< ::Deployment::ApplicationManager>::ref_type appManager) override;
 
-    virtual ::Deployment::Resources getDynamicResources () override;
+    ::Deployment::Resources getDynamicResources () override;
 
-    virtual void shutdown () override;
+    void shutdown () override;
 
   private:
     IDL::traits<PortableServer::POA>::ref_type poa_;

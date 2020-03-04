@@ -24,9 +24,9 @@ namespace DAnCEX11
           virtual ~ArtifactInstallationHandlerSvc ();
 
           /// Initialization hook.
-          virtual int init (int argc, ACE_TCHAR *argv[]) override;
+          int init (int argc, ACE_TCHAR *argv[]) override;
           /// Deinitialization hook.
-          virtual int fini () override;
+          int fini () override;
 
           virtual ArtifactInstallationHandler* handler_instance () = 0;
       };

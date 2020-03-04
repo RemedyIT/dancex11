@@ -56,11 +56,11 @@ namespace DAnCEX11
     {}
 
   protected:
-    virtual IDL::traits<Deployment::ApplicationManager>::ref_type
+    IDL::traits<Deployment::ApplicationManager>::ref_type
     resolve_app_manager (
         IDL::traits<Deployment::Deployment_Manager>::ref_type) override;
 
-    virtual IDL::traits<Deployment::Application>::ref_type
+    IDL::traits<Deployment::Application>::ref_type
     resolve_application (
         IDL::traits<Deployment::ApplicationManager>::ref_type) override;
   };

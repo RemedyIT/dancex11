@@ -28,36 +28,28 @@ namespace DAnCEX11
     NodeDeploymentHandler () = default;
     virtual ~NodeDeploymentHandler () = default;
 
-    virtual
-    std::string
-    handler_type() override;
+    std::string handler_type() override;
 
-    virtual
     void
     configure (
         const std::string& config,
         const ::Deployment::Properties& prop,
         IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh) override;
 
-    virtual
     IDL::traits< ::Deployment::Deployment_Manager>::ref_type
     activate_manager (
         const std::string& name) override;
 
-    virtual
     IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::ref_type
     activate_launcher (
         const std::string& name) override;
 
-    virtual
-    void
-    shutdown () override;
+    void shutdown () override;
 
     static const std::string handler_type_;
     static const std::string config_file_;
 
   private:
-
     void create_poas ();
 
     IDL::traits<PortableServer::POA>::ref_type root_poa_;

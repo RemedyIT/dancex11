@@ -33,11 +33,11 @@ namespace DAnCEX11
 
     virtual ~NodeApplicationManager_Impl();
 
-    virtual IDL::traits<Deployment::Application>::ref_type
+    IDL::traits<Deployment::Application>::ref_type
     startLaunch (const Deployment::Properties & configProperty,
                  Deployment::Connections & providedReference) override;
 
-    virtual void destroyApplication (IDL::traits<Deployment::Application>::ref_type) override;
+    void destroyApplication (IDL::traits<Deployment::Application>::ref_type) override;
 
     void preparePlan (const Deployment::DeploymentPlan& plan);
 

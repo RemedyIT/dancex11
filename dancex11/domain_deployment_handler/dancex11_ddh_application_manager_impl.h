@@ -36,11 +36,11 @@ namespace DAnCEX11
 
       virtual ~DomainApplicationManager_Impl();
 
-      virtual IDL::traits< ::Deployment::Application>::ref_type
+      IDL::traits< ::Deployment::Application>::ref_type
       startLaunch (const ::Deployment::Properties& configProperty,
-                   ::Deployment::Connections& providedReference);
+                   ::Deployment::Connections& providedReference) override;
 
-      virtual void destroyApplication (IDL::traits< ::Deployment::Application>::ref_type app);
+      void destroyApplication (IDL::traits< ::Deployment::Application>::ref_type app) override;
 
       std::string getPlanUUID ();
 
@@ -48,9 +48,9 @@ namespace DAnCEX11
 
       void destroyManager ();
 
-      virtual ::Deployment::Applications getApplications ();
+      ::Deployment::Applications getApplications () override;
 
-      virtual ::Deployment::DeploymentPlan getPlan ();
+      ::Deployment::DeploymentPlan getPlan () override;
 
     private:
       const std::string

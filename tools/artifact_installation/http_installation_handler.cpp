@@ -63,11 +63,9 @@ namespace DAnCEX11
       ACE_CString plan_uuid_;
   };
 
-
   /*
    *  HttpInstallationHandler
    */
-
   HttpInstallationHandler* HttpInstallationHandler::getInstance ()
   {
     static HttpInstallationHandler instance_;

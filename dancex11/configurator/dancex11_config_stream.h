@@ -90,7 +90,7 @@ namespace DAnCEX11
     virtual ~Config_Stream_T () = default;
 
   protected:
-    virtual typename base::source_type& source () const
+    typename base::source_type& source () const override
     { return const_cast<Config_Stream_T*> (this)->source_; }
 
     Stream_ source_;

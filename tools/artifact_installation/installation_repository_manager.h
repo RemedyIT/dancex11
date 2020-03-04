@@ -81,9 +81,9 @@ namespace DAnCEX11
           virtual ~InstallationRepositoryManagerSvc () = default;
 
           /// Initialization hook.
-          virtual int init (int argc, ACE_TCHAR *argv[]) override;
+          int init (int argc, ACE_TCHAR *argv[]) override;
           /// Deinitialization hook.
-          virtual int fini () override;
+          int fini () override;
 
           virtual InstallationRepositoryManager* manager_instance () = 0;
       };

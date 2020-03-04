@@ -59,20 +59,20 @@ namespace DAnCEX11
       * is started as well.  Raises the StartError exception if
       * launching or starting the application fails.
       */
-      virtual void
+      void
       finishLaunch (const ::Deployment::Connections & connections,
                     bool start) override;
       /**
       * Starts the application. Raises the StartError exception if
       * starting the application fails.
       */
-      virtual void start () override;
+      void start () override;
 
       /**
       * Stops the application. Raises the StopError exception if
       * stopping the application fails.
       */
-      virtual void stop () override;
+      void stop () override;
 
     private:
       std::string findNodeTApp2Id(IDL::traits< ::Deployment::Application >::ref_type app);

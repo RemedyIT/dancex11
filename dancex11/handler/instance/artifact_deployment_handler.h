@@ -29,53 +29,43 @@ namespace DAnCEX11
     // Destructor
     virtual ~Artifact_Deployment_Handler_i ();
 
-    virtual
-      std::string instance_type ();
+    std::string instance_type () override;
 
-    virtual
-      CORBA::StringSeq dependencies ();
+    CORBA::StringSeq dependencies () override;
 
-    virtual
-      void install_instance (const ::Deployment::DeploymentPlan & plan,
-                             uint32_t instanceRef,
-                             CORBA::Any& instance_reference);
+    void install_instance (const ::Deployment::DeploymentPlan & plan,
+                           uint32_t instanceRef,
+                           CORBA::Any& instance_reference) override;
 
-    virtual
-      void activate_instance (const ::Deployment::DeploymentPlan & ,
-                              uint32_t ,
-                              const CORBA::Any &) {};
-    virtual
-      void passivate_instance (const ::Deployment::DeploymentPlan & ,
-                               uint32_t ,
-                               const CORBA::Any &) {};
+    void activate_instance (const ::Deployment::DeploymentPlan & ,
+                            uint32_t ,
+                            const CORBA::Any &) override {};
 
-    virtual
-      void remove_instance (const ::Deployment::DeploymentPlan & plan,
-                            uint32_t instanceRef,
-                            const CORBA::Any & instance_reference);
-
-    virtual
-      void provide_endpoint_reference (const ::Deployment::DeploymentPlan &,
-                                       uint32_t,
-                                       CORBA::Any&) {};
-
-    virtual
-      void connect_instance (const ::Deployment::DeploymentPlan &,
+    void passivate_instance (const ::Deployment::DeploymentPlan & ,
                              uint32_t ,
-                             const CORBA::Any & ) {};
+                             const CORBA::Any &) override {};
 
-    virtual
-      void disconnect_instance (const ::Deployment::DeploymentPlan & ,
-                                uint32_t ) {};
+    void remove_instance (const ::Deployment::DeploymentPlan & plan,
+                          uint32_t instanceRef,
+                          const CORBA::Any & instance_reference) override;
 
-    virtual
-      void instance_configured (const ::Deployment::DeploymentPlan &,
-                                uint32_t) {};
+    void provide_endpoint_reference (const ::Deployment::DeploymentPlan &,
+                                     uint32_t,
+                                     CORBA::Any&) override {};
 
-    virtual
-      void configure(const Deployment::Properties&);
+    void connect_instance (const ::Deployment::DeploymentPlan &,
+                           uint32_t ,
+                           const CORBA::Any & ) override {};
 
-    virtual void close ();
+    void disconnect_instance (const ::Deployment::DeploymentPlan & ,
+                              uint32_t ) override {};
+
+    void instance_configured (const ::Deployment::DeploymentPlan &,
+                              uint32_t) override {};
+
+    void configure(const Deployment::Properties&);
+
+    void close ();
 
   private:
     static const std::string instance_type_;
@@ -90,8 +80,7 @@ namespace DAnCEX11
 
     virtual ~Artifact_Deployment_Initializer ();
 
-    virtual void
-    preprocess_plan (Deployment::DeploymentPlan & plan) override;
+    void preprocess_plan (Deployment::DeploymentPlan & plan) override;
   };
 }
 

@@ -28,17 +28,17 @@ namespace DAnCEX11
 
       virtual ~ExecutionManager_Impl ();
 
-      virtual IDL::traits< ::Deployment::ApplicationManager>::ref_type
+      IDL::traits< ::Deployment::ApplicationManager>::ref_type
       preparePlan (const ::Deployment::DeploymentPlan& plan,
                    IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
 
-      virtual ::Deployment::DomainApplicationManagers getManagers () override;
-      virtual void destroyManager (IDL::traits< ::Deployment::ApplicationManager>::ref_type manager) override;
+      ::Deployment::DomainApplicationManagers getManagers () override;
+      void destroyManager (IDL::traits< ::Deployment::ApplicationManager>::ref_type manager) override;
       void add_node_manager (const std::string& name, const std::string& ior);
 
       void load_cdd (const std::string &filename, const std::string& = {});
 
-      virtual void shutdown () override;
+      void shutdown () override;
 
       typedef std::map<std::string, CORBA::servant_reference<DomainApplicationManager_Impl>>
         TDomainManagers;

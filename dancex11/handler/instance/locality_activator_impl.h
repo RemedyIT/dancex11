@@ -52,13 +52,12 @@ namespace DAnCEX11
     /// Destructor
     virtual ~DAnCE_LocalityActivator_i ();
 
-    virtual
-      void locality_manager_callback (
-          IDL::traits< ::DAnCEX11::LocalityManager>::ref_type serverref,
-          const std::string & server_UUID,
-          ::Deployment::Properties& config) override;
+    void locality_manager_callback (
+        IDL::traits< ::DAnCEX11::LocalityManager>::ref_type serverref,
+        const std::string & server_UUID,
+        ::Deployment::Properties& config) override;
 
-    virtual void configuration_complete (const std::string &server_UUID) override;
+    void configuration_complete (const std::string &server_UUID) override;
 
     IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
     create_locality_manager (
@@ -151,9 +150,9 @@ namespace DAnCEX11
       Server_Child_Handler (Safe_Server_Info  si);
       virtual ~Server_Child_Handler ();
 
-      virtual int handle_close (ACE_HANDLE, ACE_Reactor_Mask) override;
+      int handle_close (ACE_HANDLE, ACE_Reactor_Mask) override;
 
-      virtual int handle_exit (ACE_Process *proc) override;
+      int handle_exit (ACE_Process *proc) override;
 
       const Server_Info& server_info () const
       {
@@ -189,7 +188,7 @@ namespace DAnCEX11
       Watchdog (ACE_Process_Manager&);
       ~Watchdog () = default;
 
-      virtual int svc () override;
+      int svc () override;
 
       bool start ();
 

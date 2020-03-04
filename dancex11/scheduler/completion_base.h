@@ -52,7 +52,7 @@ namespace DAnCEX11
 
     virtual ~Completion_T () = default;
 
-    virtual void
+    void
     update (const future_type &future) override
     {
       ACE_GUARD_THROW_EX (ACE_SYNCH_MUTEX,
@@ -103,13 +103,13 @@ namespace DAnCEX11
     Completion_T& operator= (Completion_T&& x) = delete;
     //@}
   protected:
-    virtual void
+    void
     on_all_completed () override
     {
       this->condition_.broadcast ();
     }
 
-    virtual void
+    void
     on_all_completed_with_failure () override
     {
       this->condition_.broadcast ();

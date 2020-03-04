@@ -42,12 +42,12 @@ namespace DAnCEX11
 
     virtual ~NodeApplication_Impl();
 
-    virtual void finishLaunch (const ::Deployment::Connections & providedReference,
-                               bool start) override;
+    void finishLaunch (const ::Deployment::Connections & providedReference,
+                       bool start) override;
 
-    virtual void start () override;
+    void start () override;
 
-    virtual void stop () override;
+    void stop () override;
 
     void prepare_instances (const LocalitySplitter::TSubPlans & plans);
 
