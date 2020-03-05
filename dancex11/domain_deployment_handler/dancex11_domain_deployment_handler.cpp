@@ -54,19 +54,15 @@ namespace DAnCEX11
     {}
     virtual ~Domain_Launcher () = default;
 
-    virtual
     Deployment::DeploymentPlan
     plan() override;
 
-    virtual
     void
     plan (const Deployment::DeploymentPlan& _v) override;
 
-    virtual
     void
     launch () override;
 
-    virtual
     void
     shutdown () override;
 

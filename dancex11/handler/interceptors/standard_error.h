@@ -24,38 +24,38 @@ namespace DAnCEX11
 
     virtual ~Standard_Error ();
 
-    virtual void
+    void
     post_install (const Deployment::DeploymentPlan &plan,
       uint32_t index,
       const CORBA::Any &reference,
       const CORBA::Any &exception_thrown) override;
 
-    virtual void
+    void
     post_connect (const Deployment::DeploymentPlan &plan,
       uint32_t connectionRef,
       const CORBA::Any &exceptionThrown) override;
 
-    virtual void
+    void
     post_configured (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       const CORBA::Any &exception_thrown) override;
 
-    virtual void
+    void
     post_activate (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       const CORBA::Any &exception_thrown) override;
 
-    virtual void
+    void
     post_passivate (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       const CORBA::Any &exception_thrown) override;
 
-    virtual void
+    void
     post_remove (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       const CORBA::Any &exception_thrown) override;
 
-    virtual void
+    void
     configure (const Deployment::Properties&) override;
   private:
     //@{

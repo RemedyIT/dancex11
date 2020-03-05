@@ -168,7 +168,7 @@ namespace DAnCEX11
     virtual ~Config_Parser_T () = default;
 
   protected:
-    virtual typename base_type::stream_base_type& stream () const
+    typename base_type::stream_base_type& stream () const override
     { return const_cast<Config_Parser_T*> (this)->stream_; }
 
   private:

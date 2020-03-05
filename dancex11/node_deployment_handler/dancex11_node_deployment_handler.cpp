@@ -46,21 +46,13 @@ namespace DAnCEX11
     {}
     virtual ~Node_Launcher () = default;
 
-    virtual
-    Deployment::DeploymentPlan
-    plan() override;
+    Deployment::DeploymentPlan plan() override;
 
-    virtual
-    void
-    plan (const Deployment::DeploymentPlan& _v) override;
+    void plan (const Deployment::DeploymentPlan& _v) override;
 
-    virtual
-    void
-    launch () override;
+    void launch () override;
 
-    virtual
-    void
-    shutdown () override;
+    void shutdown () override;
 
   private:
     Deployment::DeploymentPlan plan_;

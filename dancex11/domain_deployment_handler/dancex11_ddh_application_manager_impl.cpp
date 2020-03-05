@@ -58,31 +58,24 @@ namespace DAnCEX11
     future_type& result () { return this->result_; }
 
     // NodeManager methods
-    virtual
     void
     joinDomain () override {}
-    virtual
     void
     joinDomain_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type) override {}
-    virtual
+        IDL::traits<Messaging::ExceptionHolder>::ref_type) override {}
     void
     leaveDomain () override {}
-    virtual
     void
     leaveDomain_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type) override {}
-    virtual
+        IDL::traits<Messaging::ExceptionHolder>::ref_type) override {}
     void
     getDynamicResources (
         const ::Deployment::Resources&) override {}
-    virtual
     void
     getDynamicResources_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type) override {}
+        IDL::traits<Messaging::ExceptionHolder>::ref_type) override {}
 
     // Deployment_Manager methods
-    virtual
     void
     preparePlan (
         IDL::traits< ::Deployment::ApplicationManager>::ref_type ami_return_val) override
@@ -96,10 +89,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     preparePlan_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       DANCEX11_LOG_TRACE( "NodeManager_ReplyHandler::preparePlan_excep");
 
@@ -156,7 +148,6 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     destroyManager () override
     {
@@ -168,10 +159,9 @@ namespace DAnCEX11
       PortableServer::ObjectId const oid = this->poa_->servant_to_id (this->_lock ());
       this->poa_->deactivate_object (oid);
     }
-    virtual
     void
     destroyManager_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       DANCEX11_LOG_TRACE( "NodeManager_ReplyHandler::destroyManager_excep");
 

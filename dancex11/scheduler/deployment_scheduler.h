@@ -41,7 +41,7 @@ namespace DAnCEX11
     Deployment_Scheduler& operator= (Deployment_Scheduler&& x) = delete;
     //@}
   protected:
-    virtual int svc () override;
+    int svc () override;
 
   private:
     bool multithread_ {false};

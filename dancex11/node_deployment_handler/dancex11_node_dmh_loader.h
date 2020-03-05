@@ -30,7 +30,7 @@ namespace DAnCEX11
      * This method cannot throw any exception, but it can return a nil
      * object to indicate an error condition.
      */
-    virtual CORBA::object_reference<DeploymentManagerHandler>
+    CORBA::object_reference<DeploymentManagerHandler>
     create_handler () override;
 
     static int Initializer (const ACE_TCHAR*);

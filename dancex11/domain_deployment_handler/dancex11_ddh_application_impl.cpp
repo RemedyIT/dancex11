@@ -57,7 +57,6 @@ namespace DAnCEX11
 
     future_type& result () { return this->result_; }
 
-    virtual
     void
     startLaunch (
         IDL::traits< ::Deployment::Application>::ref_type ami_return_val,
@@ -70,10 +69,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     startLaunch_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       try
       {
@@ -127,7 +125,6 @@ namespace DAnCEX11
 
     // generated from c++11/templates/cli/hdr/ami/operation.erb
     /// @copydoc Deployment::ApplicationManager::destroyApplication
-    virtual
     void
     destroyApplication () override
     {
@@ -138,10 +135,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     destroyApplication_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       try
       {
@@ -217,7 +213,6 @@ namespace DAnCEX11
 
     future_type& result () { return this->result_; }
 
-    virtual
     void
     finishLaunch () override
     {
@@ -228,10 +223,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     finishLaunch_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       try
       {
@@ -282,7 +276,6 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     start () override
     {
@@ -293,10 +286,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     start_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       try
       {
@@ -337,7 +329,6 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     stop () override
     {
@@ -348,10 +339,9 @@ namespace DAnCEX11
       this->poa_->deactivate_object (oid);
     }
 
-    virtual
     void
     stop_excep (
-        IDL::traits< Messaging::ExceptionHolder>::ref_type excep_holder) override
+        IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override
     {
       try
       {

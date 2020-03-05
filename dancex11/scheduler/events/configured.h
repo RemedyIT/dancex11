@@ -40,21 +40,16 @@ namespace DAnCEX11
     Instance_Configured& operator= (Instance_Configured&& x) = delete;
     //@}
   protected:
-    virtual void
-    invoke_pre_interceptor (IDL::traits<DeploymentInterceptor>::ref_type) override;
+    void invoke_pre_interceptor (IDL::traits<DeploymentInterceptor>::ref_type) override;
 
-    virtual void
-    invoke (IDL::traits<InstanceDeploymentHandler>::ref_type) override;
+    void invoke (IDL::traits<InstanceDeploymentHandler>::ref_type) override;
 
-    virtual void
-    invoke_post_interceptor (IDL::traits<DeploymentInterceptor>::ref_type) override;
+    void invoke_post_interceptor (IDL::traits<DeploymentInterceptor>::ref_type) override;
 
-    virtual void
-    create_unexpected_exception (const std::string &,
+    void create_unexpected_exception (const std::string &,
       const std::string &) override;
 
-    virtual void
-    create_valid_result (Event_Result &) override;
+    void create_valid_result (Event_Result &) override;
 
   private:
     Deployment::DeploymentPlan &plan_;

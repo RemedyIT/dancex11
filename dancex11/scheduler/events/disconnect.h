@@ -40,21 +40,16 @@ namespace DAnCEX11
     Disconnect_Instance& operator= (Disconnect_Instance&& x) = delete;
     //@}
   protected:
-    virtual void
-    invoke_pre_interceptor (IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type) override;
+    void invoke_pre_interceptor (IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type) override;
 
-    virtual void
-    invoke (IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type) override;
+    void invoke (IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type) override;
 
-    virtual void
-    invoke_post_interceptor (IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type) override;
+    void invoke_post_interceptor (IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type) override;
 
-    virtual void
-    create_unexpected_exception (const std::string &,
+    void create_unexpected_exception (const std::string &,
       const std::string &) override;
 
-    virtual void
-    create_valid_result (Event_Result &) override;
+    void create_valid_result (Event_Result &) override;
 
   private:
     Deployment::DeploymentPlan &plan_;

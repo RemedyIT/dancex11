@@ -42,7 +42,6 @@ namespace DAnCEX11
     bool run ();
 
     /// ShutdownHandler callback
-    virtual
     void shutdown () override;
 
    private:

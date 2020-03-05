@@ -25,11 +25,11 @@ namespace DAnCEX11
   public:
     virtual ~CDPPlan_Loader () = default;
 
-    virtual bool read_plan (const std::string& filename,
-                            Deployment::DeploymentPlan& plan);
+    bool read_plan (const std::string& filename,
+                    Deployment::DeploymentPlan& plan) override;
 
-    virtual bool read_domain (const std::string& filename,
-                              Deployment::Domain& domain);
+    bool read_domain (const std::string& filename,
+                      Deployment::Domain& domain) override;
 
     static CDPPlan_Loader* instance ();
 
@@ -44,10 +44,10 @@ namespace DAnCEX11
     virtual ~CDPPlan_Loader_Svc ();
 
     /// Initializes object when dynamic linking occurs.
-    virtual int init (int argc, ACE_TCHAR *argv[]) override;
+    int init (int argc, ACE_TCHAR *argv[]) override;
 
     /// Terminates object when dynamic unlinking occurs.
-    virtual int fini () override;
+    int fini () override;
 
     static int Initializer ();
   };

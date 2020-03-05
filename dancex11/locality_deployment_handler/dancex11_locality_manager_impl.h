@@ -37,37 +37,36 @@ namespace DAnCEX11
 
     virtual ~LocalityManager_i ();
 
-    virtual void
+    void
     configure (const Deployment::Properties &prop) override;
 
-    virtual Deployment::Properties
+    Deployment::Properties
     configuration () override;
 
-    virtual IDL::traits< Deployment::ApplicationManager >::ref_type
+    IDL::traits< Deployment::ApplicationManager >::ref_type
     preparePlan (const Deployment::DeploymentPlan &plan,
       IDL::traits< Deployment::ResourceCommitmentManager >::ref_type resourceCommitment) override;
 
-    virtual void
-    shutdown () override;
+    void shutdown () override;
 
-    virtual IDL::traits< Deployment::Application >::ref_type
+    IDL::traits< Deployment::Application >::ref_type
     startLaunch (const Deployment::Properties &configProperty,
       Deployment::Connections &providedReference) override;
 
-    virtual void
+    void
     finishLaunch (const Deployment::Connections &providedReferences,
       bool start) override;
 
-    virtual void
+    void
     start () override;
 
-    virtual void
+    void
     stop () override;
 
-    virtual void
+    void
     destroyApplication (IDL::traits< Deployment::Application >::ref_type app) override;
 
-    virtual void
+    void
     destroyManager (IDL::traits< Deployment::ApplicationManager >::ref_type manager) override;
 
     //@{

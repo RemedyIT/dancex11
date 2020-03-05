@@ -26,14 +26,14 @@ namespace DAnCEX11
     virtual ~Domain_DMHandler_Loader () = default;
 
     /// Initializes handler on dynamic loading.
-    virtual int init (int argc, ACE_TCHAR *argv[]) override;
+    int init (int argc, ACE_TCHAR *argv[]) override;
 
     /**
      * Create and activate an DMH instance.
      * This method cannot throw any exception, but it can return a nil
      * object to indicate an error condition.
      */
-    virtual CORBA::object_reference<DeploymentManagerHandler>
+    CORBA::object_reference<DeploymentManagerHandler>
     create_handler () override;
 
     static int Initializer (const ACE_TCHAR*);

@@ -28,8 +28,7 @@ namespace DAnCEX11
 
     virtual ~Action_Base () = default;
 
-    virtual int
-    call () override;
+    int call () override;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */

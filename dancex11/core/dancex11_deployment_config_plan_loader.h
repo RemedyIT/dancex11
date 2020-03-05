@@ -26,11 +26,11 @@ namespace DAnCEX11
   public:
     virtual ~CFGPlan_Loader () = default;
 
-    virtual bool read_plan (const std::string& filename,
-                            Deployment::DeploymentPlan& plan);
+    bool read_plan (const std::string& filename,
+                    Deployment::DeploymentPlan& plan) override;
 
-    virtual bool read_domain (const std::string& filename,
-                              Deployment::Domain& dom);
+    bool read_domain (const std::string& filename,
+                      Deployment::Domain& dom) override;
 
     static CFGPlan_Loader* instance ();
 

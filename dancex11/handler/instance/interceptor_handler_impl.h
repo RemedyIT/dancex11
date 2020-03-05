@@ -27,54 +27,52 @@ namespace DAnCEX11
 
     virtual ~Interceptor_Handler_Impl ();
 
-    virtual std::string
-    instance_type () override;
+    std::string instance_type () override;
 
-    virtual CORBA::StringSeq
-    dependencies () override;
+    CORBA::StringSeq dependencies () override;
 
-    virtual void
+    void
     install_instance (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       CORBA::Any& instance_reference) override;
 
-    virtual void
+    void
     activate_instance (const Deployment::DeploymentPlan & ,
       uint32_t ,
       const CORBA::Any &) override {};
 
-    virtual void
+    void
     passivate_instance (const Deployment::DeploymentPlan & ,
       uint32_t ,
       const CORBA::Any &) override {};
 
-    virtual void
+    void
     remove_instance (const Deployment::DeploymentPlan &plan,
       uint32_t instanceRef,
       const CORBA::Any & instance_reference) override;
 
-    virtual void
+    void
     provide_endpoint_reference (const Deployment::DeploymentPlan &,
       uint32_t,
       CORBA::Any&) override {};
 
-    virtual void
+    void
     connect_instance (const Deployment::DeploymentPlan &plan,
       uint32_t connectionRef,
       const CORBA::Any & provided_reference) override;
 
-    virtual void
+    void
     disconnect_instance (const Deployment::DeploymentPlan &plan,
       uint32_t connectionRef) override;
 
-    virtual void
+    void
     instance_configured (const Deployment::DeploymentPlan &,
       uint32_t) override {};
 
-    virtual void
+    void
     configure (const Deployment::Properties &) override;
 
-    virtual void
+    void
     close () override;
 
     //@{
