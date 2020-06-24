@@ -54,7 +54,7 @@ namespace DAnCEX11
 
     private:
       const std::string
-      findNode4NM (IDL::traits< ::Deployment::NodeManager >::ref_type nm);
+      findNode4NM (IDL::traits< ::Deployment::NodeManager>::ref_type nm);
 
       IDL::traits<PortableServer::POA>::ref_type poa_;
       Deployment::DeploymentPlan plan_;

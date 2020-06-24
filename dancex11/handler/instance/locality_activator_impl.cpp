@@ -73,8 +73,8 @@ namespace DAnCEX11
   DAnCE_LocalityActivator_i::DAnCE_LocalityActivator_i (
       Deployment::Properties props,
       bool multithreaded,
-      IDL::traits< CORBA::ORB>::ref_type orb,
-      IDL::traits< PortableServer::POA>::ref_type poa)
+      IDL::traits<CORBA::ORB>::ref_type orb,
+      IDL::traits<PortableServer::POA>::ref_type poa)
     :
 #if defined (ACE_WIN32)
       process_watcher_ (process_manager_),

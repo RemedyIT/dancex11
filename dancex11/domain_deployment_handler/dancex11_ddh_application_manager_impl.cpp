@@ -541,7 +541,7 @@ namespace DAnCEX11
           // We save combination NAM and NM in TNam2Nm vector
           this->sub_app_mgr_.push_back(
                   std::pair< IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,
-                             IDL::traits< ::Deployment::NodeManager>::ref_type >(nam, result.nm_));
+                             IDL::traits< ::Deployment::NodeManager>::ref_type>(nam, result.nm_));
           // Save combination NM and node_id in TNm2Id vector
           this->node_ids_.push_back( DomainApplication_Impl::TNm2Id_PAIR (result.nm_, result.node_));
         }
@@ -773,7 +773,7 @@ namespace DAnCEX11
 
   const std::string
   DomainApplicationManager_Impl::findNode4NM(
-      IDL::traits< ::Deployment::NodeManager >::ref_type nm)
+      IDL::traits< ::Deployment::NodeManager>::ref_type nm)
   {
     for (const DomainApplication_Impl::TNm2Id_PAIR& nmpair : this->node_ids_)
     {

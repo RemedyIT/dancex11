@@ -1159,7 +1159,7 @@ namespace DAnCEX11
 
   std::string
   DomainApplication_Impl::findNodeTApp2Id (
-      IDL::traits< ::Deployment::Application >::ref_type app)
+      IDL::traits< ::Deployment::Application>::ref_type app)
   {
     for (TApp2Id::iterator node_iter = this->app_node_ids_.begin();
         node_iter != this->app_node_ids_.end();
