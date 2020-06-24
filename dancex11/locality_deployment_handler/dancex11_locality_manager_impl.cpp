@@ -29,7 +29,7 @@ namespace DAnCEX11
   // Implementation skeleton constructor
   LocalityManager_i::LocalityManager_i (const std::string &uuid,
     std::shared_ptr<Plugin_Manager> plugins,
-    IDL::traits< PortableServer::POA >::ref_type poa,
+    IDL::traits<PortableServer::POA>::ref_type poa,
     IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
     : uuid_ (uuid)
     , poa_ (std::move (poa))
@@ -76,7 +76,7 @@ namespace DAnCEX11
                             "Looking up configuration handler for <" <<
                             property.name () << ">");
 
-        IDL::traits< DAnCEX11::DeploymentConfiguration >::ref_type config =
+        IDL::traits<DAnCEX11::DeploymentConfiguration>::ref_type config =
           this->scheduler_.plugins ().get_configuration_handler (property.name ());
 
         if (config)
@@ -102,9 +102,9 @@ namespace DAnCEX11
     throw CORBA::NO_IMPLEMENT ();
   }
 
-  IDL::traits< Deployment::ApplicationManager >::ref_type
+  IDL::traits< Deployment::ApplicationManager>::ref_type
   LocalityManager_i::preparePlan (const Deployment::DeploymentPlan &plan,
-    IDL::traits< Deployment::ResourceCommitmentManager >::ref_type)
+    IDL::traits< Deployment::ResourceCommitmentManager>::ref_type)
   {
     DANCEX11_LOG_TRACE ("LocalityManager_i::preparePlan");
 
@@ -148,7 +148,7 @@ namespace DAnCEX11
     return this->_this ();
   }
 
-  IDL::traits< Deployment::Application >::ref_type
+  IDL::traits< Deployment::Application>::ref_type
   LocalityManager_i::startLaunch (const Deployment::Properties &,
     Deployment::Connections &providedReference)
   {

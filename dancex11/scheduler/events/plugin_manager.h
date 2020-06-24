@@ -67,7 +67,7 @@ namespace DAnCEX11
     IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type
     fetch_installation_handler (const std::string &instance_type);
 
-    typedef std::list < IDL::traits< DAnCEX11::DeploymentInterceptor >::ref_type >
+    typedef std::list < IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type>
       INTERCEPTORS;
 
     const INTERCEPTORS &
@@ -99,14 +99,14 @@ namespace DAnCEX11
     Deployment::Properties config_;
 
     typedef std::pair < std::string,
-      IDL::traits< DAnCEX11::InstanceDeploymentHandler >::ref_type > HANDLER_MAP_PAIR;
+      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type> HANDLER_MAP_PAIR;
     typedef std::map < std::string,
-      IDL::traits< DAnCEX11::InstanceDeploymentHandler >::ref_type > HANDLER_MAP;
+      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type> HANDLER_MAP;
 
     typedef std::pair < std::string,
-      IDL::traits< DeploymentConfiguration >::ref_type > CONFIG_MAP_PAIR;
+      IDL::traits< DeploymentConfiguration>::ref_type> CONFIG_MAP_PAIR;
     typedef std::map < std::string,
-      IDL::traits< DeploymentConfiguration >::ref_type > CONFIG_MAP;
+      IDL::traits< DeploymentConfiguration>::ref_type> CONFIG_MAP;
 
     typedef std::vector < std::string >   SVCOBJ_LIST;
 

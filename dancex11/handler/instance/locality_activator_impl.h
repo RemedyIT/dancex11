@@ -46,8 +46,8 @@ namespace DAnCEX11
     /// Constructor
     DAnCE_LocalityActivator_i (Deployment::Properties props,
                                bool multithreaded,
-                               IDL::traits< CORBA::ORB>::ref_type orb,
-                               IDL::traits< PortableServer::POA>::ref_type poa_);
+                               IDL::traits<CORBA::ORB>::ref_type orb,
+                               IDL::traits<PortableServer::POA>::ref_type poa_);
 
     /// Destructor
     virtual ~DAnCE_LocalityActivator_i ();
