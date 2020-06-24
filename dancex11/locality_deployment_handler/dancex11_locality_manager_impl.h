@@ -43,13 +43,13 @@ namespace DAnCEX11
     Deployment::Properties
     configuration () override;
 
-    IDL::traits< Deployment::ApplicationManager>::ref_type
+    IDL::traits<Deployment::ApplicationManager>::ref_type
     preparePlan (const Deployment::DeploymentPlan &plan,
-      IDL::traits< Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
+      IDL::traits<Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
 
     void shutdown () override;
 
-    IDL::traits< Deployment::Application>::ref_type
+    IDL::traits<Deployment::Application>::ref_type
     startLaunch (const Deployment::Properties &configProperty,
       Deployment::Connections &providedReference) override;
 
@@ -64,10 +64,10 @@ namespace DAnCEX11
     stop () override;
 
     void
-    destroyApplication (IDL::traits< Deployment::Application>::ref_type app) override;
+    destroyApplication (IDL::traits<Deployment::Application>::ref_type app) override;
 
     void
-    destroyManager (IDL::traits< Deployment::ApplicationManager>::ref_type manager) override;
+    destroyManager (IDL::traits<Deployment::ApplicationManager>::ref_type manager) override;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */

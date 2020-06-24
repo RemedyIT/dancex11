@@ -102,9 +102,9 @@ namespace DAnCEX11
     throw CORBA::NO_IMPLEMENT ();
   }
 
-  IDL::traits< Deployment::ApplicationManager>::ref_type
+  IDL::traits<Deployment::ApplicationManager>::ref_type
   LocalityManager_i::preparePlan (const Deployment::DeploymentPlan &plan,
-    IDL::traits< Deployment::ResourceCommitmentManager>::ref_type)
+    IDL::traits<Deployment::ResourceCommitmentManager>::ref_type)
   {
     DANCEX11_LOG_TRACE ("LocalityManager_i::preparePlan");
 
@@ -148,7 +148,7 @@ namespace DAnCEX11
     return this->_this ();
   }
 
-  IDL::traits< Deployment::Application>::ref_type
+  IDL::traits<Deployment::Application>::ref_type
   LocalityManager_i::startLaunch (const Deployment::Properties &,
     Deployment::Connections &providedReference)
   {

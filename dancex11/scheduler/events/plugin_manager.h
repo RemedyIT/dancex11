@@ -104,9 +104,9 @@ namespace DAnCEX11
       IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type> HANDLER_MAP;
 
     typedef std::pair < std::string,
-      IDL::traits< DeploymentConfiguration>::ref_type> CONFIG_MAP_PAIR;
+      IDL::traits<DeploymentConfiguration>::ref_type> CONFIG_MAP_PAIR;
     typedef std::map < std::string,
-      IDL::traits< DeploymentConfiguration>::ref_type> CONFIG_MAP;
+      IDL::traits<DeploymentConfiguration>::ref_type> CONFIG_MAP;
 
     typedef std::vector < std::string >   SVCOBJ_LIST;
 
