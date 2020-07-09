@@ -59,7 +59,7 @@ namespace DAnCEX11
 
         for (const std::pair< std::string, IH_DEPS > &dependency : tmp_dep)
           {
-            if (dependency.second.size () == 0) // i.e., no dependencies
+            if (dependency.second.empty ()) // i.e., no dependencies
               {
                 retval.push_back (dependency.first);
                 selected.insert (dependency.first);
