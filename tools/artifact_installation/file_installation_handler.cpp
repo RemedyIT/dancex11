@@ -77,7 +77,7 @@ namespace DAnCEX11
         {
           ArtifactInstallationProperties propreader (properties, this->protocol_prefix());
 
-          ifstream* ifs = 0;
+          ifstream* ifs {};
           ACE_NEW_NORETURN (ifs,
                             ifstream (location.c_str (),
                                       std::ios_base::in |

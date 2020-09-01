@@ -149,7 +149,7 @@ namespace DAnCEX11
       path = this->normalize (path);
     }
 
-    InstallationRepository* rptr = 0;
+    InstallationRepository* rptr {};
     ACE_NEW_NORETURN (rptr,
                       InstallationRepository_Impl (plan, path));
     if (rptr)
@@ -244,7 +244,7 @@ namespace DAnCEX11
     std::string path = this->normalize (location);
     if (this->has_artifact (path))
     {
-      ifstream* ifs = 0;
+      ifstream* ifs {};
       ACE_NEW_RETURN (ifs,
                       ifstream (path.c_str (),
                                 std::ios_base::in |
@@ -262,7 +262,7 @@ namespace DAnCEX11
   std::ostream* InstallationRepository_Impl::create_artifact (std::string& location, bool exclusive)
   {
     std::string path = this->normalize (location);
-    ofstream* ofs = 0;
+    ofstream* ofs {};
     // check that no artifact or folder already exists with this path
     if (ACE_OS::access (path.c_str (), F_OK) != 0)
     {
@@ -327,7 +327,7 @@ namespace DAnCEX11
 
     std::string path = this->normalize (folder);
     ACE_Dirent dir (ACE_TEXT_CHAR_TO_TCHAR (path.c_str ()));
-    ACE_DIRENT* dp = 0;
+    ACE_DIRENT* dp {};
     while ((dp = dir.read ()) != 0)
     {
 #if defined (ACE_HAS_TCHAR_DIRENT)
@@ -439,7 +439,7 @@ namespace DAnCEX11
 
     std::string path = this->normalize (folder);
     ACE_Dirent dir (ACE_TEXT_CHAR_TO_TCHAR (path.c_str ()));
-    ACE_DIRENT* dp = 0;
+    ACE_DIRENT* dp {};
     while ((dp = dir.read ()) != 0)
     {
 #if defined (ACE_HAS_TCHAR_DIRENT)

@@ -56,7 +56,7 @@ namespace DAnCEX11
 
     // Now write the IDL structure.
     for (const ACE_Message_Block *output_mb = output_cdr.begin ();
-          output_mb != 0;
+          output_mb != nullptr;
           output_mb = output_mb->cont ())
     {
       n += ACE_OS::fwrite (output_mb->rd_ptr (),
