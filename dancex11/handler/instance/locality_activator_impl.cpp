@@ -125,7 +125,7 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE("DAnCE_LocalityActivator_i::locality_manager_callback");
 
-    Server_Info *info = 0;
+    Server_Info *info {};
 
     {
       ACE_GUARD_THROW_EX ( ACE_SYNCH_MUTEX,
@@ -192,7 +192,7 @@ namespace DAnCEX11
 
     try
     {
-      Server_Info *info = 0;
+      Server_Info *info {};
 
       {
         ACE_GUARD_THROW_EX ( ACE_SYNCH_MUTEX,
@@ -1140,7 +1140,6 @@ namespace DAnCEX11
 
     return 0;
   }
-
 }
 
 

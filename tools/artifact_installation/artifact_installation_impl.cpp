@@ -395,7 +395,7 @@ namespace DAnCEX11
       while (true)
         {
           // get existing or create one
-          ArtifactRegistry* ar = 0;
+          ArtifactRegistry* ar {};
           TArtifactsMap& plan_map = this->artifacts_[plan_uuid];
           TArtifactsMap::iterator it_art = plan_map.find (name);
           if (it_art == plan_map.end ())
@@ -625,7 +625,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::remove_artifact_registry");
 
-      ArtifactRegistry* ar = 0;
+      ArtifactRegistry* ar {};
 
       // lock the artifact registry for the given plan
       ArtifactRegistry::Guard ar_guard (this->lock_artifact_registry (plan_uuid, name));

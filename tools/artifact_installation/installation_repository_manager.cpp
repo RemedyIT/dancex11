@@ -45,7 +45,7 @@ namespace DAnCEX11
     if (instance_ == mgr)
       {
         DANCEX11_LOG_TRACE ("InstallationRepositoryManager::deregister_manager_instance -" << mgr);
-        instance_ = 0;
+        instance_ = nullptr;
         return 0;
       }
     return -1;
