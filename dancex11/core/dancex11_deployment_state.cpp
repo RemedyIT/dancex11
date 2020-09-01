@@ -56,10 +56,23 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("State::close");
 
+    if (this->root_poa_)
+    {
+      DANCEX11_LOG_DEBUG ("State::close - " <<
+                          "Destroying root POA");
+
+      this->root_poa_->destroy (true, true);
+      this->root_poa_.reset ();
+
+      DANCEX11_LOG_DEBUG ("State::close - " <<
+                          "Deployment root POA destroyed");
+    }
+
     if (this->orb_)
     {
       DANCEX11_LOG_DEBUG ("State::close - " <<
-                          "destroying Deployment ORB");
+                          "Destroying deployment ORB");
+
       this->orb_->destroy ();
       this->orb_.reset ();
 
