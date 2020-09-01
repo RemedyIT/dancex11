@@ -698,7 +698,7 @@ namespace DAnCEX11
     }
 
     // Getting deployment manager service ior
-    std::string ior = orb->object_to_string (this->dm_);
+    std::string const ior = orb->object_to_string (this->dm_);
 
     // Writing ior to file
     if (!dm_file.empty ())
@@ -770,8 +770,9 @@ namespace DAnCEX11
 
     // destroy handler instance
     this->handler_.reset ();
-  // destroy deployment manager instance
-  this->dm_.reset ();
+
+    // destroy deployment manager instance
+    this->dm_.reset ();
 
     // create an ACE Service Config directive to remove the DMH loader
     std::ostringstream os;
@@ -812,7 +813,7 @@ namespace DAnCEX11
           DAnCEX11::State::instance ()->orb ();
 
       // Getting deployment manager service ior
-      std::string ior = orb->object_to_string (this->dm_);
+      std::string const ior = orb->object_to_string (this->dm_);
 
       std::string const service_id =
           this->svc_objectid_ + "." + this->svc_objectkind_;
