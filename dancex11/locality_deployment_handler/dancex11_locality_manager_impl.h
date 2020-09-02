@@ -97,10 +97,10 @@ namespace DAnCEX11
 
     IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
 
-    typedef std::list< uint32_t > INSTANCE_LIST;
+    typedef std::list<uint32_t> INSTANCE_LIST;
 
-    typedef std::pair< std::string, INSTANCE_LIST > HANDLER_TABLE_PAIR;
-    typedef std::map< std::string, INSTANCE_LIST > HANDLER_TABLE;
+    typedef std::pair<std::string, INSTANCE_LIST> HANDLER_TABLE_PAIR;
+    typedef std::map<std::string, INSTANCE_LIST> HANDLER_TABLE;
 
     HANDLER_TABLE instance_handlers_;
 

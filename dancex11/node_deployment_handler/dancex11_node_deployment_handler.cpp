@@ -482,7 +482,7 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_TRACE ("NodeDeploymentHandler::create_poas - " \
                             "Using existing \"Managers\" POA");
-        this->mng_poa_ = this->root_poa_->find_POA ("Managers", 0);
+        this->mng_poa_ = this->root_poa_->find_POA ("Managers", false);
       }
 
     // Destroy the Policy objects.

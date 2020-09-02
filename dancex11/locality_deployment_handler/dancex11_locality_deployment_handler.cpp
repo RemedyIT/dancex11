@@ -228,8 +228,8 @@ namespace DAnCEX11
   LocalityDeploymentHandler::LocalityDeploymentHandler (
       std::string uuid,
       std::string activator)
-    : uuid_ (uuid),
-      activator_ (activator)
+    : uuid_ (std::move(uuid)),
+      activator_ (std::move(activator))
   {
     DANCEX11_LOG_TRACE ("LocalityDeploymentHandler::LocalityDeploymentHandler");
 
@@ -306,6 +306,9 @@ namespace DAnCEX11
       }
     }
 
+    DANCEX11_LOG_DEBUG ("LocalityDeploymentHandler::configure - "
+                        "Load configuration");
+
     // load configuration
     Deployment::DeploymentPlan plugin_plan;
     Config_Loader cl;
@@ -329,6 +332,9 @@ namespace DAnCEX11
       ACE_Utils::UUID_GENERATOR::instance ()->generate_UUID (uuid);
       this->uuid_ = uuid.to_string ()->c_str ();
     }
+
+    DANCEX11_LOG_DEBUG ("LocalityDeploymentHandler::configure - "
+                        "Deploy plugins");
 
     // deploy plugins
     std::shared_ptr<Plugin_Manager> plugins = std::make_shared<Plugin_Manager> ();
@@ -566,7 +572,7 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_TRACE ("LocalityDeploymentHandler::create_poas - " \
                             "Using existing \"Managers\" POA");
-        this->mng_poa_ = this->root_poa_->find_POA ("Managers", 0);
+        this->mng_poa_ = this->root_poa_->find_POA ("Managers", false);
       }
 
     // Destroy the Policy objects.

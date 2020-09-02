@@ -133,9 +133,9 @@ NodeApplicationManager_Impl::installArtifacts ()
   DANCEX11_LOG_TRACE ("NodeApplicationManager_impl::installArtifacts - " <<
                       "triggering artifact installation events");
 
-  uint32_t planix (0);
-  std::list < Event_Future > prepared_instances;
-  std::map < std::string, ::Deployment::MonolithicDeploymentDescription* > instance_localities;
+  uint32_t planix {};
+  std::list<Event_Future> prepared_instances;
+  std::map <std::string, ::Deployment::MonolithicDeploymentDescription*> instance_localities;
   Deployment_Completion completion (*this->scheduler_);
 
   // schedule artifact installation events for each instance of each sub plan
@@ -172,7 +172,7 @@ NodeApplicationManager_Impl::installArtifacts ()
       // the locality splitter makes sure every sub plan contains a Locality Manager
       // instance (creating default if necessary) and identifies it in the key
 
-      uint32_t loc_manager_instance = sub_plan_key.locality_manager_instance ();
+      uint32_t const loc_manager_instance = sub_plan_key.locality_manager_instance ();
       const ::Deployment::InstanceDeploymentDescription &lm_idd =
           sub_plan.instance ()[loc_manager_instance];
 
@@ -475,8 +475,8 @@ NodeApplicationManager_Impl::removeArtifacts ()
   DANCEX11_LOG_TRACE ("NodeApplicationManager_impl::removeArtifacts - " <<
                       "triggering artifact removal events");
 
-  uint32_t planix (0);
-  std::list < Event_Future > prepared_instances;
+  uint32_t planix {};
+  std::list <Event_Future> prepared_instances;
   Deployment_Completion completion (*this->scheduler_);
 
   // schedule artifact removal events for each instance of each sub plan
@@ -498,7 +498,7 @@ NodeApplicationManager_Impl::removeArtifacts ()
       // the locality splitter makes sure every sub plan contains a Locality Manager
       // instance (creating default if necessary) and identifies it in the key
 
-      uint32_t loc_manager_instance = sub_plan_key.locality_manager_instance ();
+      uint32_t const loc_manager_instance = sub_plan_key.locality_manager_instance ();
       const ::Deployment::InstanceDeploymentDescription &lm_idd =
           sub_plan.instance ()[loc_manager_instance];
 

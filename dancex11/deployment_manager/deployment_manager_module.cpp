@@ -425,7 +425,7 @@ namespace DAnCEX11
     if (!dm_file.empty ())
     {
       // read IOR
-      std::string ior = DAnCEX11::DeploymentManager::read_IOR (dm_file);
+      std::string const ior = DAnCEX11::DeploymentManager::read_IOR (dm_file);
       if (!ior.empty ())
       {
         DANCEX11_LOG_TRACE ("DeploymentManager_Module::init_teardown - " <<
@@ -614,6 +614,7 @@ namespace DAnCEX11
       any <<= this->options_.deployment_nc_;
       dmh_prop.push_back (Deployment::Property (DAnCEX11::DOMAIN_NC, any));
     }
+
     this->handler_->configure (this->options_.dm_config_,
                                dmh_prop,
                                this->_this ());

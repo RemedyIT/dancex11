@@ -25,7 +25,7 @@ namespace DAnCEX11
   void
   Process_Priority::configure (const ::Deployment::Property &prop)
   {
-    int32_t prio;
+    int32_t prio {};
 
     if (!(prop.value () >>= prio))
       {
@@ -39,13 +39,13 @@ namespace DAnCEX11
 
     ACE_OS::thr_self (handle);
 
-    int retval = ACE_OS::thr_setprio (handle,
-                                      static_cast<int> (prio),
-                                      -1);
+    int const retval = ACE_OS::thr_setprio (handle,
+                                            static_cast<int> (prio),
+                                            -1);
 
     if (retval != 0)
       {
-        std::string str =
+        std::string const str =
           "Unable to set process priority to <" + std::to_string(prio) + ">: "
             + std::strerror (errno);
 
