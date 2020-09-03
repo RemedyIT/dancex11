@@ -60,13 +60,13 @@ namespace DAnCEX11
       }
     pid_t const pid = ACE_OS::getpid ();
 
-    int retval = ::sched_setaffinity (pid,
-                                      sizeof (cpu_set_t),
-                                      &mask);
+    int const retval = ::sched_setaffinity (pid,
+                                            sizeof (cpu_set_t),
+                                            &mask);
 
     if (retval != 0)
       {
-        std::string str =
+        std::string const str =
           "Unable to set CPU affinity to <" + affinity + ">: "
             + std::strerror (errno);
 
