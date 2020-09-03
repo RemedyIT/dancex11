@@ -15,15 +15,6 @@ namespace DAnCEX11
   /*
    *  ArtifactInstallationHandlerSvc
    */
-
-  ArtifactInstallationHandlerSvc::ArtifactInstallationHandlerSvc ()
-    {
-    }
-
-  ArtifactInstallationHandlerSvc::~ArtifactInstallationHandlerSvc ()
-    {
-    }
-
   /// Initialization hook.
   int ArtifactInstallationHandlerSvc::init (int /*argc*/, ACE_TCHAR * /*argv*/[])
     {

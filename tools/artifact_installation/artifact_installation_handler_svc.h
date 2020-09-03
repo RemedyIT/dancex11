@@ -20,8 +20,8 @@ namespace DAnCEX11
       : public ACE_Service_Object
       {
         public:
-          ArtifactInstallationHandlerSvc ();
-          virtual ~ArtifactInstallationHandlerSvc ();
+          ArtifactInstallationHandlerSvc () = default;
+          virtual ~ArtifactInstallationHandlerSvc () = default;
 
           /// Initialization hook.
           int init (int argc, ACE_TCHAR *argv[]) override;
