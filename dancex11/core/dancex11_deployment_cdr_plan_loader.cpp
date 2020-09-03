@@ -220,6 +220,7 @@ namespace DAnCEX11
 
   CDRPlan_Loader_Svc::~CDRPlan_Loader_Svc ()
   {
+    DANCEX11_LOG_TRACE ("CDRPlan_Loader::~CDRPlan_Loader");
   }
 
   int
@@ -236,6 +237,8 @@ namespace DAnCEX11
   int
   CDRPlan_Loader_Svc::fini ()
   {
+    DANCEX11_LOG_TRACE ("CDRPlan_Loader::fini");
+
     Plan_Loader::deregister_plan_loader ("cdr");
     Plan_Loader::deregister_plan_loader ("ddcdr");
     Plan_Loader::deregister_plan_loader ("dpcdr");
