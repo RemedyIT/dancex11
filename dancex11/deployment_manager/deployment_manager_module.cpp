@@ -736,7 +736,7 @@ namespace DAnCEX11
       os << "dynamic " << SOptions::svcobj_name_ << " Service_Object * " <<
             this->options_.dm_handler_lib_ << ":" << SOptions::svcobj_factory_ <<
             "() \"" << this->options_.dm_handler_arg_ << "\"";
-      std::string svcfg_txt = os.str ();
+      std::string const svcfg_txt = os.str ();
 
       if (ACE_Service_Config::process_directive (svcfg_txt.c_str ()) != 0)
       {
