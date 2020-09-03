@@ -110,6 +110,7 @@ namespace DAnCEX11
 
   CDPPlan_Loader_Svc::~CDPPlan_Loader_Svc ()
   {
+    DANCEX11_LOG_TRACE ("CDPPlan_Loader_Svc::~CDPPlan_Loader_Svc");
   }
 
   int
