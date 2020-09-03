@@ -439,7 +439,7 @@ namespace DAnCEX11
     Deployment::MonolithicDeploymentDescription mdd;
     Deployment::InstanceDeploymentDescription idd;
 
-    uint32_t ln = parser_.line ();
+    uint32_t const ln = parser_.line ();
 
     // get artifact and factory (and optionally openmode)
     string_type factory;
