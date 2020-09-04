@@ -834,7 +834,7 @@ namespace DAnCEX11
         os << "captured startLaunch errors:\n";
         for (std::string &err : errors)
           os << err << "\n";
-        throw Deployment::StopError (this->planUUID_, os.str ());
+        throw Deployment::StartError (this->planUUID_, os.str ());
       }
 
       DANCEX11_LOG_DEBUG ("DomainApplication_Impl::startLaunch - " <<
