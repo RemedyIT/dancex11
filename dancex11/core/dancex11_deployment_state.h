@@ -58,13 +58,13 @@ namespace DAnCEX11
       DANCEX11_LOG_TRACE ("StateGuard::StateGuard");
 
       if (State::instance_ == nullptr)
-        State::instance_ = &this->state_;
+        State::instance_ = std::addressof(this->state_);
     }
     inline ~StateGuard ()
     {
       DANCEX11_LOG_TRACE ("StateGuard::~StateGuard");
 
-      if (State::instance_ == &this->state_)
+      if (State::instance_ == std::addressof(this->state_))
         State::instance_ = nullptr;
     }
 

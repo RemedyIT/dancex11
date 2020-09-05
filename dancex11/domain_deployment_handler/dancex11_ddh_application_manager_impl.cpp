@@ -297,8 +297,8 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_ERROR ("DomainApplicationManager_Impl::startLaunch - " <<
                                 "DomainApplication servant failed to activate");
-            throw ::Deployment::StartError ("DomainApplication",
-                                            "Activation failure");
+        throw ::Deployment::StartError ("DomainApplication",
+                                        "Activation failure");
       }
       return app;
     }
