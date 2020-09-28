@@ -17,7 +17,7 @@ DnCX11 is created and maintained by https://www.remedy.nl[Remedy IT].
 
 == Install DnCX11
 
-DnCX11 is an integral part of AXCIOMA and for installing DnCX11 you
+DnCX11 is an integral part of https://www.axcioma.org[AXCIOMA] and for installing DnCX11 you
 *must* use the https://github.com/RemedyIT/axcioma[AXCIOMA] bootstrap
 repository. The brix11 tooling will clone this repository as part
 of the bootstrap step.
