@@ -561,8 +561,8 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("DomainApplication_Impl::start");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NA_Result>,
-                         NA_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NA_Result>,
+                         NA_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;
@@ -703,8 +703,8 @@ namespace DAnCEX11
                   "Plan " << this->planUUID_ << " DomainApplication[" << this << "] : " <<  nams_.size ()
                   << " nodes to launch");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NAM_Result>,
-                         NAM_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NAM_Result>,
+                         NAM_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;
@@ -866,8 +866,8 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("DomainApplication_Impl::stop");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NA_Result>,
-                         NA_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NA_Result>,
+                         NA_Result> ;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;
@@ -1006,8 +1006,8 @@ namespace DAnCEX11
                   "Plan " << this->planUUID_ << " DomainApplication[" << this
                   << "] : " <<  this->node_applications_.size ()<< " node applications to destroy");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NAM_Result>,
-                         NAM_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NAM_Result>,
+                         NAM_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;

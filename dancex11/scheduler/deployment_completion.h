@@ -19,7 +19,7 @@ namespace DAnCEX11
   /**
    * Deployment_Completion
    */
-  typedef Completion_T<Default_Completion_Wait_Strategy<Event_Result>, Event_Result> Deployment_Completion;
+  using Deployment_Completion = Completion_T<Default_Completion_Wait_Strategy<Event_Result>, Event_Result>;
 }
 
 #endif /* DAnCEX11_DEPLOYMENT_COMPLETION_H */

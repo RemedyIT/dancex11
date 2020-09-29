@@ -60,8 +60,8 @@ namespace DAnCEX11
 
     using LOCALITY_MAP = std::map <std::string, IDL::traits< ::DAnCEX11::LocalityManager>::ref_type>;
 
-    typedef std::pair <uint32_t, ::Deployment::DeploymentPlan> SUB_PLAN;
-    typedef std::map <std::string, SUB_PLAN> PLAN_MAP;
+    using SUB_PLAN = std::pair <uint32_t, ::Deployment::DeploymentPlan>;
+    using PLAN_MAP = std::map <std::string, SUB_PLAN>;
 
   protected:
     void prepare_instance (const std::string & name,

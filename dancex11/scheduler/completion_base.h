@@ -36,10 +36,10 @@ namespace DAnCEX11
     , public virtual Completion_Counter_Base< ACE_SYNCH_MUTEX >
   {
   public:
-    typedef RESULT result_type;
-    typedef ACE_Future< RESULT > future_type;
+    using result_type = RESULT;
+    using future_type = ACE_Future<RESULT>;
 
-    typedef std::list < future_type > future_list;
+    using future_list = std::list <future_type>;
 
     template <typename ...Args>
     Completion_T (Args&& ...args)

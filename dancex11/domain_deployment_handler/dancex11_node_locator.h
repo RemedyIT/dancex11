@@ -36,7 +36,7 @@ namespace DAnCEX11
                              const ::Deployment::Resources &resources,
                              ::Deployment::Resource &val);
 
-    typedef std::map<std::string, std::string> NODEMAP;
+    using NODEMAP = std::map<std::string, std::string>;
 
     NODEMAP nodes_;
     IDL::traits<CORBA::ORB>::ref_type orb_;

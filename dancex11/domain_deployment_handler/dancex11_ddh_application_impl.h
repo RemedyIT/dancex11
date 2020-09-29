@@ -29,15 +29,15 @@ namespace DAnCEX11
     {
     public:
 
-      typedef std::pair < IDL::traits< ::Deployment::NodeManager>::ref_type , std::string> TNm2Id_PAIR;
-      typedef std::pair < IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,IDL::traits< ::Deployment::NodeManager>::ref_type> TNam2Nm_PAIR;
-      typedef std::pair < IDL::traits< ::Deployment::Application>::ref_type, IDL::traits< ::Deployment::NodeApplicationManager>::ref_type> TApp2Mgr_PAIR;
-      typedef std::pair < IDL::traits< ::Deployment::Application>::ref_type, std::string > TApp2Id_PAIR;
+      using TNm2Id_PAIR = std::pair <IDL::traits< ::Deployment::NodeManager>::ref_type , std::string>;
+      using TNam2Nm_PAIR = std::pair <IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,IDL::traits< ::Deployment::NodeManager>::ref_type>;
+      using TApp2Mgr_PAIR = std::pair <IDL::traits< ::Deployment::Application>::ref_type, IDL::traits< ::Deployment::NodeApplicationManager>::ref_type>;
+      using TApp2Id_PAIR = std::pair <IDL::traits< ::Deployment::Application>::ref_type, std::string>;
 
-      typedef std::vector < TNam2Nm_PAIR > TNam2Nm;
-      typedef std::vector < TNm2Id_PAIR> TNm2Id;
-      typedef std::vector < TApp2Mgr_PAIR > TApp2Mgr;
-      typedef std::vector < TApp2Id_PAIR > TApp2Id;
+      using TNam2Nm = std::vector <TNam2Nm_PAIR>;
+      using TNm2Id = std::vector <TNm2Id_PAIR>;
+      using TApp2Mgr = std::vector <TApp2Mgr_PAIR>;
+      using TApp2Id = std::vector <TApp2Id_PAIR>;
 
       DomainApplication_Impl (const std::string& plan_uuid,
                               IDL::traits<PortableServer::POA>::ref_type poa,

@@ -17,8 +17,8 @@ namespace DAnCEX11
   class DAnCE_Split_Plan_Export Node_Splitter
   {
   public:
-    typedef std::string       KEY;
-    typedef std::string       FILTER;
+    using KEY = std::string;
+    using FILTER = std::string;
 
     Node_Splitter (const Deployment::DeploymentPlan &plan);
 

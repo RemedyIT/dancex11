@@ -67,7 +67,7 @@ namespace DAnCEX11
 
     std::string extension (const std::string& path);
 
-    typedef std::map<std::string, Plan_Loader_base*> LoaderMap;
+    using LoaderMap = std::map<std::string, Plan_Loader_base*>;
     LoaderMap loaders_;
     std::mutex lock_;
 

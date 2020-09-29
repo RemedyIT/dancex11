@@ -14,8 +14,8 @@
 
 namespace DAnCEX11
 {
-  // Typedef to help declare the standardized factory name
-  typedef Node_DMHandler_Loader DAnCEX11_DeploymentHandler_Impl;
+  // Type to help declare the standardized factory name
+  using DAnCEX11_DeploymentHandler_Impl = Node_DMHandler_Loader;
 
   // Define the static Service descriptor.
   // Note the standardized name for the factory method declaration.
@@ -28,7 +28,7 @@ namespace DAnCEX11
                          0)
   // Define implementation for Service factory method and cleanup method
   // (gobbler).
-  // Instead of the real classname a typedef is used to force generation
+  // Instead of the real classname a type is used to force generation
   // of the standardized factory method name.
   ACE_FACTORY_DEFINE (DANCEX11_NODE_DH, DAnCEX11_DeploymentHandler_Impl)
 

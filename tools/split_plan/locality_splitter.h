@@ -18,7 +18,7 @@ namespace DAnCEX11
   class DAnCE_Split_Plan_Export Locality_Splitter
   {
   public:
-    typedef std::vector<uint32_t>  TInstanceList;
+    using TInstanceList = std::vector<uint32_t>;
 
     class DAnCE_Split_Plan_Export LocalityKey
     {
@@ -95,10 +95,10 @@ namespace DAnCEX11
       }
     };
 
-    typedef LocalityKey       KEY;
-    typedef LocalityKeyHash   KEY_HASH;
+    using KEY = LocalityKey;
+    using KEY_HASH = LocalityKeyHash;
 
-    typedef std::vector<std::string>  TInstanceNames;
+    using TInstanceNames = std::vector<std::string>;
 
     class DAnCE_Split_Plan_Export LocalityFilter
     {
@@ -118,7 +118,7 @@ namespace DAnCEX11
       TInstanceNames included_instances_;
     };
 
-    typedef LocalityFilter    FILTER;
+    using FILTER = LocalityFilter;
 
     Locality_Splitter (const Deployment::DeploymentPlan &plan);
 

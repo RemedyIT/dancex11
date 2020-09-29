@@ -24,9 +24,9 @@ namespace DAnCEX11
   class Config_Stream_Base_T
   {
   public:
-    typedef std::basic_string<CHAR_T, TR> string_type;
-    typedef std::basic_istream<CHAR_T, TR> source_type;
-    typedef typename source_type::int_type int_type;
+    using string_type = std::basic_string<CHAR_T, TR>;
+    using source_type = std::basic_istream<CHAR_T, TR>;
+    using int_type = typename source_type::int_type;
 
     virtual ~Config_Stream_Base_T () = default;
 
@@ -76,9 +76,9 @@ namespace DAnCEX11
                                   typename Stream_::traits_type>
   {
   public:
-    typedef Config_Stream_Base_T<
+    using base = Config_Stream_Base_T<
         typename Stream_::char_type,
-        typename Stream_::traits_type>  base;
+        typename Stream_::traits_type>;
 
     template <typename ...Args>
     Config_Stream_T(Args&& ...args)

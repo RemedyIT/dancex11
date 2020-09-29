@@ -63,7 +63,7 @@ namespace DAnCEX11
     public:
       virtual ~DANCEX11_Log_Msg();
 
-      typedef x11_logger::Log_Type_T<DANCEX11_Log_Msg> log_type;
+      using log_type = x11_logger::Log_Type_T<DANCEX11_Log_Msg>;
 
       static DANCEX11_Log_Msg* getInstance();
 

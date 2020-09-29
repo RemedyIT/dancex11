@@ -23,8 +23,8 @@ namespace DAnCEX11
   class Completion_Counter_Base
   {
   public:
-    typedef ACE_LOCK lock_type;
-    typedef std::vector< std::string > errors_type;
+    using lock_type = ACE_LOCK ;
+    using errors_type = std::vector<std::string>;
 
     Completion_Counter_Base (uint32_t exec_count,
       uint32_t fail_count);

@@ -19,8 +19,8 @@ namespace DAnCEX11
   class Dependency_Sorter final
   {
   public:
-    typedef std::vector < std::string > INSTALL_ORDER;
-    typedef std::set < std::string > IH_DEPS;
+    using INSTALL_ORDER = std::vector <std::string>;
+    using IH_DEPS = std::set <std::string>;
 
     class Invalid_Install_Order
       : std::exception {};
@@ -43,7 +43,7 @@ namespace DAnCEX11
     calculate_order (INSTALL_ORDER &);
 
   private:
-    typedef std::map< std::string, IH_DEPS > DEP_MAP;
+    using DEP_MAP = std::map<std::string, IH_DEPS>;
 
     DEP_MAP dep_map_;
   };

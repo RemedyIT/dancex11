@@ -21,8 +21,8 @@ namespace DAnCEX11
   class ORB_Completion_Wait_Strategy final
   {
   public:
-    typedef RESULT result_type;
-    typedef Completion_T<ORB_Completion_Wait_Strategy, result_type> completion_type;
+    using result_type = RESULT;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy, result_type>;
 
     ORB_Completion_Wait_Strategy (
         completion_type &counter,

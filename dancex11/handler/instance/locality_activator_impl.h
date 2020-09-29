@@ -107,7 +107,7 @@ namespace DAnCEX11
       IDL::traits<DAnCEX11::DeploymentManagerHandler>::ref_type dmh_;
     };
 
-    typedef std::shared_ptr<Server_Info> Safe_Server_Info;
+    using Safe_Server_Info = std::shared_ptr<Server_Info>;
 
     IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
     activate_remote_locality (Safe_Server_Info ssi);
@@ -171,7 +171,7 @@ namespace DAnCEX11
     };
 
     // Presumably, there won't be too many component servers per node application
-    typedef std::set <Safe_Server_Info, _server_info> SERVER_INFOS;
+    using SERVER_INFOS = std::set <Safe_Server_Info, _server_info>;
 
     TAO_SYNCH_MUTEX container_mutex_;
 

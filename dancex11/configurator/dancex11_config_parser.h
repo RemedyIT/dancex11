@@ -23,10 +23,10 @@ namespace DAnCEX11
   class Config_Parser_Base_T
   {
   public:
-    typedef Config_Stream_Base_T<CHAR_T, TR> stream_base_type;
-    typedef typename stream_base_type::source_type::char_type char_type;
-    typedef typename stream_base_type::source_type::traits_type traits_type;
-    typedef typename stream_base_type::string_type string_type;
+    using stream_base_type = Config_Stream_Base_T<CHAR_T, TR>;
+    using char_type = typename stream_base_type::source_type::char_type;
+    using traits_type = typename stream_base_type::source_type::traits_type;
+    using string_type = typename stream_base_type::string_type;
 
     enum token_id : uint32_t
     {
@@ -141,8 +141,8 @@ namespace DAnCEX11
     virtual stream_base_type& stream () const = 0;
 
   private:
-    typedef std::map<string_type, token_id> TokenMap;
-    typedef std::map<string_type, type_id> TypeMap;
+    using TokenMap = std::map<string_type, token_id>;
+    using TypeMap = std::map<string_type, type_id>;
 
     static const TokenMap token_map_;
     static const TypeMap type_map_;
@@ -157,9 +157,9 @@ namespace DAnCEX11
                                   typename Stream_::traits_type>
   {
   public:
-    typedef Config_Parser_Base_T<typename Stream_::char_type,
-        typename Stream_::traits_type> base_type;
-    typedef Config_Stream_T<Stream_> stream_type;
+    using base_type = Config_Parser_Base_T<typename Stream_::char_type,
+        typename Stream_::traits_type>;
+    using stream_type = Config_Stream_T<Stream_>;
 
     template <typename ...Args>
     Config_Parser_T(Args&& ...args)
