@@ -19,7 +19,7 @@ namespace DAnCEX11
 {
   namespace Utility
   {
-    typedef std::map< std::string, CORBA::Any > PROPERTY_MAP;
+    using PROPERTY_MAP = std::map<std::string, CORBA::Any>;
 
     DANCEX11_STUB_Export void
     build_property_map (PROPERTY_MAP &map,

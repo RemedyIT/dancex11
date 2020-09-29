@@ -40,7 +40,7 @@ namespace DAnCEX11
     void
     add_configuration (const Deployment::Properties &config);
 
-    typedef Dependency_Sorter::IH_DEPS IH_DEPS;
+    using IH_DEPS = Dependency_Sorter::IH_DEPS;
 
     /// Registers another installation handler.
     std::string
@@ -59,7 +59,7 @@ namespace DAnCEX11
         uint32_t open_mode,
         Utility::PROPERTY_MAP& config);
 
-    typedef Dependency_Sorter::INSTALL_ORDER INSTALL_ORDER;
+    using INSTALL_ORDER = Dependency_Sorter::INSTALL_ORDER;
 
     void
     get_installation_order (INSTALL_ORDER &);
@@ -67,8 +67,7 @@ namespace DAnCEX11
     IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type
     fetch_installation_handler (const std::string &instance_type);
 
-    typedef std::list < IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type>
-      INTERCEPTORS;
+    using INTERCEPTORS = std::list <IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type>;
 
     const INTERCEPTORS &
     fetch_interceptors ();
@@ -98,17 +97,17 @@ namespace DAnCEX11
   private:
     Deployment::Properties config_;
 
-    typedef std::pair < std::string,
-      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type> HANDLER_MAP_PAIR;
-    typedef std::map < std::string,
-      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type> HANDLER_MAP;
+    using HANDLER_MAP_PAIR = std::pair <std::string,
+      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type>;
+    using HANDLER_MAP = std::map <std::string,
+      IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type>;
 
-    typedef std::pair < std::string,
-      IDL::traits<DeploymentConfiguration>::ref_type> CONFIG_MAP_PAIR;
-    typedef std::map < std::string,
-      IDL::traits<DeploymentConfiguration>::ref_type> CONFIG_MAP;
+    using CONFIG_MAP_PAIR = std::pair <std::string,
+      IDL::traits<DeploymentConfiguration>::ref_type>;
+    using CONFIG_MAP = std::map <std::string,
+      IDL::traits<DeploymentConfiguration>::ref_type>;
 
-    typedef std::vector < std::string >   SVCOBJ_LIST;
+    using SVCOBJ_LIST = std::vector <std::string>;
 
     HANDLER_MAP handler_map_;
 

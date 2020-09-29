@@ -21,7 +21,7 @@ namespace DAnCEX11
   class Default_Completion_Wait_Strategy final
   {
   public:
-    typedef Completion_T<Default_Completion_Wait_Strategy, RESULT> completion_type;
+    using completion_type = Completion_T<Default_Completion_Wait_Strategy, RESULT>;
 
     Default_Completion_Wait_Strategy (
         completion_type &counter,

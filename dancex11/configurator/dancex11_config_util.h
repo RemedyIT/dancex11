@@ -23,7 +23,7 @@ namespace DAnCEX11
     template <typename Char_T>
     bool icasecmp(const std::basic_string<Char_T>& l, const std::basic_string<Char_T>& r)
     {
-        typedef typename std::basic_string<Char_T>::value_type valtype;
+        using valtype =  typename std::basic_string<Char_T>::value_type;
         return l.size() == r.size()
             && std::equal(l.cbegin(), l.cend(), r.cbegin(),
                 [](valtype l1, valtype r1)
@@ -33,7 +33,7 @@ namespace DAnCEX11
     template <typename Char_T>
     bool icasencmp(const std::basic_string<Char_T>& l, const std::basic_string<Char_T>& r, uint32_t n)
     {
-        typedef typename std::basic_string<Char_T>::value_type valtype;
+        using valtype = typename std::basic_string<Char_T>::value_type;
         return (l.size() >= n) && (r.size() >= n)
             && std::equal(l.cbegin(), l.cbegin()+n, r.cbegin(),
                 [](valtype l1, valtype r1)
@@ -149,7 +149,7 @@ namespace DAnCEX11
     parse_char (const std::basic_string<Char_T>& token,
                      Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:
@@ -177,7 +177,7 @@ namespace DAnCEX11
     parse_uint (const std::basic_string<Char_T>& token,
                  Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:
@@ -205,7 +205,7 @@ namespace DAnCEX11
     parse_bool (const std::basic_string<Char_T>& token,
                 Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:
@@ -242,7 +242,7 @@ namespace DAnCEX11
     parse_int (const std::basic_string<Char_T>& token,
                  Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:
@@ -270,7 +270,7 @@ namespace DAnCEX11
     parse_dec (const std::basic_string<Char_T>& token,
                  Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:
@@ -298,7 +298,7 @@ namespace DAnCEX11
     parse_string (const std::basic_string<Char_T>& token,
                   Config_Loader::literal_type lt)
     {
-      typedef Config_Loader::literal_type literal_type;
+      using literal_type = Config_Loader::literal_type;
       switch (lt.base ())
       {
         case literal_type::lt_char:

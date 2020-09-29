@@ -377,7 +377,7 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("LocalityManager_i::finishLaunch");
 
-    typedef std::map< std::string, uint32_t > ConnMap;
+    using ConnMap = std::map<std::string, uint32_t>;
     ConnMap conns;
 
     Deployment_Completion completion (*this->scheduler_);

@@ -44,7 +44,7 @@ namespace DAnCEX11
   class DAnCE_Artifact_Installation_Export ArtifactInstallationProperties
   {
     public:
-      typedef ArtifactInstallationHandler::TPropertyMap TPropertyMap;
+      using TPropertyMap = ArtifactInstallationHandler::TPropertyMap;
 
       ArtifactInstallationProperties (const TPropertyMap& propmap);
       ArtifactInstallationProperties (const TPropertyMap& propmap, const std::string& protocol);

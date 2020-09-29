@@ -33,7 +33,7 @@ namespace DAnCEX11
 
     using parser_if_type = Config_Parser_T<std::ifstream>;
     using parser_type = parser_if_type::base_type;
-    using string_type = parser_type::string_type ;
+    using string_type = parser_type::string_type;
 
     bool load_deployment_config (const string_type& filename,
                                  Deployment::DeploymentPlan& plugins,
@@ -85,11 +85,11 @@ namespace DAnCEX11
     bool parse_property_definition (const string_type&, Deployment::Property&);
 
   private:
-    typedef std::map<string_type, uint32_t> DeploymentRefMap;
-    typedef std::map<std::string, std::vector<uint32_t> > LocalityInstanceMap;
-    typedef std::map<std::string, LocalityInstanceMap > NodeLocalityMap;
-    typedef std::pair<uint32_t, uint32_t> EndpointIndex;
-    typedef std::map<std::string, std::vector<EndpointIndex> > InstanceEndpointMap;
+    using DeploymentRefMap = std::map<string_type, uint32_t>;
+    using LocalityInstanceMap = std::map<std::string, std::vector<uint32_t> >;
+    using NodeLocalityMap = std::map<std::string, LocalityInstanceMap>;
+    using EndpointIndex = std::pair<uint32_t, uint32_t>;
+    using InstanceEndpointMap = std::map<std::string, std::vector<EndpointIndex> >;
 
     struct state_type
     {

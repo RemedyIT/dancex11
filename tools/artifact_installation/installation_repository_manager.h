@@ -21,8 +21,8 @@ namespace DAnCEX11
     class DAnCE_Artifact_Installation_Export InstallationRepository
       {
         public:
-          typedef std::shared_ptr<InstallationRepository> ref_t;
-          typedef std::vector<std::string> TLocations;
+          using ref_t = std::shared_ptr<InstallationRepository>;
+          using TLocations = std::vector<std::string>;
 
           virtual ~InstallationRepository () = default;
 
@@ -51,7 +51,7 @@ namespace DAnCEX11
     class DAnCE_Artifact_Installation_Export InstallationRepositoryManager
       {
         public:
-          typedef InstallationRepository::TLocations TRepositoryIds;
+          using TRepositoryIds = InstallationRepository::TLocations;
 
           virtual ~InstallationRepositoryManager () = default;
 

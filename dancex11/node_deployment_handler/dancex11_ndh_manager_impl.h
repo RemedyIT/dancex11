@@ -55,7 +55,7 @@ namespace DAnCEX11
     IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
     std::string name_;
     std::string domain_nc_;
-    typedef std::map<std::string, CORBA::servant_reference<NodeApplicationManager_Impl>> TManagers;
+    using TManagers = std::map<std::string, CORBA::servant_reference<NodeApplicationManager_Impl>>;
     TManagers managers_;
     std::shared_ptr<Plugin_Manager> plugins_;
   };

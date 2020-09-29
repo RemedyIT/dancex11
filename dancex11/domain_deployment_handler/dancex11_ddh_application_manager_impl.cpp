@@ -46,7 +46,7 @@ namespace DAnCEX11
     : public CORBA::amic_traits<Deployment::NodeManager>::replyhandler_base_type
   {
   public:
-    typedef ACE_Future <NM_Result> future_type;
+    using future_type = ACE_Future <NM_Result>;
 
     NodeManager_ReplyHandler (IDL::traits<PortableServer::POA>::ref_type poa,
                               IDL::traits<Deployment::NodeManager>::ref_type nm,
@@ -428,8 +428,8 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("DomainApplicationManager_Impl::preparePlan()");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NM_Result>,
-                         NM_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NM_Result>,
+                         NM_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;
@@ -629,8 +629,8 @@ namespace DAnCEX11
     }
 
     // now call destroyManager() for all node-app managers
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NM_Result>,
-                         NM_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NM_Result>,
+                         NM_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;

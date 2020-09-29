@@ -19,10 +19,10 @@ namespace XML
   class Config_Handlers_Export DANCEX11_XML_Typedef
   {
   public:
-    typedef ::XML::Environment_Resolver PATH_RESOLVER;
-    typedef ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver > XML_RESOLVER;
-    typedef ::XML::DANCEX11_XML_Error_Handler DANCEX11_ERROR_HANDLER;
-    typedef ::XML::XML_Helper< XML_RESOLVER, DANCEX11_ERROR_HANDLER > HELPER;
+    using PATH_RESOLVER = ::XML::Environment_Resolver;
+    using XML_RESOLVER = ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver>;
+    using DANCEX11_ERROR_HANDLER = ::XML::DANCEX11_XML_Error_Handler ;
+    using HELPER = ::XML::XML_Helper<XML_RESOLVER, DANCEX11_ERROR_HANDLER>;
 
     static DANCEX11_ERROR_HANDLER _xml_error_handler;
 

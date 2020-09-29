@@ -51,7 +51,7 @@ namespace DAnCEX11
       std::string file_;
       std::unique_ptr< ::Deployment::DeploymentPlan> idl_dp_;
       std::unique_ptr< ::Deployment::Domain> idl_domain_;
-      typedef ::XML::DANCEX11_XML_Typedef XML_Helper_type;
+      using XML_Helper_type = ::XML::DANCEX11_XML_Typedef;
     };
   }
 }
