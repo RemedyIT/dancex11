@@ -22,26 +22,26 @@ namespace DAnCEX11
   public:
     virtual ~InstallationRepository_Impl () = default;
 
-    virtual const std::string& plan ();
+    const std::string& plan () override;
 
-    virtual const std::string& location ();
+    const std::string& location () override;
 
-    virtual std::istream* open_artifact (const std::string& location);
-    virtual std::ostream* create_artifact (std::string& location, bool exclusive = false);
-    virtual bool remove_artifact (const std::string& location);
+    std::istream* open_artifact (const std::string& location) override;
+    std::ostream* create_artifact (std::string& location, bool exclusive = false) override;
+    bool remove_artifact (const std::string& location) override;
 
-    virtual bool has_artifact (const std::string& location);
+    bool has_artifact (const std::string& location) override;
 
-    virtual TLocations artifacts (const std::string& folder = std::string());
+    TLocations artifacts (const std::string& folder = std::string()) override;
 
-    virtual bool create_folder (std::string& location, bool exclusive = false);
-    virtual bool remove_folder (const std::string& location);
+    bool create_folder (std::string& location, bool exclusive = false) override;
+    bool remove_folder (const std::string& location) override;
 
-    virtual bool has_folder (const std::string& location);
+    bool has_folder (const std::string& location) override;
 
-    virtual TLocations folders (const std::string& folder = std::string());
+    TLocations folders (const std::string& folder = std::string()) override;
 
-    virtual bool remove ();
+    bool remove () override;
 
   protected:
     std::string normalize (const std::string& location);
@@ -67,13 +67,13 @@ namespace DAnCEX11
   public:
     virtual ~InstallationRepositoryManager_Impl () = default;
 
-    virtual void map_repository (const std::string& plan,
-                                 const std::string& folder);
+    void map_repository (const std::string& plan,
+                         const std::string& folder) override;
 
-    virtual InstallationRepository::ref_t open_repository (const std::string& plan);
-    virtual int remove_repository (const std::string& plan);
+    InstallationRepository::ref_t open_repository (const std::string& plan) override;
+    int remove_repository (const std::string& plan) override;
 
-    virtual TRepositoryIds repositories ();
+    TRepositoryIds repositories () override;
 
     static void set_default_basedir (const char *);
 
@@ -82,7 +82,7 @@ namespace DAnCEX11
   private:
     InstallationRepositoryManager_Impl ();
 
-    typedef std::map<std::string, std::string> repo_map_t;
+    using repo_map_t = std::map<std::string, std::string>;
     repo_map_t repository_map_;
 
     static const char * default_basedir;
@@ -97,9 +97,9 @@ namespace DAnCEX11
     virtual ~InstallationRepositoryManagerSvc_Impl () = default;
 
     /// Initializes handler on dynamic loading.
-    virtual int init (int argc, ACE_TCHAR *argv[]);
+    int init (int argc, ACE_TCHAR *argv[]) override;
 
-    virtual InstallationRepositoryManager* manager_instance ();
+    InstallationRepositoryManager* manager_instance () override;
 
     static int Initializer ();
   };
