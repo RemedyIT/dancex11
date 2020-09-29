@@ -23,18 +23,18 @@ namespace DAnCEX11
 
           virtual ~HttpInstallationHandler () = default;
 
-          virtual const std::string& protocol_prefix ();
+          const std::string& protocol_prefix () override;
 
-          virtual void initialize ();
+          void initialize () override;
 
-          virtual void clear ();
+          void clear () override;
 
-          virtual void install (const std::string& plan_uuid,
-                                std::string& location,
-                                const TPropertyMap& properties);
+          void install (const std::string& plan_uuid,
+                        std::string& location,
+                        const TPropertyMap& properties) override;
 
-          virtual void remove (const std::string& plan_uuid,
-                               const std::string& location);
+          void remove (const std::string& plan_uuid,
+                       const std::string& location) override;
 
           static HttpInstallationHandler* getInstance ();
 
@@ -49,7 +49,7 @@ namespace DAnCEX11
           HttpInstallationHandlerSvc () = default;
           virtual ~HttpInstallationHandlerSvc () = default;
 
-          virtual ArtifactInstallationHandler* handler_instance ();
+          ArtifactInstallationHandler* handler_instance () override;
 
           static int Initializer ();
       };

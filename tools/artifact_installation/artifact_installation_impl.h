@@ -26,7 +26,7 @@ namespace DAnCEX11
   class ArtifactRegistry
   {
     public:
-      typedef ACE_MT_SYNCH::CONDITION TCONDITION;
+      using TCONDITION = ACE_MT_SYNCH::CONDITION;
       struct Version
       {
         std::string protocol_;
@@ -37,7 +37,7 @@ namespace DAnCEX11
         Version (const Version& version);
         Version& operator =(const Version& version);
       };
-      typedef std::vector<Version> TVersions;
+      using TVersions = std::vector<Version>;
 
       ArtifactRegistry (TCONDITION& condition, bool locked=false);
       ~ArtifactRegistry ();
@@ -82,28 +82,28 @@ namespace DAnCEX11
     : public IDL::traits< ::DAnCEX11::ArtifactInstallation>::base_type
   {
     public:
-      typedef ACE_MT_SYNCH::MUTEX TLOCK;
-      typedef ACE_MT_SYNCH::CONDITION TCONDITION;
-      typedef ArtifactInstallationHandler::TPropertyMap TPropertyMap;
+      using TLOCK = ACE_MT_SYNCH::MUTEX ;
+      using TCONDITION = ACE_MT_SYNCH::CONDITION;
+      using TPropertyMap = ArtifactInstallationHandler::TPropertyMap;
       virtual ~ArtifactInstallation_Impl ();
 
-      virtual void initialize ();
+      void initialize () override;
 
-      virtual void clear ();
+      void clear () override;
 
-      virtual void prepare (
-          const ::Deployment::DeploymentPlan& plan);
+      void prepare (
+          const ::Deployment::DeploymentPlan& plan) override;
 
-      virtual void install (const std::string& plan_uuid,
-            const ::Deployment::ArtifactDeploymentDescription & artifact);
+      void install (const std::string& plan_uuid,
+            const ::Deployment::ArtifactDeploymentDescription & artifact) override;
 
-      virtual void remove (const std::string& plan_uuid,
-                           const std::string& artifact_name);
+      void remove (const std::string& plan_uuid,
+                   const std::string& artifact_name) override;
 
-      virtual void remove_all (const std::string& plan_uuid);
+      void remove_all (const std::string& plan_uuid) override;
 
-      virtual std::string get_artifact_location (const std::string& plan_uuid,
-                                                 const std::string& artifact_name);
+      std::string get_artifact_location (const std::string& plan_uuid,
+                                         const std::string& artifact_name) override;
 
     private:
       ArtifactInstallation_Impl ();
@@ -111,14 +111,12 @@ namespace DAnCEX11
       template <typename _Tp1, typename, typename ...Args>
       friend CORBA::object_reference<_Tp1> CORBA::make_reference(Args&& ...args);
 
-      typedef std::stack<std::string> TProtocolStack;
+      using TProtocolStack = std::stack<std::string>;
 
       // key is artifact name
-      typedef std::map<std::string,
-                       ArtifactRegistry*> TArtifactsMap;
+      using TArtifactsMap = std::map<std::string, ArtifactRegistry*>;
       // key is plan uuid
-      typedef std::map<std::string,
-                       TArtifactsMap> TArtifactsRegistry;
+      using TArtifactsRegistry = std::map<std::string, TArtifactsMap>;
 
       ArtifactRegistry* allocate_artifact_registry (const std::string& plan_uuid,
                                                     const std::string& name);
@@ -155,7 +153,6 @@ namespace DAnCEX11
       TCONDITION artifacts_condition_;
 
     public:
-
       static IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type instance ();
 
       static int register_handler (ArtifactInstallationHandler* aih);
@@ -164,8 +161,7 @@ namespace DAnCEX11
 
       static bool handlers_available ();
 
-      typedef std::map<std::string,
-                       ArtifactInstallationHandler*> THandlerMap;
+      using THandlerMap = std::map<std::string, ArtifactInstallationHandler*>;
 
     private:
       static IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type instance_;

@@ -31,9 +31,9 @@ namespace DAnCEX11
     Config_Loader () = default;
     ~Config_Loader () = default;
 
-    typedef Config_Parser_T<std::ifstream> parser_if_type;
-    typedef parser_if_type::base_type parser_type;
-    typedef parser_type::string_type string_type;
+    using parser_if_type = Config_Parser_T<std::ifstream>;
+    using parser_type = parser_if_type::base_type;
+    using string_type = parser_type::string_type ;
 
     bool load_deployment_config (const string_type& filename,
                                  Deployment::DeploymentPlan& plugins,

@@ -47,7 +47,7 @@ namespace DAnCEX11
     : public CORBA::amic_traits<Deployment::NodeApplicationManager>::replyhandler_base_type
   {
   public:
-    typedef ACE_Future <NAM_Result> future_type;
+    using future_type = ACE_Future <NAM_Result>;
 
     NAM_ReplyHandler (IDL::traits<PortableServer::POA>::ref_type poa,
                       IDL::traits<Deployment::NodeApplicationManager>::ref_type nam,
@@ -204,7 +204,7 @@ namespace DAnCEX11
     : public CORBA::amic_traits<Deployment::NodeApplication>::replyhandler_base_type
   {
   public:
-    typedef ACE_Future <NA_Result> future_type;
+    using future_type = ACE_Future <NA_Result>;
 
     NA_ReplyHandler (IDL::traits<PortableServer::POA>::ref_type poa,
                      std::string node)
@@ -414,8 +414,7 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("DomainApplication_Impl::finishLaunch");
 
-    typedef Completion_T<ORB_Completion_Wait_Strategy<NA_Result>,
-                         NA_Result> completion_type;
+    using completion_type = Completion_T<ORB_Completion_Wait_Strategy<NA_Result>, NA_Result>;
     completion_type completion;
     bool failed {};
     std::vector<std::string> errors;
