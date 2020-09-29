@@ -28,22 +28,21 @@ namespace DAnCEX11
   class Split_Plan
   {
   public:
-    typedef SPLITTER                          TPlanSplitter;
-    typedef typename TPlanSplitter::KEY       TSubPlanKey;
-    typedef typename TPlanSplitter::FILTER    TSplitFilter;
-    typedef UUIDGEN                           TSubUUIDGen;
+    using TPlanSplitter = SPLITTER;
+    using TSubPlanKey = typename TPlanSplitter::KEY;
+    using TSplitFilter = typename TPlanSplitter::FILTER;
+    using TSubUUIDGen = UUIDGEN;
 
-    typedef std::map<TSubPlanKey,
-                     Deployment::DeploymentPlan
-                    > TSubPlans;
+    using TSubPlans = std::map<TSubPlanKey,
+                     Deployment::DeploymentPlan> ;
 
-    typedef std::list <uint32_t> InstanceList;
-    typedef std::pair < TSubPlanKey, InstanceList > SubPlanList;
+    using InstanceList = std::list <uint32_t>;
+    using SubPlanList = std::pair <TSubPlanKey, InstanceList>;
 
-    typedef std::vector < SubPlanList > TSubPlanList;
+    using TSubPlanList = std::vector <SubPlanList> ;
 
-    typedef typename TSubPlans::iterator TSubPlanIterator;
-    typedef typename TSubPlans::const_iterator TSubPlanConstIterator;
+    using TSubPlanIterator = typename TSubPlans::iterator;
+    using TSubPlanConstIterator = typename TSubPlans::const_iterator;
 
     Split_Plan ();
 

@@ -40,8 +40,7 @@ namespace DAnCEX11
 
       void shutdown () override;
 
-      typedef std::map<std::string, CORBA::servant_reference<DomainApplicationManager_Impl>>
-        TDomainManagers;
+      using TDomainManagers = std::map<std::string, CORBA::servant_reference<DomainApplicationManager_Impl>>;
       IDL::traits<PortableServer::POA>::ref_type poa_;
       IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
       std::string name_;

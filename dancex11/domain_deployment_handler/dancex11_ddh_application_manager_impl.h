@@ -24,7 +24,7 @@ namespace DAnCEX11
 {
   class DomainApplicationManager_Impl;
 
-  typedef DAnCEX11::Split_Plan < DAnCEX11::Node_Splitter > NodeSplitter;
+  using NodeSplitter = DAnCEX11::Split_Plan <DAnCEX11::Node_Splitter>;
 
   class DomainApplicationManager_Impl
   : public virtual CORBA::servant_traits< ::Deployment::DomainApplicationManager>::base_type
@@ -61,7 +61,7 @@ namespace DAnCEX11
       DomainApplication_Impl::TNam2Nm sub_app_mgr_;
       DomainApplication_Impl::TNm2Id node_ids_;
       Node_Locator &nodes_;
-      typedef std::vector< CORBA::servant_reference<DomainApplication_Impl> > TApplications;
+      using TApplications = std::vector<CORBA::servant_reference<DomainApplication_Impl>>;
       TApplications running_app_;
       NodeSplitter split_plan_;
     };

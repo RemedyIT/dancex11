@@ -28,7 +28,7 @@ using namespace DAnCEX11::Utility;
 namespace DAnCEX11
 {
 
-  typedef DAnCEX11::Split_Plan < DAnCEX11::Locality_Splitter > LocalitySplitter;
+  using LocalitySplitter = DAnCEX11::Split_Plan <DAnCEX11::Locality_Splitter>;
 
   class NodeManager_Impl;
 
@@ -58,8 +58,7 @@ namespace DAnCEX11
 
     void shutdown_instances ();
 
-    typedef std::map <std::string, IDL::traits< ::DAnCEX11::LocalityManager>::ref_type>
-      LOCALITY_MAP;
+    using LOCALITY_MAP = std::map <std::string, IDL::traits< ::DAnCEX11::LocalityManager>::ref_type>;
 
     typedef std::pair <uint32_t, ::Deployment::DeploymentPlan> SUB_PLAN;
     typedef std::map <std::string, SUB_PLAN> PLAN_MAP;

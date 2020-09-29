@@ -1736,7 +1736,7 @@ namespace DAnCEX11
     DANCEX11_LOG_TRACE ("Config_Loader::parse_property_definition - "
                         "parsing property definition");
 
-    typedef Config_Parser_T<std::istringstream> parser_is_type;
+    using parser_is_type = Config_Parser_T<std::istringstream>;
     parser_is_type parser_ (propdef_);
 
     // load property id, type (optional) and value

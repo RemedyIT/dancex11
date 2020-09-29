@@ -31,9 +31,9 @@ namespace DAnCEX11
     CORBA::Any contents_;
   };
 
-  typedef ACE_Future< Event_Result > Event_Future;
+  using Event_Future = ACE_Future<Event_Result>;
 
-  typedef std::list < Event_Future > Event_List;
+  using Event_List = std::list<Event_Future>;
 
   class Deployment_Scheduler_Export Deployment_Event
     : public virtual ACE_Method_Request
