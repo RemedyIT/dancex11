@@ -70,7 +70,7 @@ namespace DAnCEX11
   {
     static HttpInstallationHandler instance_;
 
-    return &instance_;
+    return std::addressof(instance_);
   }
 
   ACE_STATIC_SVC_DEFINE (HttpInstallationHandlerSvc,
