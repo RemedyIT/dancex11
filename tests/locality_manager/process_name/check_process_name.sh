@@ -2,7 +2,7 @@
 
 cmd_output=$(ps auxc | grep newlocality_tes | wc -l)
 
-if [ "$cmd_output" -ne "1" ] ; then
+if [ "$cmd_output" -eq "0" ] ; then
     echo "ERROR: Process name does not appear to have changed."
     echo "Process listing:"
     ps auxc

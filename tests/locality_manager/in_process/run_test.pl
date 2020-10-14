@@ -105,6 +105,7 @@ sub kill_open_processes {
     }
     # in case shutdown did not perform as expected
     $tg_daemon->KillAll ('dancex11_deployment_manager');
+    $tg_daemon->KillAll ('NM_with_inprocess_LM');
 }
 
 sub run_node_daemon {

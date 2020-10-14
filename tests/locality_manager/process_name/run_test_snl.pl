@@ -77,6 +77,7 @@ sub kill_open_processes {
     # in case shutdown did not perform as expected
     for ($i = 0; $i < $nr_daemon; ++$i) {
       $tg_daemons[$i]->KillAll ('dancex11_deployment_manager');
+      $tg_daemons[$i]->KillAll ('newlocality_test');
     }
 }
 
