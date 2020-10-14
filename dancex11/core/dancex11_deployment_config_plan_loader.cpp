@@ -18,7 +18,7 @@ namespace DAnCEX11
   {
     static CFGPlan_Loader instance_;
 
-    return &instance_;
+    return std::addressof(instance_);
   }
 
   bool

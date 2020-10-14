@@ -25,7 +25,7 @@ namespace DAnCEX11
   {
     static Plan_Loader instance_;
 
-    return &instance_;
+    return std::addressof(instance_);
   }
 
   Plan_Loader::Plan_Loader ()

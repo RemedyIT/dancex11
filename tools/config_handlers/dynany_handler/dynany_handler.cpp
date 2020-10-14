@@ -32,7 +32,7 @@ namespace DAnCEX11
     {
       static DynAny_Handler instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     DynAny_Handler::DynAny_Handler ()

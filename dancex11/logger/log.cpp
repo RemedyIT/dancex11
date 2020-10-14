@@ -19,7 +19,7 @@ namespace DAnCEX11
     {
       static DANCEX11_Log_Msg instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     DANCEX11_Log_Msg::DANCEX11_Log_Msg()

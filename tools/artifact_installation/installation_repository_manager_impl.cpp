@@ -77,7 +77,7 @@ namespace DAnCEX11
   {
     static InstallationRepositoryManager_Impl instance_;
 
-    return &instance_;
+    return std::addressof(instance_);
   }
 
   void InstallationRepositoryManager_Impl::set_default_basedir (const char * dir)

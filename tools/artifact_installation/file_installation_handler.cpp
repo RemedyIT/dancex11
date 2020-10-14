@@ -24,7 +24,7 @@ namespace DAnCEX11
     {
       static FileInstallationHandler instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     ACE_STATIC_SVC_DEFINE (FileInstallationHandlerSvc,
