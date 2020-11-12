@@ -112,8 +112,9 @@ project (dancex11_core_stub) : dancex11_lib, dancex11_output, \
   }
 }
 
-project (dancex11_core_state) : ciaox11, dancex11_lib, dancex11_output, \
-        dancex11_logger, install, taox11_defaults, taox11_portableserver \
+project (dancex11_core_state) : dancex11_lib, dancex11_output, \
+        dancex11_logger, install, taox11_defaults, taox11_portableserver, \
+        ciaox11 \
 {
   dynamicflags += DANCEX11_STATE_BUILD_DLL
   sharedname = dancex11_state

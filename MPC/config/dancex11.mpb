@@ -6,7 +6,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project {
+project : ciaox11_rules {
   includes += $(DANCEX11_ROOT)
   libpaths += $(DANCEX11_ROOT)/lib
 }

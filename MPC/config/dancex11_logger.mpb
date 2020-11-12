@@ -6,5 +6,5 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : x11_logger, dancex11_logging  {
+project : x11_logger, dancex11, dancex11_logging  {
 }
