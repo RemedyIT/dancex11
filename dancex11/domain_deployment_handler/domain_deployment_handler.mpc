@@ -1,10 +1,11 @@
-project(dancex11_domain_deployment_handler_impl) : taox11_cosnaming_stub, \
+project(dancex11_domain_deployment_handler_impl) : \
       dancex11_lib, dancex11_output, dancex11_split_plan, install, \
       dancex11_stub, dancex11_state, dancex11_plan_loader_stub, \
       dancex11_deployment_handler, dancex11_targetmanager_skel, \
       dancex11_node_deployment_ami_stub, \
       dancex11_domainapplicationmanager_skel, dancex11_executionmanager_impl, \
-      dancex11_domainapplication_skel, dancex11_deploymentmanagerhandler_skel \
+      dancex11_domainapplication_skel, dancex11_deploymentmanagerhandler_skel, \
+      taox11_cosnaming_stub \
 {
   dynamicflags += DANCEX11_DOMAIN_DH_BUILD_DLL
   sharedname = dancex11_domain_dm_handler

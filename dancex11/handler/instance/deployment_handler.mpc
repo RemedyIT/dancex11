@@ -1,6 +1,6 @@
-project(dancex11_deployment_handler_impl) : dancex11_deployment_skel, dancex11_lib, \
+project(dancex11_deployment_handler_impl) : install, dancex11_deployment_skel, \
   dancex11_output, dancex11_deployment_scheduler, dancex11_deployment_configurator, \
-  install, dancex11_stub, dancex11_state {
+  dancex11_stub, dancex11_state {
 
   dynamicflags += DANCE_DEPLOYMENT_HANDLER_BUILD_DLL
   sharedname = dancex11_deployment_handler

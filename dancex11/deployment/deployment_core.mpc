@@ -208,8 +208,8 @@ project(dancex11_deployment_na_idl) : install, dancex11_idl {
   }
 }
 
-project(dancex11_deployment_stub) : install, dancex11_lib_with_idl, dancex11_output, \
-                                    dancex11_lib {
+project(dancex11_deployment_stub) : install, \
+                          dancex11_lib_with_idl, dancex11_output {
   sharedname   =  dancex11_deployment_stub
   after += dancex11_deployment_idl
 
@@ -678,8 +678,8 @@ project(dancex11_nodemanager_skel) : install, dancex11_output, dancex11_deployme
 }
 
 project(dancex11_deployment_skel) : install, dancex11_deployment_stub, dancex11_output, \
-                                    dancex11_lib_with_idl, taox11_portableserver, taox11_valuetype, \
-                                    dancex11_lib {
+                                    dancex11_lib_with_idl, taox11_portableserver, taox11_valuetype \
+{
   sharedname   =  dancex11_deployment_skel
   dynamicflags +=  DEPLOYMENT_SKEL_BUILD_DLL
   after += Deployment_IDL

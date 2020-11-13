@@ -1,5 +1,5 @@
 project (dancex11_error_interceptors) : install, dancex11_deployment_stub, \
-      dancex11_lib, dancex11_stub, dancex11_output {
+      dancex11_stub, dancex11_output {
 
   dynamicflags += DANCEX11_LOG_ERROR_INTERCEPTORS_BUILD_DLL
 

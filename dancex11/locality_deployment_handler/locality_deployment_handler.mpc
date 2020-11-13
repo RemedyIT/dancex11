@@ -1,5 +1,5 @@
 project(dancex11_locality_deployment_handler_impl) : \
-      dancex11_lib, dancex11_output, install, \
+      install, dancex11_lib, dancex11_output, \
       dancex11_stub, dancex11_state, dancex11_deployment_configurator, \
       dancex11_deployment_scheduler, dancex11_deployment_handler, \
       dancex11_lm_skel, \

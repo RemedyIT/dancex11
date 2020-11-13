@@ -6,7 +6,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, taox11_portableserver, dancex11_lib, dancex11_logger {
+project : dancex11_lib, dancex11_logger, taox11_defaults, taox11_portableserver {
   libs  += dancex11_state
   after += dancex11_core_state
 }
