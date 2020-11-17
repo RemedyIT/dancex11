@@ -1,5 +1,5 @@
 project (dancex11_locality_configuration) : install, dancex11_deployment_stub, \
-      dancex11_lib, dancex11_output, dancex11_stub {
+      dancex11_output, dancex11_stub {
 
   dynamicflags += DANCEX11_LOCALITY_CONFIGURATION_BUILD_DLL
 

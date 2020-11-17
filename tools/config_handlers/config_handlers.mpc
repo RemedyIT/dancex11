@@ -36,7 +36,7 @@ project (DANCEX11_XSC_XML_Generation) : install, xscdefaults {
   }
 }
 
-project (DANCEX11_XSC_XML_Handlers) : install, acelib, xerces, dancex11, dancex11_lib, dancex11_output \
+project (DANCEX11_XSC_XML_Handlers) : install, dancex11_lib, dancex11_output, acelib, xerces \
 {
   sharedname   = dancex11_xsc_xml_handlers
   dynamicflags += XSC_XML_HANDLERS_BUILD_DLL

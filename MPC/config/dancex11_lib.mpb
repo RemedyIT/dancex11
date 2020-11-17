@@ -6,6 +6,6 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, dancex11, taox11_anytypecode {
+project : dancex11, taox11_defaults, taox11_anytypecode {
   libpaths += $(DANCEX11_ROOT)/lib
 }

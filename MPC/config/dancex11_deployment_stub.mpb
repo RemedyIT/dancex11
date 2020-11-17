@@ -6,7 +6,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, dancex11_lib {
+project : dancex11_lib, taox11_defaults {
   libs += dancex11_deployment_stub
   after += dancex11_deployment_stub
 }

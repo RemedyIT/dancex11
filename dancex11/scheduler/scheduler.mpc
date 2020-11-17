@@ -1,5 +1,6 @@
-project(dancex11_deployment_scheduler_impl) : dancex11_lib, dancex11_output, \
-        dancex11_deployment_stub, dancex11_stub, dancex11_state, install {
+project(dancex11_deployment_scheduler_impl) : install, dancex11_lib, dancex11_output, \
+              dancex11_deployment_stub, dancex11_stub, dancex11_state \
+{
   dynamicflags += DEPLOYMENT_SCHEDULER_BUILD_DLL
   sharedname = dancex11_deployment_scheduler
 

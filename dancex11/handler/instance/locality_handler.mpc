@@ -1,5 +1,5 @@
-project(dancex11_locality_handler_impl) : dancex11_deployment_skel, dancex11_lib, \
-  dancex11_output, dancex11_deployment_scheduler, install, dancex11_lm_skel, \
+project(dancex11_locality_handler_impl) : install, dancex11_deployment_skel, \
+  dancex11_output, dancex11_deployment_scheduler, dancex11_lm_skel, \
   dancex11_deploymentmanagerhandler_stub, dancex11_deployment_scheduler, dancex11_state {
 
   dynamicflags += DANCE_LOCALITY_HANDLER_BUILD_DLL
