@@ -15,11 +15,11 @@ project(dancex11_deployment_configurator_impl) : \
     dancex11_config_loader.h
     dancex11_config_stream.h
     dancex11_config_parser.h
+    dancex11_config_util_t.h
   }
 
   Template_Files {
     dancex11_config_parser.cpp
-    dancex11_config_util.h
   }
 
   specific {
