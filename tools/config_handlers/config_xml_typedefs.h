@@ -21,12 +21,9 @@ namespace XML
   public:
     using PATH_RESOLVER = ::XML::Environment_Resolver;
     using XML_RESOLVER = ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver>;
-    using DANCEX11_ERROR_HANDLER = ::XML::DANCEX11_XML_Error_Handler ;
-    using HELPER = ::XML::XML_Helper<XML_RESOLVER, DANCEX11_ERROR_HANDLER>;
+    using ERROR_HANDLER = ::XML::DANCEX11_XML_Error_Handler;
+    using HELPER = ::XML::XML_Helper<XML_RESOLVER, ERROR_HANDLER>;
 
-    static DANCEX11_ERROR_HANDLER _xml_error_handler;
-
-  public:
     static HELPER XML_HELPER;
   };
 }

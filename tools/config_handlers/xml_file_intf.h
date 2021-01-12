@@ -48,7 +48,7 @@ namespace DAnCEX11
       bool read_process_domain (const std::string& file);
 
     private:
-      std::string file_;
+      std::string const file_;
       std::unique_ptr< ::Deployment::DeploymentPlan> idl_dp_;
       std::unique_ptr< ::Deployment::Domain> idl_domain_;
       using XML_Helper_type = ::XML::DANCEX11_XML_Typedef;
