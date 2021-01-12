@@ -29,7 +29,7 @@ namespace XML
   {
   public:
     DANCEX11_XML_Error_Handler () = default;
-    ~DANCEX11_XML_Error_Handler () = default;
+    ~DANCEX11_XML_Error_Handler () override = default;
 
     void warning(const SAXParseException& toCatch) override;
     void error(const SAXParseException& toCatch) override;
@@ -42,7 +42,7 @@ namespace XML
     DANCEX11_XML_Error_Handler (DANCEX11_XML_Error_Handler&&) = delete;
     DANCEX11_XML_Error_Handler& operator= (DANCEX11_XML_Error_Handler&&) = delete;
 
-    bool errors_ {false};
+    bool errors_ {};
   };
 }
 
