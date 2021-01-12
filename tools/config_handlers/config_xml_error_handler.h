@@ -12,7 +12,6 @@
 #pragma once
 
 #include "config_handlers_export.h"
-
 #include <xercesc/sax/ErrorHandler.hpp>
 
 using xercesc::SAXParseException;
@@ -32,14 +31,16 @@ namespace XML
     DANCEX11_XML_Error_Handler () = default;
     ~DANCEX11_XML_Error_Handler () = default;
 
-    void warning(const SAXParseException& toCatch);
-    void error(const SAXParseException& toCatch);
-    void fatalError(const SAXParseException& toCatch);
-    void resetErrors();
+    void warning(const SAXParseException& toCatch) override;
+    void error(const SAXParseException& toCatch) override;
+    void fatalError(const SAXParseException& toCatch) override;
+    void resetErrors() override;
     bool getErrors () const;
   private :
     DANCEX11_XML_Error_Handler (const DANCEX11_XML_Error_Handler&) = delete;
     DANCEX11_XML_Error_Handler& operator= (const DANCEX11_XML_Error_Handler&) = delete;
+    DANCEX11_XML_Error_Handler (DANCEX11_XML_Error_Handler&&) = delete;
+    DANCEX11_XML_Error_Handler& operator= (DANCEX11_XML_Error_Handler&&) = delete;
 
     bool errors_ {false};
   };

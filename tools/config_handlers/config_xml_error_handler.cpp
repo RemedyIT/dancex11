@@ -12,7 +12,6 @@
 #include <xercesc/dom/DOMLocator.hpp>
 #include <xercesc/sax/SAXParseException.hpp>
 #include "ace/XML_Utils/XercesString.h"
-//#include <iostream>
 #include "dancex11/logger/log.h"
 
 using xercesc::SAXParseException;
