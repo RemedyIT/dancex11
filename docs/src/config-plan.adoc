@@ -22,7 +22,7 @@ DnCX11 _CONFIG_ documents are 8-bit ASCII character streams containing
 _CONFIG_ tokens, whitespace (spaces, newlines, tabs etc.) and comments.
 
 The DnCX11 _CONFIG_ parser considers all character sequences *outside
-quoted strings* starting with either `#` or `//` up untill a newline
+quoted strings* starting with either `#` or `//` up until a newline
 character or end of file (whichever comes first) to be comments and will
 ignore these sequences.
 

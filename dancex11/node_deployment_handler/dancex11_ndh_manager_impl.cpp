@@ -151,7 +151,7 @@ namespace DAnCEX11
     }
 
     DANCEX11_LOG_ERROR ("NodeManager_impl::destroyManager - "
-                        "correponding NodeApplicationManager cannot be found");
+                        "corresponding NodeApplicationManager cannot be found");
     throw ::Deployment::InvalidReference();
   }
 
