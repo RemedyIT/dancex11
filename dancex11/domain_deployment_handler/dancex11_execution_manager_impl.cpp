@@ -157,7 +157,7 @@ namespace DAnCEX11
     }
 
     DANCEX11_LOG_ERROR ("ExecutionManager_impl::destroyManager - "
-                        "correponding DomainApplicationManager cannot be found");
+                        "corresponding DomainApplicationManager cannot be found");
     throw ::Deployment::InvalidReference();
   }
 
