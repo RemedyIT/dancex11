@@ -298,7 +298,7 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
                             label);
 
         std::string dirname = fn::dirname (input_filename);
-        std::string name (iter_plans->first.to_string ());
+        std::string name (iter_plans->first.locality_manager_label(iter_plans->second));
         name += "-";
         name += fn::basename (input_filename, true);
         name += ".cdr";

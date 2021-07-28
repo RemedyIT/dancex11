@@ -17,6 +17,7 @@ namespace DAnCEX11
 {
   Locality_Splitter::LocalityKey::LocalityKey ()
     : loc_manager_ ((uint32_t)ULONG_MAX)
+    , implicit_lm_ (true)
   {
     DANCEX11_LOG_TRACE ("Locality_Splitter::LocalityKey::constructor");
   }
@@ -26,7 +27,8 @@ namespace DAnCEX11
     : plan_uuid_ (k.uuid ()),
       node_ (k.node ()),
       instances_ (k.instances ()),
-      loc_manager_ (k.loc_manager_)
+      loc_manager_ (k.loc_manager_),
+      implicit_lm_ (k.implicit_lm_)
   {
     DANCEX11_LOG_TRACE ("Locality_Splitter::LocalityKey::destructor");
   }
@@ -41,6 +43,7 @@ namespace DAnCEX11
     this->node_ = k.node ();
     this->instances_ = k.instances ();
     this->loc_manager_ = k.loc_manager_;
+    this->implicit_lm_ = k.implicit_lm_;
     return *this;
   }
 
@@ -63,6 +66,53 @@ namespace DAnCEX11
     DANCEX11_LOG_TRACE ("Locality_Splitter::LocalityKey::add_instance");
 
     this->instances_.push_back (instance);
+  }
+
+  std::string Locality_Splitter::LocalityKey::locality_manager_label(const Deployment::DeploymentPlan &sub_plan) const
+  {
+    DANCEX11_LOG_TRACE ("Locality_Splitter::LocalityFilter::locality_manager_label");
+
+    if (this->has_explicit_locality_manager ())
+    {
+      DANCEX11_LOG_DEBUG("Locality_Splitter::LocalityFilter::locality_manager_label - explicit LM label");
+
+      // find the LM instance (cannot use the recorded instance indexes as these are out of sync with the sub_plan)
+      for (const Deployment::InstanceDeploymentDescription& inst : sub_plan.instance())
+      {
+        // get instance type
+        const std::string instance_type =
+          DAnCEX11::Utility::get_instance_type (
+            sub_plan.implementation ()[inst.implementationRef()].execParameter ());
+        if (!instance_type.empty ())
+        {
+          if (instance_type == DANCE_LOCALITYMANAGER)
+          {
+            // LM found
+
+            // check for existence of DANCE_LM_PROCESSNAME exec property for LM instance
+            for (const Deployment::Property& cfgProp : inst.configProperty ())
+            {
+              if (cfgProp.name() == DAnCEX11::DANCE_LM_PROCESSNAME)
+              {
+                std::string lm_name;
+                if (cfgProp.value() >>= lm_name)
+                {
+                  return this->node_ + "-" + lm_name;
+                }
+                else
+                {
+                  DANCEX11_LOG_ERROR("Locality_Splitter::LocalityFilter::locality_manager_label - " \
+                        "Failed to extract " << DAnCEX11::DANCE_LM_PROCESSNAME << " for LM label");
+                }
+              }
+            }
+            // use instance name
+            return this->node_ + "-" + inst.name();
+          }
+        }
+      }
+    }
+    return this->to_string();
   }
 
   Locality_Splitter::LocalityKey::operator std::string () const
@@ -336,7 +386,7 @@ namespace DAnCEX11
                         sub_plan_key.locality_manager_instance (
                             ACE_Utils::truncate_cast<uint32_t> (sub_plan_key.instances ().size ()) - 1);
 
-                        DANCEX11_LOG_TRACE ("Locality_Splitter::prepare_sub_plan - " <<
+                        DANCEX11_LOG_DEBUG ("Locality_Splitter::prepare_sub_plan - " <<
                                             "Found locality manager instance " <<
                                             instance << ":" << plan_.instance ()[instance].name ());
                       }
@@ -394,15 +444,15 @@ namespace DAnCEX11
         lm_name += "]";
         sub_plan.instance ().back ().name (lm_name);
 
-        DANCEX11_LOG_TRACE ("Locality_Splitter::finalize_sub_plan - " <<
+        DANCEX11_LOG_DEBUG ("Locality_Splitter::finalize_sub_plan - " <<
                             "No locality manager found, created a default locality named<" <<
                             sub_plan.instance ().back ().name () << ">");
 
         // add instance to sub plan key
         sub_plan_key.add_instance (inst_index);
-        // mark as locality manager
+        // mark as implicit locality manager
         sub_plan_key.locality_manager_instance (
-            ACE_Utils::truncate_cast<uint32_t> (sub_plan_key.instances ().size ()) - 1);
+            ACE_Utils::truncate_cast<uint32_t> (sub_plan_key.instances ().size ()) - 1, true);
       }
   }
 }

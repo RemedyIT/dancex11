@@ -61,11 +61,20 @@ namespace DAnCEX11
       {
         return this->has_locality_manager () ? this->loc_manager_ : 0;
       }
-      void                  locality_manager_instance (uint32_t sub_plan_index)
+      void                  locality_manager_instance (uint32_t sub_plan_index, bool implicit_lm=false)
       {
         if (sub_plan_index < this->instances_.size ())
+        {
           this->loc_manager_ = sub_plan_index;
+          this->implicit_lm_ = implicit_lm;
+        }
       }
+      bool                  has_explicit_locality_manager () const
+      {
+        return !this->implicit_lm_;
+      }
+
+      std::string           locality_manager_label(const Deployment::DeploymentPlan &sub_plan) const;
 
       bool  operator ==(const LocalityKey &other_key) const
       {
@@ -85,6 +94,7 @@ namespace DAnCEX11
       std::string node_;
       TInstanceList instances_;
       uint32_t loc_manager_;
+      bool implicit_lm_;
     };
 
     struct LocalityKeyHash
