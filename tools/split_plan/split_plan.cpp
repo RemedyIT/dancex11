@@ -244,6 +244,8 @@ namespace DAnCEX11
                   ACE_Utils::truncate_cast<uint32_t> (sub_plan.instance ().size ());
               sub_plan.instance ().push_back (my_instance);
 
+              DANCEX11_LOG_DEBUG("Split_Plan::split_plan - copied instance " << pos << " to " << index_ins);
+
               // Update the <implementationRef> field of the "instance".
               sub_plan.instance ()[index_ins].implementationRef (index_imp);
 
