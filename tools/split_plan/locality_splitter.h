@@ -69,7 +69,7 @@ namespace DAnCEX11
           this->implicit_lm_ = implicit_lm;
         }
       }
-      bool					        has_explicit_locality_manager () const
+      bool                  has_explicit_locality_manager () const
       {
         return !this->implicit_lm_;
       }
