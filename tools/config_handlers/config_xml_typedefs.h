@@ -19,7 +19,6 @@ namespace XML
   class Config_Handlers_Export DANCEX11_XML_Typedef
   {
   public:
-    using PATH_RESOLVER = ::XML::Environment_Resolver;
     using XML_RESOLVER = ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver>;
     using ERROR_HANDLER = ::XML::DANCEX11_XML_Error_Handler;
     using HELPER = ::XML::XML_Helper<XML_RESOLVER, ERROR_HANDLER>;

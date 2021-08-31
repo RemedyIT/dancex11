@@ -23,7 +23,7 @@ namespace XML
 
     DANCEX11_LOG_DEBUG ("Warning: " << file << ':' << toCatch.getLineNumber ()
                   << ':' << toCatch.getColumnNumber () << " - "
-                  << msg );
+                  << msg);
   }
 
   void DANCEX11_XML_Error_Handler::error(const xercesc::SAXParseException& toCatch)
@@ -33,7 +33,7 @@ namespace XML
 
     DANCEX11_LOG_ERROR ("Error: " << file << ':' << toCatch.getLineNumber ()
                   << ':' << toCatch.getColumnNumber () << " - "
-                  << msg );
+                  << msg);
 
     this->errors_ = true;
   }
@@ -45,7 +45,7 @@ namespace XML
 
     DANCEX11_LOG_PANIC ("Fatal Error: " << file << ':' << toCatch.getLineNumber ()
                   << ':' << toCatch.getColumnNumber () << " - "
-                  << msg );
+                  << msg);
 
     this->errors_ = true;
   }
