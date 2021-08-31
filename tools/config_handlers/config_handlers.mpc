@@ -104,12 +104,10 @@ project (DANCEX11_XSC_Config_Handlers) : \
     dd_handler.cpp
     dancex11_deployment_cdp_plan_loader.cpp
     config_xml_error_handler.cpp
-    config_xml_typedefs.cpp
   }
 
   Header_Files {
     config_handlers_export.h
-    config_xml_typedefs.h
     common.h
   }
 

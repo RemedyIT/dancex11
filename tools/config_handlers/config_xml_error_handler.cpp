@@ -52,6 +52,7 @@ namespace XML
     this->errors_ = true;
   }
 
+#if ACE_VERSION_CODE <= 0x70003
   void DANCEX11_XML_Error_Handler::resetErrors()
   {
     this->errors_ = false;
@@ -62,4 +63,5 @@ namespace XML
   {
     return this->errors_;
   }
+#endif
 }

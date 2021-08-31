@@ -12,9 +12,7 @@
 #pragma once
 
 #include "config_handlers_export.h"
-#include <xercesc/sax/ErrorHandler.hpp>
-
-using xercesc::SAXParseException;
+#include "ace/XML_Utils/XML_Error_Handler.h"
 
 namespace XML
 {
@@ -22,10 +20,13 @@ namespace XML
     * @class DANCEX11_XML_Error_Hander
     *
     * @brief DANCEX11 error handler for XERCES
-    *
     */
   class Config_Handlers_Export DANCEX11_XML_Error_Handler final
+#if ACE_VERSION_CODE <= 0x70003
     : public xercesc::ErrorHandler
+#else
+    : public XML::XML_Error_Handler
+#endif
   {
   public:
     DANCEX11_XML_Error_Handler () = default;
@@ -34,15 +35,18 @@ namespace XML
     void warning(const SAXParseException& toCatch) override;
     void error(const SAXParseException& toCatch) override;
     void fatalError(const SAXParseException& toCatch) override;
+#if ACE_VERSION_CODE <= 0x70003
     void resetErrors() override;
     bool getErrors () const;
+#endif
   private :
     DANCEX11_XML_Error_Handler (const DANCEX11_XML_Error_Handler&) = delete;
     DANCEX11_XML_Error_Handler& operator= (const DANCEX11_XML_Error_Handler&) = delete;
     DANCEX11_XML_Error_Handler (DANCEX11_XML_Error_Handler&&) = delete;
     DANCEX11_XML_Error_Handler& operator= (DANCEX11_XML_Error_Handler&&) = delete;
-
+#if ACE_VERSION_CODE <= 0x70003
     bool errors_ {};
+#endif
   };
 }
 
