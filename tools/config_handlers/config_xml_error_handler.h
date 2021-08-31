@@ -2,7 +2,7 @@
  * @file    config_xml_error_handler.h
  * @author  Marijke Hengstmengel
  *
- * @brief  DANCEX11 version  error handler for Xerces
+ * @brief  DANCEX11 error handler for Xerces
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -13,8 +13,6 @@
 
 #include "config_handlers_export.h"
 #include <xercesc/sax/ErrorHandler.hpp>
-
-using xercesc::SAXParseException;
 
 namespace XML
 {
@@ -31,9 +29,9 @@ namespace XML
     DANCEX11_XML_Error_Handler () = default;
     ~DANCEX11_XML_Error_Handler () override = default;
 
-    void warning(const SAXParseException& toCatch) override;
-    void error(const SAXParseException& toCatch) override;
-    void fatalError(const SAXParseException& toCatch) override;
+    void warning(const xercesc::SAXParseException& toCatch) override;
+    void error(const xercesc::SAXParseException& toCatch) override;
+    void fatalError(const xercesc::SAXParseException& toCatch) override;
     void resetErrors() override;
     bool getErrors () const;
   private :

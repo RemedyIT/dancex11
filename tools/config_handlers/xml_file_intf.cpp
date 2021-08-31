@@ -30,7 +30,6 @@ namespace DAnCEX11
     XML_File_Intf::~XML_File_Intf ()
     {
       DANCEX11_LOG_TRACE("XML_File_Intf::destructor");
-      // XML_Helper::XML_HELPER.terminate_parser();
     }
 
     bool
