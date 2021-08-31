@@ -2,7 +2,7 @@
  * @file    config_xml_error_handler.cpp
  * @author  Marijke Hengstmengel
  *
- * @brief  DANCEX11 version  error handler for Xerces
+ * @brief  DANCEX11 error handler for Xerces
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -14,11 +14,9 @@
 #include "ace/XML_Utils/XercesString.h"
 #include "dancex11/logger/log.h"
 
-using xercesc::SAXParseException;
-
 namespace XML
 {
-  void DANCEX11_XML_Error_Handler::warning(const SAXParseException& toCatch)
+  void DANCEX11_XML_Error_Handler::warning(const xercesc::SAXParseException& toCatch)
   {
     XStr file(toCatch.getSystemId ());
     XStr msg (toCatch.getMessage ());
@@ -28,7 +26,7 @@ namespace XML
                   << msg );
   }
 
-  void DANCEX11_XML_Error_Handler::error(const SAXParseException& toCatch)
+  void DANCEX11_XML_Error_Handler::error(const xercesc::SAXParseException& toCatch)
   {
     XStr file (toCatch.getSystemId ());
     XStr msg (toCatch.getMessage ());
@@ -40,7 +38,7 @@ namespace XML
     this->errors_ = true;
   }
 
-  void DANCEX11_XML_Error_Handler::fatalError(const SAXParseException& toCatch)
+  void DANCEX11_XML_Error_Handler::fatalError(const xercesc::SAXParseException& toCatch)
   {
     XStr file (toCatch.getSystemId ());
     XStr msg (toCatch.getMessage ());
