@@ -61,7 +61,7 @@ namespace DAnCEX11
     : public x11_logger::Log_Module
     {
     public:
-      virtual ~DANCEX11_Log_Msg();
+      ~DANCEX11_Log_Msg() override = default;
 
       using log_type = x11_logger::Log_Type_T<DANCEX11_Log_Msg>;
 

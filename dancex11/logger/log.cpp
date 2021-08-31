@@ -26,10 +26,6 @@ namespace DAnCEX11
     : x11_logger::Log_Module ("DANCEX11")
     {
     }
-
-    DANCEX11_Log_Msg::~DANCEX11_Log_Msg()
-    {
-    }
   } // namespace dancex11_logger
 
 #endif
