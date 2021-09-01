@@ -7,11 +7,13 @@
 
 #include "xml_file_intf.h"
 
-#include "config_xml_typedefs.h"
 #include "Deployment.hpp"
 #include "dp_handler.h"
 #include "dd_handler.h"
 #include "common.h"
+#include "ace/XML_Utils/XML_Helper.h"
+#include "ace/XML_Utils/XML_Schema_Resolver.h"
+#include "config_xml_error_handler.h"
 
 #include "dancex11/deployment/deployment_dataC.h"
 #include "dancex11/deployment/deployment_targetdataC.h"
@@ -39,12 +41,12 @@ namespace DAnCEX11
 
       try
       {
-        if (!XML_Helper_type::XML_HELPER.is_initialized ())
+        if (!xml_helper_.is_initialized ())
           return false;
 
         DANCEX11_LOG_DEBUG ("XML_File_Intf::read_process_plan - Constructing DOM");
-        XERCES_CPP_NAMESPACE::DOMDocument *dom =
-          XML_Helper_type::XML_HELPER.create_dom (file.c_str());
+
+        XERCES_CPP_NAMESPACE::DOMDocument *dom = xml_helper_.create_dom (file.c_str());
 
         if (!dom)
         {
@@ -108,12 +110,11 @@ namespace DAnCEX11
 
       try
       {
-        if (!XML_Helper_type::XML_HELPER.is_initialized ())
+        if (!xml_helper_.is_initialized ())
           return false;
 
         DANCEX11_LOG_DEBUG ("XML_File_Intf::read_process_domain - Constructing DOM");
-        XERCES_CPP_NAMESPACE::DOMDocument *dom =
-            XML_Helper_type::XML_HELPER.create_dom (file.c_str());
+        XERCES_CPP_NAMESPACE::DOMDocument *dom = xml_helper_.create_dom (file.c_str());
 
         if (!dom)
         {
@@ -195,7 +196,7 @@ namespace DAnCEX11
                                     const std::string& relpath)
     {
       DANCEX11_LOG_TRACE("XML_File_Intf::add_search_path");
-      XML_Helper_type::XML_HELPER.get_resolver ().get_resolver ().add_path (environment.c_str (), relpath.c_str());
+      xml_helper_.get_resolver ().get_resolver ().add_path (environment.c_str (), relpath.c_str());
     }
 
   }

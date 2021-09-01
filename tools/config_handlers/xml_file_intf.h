@@ -12,16 +12,14 @@
 #include "config_handlers_export.h"
 #include <string>
 #include <memory>
+#include "ace/XML_Utils/XML_Helper.h"
+#include "ace/XML_Utils/XML_Schema_Resolver.h"
+#include "config_xml_error_handler.h"
 
 namespace Deployment
 {
   class DeploymentPlan;
   class Domain;
-}
-
-namespace XML
-{
-  class DANCEX11_XML_Typedef;
 }
 
 namespace DAnCEX11
@@ -51,7 +49,11 @@ namespace DAnCEX11
       std::string const file_;
       std::unique_ptr< ::Deployment::DeploymentPlan> idl_dp_;
       std::unique_ptr< ::Deployment::Domain> idl_domain_;
-      using XML_Helper_type = ::XML::DANCEX11_XML_Typedef;
+
+      using XML_RESOLVER = ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver>;
+      using XML_HELPER = ::XML::XML_Helper<XML_RESOLVER, ::XML::DANCEX11_XML_Error_Handler>;
+
+      XML_HELPER xml_helper_;
     };
   }
 }
