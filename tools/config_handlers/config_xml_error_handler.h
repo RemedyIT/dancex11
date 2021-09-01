@@ -12,11 +12,7 @@
 #pragma once
 
 #include "config_handlers_export.h"
-<<<<<<< HEAD
 #include "ace/XML_Utils/XML_Error_Handler.h"
-=======
-#include <xercesc/sax/ErrorHandler.hpp>
->>>>>>> master
 
 namespace XML
 {
