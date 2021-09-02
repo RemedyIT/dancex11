@@ -98,7 +98,7 @@ namespace DAnCEX11
     DANCEX11_LOG_TRACE ("DeploymentManager_Module::usage");
     return "\ndancex11_deployment_manager --handler LIB [-c CFG] [-n NAME[=IORFILE] [-a ADDR] [-p PORT] [-N] [-d NC] [-S] [-l[ PLAN] [-f FMT]] [-- <handler-args>]\n"
              " or\n"
-             "dancex11_deployment_manager -x [-n NAME[=IORFILE] [-k KIND] [-a ADDR] [-p PORT] [-d NC]\n\n"
+             "dancex11_deployment_manager -x [-n NAME[=IORFILE] [-k KIND] [-a ADDR] [-p PORT] [-d NC] [-S]\n\n"
       "Deployment Manager Options:\n"
       "\t--handler LIB\t\t\t\t Specify the shared library to load the Deployment Handler implementation from\n"
       "\t<handler-args>\t\t\t\t Specify (a list of space separated) switches for the Deployment Handler implementation\n"
@@ -116,7 +116,7 @@ namespace DAnCEX11
       "\t-x|--teardown\t\t\t\t Teardown a previously launched Deployment Manager instance.\n"
       "\t-k|--kind KIND\t\t\t\t Specify the kind of the deployment manager instance in case no IORFILE specified.\n"
              "\t\t\t\t\t\t Possible KINDs are: Launcher (default), ExecutionManager, NodeManager and LocalityManager.\n"
-      "\t-S|--no-nc-register\t\t\t Do not register DM with NC.\n"
+      "\t-S|--no-nc-register\t\t\t Do not de-/register DM with/from NC.\n"
       "\t-h|--help\t\t\t\t print this help message\n";
   }
 

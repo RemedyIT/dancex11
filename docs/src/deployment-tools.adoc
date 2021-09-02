@@ -195,10 +195,10 @@ Executing the command `dancex11_deployment_manager -h` on the
 commandline will show the following information:
 
 -------------------------------------------------------------------------------------------------------
-dancex11_deployment_manager --handler LIB [-c CFG] [-n NAME[=IORFILE] [-a ADDR] [-p PORT] [-d NC]
+dancex11_deployment_manager --handler LIB [-c CFG] [-n NAME[=IORFILE] [-a ADDR] [-p PORT] [-d NC] [-S]
                             [-l[ PLAN] [-f FMT]] [-- <handler-args>]
  or
-dancex11_deployment_manager -x [-n NAME[=IORFILE] [-k KIND] [-a ADDR] [-p PORT] [-d NC]
+dancex11_deployment_manager -x [-n NAME[=IORFILE] [-k KIND] [-a ADDR] [-p PORT] [-d NC] [-S]
 
 Deployment Manager Options:
         --handler LIB                            Specify the shared library to load the Deployment
@@ -229,6 +229,7 @@ Deployment Manager Options:
                                                  case no IORFILE specified.
                                                  Possible KINDs are: Launcher (default),
                                                  ExecutionManager, NodeManager and LocalityManager.
+        -S|--no-dm-register                      Do not de-/register DM with/from NC.
         -h|--help                                print this help message
 -------------------------------------------------------------------------------------------------------
 
