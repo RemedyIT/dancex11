@@ -57,6 +57,7 @@ namespace DAnCEX11
       std::string dm_name_;
       std::string dm_kind_;
       std::string deployment_nc_;
+      bool dm_nc_registration_ {true};
       unsigned int threads_ {};
       std::string dm_config_;
       Deployment::Properties dm_props_ {};

@@ -752,6 +752,9 @@ namespace DAnCEX11
     {
       // add domain NC arg
       cmd_os << " --deployment-nc " << domain_nc;
+
+      // suppress LM DM registration at NC
+      cmd_os << " -S ";
     }
     // add UUID and IOR as handler args
     cmd_os << " -- -u "
