@@ -153,7 +153,7 @@ namespace DAnCEX11
       {
          DANCEX11_LOG_ERROR ("XML_File_Intf::caught - CORBA Exception while parsing XML into IDL"
                              << ex);
-         throw Config_Error (this->file_, ex.what());
+         throw Config_Error (this->file_, ex.what ());
       }
       catch (const Config_Error &ex)
       {

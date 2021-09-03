@@ -48,7 +48,7 @@ main (int argc, char *argv[])
   }
   catch (const std::exception& ex)
   {
-    DANCEX11_LOG_PANIC ("DeploymentManager - Error, std::exception: " << ex.what ());
+    DANCEX11_LOG_PANIC ("DeploymentManager - Error, std::exception: " << ex);
     retval = 1;
   }
   catch (...)

@@ -209,7 +209,7 @@ int main(int /*argc*/, char** /*argv[]*/)
   }
   catch (const std::exception& e)
   {
-    dancex11_error << "exception caught: " << e.what () << std::endl;
+    dancex11_error << "exception caught: " << e << std::endl;
     return 1;
   }
   return 0;
