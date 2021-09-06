@@ -223,16 +223,14 @@ namespace DAnCEX11
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_installation_handler - " <<
                             "CORBA Exception caught while loading artifact <" << artifact <<
                             ">:<" << entrypoint << "> - " << err.str ());
-        throw ::Deployment::PlanError (artifact,
-                                       err.str ());
+        throw ::Deployment::PlanError (artifact, err.str ());
       }
     catch (const std::exception& ex)
       {
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_installation_handler - "
                             "STD C++ exception while configuring plugin from <" << artifact <<
-                            ">:<" << entrypoint << "> -" << ex.what ());
-        throw ::Deployment::PlanError (artifact,
-                                       ex.what ());
+                            ">:<" << entrypoint << "> -" << ex);
+        throw ::Deployment::PlanError (artifact, ex.what ());
       }
     catch (...)
       {
