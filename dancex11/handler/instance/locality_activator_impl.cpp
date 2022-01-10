@@ -202,7 +202,7 @@ namespace DAnCEX11
         for (SERVER_INFOS::iterator i  (this->server_infos_.begin ());
              i != this->server_infos_.end (); ++i)
         {
-          DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::locality_manager_callback - " <<
+          DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::configuration_complete - " <<
                               "Comparing " << (*i)->uuid_ << " with " << server_UUID);
           if ((*i)->uuid_ == server_UUID)
           {
@@ -214,7 +214,7 @@ namespace DAnCEX11
 
       if (!info)
       {
-        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::locality_manager_callback - " <<
+        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::configuration_complete - " <<
                             "Received configuration_complete from LocalityManager " << server_UUID <<
                             ", which doesn't belong to me.");
         throw CORBA::BAD_PARAM ();
@@ -222,7 +222,7 @@ namespace DAnCEX11
 
       if (info->status_ == Server_Info::ACTIVE)
       {
-        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::locality_manager_callback - " <<
+        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::configuration_complete - " <<
                             "Received configuration_complete from LocalityManager " << server_UUID <<
                             ", which has already been completed.");
         throw CORBA::BAD_INV_ORDER ();
@@ -230,7 +230,7 @@ namespace DAnCEX11
 
       if (!info->ref_)
       {
-        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::locality_manager_callback - " <<
+        DANCEX11_LOG_ERROR ("DAnCE_LocalityActivator_i::configuration_complete - " <<
                             "Received configuration_complete from LocalityManager " << server_UUID <<
                             ", which has not called back.");
         throw CORBA::BAD_INV_ORDER ();
