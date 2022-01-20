@@ -19,7 +19,6 @@ namespace DAnCEX11
     /*
      *  FileInstallationHandlerSvc
      */
-
     FileInstallationHandler* FileInstallationHandler::getInstance ()
     {
       static FileInstallationHandler instance_;

@@ -68,7 +68,7 @@ namespace DAnCEX11
   inline
   std::string ArtifactInstallationHandler::basename (const std::string& location, char dirsep)
   {
-    std::string::size_type n = location.rfind (dirsep);
+    std::string::size_type const n = location.rfind (dirsep);
     return (n == std::string::npos) ? location : location.substr (n+1);
   }
 
