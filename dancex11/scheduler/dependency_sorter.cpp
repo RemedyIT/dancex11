@@ -57,7 +57,7 @@ namespace DAnCEX11
       {
         bool updated (false);
 
-        for (const std::pair< std::string, IH_DEPS > &dependency : tmp_dep)
+        for (const std::pair<const std::string, IH_DEPS>& dependency : tmp_dep)
           {
             if (dependency.second.empty ()) // i.e., no dependencies
               {

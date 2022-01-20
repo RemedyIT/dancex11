@@ -31,23 +31,17 @@ namespace DAnCEX11
 
     virtual ~Completion_Counter_Base () = default;
 
-    void
-    decrement_exec_count ();
+    void decrement_exec_count ();
 
-    void
-    increment_fail_count (const char* error);
+    void increment_fail_count (const char* error);
 
-    uint32_t
-    exec_count ();
+    uint32_t exec_count ();
 
-    uint32_t
-    fail_count ();
+    uint32_t fail_count ();
 
-    bool
-    all_completed ();
+    bool all_completed ();
 
-    const errors_type&
-    errors () const;
+    const errors_type& errors () const;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */
@@ -58,20 +52,15 @@ namespace DAnCEX11
     Completion_Counter_Base& operator= (Completion_Counter_Base&& x) = delete;
     //@}
   protected:
-    void
-    increment_exec_count ();
+    void increment_exec_count ();
 
-    uint32_t
-    exec_count_i ();
+    uint32_t exec_count_i ();
 
-    uint32_t
-    fail_count_i ();
+    uint32_t fail_count_i ();
 
-    virtual void
-    on_all_completed () = 0;
+    virtual void on_all_completed () = 0;
 
-    virtual void
-    on_all_completed_with_failure () = 0;
+    virtual void on_all_completed_with_failure () = 0;
 
   private:
     mutable ACE_LOCK lock_;

@@ -139,7 +139,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::install");
 
-      std::string name = artifact.name ();
+      std::string const name = artifact.name ();
 
       // allocate (and lock) the artifact registry for the given plan
       ArtifactRegistry::Guard ar_guard (this->allocate_artifact_registry (plan_uuid, name));
@@ -323,7 +323,7 @@ namespace DAnCEX11
                                            err.c_str ());
             }
 
-          std::string prot = loctmp.substr (0, p);
+          std::string const prot = loctmp.substr (0, p);
           protstack.push (prot);
 
           DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::parse_uri -" <<
@@ -499,7 +499,7 @@ namespace DAnCEX11
       ArtifactRegistry* ar =
           this->remove_artifact_registry (plan_uuid, artifact_name);
 
-      if (ar == 0)
+      if (!ar)
         return; // nothing to do yet
 
       this->remove_i (plan_uuid, artifact_name, ar);

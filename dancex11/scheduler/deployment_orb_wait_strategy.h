@@ -33,16 +33,13 @@ namespace DAnCEX11
     ~ORB_Completion_Wait_Strategy () = default;
 
     /// Waits for completion of all events, with a timeout
-    bool
-    wait_on_completion (ACE_Time_Value *tv);
+    bool wait_on_completion (ACE_Time_Value *tv);
 
   private:
-
-    bool
-    single_threaded_wait_on_completion (ACE_Time_Value *tv);
+    bool single_threaded_wait_on_completion (ACE_Time_Value *tv);
 
     completion_type &counter_;
-    bool multithread_ {};
+    bool const multithread_ {};
   };
 }
 

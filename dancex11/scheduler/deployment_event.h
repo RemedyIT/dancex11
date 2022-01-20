@@ -55,8 +55,8 @@ namespace DAnCEX11
     //@}
   protected:
     Event_Future holder_;
-    std::string name_;
-    std::string instance_type_;
+    std::string const name_;
+    std::string const instance_type_;
   };
 }
 
