@@ -163,7 +163,7 @@ namespace DAnCEX11
       IDL::traits<CORBA::TypeCode>::ref_type tc = excep.type ();
       const std::string &ex_id = tc->id ();
       DANCEX11_LOG_DEBUG ("DAnCEX11::Utility::throw_exception_from_any - " <<
-                          "Found typecode " << ex_id);;
+                          "Found typecode " << ex_id);
       if (ex_id == Deployment::_tc_PlanError->id ())
         {
           extract_and_throw_exception<Deployment::PlanError> (excep);
