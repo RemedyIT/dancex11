@@ -53,7 +53,7 @@ namespace DAnCEX11
       }
     }
     // base initialization
-    return this->InstallationRepositoryManagerSvc::init (argc, argv);;
+    return this->InstallationRepositoryManagerSvc::init (argc, argv);
   }
 
   InstallationRepositoryManager* InstallationRepositoryManagerSvc_Impl::manager_instance ()
