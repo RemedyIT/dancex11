@@ -110,6 +110,7 @@ namespace DAnCEX11
                         "\t\t\t\t\t\t listens (default \"\", i.e. all interfaces).\n"
       "\t-p|--listen-port PORT\t\t\t Provide the port for the Deployment Manager to listen on.\n"
       "\t-N|--numeric-addresses\t\t\t Use numeric IP addresses (dotted decimal) in service advertisement/profiles/IOR.\n"
+      "\t-H|--host-for-ref HOSTNAME\t\t Use the given hostname in service advertisement/profiles/IOR.\n"
       "\t-l|--launch [PLAN]\t\t\t Launch the deployment plan read from PLAN.\n"
       "\t-f|--plan-format FMT\t\t\t Specify the deployment plan format to read from PLAN.\n"
       "\t-P|--property PROPID=PROPVAL\t\t Specifies a deployment property definition. Can be specified more than once.\n"
@@ -127,7 +128,7 @@ namespace DAnCEX11
 
     ACE_Get_Opt get_opts (argc,
                           argv,
-                          ACE_TEXT("n:d:c:a:p:l::f:xk:SNP:h"),
+                          ACE_TEXT("n:d:c:a:p:l::f:xk:SNP:H:h"),
                           1,
                           0,
                           ACE_Get_Opt::RETURN_IN_ORDER);
@@ -139,6 +140,7 @@ namespace DAnCEX11
     get_opts.long_option (ACE_TEXT("listen-addr"), 'a', ACE_Get_Opt::ARG_REQUIRED);
     get_opts.long_option (ACE_TEXT("listen-port"), 'p', ACE_Get_Opt::ARG_REQUIRED);
     get_opts.long_option (ACE_TEXT("numeric-addresses"), 'N', ACE_Get_Opt::NO_ARG);
+    get_opts.long_option (ACE_TEXT("host-for-ref"), 'H', ACE_Get_Opt::ARG_REQUIRED);
     get_opts.long_option (ACE_TEXT("launch"), 'l', ACE_Get_Opt::ARG_OPTIONAL);
     get_opts.long_option (ACE_TEXT("plan-format"), 'f', ACE_Get_Opt::ARG_REQUIRED);
     get_opts.long_option (ACE_TEXT("property"), 'P', ACE_Get_Opt::ARG_REQUIRED);
@@ -187,6 +189,12 @@ namespace DAnCEX11
         DANCEX11_LOG_DEBUG ("DeploymentManager_Module::parse_args - "
                             "Going to use numeric IP addresses.");
         this->options_.numeric_addresses_ = true;
+        break;
+
+      case 'H':
+        DANCEX11_LOG_DEBUG ("DeploymentManager_Module::parse_args - "
+                            "Hostname for reference: " << get_opts.opt_arg ());
+        this->options_.host_for_ref_ = get_opts.opt_arg ();
         break;
 
       case 'l':
@@ -616,6 +624,11 @@ namespace DAnCEX11
       any <<= this->options_.numeric_addresses_;
       dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_NUMERIC_ADDRESSES, any));
     }
+    if (!this->options_.host_for_ref_.empty ())
+    {
+      any <<= this->options_.host_for_ref_;
+      dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_INSTANCE_REFHOST, any));
+    }
     if (!this->options_.deployment_nc_.empty ())
     {
       // pass naming context reference for domain/deployment objects to DMH
@@ -1010,12 +1023,13 @@ namespace DAnCEX11
     else
     {
       // should launcher listen at specific address and/or port?
-      if (this->options_.listen_port_ > 0 || !this->options_.listen_addr_.empty ())
+      if (this->options_.listen_port_ > 0 || !this->options_.listen_addr_.empty () || !this->options_.host_for_ref_.empty ())
       {
         DANCEX11_LOG_TRACE ("DeploymentManager_Module::create_orb_args - " <<
                             "Initializing ORB listen endpoint argument: " <<
                             "address=" << this->options_.listen_addr_ <<
-                            "; port=" << this->options_.listen_port_);
+                            "; port=" << this->options_.listen_port_ <<
+                            "; host-for-ref=" << this->options_.host_for_ref_);
 
         // initialize ORB arguments with program and ORB listen endpoint
         argc = ACE_Utils::truncate_cast<int> (this->options_.other_opts_.size () +
@@ -1028,6 +1042,10 @@ namespace DAnCEX11
         if (this->options_.listen_port_ > 0)
         {
           os << ":" << this->options_.listen_port_;
+        }
+        if (!this->options_.host_for_ref_.empty ())
+        {
+          os << "/hostname_in_ior=" << this->options_.host_for_ref_;
         }
         this->orb_endpoint_ = os.str ();
         orb_argv.get ()[narg++] = this->orb_endpoint_.c_str ();

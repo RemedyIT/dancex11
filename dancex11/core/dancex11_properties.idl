@@ -61,6 +61,7 @@ module DAnCEX11
   const string DM_INSTANCE_NAME = "nl.remedy.it.DnCX11.DM.InstanceName";
   const string DM_INSTANCE_PORT = "nl.remedy.it.DnCX11.DM.InstancePort";
   const string DM_INSTANCE_ADDRESS = "nl.remedy.it.DnCX11.DM.InstanceAddress";
+  const string DM_INSTANCE_REFHOST = "nl.remedy.it.DnCX11.DM.InstanceReferenceHost";
 
   // Locality Manager configuration properties
   // can be provided as execParameter as default for all LM instances
@@ -98,8 +99,10 @@ module DAnCEX11
   // Properties for both spawned and remote LM
   /// Specifies the network port the locality manager instance should listen on
   const string LOCALITY_PORT = "nl.remedy.it.DnCX11.Locality.Port";
-  /// Specifies the network address/hostname the locality manager instance should listen on
+  /// Specifies the network address/hostname the locality manager instance should (is) listen(ing) on
   const string LOCALITY_ADDRESS = "nl.remedy.it.DnCX11.Locality.Address";
+  /// Specifies the network address/hostname the (spawned) locality manager instance should publish in service references
+  const string LOCALITY_HOST_FOR_REF = "nl.remedy.it.DnCX11.Locality.HostForRef";
 
   const string DANCE_LM_PATH = "nl.remedy.it.DnCX11.Locality.Path";
   const string DANCE_LM_LIBPATH = "nl.remedy.it.DnCX11.Locality.LibPath";
