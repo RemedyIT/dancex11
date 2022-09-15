@@ -409,20 +409,14 @@ namespace DAnCEX11
                         "Initializing ORB arguments.");
 
     // setup ORB arguments
-    int orb_argc {};
-    std::unique_ptr<const char*[]> orb_argv = this->create_orb_args (orb_argc, argv0);
+    std::vector<std::string> orb_args;
+    this->create_orb_args (orb_args, argv0);
 
     // initialize ORB
     DANCEX11_LOG_TRACE ("DeploymentManager_Module::init_teardown - " <<
                         "Initializing ORB");
 
-    if (!DAnCEX11::State::instance ()->initialize (
-            orb_argc, const_cast<char**> (orb_argv.get ())))
-    {
-      DANCEX11_LOG_PANIC ("DeploymentManager_Module::init_teardown - " <<
-                          "Failed to initialize ORB");
-      return false;
-    }
+    DAnCEX11::State::instance ()->initialize (std::move (orb_args));
 
     IDL::traits<CORBA::ORB>::ref_type orb =
         DAnCEX11::State::instance ()->orb ();
@@ -565,23 +559,13 @@ namespace DAnCEX11
                         "Initializing ORB arguments.");
 
     // setup ORB arguments
-    int orb_argc {};
-    std::unique_ptr<const char*[]> orb_argv =
-        this->create_orb_args (orb_argc, argv0);
+    std::vector<std::string> orb_args;
+    this->create_orb_args (orb_args, argv0);
 
     DANCEX11_LOG_TRACE ("DeploymentManager_Module::init_startup - " <<
-                        "Initializing ORB");
+                        "Initializing deployment state");
 
-    if (!DAnCEX11::State::instance ()->initialize (
-            orb_argc, const_cast<char**> (orb_argv.get ())))
-    {
-      DANCEX11_LOG_PANIC ("DeploymentManager_Module::init_startup - " <<
-                          "Failed to initialize ORB");
-      return false;
-    }
-
-    IDL::traits<CORBA::ORB>::ref_type orb =
-        DAnCEX11::State::instance ()->orb ();
+    DAnCEX11::State::instance ()->initialize (std::move (orb_args));
 
     DANCEX11_LOG_DEBUG ("DeploymentManager_Module::init_startup - " <<
                         "Loading deployment manager handler");
@@ -636,8 +620,12 @@ namespace DAnCEX11
       dmh_prop.push_back (Deployment::Property (DAnCEX11::DOMAIN_NC, any));
     }
 
+    // this also loads the configured plugins which could include service object
+    // directives to be processed before creating the ORB so we have to make sure
+    // we do not create the ORB or resolve the root POA before this point
     this->handler_->configure (this->options_.dm_config_,
                                dmh_prop,
+                               // local object so _this() does not need ORB
                                this->_this ());
 
     DANCEX11_LOG_DEBUG ("DeploymentManager_Module::init_startup - " <<
@@ -720,7 +708,8 @@ namespace DAnCEX11
     }
 
     // Getting deployment manager service ior
-    std::string const ior = orb->object_to_string (this->dm_);
+    std::string const ior =
+        DAnCEX11::State::instance ()->orb ()->object_to_string (this->dm_);
 
     // Writing ior to file
     if (!dm_file.empty ())
@@ -1008,17 +997,13 @@ namespace DAnCEX11
     }
   }
 
-  std::unique_ptr<const char*[]>
-  DeploymentManager_Module::create_orb_args (int &argc, const char* argv0)
+  void
+  DeploymentManager_Module::create_orb_args (std::vector<std::string> &orb_args, const char* argv0)
   {
-    std::unique_ptr<const char*[]> orb_argv;
-    int narg = 0;
     if (this->options_.teardown_)
     {
       // initialize ORB arguments with program
-      argc = ACE_Utils::truncate_cast<int> (this->options_.other_opts_.size () + 1);
-      orb_argv = std::make_unique<const char*[]> (argc);
-      orb_argv.get ()[narg++] = argv0;
+      orb_args.push_back (argv0);
     }
     else
     {
@@ -1032,11 +1017,8 @@ namespace DAnCEX11
                             "; host-for-ref=" << this->options_.host_for_ref_);
 
         // initialize ORB arguments with program and ORB listen endpoint
-        argc = ACE_Utils::truncate_cast<int> (this->options_.other_opts_.size () +
-                                              (this->options_.numeric_addresses_ ? 5 : 3));
-        orb_argv = std::make_unique<const char*[]> (argc);
-        orb_argv.get ()[narg++] = argv0;
-        orb_argv.get ()[narg++] = SOptions::orb_listen_opt_;
+        orb_args.push_back (argv0);
+        orb_args.push_back (SOptions::orb_listen_opt_);
         std::ostringstream os;
         os << "iiop://" << this->options_.listen_addr_;
         if (this->options_.listen_port_ > 0)
@@ -1048,7 +1030,7 @@ namespace DAnCEX11
           os << "/hostname_in_ior=" << this->options_.host_for_ref_;
         }
         this->orb_endpoint_ = os.str ();
-        orb_argv.get ()[narg++] = this->orb_endpoint_.c_str ();
+        orb_args.push_back (this->orb_endpoint_);
 
         DANCEX11_LOG_TRACE ("DeploymentManager_Module::create_orb_args - " <<
                             "Added ORB listen endpoint: " <<
@@ -1057,15 +1039,12 @@ namespace DAnCEX11
       else
       {
         // initialize ORB arguments with program
-        argc = ACE_Utils::truncate_cast<int> (this->options_.other_opts_.size () +
-                                              (this->options_.numeric_addresses_ ? 3 : 1));
-        orb_argv = std::make_unique<const char*[]> (argc);
-        orb_argv.get ()[narg++] = argv0;
+        orb_args.push_back (argv0);
       }
       if (this->options_.numeric_addresses_)
       {
-        orb_argv.get ()[narg++] = SOptions::orb_dotted_dec_opt_;
-        orb_argv.get ()[narg++] = "1";
+        orb_args.push_back (SOptions::orb_dotted_dec_opt_);
+        orb_args.push_back ("1");
 
         DANCEX11_LOG_TRACE ("DeploymentManager_Module::create_orb_args - " <<
                             "Added ORB DottedDecimalAddresses (1) option");
@@ -1074,9 +1053,8 @@ namespace DAnCEX11
     // append all other remaining options
     for (const std::string& a : this->options_.other_opts_)
     {
-      orb_argv.get ()[narg++] = a.c_str ();
+      orb_args.push_back (a);
     }
-    return orb_argv;
   }
 
 }

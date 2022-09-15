@@ -255,9 +255,6 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("LocalityDeploymentHandler::configure");
 
-    // set up deployment POA
-    this->create_poas ();
-
     std::string cfg_file = config;
     // search for default config if none specified
     if (cfg_file.empty ())
@@ -345,6 +342,9 @@ namespace DAnCEX11
 
     // keep configured plugin manager
     this->plugins_ = std::move (plugins);
+
+    // set up deployment POA
+    this->create_poas ();
 
     // register shutdown handler
     this->shutdown_handler_ = sh;
@@ -536,11 +536,9 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("LocalityDeploymentHandler::create_poas");
 
-    IDL::traits<CORBA::ORB>::ref_type orb =
-        DAnCEX11::State::instance ()->orb ();
     this->root_poa_ = DAnCEX11::State::instance ()->root_poa ();
 
-    if (!orb || !this->root_poa_)
+    if (!this->root_poa_)
     {
       DANCEX11_LOG_PANIC ("LocalityDeploymentHandler::create_poas - "
                           "Deployment state uninitialized. "

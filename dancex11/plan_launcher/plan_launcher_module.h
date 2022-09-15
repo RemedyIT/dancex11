@@ -74,8 +74,8 @@ namespace DAnCEX11
 
     bool configure ();
 
-    std::unique_ptr<const char*[]>
-    create_orb_args (int &argc,
+    void
+    create_orb_args (std::vector<std::string> &orb_args,
                      const char* argv0);
 
     std::string orb_endpoint_;

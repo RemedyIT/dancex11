@@ -230,12 +230,10 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
       return 1;
     }
 
-    if (!DAnCEX11::State::instance ()->initialize (argc, argv))
-    {
-      DANCEX11_LOG_PANIC ("Split_Plan - "
-                          "Unable to initialize Deployment State");
-      return 1;
-    }
+    std::vector<std::string> orb_args;
+    for (int n=0; n<argc ;++n)
+      orb_args.push_back (argv[n]);
+    DAnCEX11::State::instance ()->initialize (std::move (orb_args));
 
     configure ();
 
