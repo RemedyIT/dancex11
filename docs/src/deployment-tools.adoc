@@ -219,8 +219,8 @@ Deployment Manager Options:
                                                  on.
         -N|--numeric-addresses                   Use numeric IP addresses (dotted decimal) in service
                                                  advertisement/profiles/IOR.
-        -H|--host-for-ref HOSTNAME               Use the given hostname in service 
-                                                 advertisement/profiles/IOR.                                                 
+        -H|--host-for-ref HOSTNAME               Use the given hostname in service
+                                                 advertisement/profiles/IOR.
         -l|--launch [PLAN]                       Launch the deployment plan read from PLAN.
         -f|--plan-format FMT                     Specify the deployment plan format to read from PLAN.
         -P|--property PROPID=PROPVAL             Specifies a deployment property definition. Can be

@@ -164,7 +164,7 @@ Only applies to ActivationMode 0. When specified this is passed on with
 standard commandline argument _-N_.
 
 |nl.remedy.it.DnCX11.Locality.HostForRef |string |Specifies the network address\hostname
-the LM instance should should publish in service advertisements/profiles/IOR. 
+the LM instance should should publish in service advertisements/profiles/IOR.
 Only applies to ActivationMode 0. When specified this is passed on with
 standard commandline argument _-H HOSTNAME_.
 
