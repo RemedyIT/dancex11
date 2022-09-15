@@ -163,6 +163,11 @@ _false_ or not defined) in service advertisements or profiles (like IOR).
 Only applies to ActivationMode 0. When specified this is passed on with
 standard commandline argument _-N_.
 
+|nl.remedy.it.DnCX11.Locality.HostForRef |string |Specifies the network address\hostname
+the LM instance should should publish in service advertisements/profiles/IOR. 
+Only applies to ActivationMode 0. When specified this is passed on with
+standard commandline argument _-H HOSTNAME_.
+
 |nl.remedy.it.DnCX11.Locality.DMHandler |string |Specifies the name of
 the Deployment Handler module (shared library) that should be loaded to
 create an LM instance. By default this is
@@ -754,11 +759,12 @@ nl.remedy.it.DnCX11.InstanceHandler dancex11_locality_handler create_DAnCEX11_Lo
   ## ---------------------------------------------
   # These are best used when spawning a standard deployment_manager
   # (or spawning it through a starter like valgrind) since these get
-  # translated into the standard arguments "-c", "-p" and "--handler"
+  # translated into the standard arguments "-c", "-a", "-p", "-H" and "--handler"
   # For default behavior they are not needed.
   # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.ConfigFile ""
   # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Port uint16:xxx
   # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.Address ""
+  # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.HostForRef ""
   # nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.Locality.DMHandler ""
   ## ---------------------------------------------
   # These can be used to customize the executable and library search path for the spawned process

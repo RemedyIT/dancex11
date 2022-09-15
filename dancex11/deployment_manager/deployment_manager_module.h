@@ -67,6 +67,7 @@ namespace DAnCEX11
       uint16_t listen_port_ {};
       std::string listen_addr_;
       bool numeric_addresses_ {};
+      std::string host_for_ref_;
       bool teardown_ {};
       SOptions();
 

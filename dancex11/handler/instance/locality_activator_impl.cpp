@@ -693,6 +693,16 @@ namespace DAnCEX11
                           "using numeric IP addresses");
     }
 
+    std::string host_for_ref {};
+
+    if ((itprop = server.cmap_.find (DAnCEX11::LOCALITY_HOST_FOR_REF)) != server.cmap_.end ())
+    {
+      itprop->second >>= host_for_ref;
+
+      DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::construct_command_line - " <<
+                          "Using provided locality reference hostname " << host_for_ref);
+    }
+
     DANCEX11_LOG_INFO ("DAnCE_LocalityActivator_i::construct_command_line - "
                        "using arguments [" << args << "] "
                        "and config file [" << cfg_file << "]");
@@ -741,6 +751,10 @@ namespace DAnCEX11
     if (numeric_addr)
     {
       cmd_os << " -N";
+    }
+    if (!host_for_ref.empty ())
+    {
+      cmd_os << " -H " << host_for_ref;
     }
     // skip if explicitly configured as empty value
     if (!handler.empty ())

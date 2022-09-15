@@ -1,0 +1,9 @@
+This test verifies the support for the "HostForRef" locality
+configuration property.
+
+The LM is confgured to force numeric IP addresses to be used 
+for host names in IORs which is overruled by the "HostForRef" 
+property which directs to use "localhost" as Host Name in the IOR.
+
+run_test.pl performs a regular Domain + Node + Locality
+deployment.

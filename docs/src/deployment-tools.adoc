@@ -219,6 +219,8 @@ Deployment Manager Options:
                                                  on.
         -N|--numeric-addresses                   Use numeric IP addresses (dotted decimal) in service
                                                  advertisement/profiles/IOR.
+        -H|--host-for-ref HOSTNAME               Use the given hostname in service 
+                                                 advertisement/profiles/IOR.                                                 
         -l|--launch [PLAN]                       Launch the deployment plan read from PLAN.
         -f|--plan-format FMT                     Specify the deployment plan format to read from PLAN.
         -P|--property PROPID=PROPVAL             Specifies a deployment property definition. Can be
@@ -283,6 +285,11 @@ manager instance will listen on a random, OS determined port.
 Specifies to use numeric IP addresses (dotted decimal) in DM service
 advertisement/profiles/IOR (directs DM to pass _-ORBDottedDecimalAddresses 1_
 when initializing the deployment ORB instance.
+
+-H|--host-for-ref HOSTNAME::
+
+Specifies the hostname which the deployment manager instance should publish
+in service advertisements/profiles/IOR instead of the default (local) hostname.
 
 -l|--launch [PLAN]::
 
