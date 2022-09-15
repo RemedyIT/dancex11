@@ -68,6 +68,14 @@ namespace DAnCEX11
 
       return plugin;
     }
+
+    inline bool icasecmp(const std::string& l, const std::string& r)
+    {
+        return l.size() == r.size()
+            && std::equal(l.cbegin(), l.cend(), r.cbegin(),
+                [](char l1, char r1)
+                    { return toupper(l1) == toupper(r1); });
+    }
   }
 
   template<typename T>
@@ -369,16 +377,26 @@ namespace DAnCEX11
   }
 
   void
-  Plugin_Manager::register_service (const std::string& artifact,
+  Plugin_Manager::register_service (const std::string& svoid,
+                                    const std::string& artifact,
                                     const std::string& entrypoint,
                                     const std::string& arguments,
                                     bool ignore_load_error)
   {
+    static std::string kw_static_ { "static" };
+
     // create an ACE Service Config directive for the service
     std::ostringstream os;
-    os << "dynamic " << artifact << "_" << entrypoint << " Service_Object * " <<
-          artifact << ":" << entrypoint <<
-          "() \"" << arguments << "\"";
+    if (icasecmp(entrypoint, kw_static_))
+    {
+      os << kw_static_ << ' ' << artifact << " \"" << arguments << "\"";
+    }
+    else
+    {
+      os << "dynamic " << svoid << " Service_Object * " <<
+            artifact << ":" << entrypoint <<
+            "() \"" << arguments << "\"";
+    }
     std::string svcfg_txt = os.str ();
 
     DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
@@ -408,7 +426,7 @@ namespace DAnCEX11
     }
     else
     {
-      this->service_objects_.push_back (artifact + "_" + entrypoint);
+      this->service_objects_.push_back (svoid);
     }
   }
 

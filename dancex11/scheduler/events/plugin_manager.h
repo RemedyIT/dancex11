@@ -82,7 +82,8 @@ namespace DAnCEX11
     get_configuration_handler (const std::string& id);
 
     void
-    register_service (const std::string& artifact,
+    register_service (const std::string& svoid,
+                      const std::string& artifact,
                       const std::string& entrypoint,
                       const std::string& arguments,
                       bool ignore_load_error);
