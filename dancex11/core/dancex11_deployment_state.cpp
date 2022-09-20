@@ -86,21 +86,17 @@ namespace DAnCEX11
     DANCEX11_LOG_TRACE ("State::initialize");
 
     this->args_ = std::move (args);
+  }
 
-    // create the default ORB to force initialization of all global ORB services
-    int argc {};
-    IDL::traits<CORBA::ORB>::ref_type orb =
-        CORBA::ORB_init (argc, nullptr);
-    if (!orb)
-    {
-      DANCEX11_LOG_PANIC ("State::initialize - " \
-                          "Cannot create default ORB.");
+  void State::add_service_directive(std::string&& svcdir)
+  {
+    DANCEX11_LOG_TRACE ("State::add_service_directive");
 
-      throw std::runtime_error ("State::initialize - " \
-          "Cannot create default ORB.");
-    }
-    // destroy the default ORB again as we do not actually use it
-    orb->destroy ();
+    DANCEX11_LOG_DEBUG ("State::add_service_directive - " <<
+                        svcdir);
+
+    this->args_.push_back ("-ORBSvcConfDirective");
+    this->args_.push_back (std::move (svcdir));
   }
 
   IDL::traits<CORBA::ORB>::ref_type State::get_orb ()

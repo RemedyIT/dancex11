@@ -10,6 +10,7 @@
 
 #include "dancex11/deployment/deployment_planerrorC.h"
 #include "dancex11/core/dancex11_dynamic_loader.h"
+#include "dancex11/core/dancex11_deployment_state.h"
 
 #include "dancex11/logger/log.h"
 
@@ -399,34 +400,47 @@ namespace DAnCEX11
     }
     std::string svcfg_txt = os.str ();
 
-    DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
-                        "Processing Service Config directive :\n\t" <<
-                        svcfg_txt);
-
-    if (ACE_Service_Config::process_directive (svcfg_txt.c_str ()) != 0)
+    if (DAnCEX11::State::instance ()->has_orb ())
     {
-      if (!ignore_load_error)
+
+      DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
+                          "Processing Service Config directive :\n\t" <<
+                          svcfg_txt);
+
+      if (ACE_Service_Config::process_directive (svcfg_txt.c_str ()) != 0)
       {
-        DANCEX11_LOG_ERROR ("Plugin_Manager::register_service - "
-                            "Error(s) while processing "
-                            "Service Config directive :\n\t" <<
-                            svcfg_txt);
-        throw ::Deployment::PlanError (artifact,
-          "Error processing Service Config directive [" +
-          svcfg_txt +
-          "] for ServiceObject plugin\n");
+        if (!ignore_load_error)
+        {
+          DANCEX11_LOG_ERROR ("Plugin_Manager::register_service - "
+                              "Error(s) while processing "
+                              "Service Config directive :\n\t" <<
+                              svcfg_txt);
+          throw ::Deployment::PlanError (artifact,
+            "Error processing Service Config directive [" +
+            svcfg_txt +
+            "] for ServiceObject plugin\n");
+        }
+        else
+        {
+          DANCEX11_LOG_DEBUG ("Plugin_Manager::register_service - "
+                              "Ignored error(s) while processing "
+                              "Service Config directive :\n\t" <<
+                              svcfg_txt);
+        }
       }
       else
       {
-        DANCEX11_LOG_DEBUG ("Plugin_Manager::register_service - "
-                            "Ignored error(s) while processing "
-                            "Service Config directive :\n\t" <<
-                            svcfg_txt);
+        this->service_objects_.push_back (svoid);
       }
     }
     else
     {
-      this->service_objects_.push_back (svoid);
+
+      DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
+                          "Adding DAnCEX11::State ORB Service Config directive :\n\t" <<
+                          svcfg_txt);
+
+      DAnCEX11::State::instance ()->add_service_directive (std::move (svcfg_txt));
     }
   }
 

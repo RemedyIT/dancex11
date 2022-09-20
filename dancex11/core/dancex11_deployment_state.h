@@ -32,6 +32,11 @@ namespace DAnCEX11
 
     void initialize (std::vector<std::string>&& args);
 
+    void add_service_directive(std::string&& svcdir);
+
+    bool has_orb () const
+    { return (bool)this->orb_; }
+
     void close ();
 
     IDL::traits<CORBA::ORB>::ref_type orb ()
