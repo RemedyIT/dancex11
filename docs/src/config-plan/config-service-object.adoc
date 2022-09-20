@@ -15,14 +15,16 @@ See <<../dncx11-config#_service_objects,here>> for more information.
 An SVO descriptor is defined as follows:
 
 -------------------------------------------------------------------------------------------------------
-{svo-descriptor-key} {svo-artifact} {svo-factory} [ {deployment-openmode} ] [ {deployment-properties} ]
+{svo-descriptor-key} {svo-artifact-id} {[svo-artifact ':' ]svo-factory} [ {deployment-openmode} ]
+    [ {deployment-properties} ]
 -------------------------------------------------------------------------------------------------------
 
 Where
 
 * \{svo-descriptor-key} := `nl.remedy.it.DnCX11.ServiceObject`
+* \{svo-artifact-id} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
 * \{svo-artifact} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
-* \{svo-factory} := <<{parent_dir}/config-plan.adoc#identifier,identifier>>
+* \{svo-factory} := <<{parent_dir}/config-plan.adoc#identifier,identifier>> or the keyword `static`
 * \{deployment-openmode} := integer
 <<{parent_dir}/config-plan.adoc#value,literal value>>
 * \{deployment-properties} := a sequence of zero or more
@@ -31,26 +33,53 @@ descriptors>>
 
 === Description
 
-The `{svo-artifact}` identifier specifies the implementation artifact
-(library) from which the SVO object can be instantiated. The format of
-this identifier depends on the deployment runtime platform for which the
+The `\{svo-artifact-id}` identifier specifies either the implementation artifact
+(library) from which the SVO object can be instantiated or the service object ID
+of an already instantiated SVO object. The format of an implementation artifact
+identifier (library) depends on the deployment runtime platform for which the
 plugin is configured. For the current DnCX11 deployment tool runtime
 environment this should be a shared library name compatible with the ACE
 DLL loader, i.e. without path, without platform dependent prefix (f.i.
 'lib') and without extension(s).
 
-The `{svo-factory}` identifier specifies the factory (method) with which
-the SVO object can be instantiated from the loaded artifact. The format
-of this identifier depends on the deployment runtime platform for which
-the plugin is configured. Currently DnCX11 only supports ACE
-Service_Config SVOs for which the factory should conform to the ACE
+The `{[svo-artifact ':' ]svo-factory}` identifier(s) specifies (specify)
+the factory (method and optionally the implementation artifact providing that
+method) with which the SVO object can be instantiated from
+the loaded artifact. The format of this identifier depends on the deployment
+runtime platform for which the plugin is configured. Currently DnCX11 only
+supports ACE Service_Config SVOs for which the factory should conform to the ACE
 Service_Config specification.
+In case of an SVO descriptor for an already instantiated SVO object the keyword `static`
+(lowercase) should be used for `{[svo-artifact ':' ]svo-factory}` and `\{svo-artifact-id}`
+should specifiy the service object ID (see examples below).
+In case the SVO descriptor is intended to dynamically load and instantiate (and configure)
+an SVO object, specification of the implementation artifact (library) from which the SVO
+object can be instantiated is required as well as a factory method.
+In case the implementation artifact is specified as part of `{[svo-artifact ':' ]svo-factory}`
+the `\{svo-artifact-id}` identifier is assumed to specify an explicit service object ID.
+In case the implementation artifact is NOT specified as part of `{[svo-artifact ':' ]svo-factory}`
+the `\{svo-artifact-id}` identifier is assumed to specify the implementation artifact (library) and
+the service object ID is derived as `<svo-artifact-id>_<svo-factory>`.
 
-The *optional* `{deployment-openmode}` integer literal specifies an
+The *optional* `\{deployment-openmode}` integer literal specifies an
 artifact loader dependent flag value. Currently DnCX11 ignores any
-specified `{deployment-openmode}` values for SVO descriptors.
+specified `\{deployment-openmode}` values for SVO descriptors.
+This is ignored for `static` descriptors if specified.
 
-=== Example
+[NOTE]
+--
+Best practice is to specify service object descriptors at the *start* of the configuration file.
+Loading any DnCX11 specific plugins like installation handlers, interceptors or config handlers
+might trigger creation of the DnCX11 ORB instance and by default DnCX11 will have the ORB
+creation take care of processing service object descriptions it has knowledge of at that time.
+This is especially imporant in the case of service object descriptions that impact the creation of
+the ORB (like settings for statically loaded service objects like `Client_Strategy_Factory` or
+`Resource_Factory` or the dynamically loaded `Advanced_Resource_Factory`).
+Any service object descriptors parsed after DnCX11 ORB creation will be processed outside the scope
+of the ORB creation and will not have any effect on the created ORB instance.
+--
+
+=== Examples
 
 The following descriptor declaration
 
@@ -65,3 +94,78 @@ specified by `dancex11_cdr_plan_loader` (resulting in
 `dancex11_cdr_plan_loader.dll` on Windows) and instantiate an SVO object
 by calling the ACE Service_Object factory method
 `_make_CDRPlan_Loader_Svc` which must return an SVO reference.
+The ACE service object description equivalent would be:
+
+-----------------------------------------------------------------------------------
+dynamic dancex11_cdr_plan_loader__make_CDRPlan_Loader_Svc Service_Object * dancex11_cdr_plan_loader:_make_CDRPlan_Loader_Svc () ""
+-----------------------------------------------------------------------------------
+
+The following descriptor declaration
+
+-----------------------------------------------------------------------------------
+nl.remedy.it.DnCX11.ServiceObject Resource_Factory static
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.ServiceObject.Arguments "-ORBFlushingStrategy blocking"
+-----------------------------------------------------------------------------------
+
+would direct the DnCX11 deployment runtime to configure the already loaded service object `Resource_Factory` by
+having it process the arguments `-ORBFlushingStrategy blocking`.
+The ACE service object description equivalent would be:
+
+-----------------------------------------------------------------------------------
+static Resource_Factory "-ORBFlushingStrategy blocking"
+-----------------------------------------------------------------------------------
+
+The following descriptor declaration
+
+-----------------------------------------------------------------------------------
+nl.remedy.it.DnCX11.ServiceObject Advanced_Resource_Factory TAO_Strategies:_make_TAO_Advanced_Resource_Factory
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.ServiceObject.Arguments "-ORBReactorType select_st"
+-----------------------------------------------------------------------------------
+
+would direct the DnCX11 deployment runtime to load service object `Advanced_Resource_Factory` provided by the
+implementation artifact `TAO_Strategies` by using the factory method `_make_TAO_Advanced_Resource_Factory` and
+having it process the arguments `-ORBReactorType select_st`.
+The ACE service object description equivalent would be:
+
+-----------------------------------------------------------------------------------
+dynamic Advanced_Resource_Factory Service_Object * TAO_Strategies:_make_TAO_Advanced_Resource_Factory () "-ORBReactorType select_st"
+-----------------------------------------------------------------------------------
+
+An example locality manager configuration with ORB influencing service object descriptors would be:
+
+-----------------------------------------------------------------------------------
+#
+# Default DnCX11 Locality Deployment Manager configuration
+#
+
+nl.remedy.it.DnCX11.ServiceObject Client_Strategy_Factory static
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.ServiceObject.Arguments "-ORBWaitStrategy rw -ORBTransportMuxStrategy exclusive -ORBConnectStrategy blocked"
+nl.remedy.it.DnCX11.ServiceObject Resource_Factory static
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.ServiceObject.Arguments "-ORBFlushingStrategy blocking"
+
+# DnCX11 standard CIAOX11 container instantiation plugin
+nl.remedy.it.DnCX11.InstanceHandler ciaox11_deployment_handlers create_CIAOX11_Container_Handler
+# DnCX11 standard CIAOX11 component instantiation plugin
+nl.remedy.it.DnCX11.InstanceHandler ciaox11_deployment_handlers create_CIAOX11_Component_Handler
+# DnCX11 standard component connection reference collection plugin
+nl.remedy.it.DnCX11.DeploymentInterceptor ciaox11_deployment_interceptors create_CIAOX11_StoreReferences
+# DnCX11 standard component connection reference resolution plugin
+nl.remedy.it.DnCX11.DeploymentInterceptor ciaox11_deployment_interceptors create_CIAOX11_ReferenceLookup
+# DnCX11 standard error interceptor plugin
+nl.remedy.it.DnCX11.DeploymentInterceptor dancex11_error_interceptors create_DAnCEX11_Standard_Error
+# DnCX11 process name configuration plugin
+nl.remedy.it.DnCX11.ConfigPlugin dancex11_locality_configuration create_process_name
+# DnCX11 CPU affinity configuration plugin
+nl.remedy.it.DnCX11.ConfigPlugin dancex11_locality_configuration create_cpu_affinity
+# DnCX11 process priority configuration plugin
+nl.remedy.it.DnCX11.ConfigPlugin dancex11_locality_configuration create_process_priority
+
+# DnCX11 CDR format plan loader service
+nl.remedy.it.DnCX11.ServiceObject dancex11_cdr_plan_loader _make_CDRPlan_Loader_Svc
+-----------------------------------------------------------------------------------
+
+The first two service object descriptors are guaranteed to be parsed before (and processed at) ORB creation and
+therefor have the intended effect on ORB configuration.
+
+The service descriptor at the end concerns a DnCX11 specific dynamically loadable module which can be safely
+parsed and processed after ORB creation.
