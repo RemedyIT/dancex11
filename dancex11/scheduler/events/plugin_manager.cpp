@@ -388,9 +388,11 @@ namespace DAnCEX11
 
     // create an ACE Service Config directive for the service
     std::ostringstream os;
+    bool static_svc {false};
     if (icasecmp(entrypoint, kw_static_))
     {
       os << kw_static_ << ' ' << artifact << " \"" << arguments << "\"";
+      static_svc = true;
     }
     else
     {
@@ -400,7 +402,8 @@ namespace DAnCEX11
     }
     std::string svcfg_txt = os.str ();
 
-    if (DAnCEX11::State::instance ()->has_orb ())
+    if (DAnCEX11::State::instance ()->has_orb () ||
+          (!static_svc && ignore_load_error))
     {
 
       DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
