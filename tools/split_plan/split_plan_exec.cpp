@@ -237,6 +237,9 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
 
     configure ();
 
+    // trigger ORB creation
+    (void)DAnCEX11::State::instance ()->orb ();
+
     Deployment::DeploymentPlan plan;
     if (!DAnCEX11::Plan_Loader::instance ()->read_plan (input_filename,
                                                         plan, fmt))

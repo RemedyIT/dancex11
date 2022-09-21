@@ -184,6 +184,9 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
 
     configure ();
 
+    // trigger ORB creation
+    (void)DAnCEX11::State::instance ()->orb ();
+
     if (input_filename.empty ())
     {
       DANCEX11_LOG_PANIC ("Convert_Plan - "
