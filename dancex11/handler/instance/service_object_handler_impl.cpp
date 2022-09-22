@@ -119,7 +119,7 @@ namespace DAnCEX11
     }
 
     // register loaded service with plugin manager
-    this->plugins_.register_service (artifact, entrypoint, arguments, ignore_load_error);
+    this->plugins_.register_service (mdd.name (), artifact, entrypoint, arguments, ignore_load_error);
   }
 
   void

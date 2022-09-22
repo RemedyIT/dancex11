@@ -81,38 +81,76 @@ namespace DAnCEX11
     }
   }
 
-  bool State::initialize (int argc, char* argv[])
+  void State::initialize (std::vector<std::string>&& args)
   {
     DANCEX11_LOG_TRACE ("State::initialize");
 
-    DANCEX11_LOG_DEBUG ("State::initialize - " <<
-                        "creating Deployment ORB");
-
-    this->orb_ = CORBA::ORB_init (argc, argv, "DnCX11_Deployment_ORB");
-
-    if (this->orb_)
-    {
-      // Get reference to Root POA.
-      DANCEX11_LOG_DEBUG ("State::initialize - " <<
-                          "Resolving root POA");
-
-      IDL::traits<CORBA::Object>::ref_type obj =
-          this->orb_->resolve_initial_references ("RootPOA");
-
-      this->root_poa_ = IDL::traits<PortableServer::POA>::narrow (obj);
-      if (!this->root_poa_)
-      {
-        DANCEX11_LOG_ERROR ("State::initialize - " <<
-                            "Narrowing root POA returned nil reference");
-      }
-      return true;
-    }
-    else
-    {
-      DANCEX11_LOG_PANIC ("State::initialize - " <<
-                          "failed to initialize Deployment ORB");
-      return false;
-    }
+    this->args_ = std::move (args);
   }
 
+  void State::add_service_directive(std::string&& svcdir)
+  {
+    DANCEX11_LOG_TRACE ("State::add_service_directive");
+
+    DANCEX11_LOG_DEBUG ("State::add_service_directive - " <<
+                        svcdir);
+
+    this->args_.push_back ("-ORBSvcConfDirective");
+    this->args_.push_back (std::move (svcdir));
+  }
+
+  IDL::traits<CORBA::ORB>::ref_type State::get_orb ()
+  {
+    DANCEX11_LOG_TRACE ("State::get_orb");
+
+    if (!this->orb_)
+    {
+      DANCEX11_LOG_DEBUG ("State::get_orb - " <<
+                          "creating Deployment ORB");
+
+      int argc = ACE_Utils::truncate_cast<int> (this->args_.size ());
+      std::unique_ptr<const char*[]> orb_argv = std::make_unique<const char*[]> (argc);
+      int narg = 0;
+      for (const std::string& a : this->args_)
+      {
+        orb_argv.get ()[narg++] = a.c_str ();
+      }
+      this->orb_ = CORBA::ORB_init (argc,
+                                    const_cast<char**> (orb_argv.get ()),
+                                    "DnCX11_Deployment_ORB");
+      if (!this->orb_)
+      {
+        DANCEX11_LOG_PANIC ("State::get_orb - " <<
+                            "failed to initialize Deployment ORB");
+      }
+    }
+    return this->orb_;
+  }
+
+  IDL::traits<PortableServer::POA>::ref_type State::get_root_poa ()
+  {
+    DANCEX11_LOG_TRACE ("State::get_root_poa");
+
+    if (!this->root_poa_)
+    {
+      IDL::traits<CORBA::ORB>::ref_type orb = this->get_orb ();
+      if (orb)
+      {
+        // Get reference to Root POA.
+        DANCEX11_LOG_DEBUG ("State::get_root_poa - " <<
+                            "Resolving root POA");
+
+        IDL::traits<CORBA::Object>::ref_type obj =
+            orb->resolve_initial_references ("RootPOA");
+
+        this->root_poa_ = IDL::traits<PortableServer::POA>::narrow (obj);
+        if (!this->root_poa_)
+        {
+          DANCEX11_LOG_ERROR ("State::get_root_poa - " <<
+                              "Narrowing root POA returned nil reference");
+        }
+      }
+    }
+    return this->root_poa_;
+  }
 }

@@ -441,19 +441,43 @@ namespace DAnCEX11
 
     uint32_t const ln = parser_.line ();
 
-    // get artifact and factory (and optionally openmode)
+    // get plugin id, artifact and factory (and optionally openmode)
     string_type factory;
+    string_type artifact;
     uint32_t open_mode = ACE_DEFAULT_SHLIB_MODE;
     if (parser_.parse_next() == parser_type::IText)
     {
-      // set artifact id as name for implementation record
+      // set this (assumed plugin) id as name for implementation record
       mdd.name (parser_.current_token ());
       if (parser_.parse_next() == parser_type::IText)
       {
+        if (parser_.break_ch () == ':')
+        {
+          // get explicit artifact id
+          artifact = parser_.current_token ();
+
+          // next should be the factory id
+          if (parser_.parse_next() != parser_type::IText)
+          {
+            DANCEX11_LOG_ERROR ("Config_Loader::load_plugin_config - "
+                                "Error loading plugin factory config for [" <<
+                                plugin_type << "]; name="
+                                << mdd.name ()
+                                << ": at line#" << ln);
+            return false;
+          }
+        }
+        else
+        {
+          // no explicit artifact id, so name is artifact id
+          artifact = std::move (mdd.name ());
+          // form unique plugin id from artifact + factory ids
+          mdd.name (artifact + "_" + factory);
+        }
         factory = parser_.current_token ();
 
         // set <artifact>.<factory> as instance id/name
-        idd.name (mdd.name () + "." + factory);
+        idd.name (artifact + "." + factory);
 
         // check for duplicate plugin instance
         if (state_.plugin_instances_.find (idd.name ())
@@ -461,14 +485,16 @@ namespace DAnCEX11
         {
           DANCEX11_LOG_ERROR ("Config_Loader::load_plugin_config - "
                               "duplicate plugin instance defined: "
-                              "artifact [" << mdd.name () << "], "
+                              "name [" << mdd.name () << "], "
+                              "artifact [" << artifact << "], "
                               "factory [" << factory << "]: "
                               "at line#" << ln);
           return false;
         }
 
         DANCEX11_LOG_TRACE ("Config_Loader::load_plugin_config - "
-                            "artifact [" << mdd.name () << "], "
+                            "name [" << mdd.name () << "], "
+                            "artifact [" << artifact << "], "
                             "factory [" << factory << "]");
 
         // look for plugin openmode
@@ -480,7 +506,8 @@ namespace DAnCEX11
             // invalid openmode
             DANCEX11_LOG_ERROR ("Config_Loader::load_plugin_config - "
                                 "Invalid plugin openmode defined for "
-                                "artifact [" << mdd.name () << "], "
+                                "name [" << mdd.name () << "], "
+                                "artifact [" << artifact << "], "
                                 "factory [" << factory << "]: "
                                 "found [" << parser_.current_token () << "]");
             return false;
@@ -503,7 +530,8 @@ namespace DAnCEX11
           {
             DANCEX11_LOG_ERROR ("Config_Loader::load_plugin_config - "
                                 "Error loading property definition for "
-                                "artifact [" << mdd.name () << "], "
+                                "name [" << mdd.name () << "], "
+                                "artifact [" << artifact << "], "
                                 "factory [" << factory << "]");
 
             return false;
@@ -523,7 +551,7 @@ namespace DAnCEX11
         // set basic properties for plugin records
         Deployment::Property exec_parameter;
         exec_parameter.name (DAnCEX11::DANCE_PLUGIN_ARTIFACT);
-        exec_parameter.value () <<= mdd.name ();
+        exec_parameter.value () <<= artifact;
         mdd.execParameter ().push_back (std::move (exec_parameter));
 
         exec_parameter.name (DAnCEX11::DANCE_PLUGIN_FACTORY);
@@ -554,8 +582,9 @@ namespace DAnCEX11
 
         DANCEX11_LOG_DEBUG ("Config_Loader::load_plugin_config - "
                             "successfully loaded plugin " << plugin_type <<
-                            " artifact [" << mdd.name () << "],"
-                            " factory [" << factory << "]");
+                            " name [" << mdd.name () << "], "
+                            "artifact [" << artifact << "], "
+                            "factory [" << factory << "]");
 
         return true;
       }
@@ -563,8 +592,8 @@ namespace DAnCEX11
 
     DANCEX11_LOG_ERROR ("Config_Loader::load_plugin_config - "
                         "Error loading plugin config for [" <<
-                        plugin_type << "]; artifact="
-                        << mdd.name () << ", factory=" << factory);
+                        plugin_type << "]; name="
+                        << mdd.name ());
 
     return false;
   }

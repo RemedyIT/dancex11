@@ -321,29 +321,26 @@ namespace DAnCEX11
                           "Initializing ORB arguments.");
 
       // setup ORB arguments
-      int orb_argc {};
-      std::unique_ptr<const char*[]> orb_argv = this->create_orb_args (orb_argc, argv[0]);
+      std::vector<std::string> orb_args;
+      this->create_orb_args (orb_args, argv[0]);
 
       DANCEX11_LOG_TRACE ("PlanLauncher_Module::init - " <<
                           "Initializing ORB");
 
-      if (!DAnCEX11::State::instance ()->initialize (
-              orb_argc, const_cast<char**> (orb_argv.get ())))
-      {
-        DANCEX11_LOG_PANIC ("PlanLauncher_Module::init - " <<
-                            "Failed to initialize ORB");
-        return false;
-      }
+      DAnCEX11::State::instance ()->initialize (std::move (orb_args));
 
-      IDL::traits<CORBA::ORB>::ref_type orb =
-          DAnCEX11::State::instance ()->orb ();
-
+      // this also loads the configured plugins which could include service object
+      // directives to be processed before creating the ORB so we have to make sure
+      // we do not create the ORB or resolve the root POA before this point
       if (!this->configure ())
       {
         DANCEX11_LOG_PANIC ("PlanLauncher_Module::init - " <<
                             "Failed to configure Plan Launcher.");
         return false;
       }
+
+      IDL::traits<CORBA::ORB>::ref_type orb =
+          DAnCEX11::State::instance ()->orb ();
 
       if (!this->resolve_manager (orb))
       {
@@ -430,21 +427,16 @@ namespace DAnCEX11
     }
   }
 
-  std::unique_ptr<const char*[]>
-  PlanLauncher_Module::create_orb_args (int &argc, const char* argv0)
+  void
+  PlanLauncher_Module::create_orb_args (std::vector<std::string> &orb_args, const char* argv0)
   {
-    std::unique_ptr<const char*[]> orb_argv;
-    int narg = 0;
     // initialize ORB arguments with program
-    argc = ACE_Utils::truncate_cast<int> (this->options_.other_opts_.size () + 1);
-    orb_argv = std::make_unique<const char*[]> (argc);
-    orb_argv.get ()[narg++] = argv0;
+    orb_args.push_back (argv0);
     // append all other remaining options
     for (const std::string& a : this->options_.other_opts_)
     {
-      orb_argv.get ()[narg++] = a.c_str ();
+      orb_args.push_back (a);
     }
-    return orb_argv;
   }
 
   bool PlanLauncher_Module::configure ()

@@ -18,6 +18,9 @@
 #include "tao/x11/portable_server/portableserver.h"
 #include "tao/x11/orb.h"
 
+#include <vector>
+#include <string>
+
 namespace DAnCEX11
 {
   class StateGuard;
@@ -27,23 +30,32 @@ namespace DAnCEX11
   public:
     ~State ();
 
-    bool initialize (int argc, char* argv[]);
+    void initialize (std::vector<std::string>&& args);
+
+    void add_service_directive(std::string&& svcdir);
+
+    bool has_orb () const
+    { return (bool)this->orb_; }
 
     void close ();
 
     IDL::traits<CORBA::ORB>::ref_type orb ()
-    { return this->orb_; }
+    { return this->get_orb (); }
 
     IDL::traits<PortableServer::POA>::ref_type root_poa ()
-    { return this->root_poa_; }
+    { return this->get_root_poa (); }
 
     static State* instance ();
 
   private:
+    IDL::traits<CORBA::ORB>::ref_type get_orb ();
+    IDL::traits<PortableServer::POA>::ref_type get_root_poa ();
+
     friend class StateGuard;
 
     State ();
 
+    std::vector<std::string> args_;
     IDL::traits<CORBA::ORB>::ref_type orb_;
     IDL::traits<PortableServer::POA>::ref_type root_poa_;
 

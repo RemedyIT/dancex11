@@ -244,9 +244,6 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("NodeDeploymentHandler::configure");
 
-    // set up deployment POA
-    this->create_poas ();
-
     // check for DOMAIN_NC property
     if (Utility::get_property_value (DAnCEX11::DOMAIN_NC, prop, this->domain_nc_))
     {
@@ -326,6 +323,9 @@ namespace DAnCEX11
 
     // keep configured plugin manager
     this->plugins_ = std::move (plugins);
+
+    // set up deployment POA
+    this->create_poas ();
 
     // register shutdown handler
     this->shutdown_handler_ = sh;
@@ -446,11 +446,9 @@ namespace DAnCEX11
   {
     DANCEX11_LOG_TRACE ("NodeDeploymentHandler::create_poas");
 
-    IDL::traits<CORBA::ORB>::ref_type orb =
-        DAnCEX11::State::instance ()->orb ();
     this->root_poa_ = DAnCEX11::State::instance ()->root_poa ();
 
-    if (!orb || !this->root_poa_)
+    if (!this->root_poa_)
     {
       DANCEX11_LOG_PANIC ("NodeDeploymentHandler::create_poas - "
                           "Deployment state uninitialized. "

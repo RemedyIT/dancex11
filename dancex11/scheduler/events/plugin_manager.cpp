@@ -10,6 +10,7 @@
 
 #include "dancex11/deployment/deployment_planerrorC.h"
 #include "dancex11/core/dancex11_dynamic_loader.h"
+#include "dancex11/core/dancex11_deployment_state.h"
 
 #include "dancex11/logger/log.h"
 
@@ -67,6 +68,14 @@ namespace DAnCEX11
                           "> with mode <" << open_mode << ">:<" << entrypoint << ">");
 
       return plugin;
+    }
+
+    inline bool icasecmp(const std::string& l, const std::string& r)
+    {
+        return l.size() == r.size()
+            && std::equal(l.cbegin(), l.cend(), r.cbegin(),
+                [](char l1, char r1)
+                    { return toupper(l1) == toupper(r1); });
     }
   }
 
@@ -369,46 +378,72 @@ namespace DAnCEX11
   }
 
   void
-  Plugin_Manager::register_service (const std::string& artifact,
+  Plugin_Manager::register_service (const std::string& svoid,
+                                    const std::string& artifact,
                                     const std::string& entrypoint,
                                     const std::string& arguments,
                                     bool ignore_load_error)
   {
+    static std::string kw_static_ { "static" };
+
     // create an ACE Service Config directive for the service
     std::ostringstream os;
-    os << "dynamic " << artifact << "_" << entrypoint << " Service_Object * " <<
-          artifact << ":" << entrypoint <<
-          "() \"" << arguments << "\"";
+    bool static_svc {false};
+    if (icasecmp(entrypoint, kw_static_))
+    {
+      os << kw_static_ << ' ' << artifact << " \"" << arguments << "\"";
+      static_svc = true;
+    }
+    else
+    {
+      os << "dynamic " << svoid << " Service_Object * " <<
+            artifact << ":" << entrypoint <<
+            "() \"" << arguments << "\"";
+    }
     std::string svcfg_txt = os.str ();
 
-    DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
-                        "Processing Service Config directive :\n\t" <<
-                        svcfg_txt);
-
-    if (ACE_Service_Config::process_directive (svcfg_txt.c_str ()) != 0)
+    if (DAnCEX11::State::instance ()->has_orb () ||
+          (!static_svc && ignore_load_error))
     {
-      if (!ignore_load_error)
+
+      DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
+                          "Processing Service Config directive :\n\t" <<
+                          svcfg_txt);
+
+      if (ACE_Service_Config::process_directive (svcfg_txt.c_str ()) != 0)
       {
-        DANCEX11_LOG_ERROR ("Plugin_Manager::register_service - "
-                            "Error(s) while processing "
-                            "Service Config directive :\n\t" <<
-                            svcfg_txt);
-        throw ::Deployment::PlanError (artifact,
-          "Error processing Service Config directive [" +
-          svcfg_txt +
-          "] for ServiceObject plugin\n");
+        if (!ignore_load_error)
+        {
+          DANCEX11_LOG_ERROR ("Plugin_Manager::register_service - "
+                              "Error(s) while processing "
+                              "Service Config directive :\n\t" <<
+                              svcfg_txt);
+          throw ::Deployment::PlanError (artifact,
+            "Error processing Service Config directive [" +
+            svcfg_txt +
+            "] for ServiceObject plugin\n");
+        }
+        else
+        {
+          DANCEX11_LOG_DEBUG ("Plugin_Manager::register_service - "
+                              "Ignored error(s) while processing "
+                              "Service Config directive :\n\t" <<
+                              svcfg_txt);
+        }
       }
       else
       {
-        DANCEX11_LOG_DEBUG ("Plugin_Manager::register_service - "
-                            "Ignored error(s) while processing "
-                            "Service Config directive :\n\t" <<
-                            svcfg_txt);
+        this->service_objects_.push_back (svoid);
       }
     }
     else
     {
-      this->service_objects_.push_back (artifact + "_" + entrypoint);
+
+      DANCEX11_LOG_DEBUG ("Service_Object_Handler_Impl::install_instance - "
+                          "Adding DAnCEX11::State ORB Service Config directive :\n\t" <<
+                          svcfg_txt);
+
+      DAnCEX11::State::instance ()->add_service_directive (std::move (svcfg_txt));
     }
   }
 

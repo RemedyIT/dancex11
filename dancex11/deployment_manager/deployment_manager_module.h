@@ -88,8 +88,8 @@ namespace DAnCEX11
                   const std::string&,
                   const std::string&);
 
-    std::unique_ptr<const char*[]>
-    create_orb_args (int &argc,
+    void
+    create_orb_args (std::vector<std::string> &orb_args,
                      const char* argv0);
 
     void
