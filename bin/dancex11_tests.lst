@@ -17,8 +17,8 @@ tests/locality_manager/in_process/run_test.pl: LINUX !CROSS
 tests/locality_manager/in_process/run_test.pl -fmt cdp: LINUX !CROSS
 tests/locality_manager/remote/run_test.pl: LINUX !CROSS
 tests/locality_manager/remote/run_test.pl -fmt cdp: LINUX !CROSS
-tests/locality_manager/host_for_ref/run_test.pl: !CROSS
-tests/locality_manager/host_for_ref/run_test.pl -fmt cdp: !CROSS
+tests/locality_manager/host_for_ref/run_test.pl: LINUX !CROSS
+tests/locality_manager/host_for_ref/run_test.pl -fmt cdp: LINUX !CROSS
 tests/log_test_env/run_test.pl:
 tests/log_test/run_test.pl:
 tests/plan_launcher/domain_manager-delay/run_test.pl:
