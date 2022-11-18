@@ -11,8 +11,10 @@
 #include "ace/OS_NS_sys_stat.h"
 #include "dancex11/deployment/deployment_deploymentplanC.h"
 #include "dancex11/logger/log.h"
+#include "dancex11/core/dancex11_propertiesC.h"
 #include "dancex11/core/dancex11_deployment_plan_loader.h"
 #include "dancex11/core/dancex11_deployment_state.h"
+#include "dancex11/core/dancex11_utility.h"
 #include "dancex11/configurator/dancex11_config_loader.h"
 #include "dancex11/handler/instance/plugin_conf.h"
 #include "tools/convert_plan/convert_plan_impl.h"
@@ -26,6 +28,8 @@ std::string input_filename;
 std::string fmt;
 std::string config_file;
 char split_type = 'N';
+bool warnings_as_error = false;
+bool allow_external_ref_storage = false;
 
 DAnCEX11::Plugin_Manager plugins {};
 
@@ -84,6 +88,8 @@ usage ()
     ACE_TEXT ("\t-t SPLIT\t Type of split to perform; "\
               "N=node (default), L=locality\n")
     ACE_TEXT ("\t-c CFG\t\t Plugin configuration file\n") <<
+    ACE_TEXT ("\t-e \t\t Report warnings as errors\n") <<
+    ACE_TEXT ("\t-r \t\t Allow default external facet reference storage\n") <<
     std::endl;
   //X11_FUZZ: enable check_cout_cerr
 }
@@ -106,7 +112,7 @@ parse_args (int argc, ACE_TCHAR *argv [])
     return false;
   }
 
-  ACE_Get_Opt get_opt (argc, argv, ACE_TEXT ("i:f:t:h"), 0);
+  ACE_Get_Opt get_opt (argc, argv, ACE_TEXT ("i:f:t:her"), 0);
 
   int c;
   ACE_CString s;
@@ -132,7 +138,12 @@ parse_args (int argc, ACE_TCHAR *argv [])
               split_type = 'N';
             }
           break;
-
+        case 'e':
+          warnings_as_error = true;
+          break;
+        case 'r':
+          allow_external_ref_storage = true;
+          break;
         case 'h':
           usage ();
           return false;
@@ -216,6 +227,76 @@ configure ()
   pc.load_from_plan (plugins, plugin_plan);
 }
 
+bool
+check_sub_plan (const Deployment::DeploymentPlan &plan, const std::string& plan_id)
+{
+  DANCEX11_LOG_INFO ("check_sub_plan - checking plan " << plan_id);
+
+  bool rc = true;
+  for (const ::Deployment::PlanConnectionDescription& conn : plan.connection ())
+  {
+    DANCEX11_LOG_INFO ("check_sub_plan - plan " << plan_id << " connection " << conn.name ());
+
+    // in case of a single internal endpoint
+    if (conn.internalEndpoint ().size () == 1)
+    {
+      DANCEX11_LOG_INFO ("check_sub_plan - plan " << plan_id << " connection " << conn.name ()
+                         << " has a single internal endpoint");
+
+      // check if there is an external (CORBA NS refs) reference to connect to
+      if (conn.externalReference ().size () != 1)
+      {
+        // or if the internalEndpoint is a facet that will be registered with CORBA NS
+        if (conn.internalEndpoint ()[0].kind () != ::Deployment::CCMComponentPortKind::Facet)
+        {
+          if (warnings_as_error)
+            DANCEX11_LOG_ERROR ("Split_Plan - sub plan ["
+                << plan_id
+                << "] has an unconnected receptacle in connection ["
+                << conn.name () << "]");
+          else
+            DANCEX11_LOG_WARNING ("Split_Plan - sub plan ["
+                << plan_id
+                << "] has an unconnected receptacle in connection ["
+                << conn.name () << "]");
+          rc = false;
+        }
+        else
+        {
+          // get the instance providing the internal endpoint
+          const ::Deployment::InstanceDeploymentDescription &inst =
+              plan.instance ()[conn.internalEndpoint ()[0].instanceRef ()];
+          // check for the properties specifying external reference storage if allowed
+          std::string name;
+          if (!allow_external_ref_storage
+              ||
+              !(DAnCEX11::Utility::get_property_value (DAnCEX11::REGISTER_NAMING,
+                                                     inst.configProperty (),
+                                                     name)
+               ||
+               DAnCEX11::Utility::get_property_value (DAnCEX11::INSTANCE_IOR_FILE,
+                                                                  inst.configProperty (),
+                                                                  name)))
+          {
+            if (warnings_as_error)
+              DANCEX11_LOG_ERROR ("Split_Plan - sub plan ["
+                  << plan_id
+                  << "] has an unconnectable facet in connection ["
+                  << conn.name () << "]");
+            else
+              DANCEX11_LOG_WARNING ("Split_Plan - sub plan ["
+                  << plan_id
+                  << "] has an unconnectable facet in connection ["
+                  << conn.name () << "]");
+            rc = false;
+          }
+        }
+      }
+    }
+  }
+	return rc;
+}
+
 int
 ACE_TMAIN (int argc, ACE_TCHAR *argv [])
 {
@@ -229,6 +310,9 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
     {
       return 1;
     }
+
+    DANCEX11_LOGGER::priority_mask(
+        x11_logger::X11_LogMask::LP_WARNING|x11_logger::X11_LogMask::LP_ALL_ERROR);
 
     std::vector<std::string> orb_args;
     for (int n=0; n<argc ;++n)
@@ -254,6 +338,19 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
     {
       DAnCEX11::Split_Plan<DAnCEX11::Node_Splitter> split;
       split.split_plan (plan);
+
+      bool check = true;
+      for (DAnCEX11::Split_Plan<DAnCEX11::Node_Splitter>::TSubPlanIterator
+             iter_plans = split.plans ().begin ();
+          iter_plans != split.plans ().end ();
+          ++iter_plans)
+      {
+        check = check_sub_plan(iter_plans->second, iter_plans->first);
+      }
+      if (!check && warnings_as_error)
+      {
+        return 1;
+      }
 
       for (DAnCEX11::Split_Plan<DAnCEX11::Node_Splitter>::TSubPlanIterator
              iter_plans = split.plans ().begin();
@@ -287,6 +384,19 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
     {
       DAnCEX11::Split_Plan<DAnCEX11::Locality_Splitter> split;
       split.split_plan (plan);
+
+      bool check = true;
+      for (DAnCEX11::Split_Plan<DAnCEX11::Locality_Splitter>::TSubPlanIterator
+             iter_plans = split.plans ().begin ();
+          iter_plans != split.plans ().end ();
+          ++iter_plans)
+      {
+        check = check_sub_plan(iter_plans->second, iter_plans->first.locality_manager_label(iter_plans->second));
+      }
+      if (!check && warnings_as_error)
+      {
+        return 1;
+      }
 
       for (DAnCEX11::Split_Plan<DAnCEX11::Locality_Splitter>::TSubPlanIterator
              iter_plans = split.plans ().begin ();
