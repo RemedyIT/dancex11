@@ -24,7 +24,7 @@ namespace DAnCEX11
     : public Plan_Loader_base
   {
   public:
-    virtual ~CFGPlan_Loader () = default;
+    ~CFGPlan_Loader () override = default;
 
     bool read_plan (const std::string& filename,
                     Deployment::DeploymentPlan& plan) override;

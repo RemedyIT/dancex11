@@ -21,7 +21,7 @@ namespace DAnCEX11
         public:
           static const std::string protocol;
 
-          virtual ~HttpInstallationHandler () = default;
+          ~HttpInstallationHandler () override = default;
 
           const std::string& protocol_prefix () override;
 
@@ -47,7 +47,7 @@ namespace DAnCEX11
       {
         public:
           HttpInstallationHandlerSvc () = default;
-          virtual ~HttpInstallationHandlerSvc () = default;
+          ~HttpInstallationHandlerSvc () override = default;
 
           ArtifactInstallationHandler* handler_instance () override;
 

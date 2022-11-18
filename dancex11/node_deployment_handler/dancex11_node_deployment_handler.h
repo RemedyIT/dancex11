@@ -26,7 +26,7 @@ namespace DAnCEX11
   {
   public:
     NodeDeploymentHandler () = default;
-    virtual ~NodeDeploymentHandler () = default;
+    ~NodeDeploymentHandler () override = default;
 
     std::string handler_type() override;
 

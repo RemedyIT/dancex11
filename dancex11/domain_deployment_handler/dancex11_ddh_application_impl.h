@@ -28,7 +28,6 @@ namespace DAnCEX11
   : public virtual CORBA::servant_traits< ::Deployment::DomainApplication>::base_type
     {
     public:
-
       using TNm2Id_PAIR = std::pair <IDL::traits< ::Deployment::NodeManager>::ref_type , std::string>;
       using TNam2Nm_PAIR = std::pair <IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,IDL::traits< ::Deployment::NodeManager>::ref_type>;
       using TApp2Mgr_PAIR = std::pair <IDL::traits< ::Deployment::Application>::ref_type, IDL::traits< ::Deployment::NodeApplicationManager>::ref_type>;
@@ -44,7 +43,7 @@ namespace DAnCEX11
                               TNam2Nm& nams,
                               TNm2Id& node_ids);
 
-      virtual ~DomainApplication_Impl();
+      ~DomainApplication_Impl() override;
 
       void startLaunch (const ::Deployment::Properties & configProperty,
                         ::Deployment::Connections& providedReference);

@@ -165,7 +165,7 @@ namespace DAnCEX11
     Config_Parser_T(Args&& ...args)
       : stream_ (std::forward<Args> (args)...)
     { }
-    virtual ~Config_Parser_T () = default;
+    ~Config_Parser_T () override = default;
 
   protected:
     typename base_type::stream_base_type& stream () const override

@@ -35,7 +35,7 @@ namespace DAnCEX11
       IDL::traits<PortableServer::POA>::ref_type poa,
       IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
 
-    virtual ~LocalityManager_i ();
+    ~LocalityManager_i () override;
 
     void
     configure (const Deployment::Properties &prop) override;

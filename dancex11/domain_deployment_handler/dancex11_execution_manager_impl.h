@@ -26,7 +26,7 @@ namespace DAnCEX11
                              std::string nc,
                              IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
 
-      virtual ~ExecutionManager_Impl ();
+      ~ExecutionManager_Impl () override;
 
       IDL::traits< ::Deployment::ApplicationManager>::ref_type
       preparePlan (const ::Deployment::DeploymentPlan& plan,

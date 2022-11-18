@@ -29,7 +29,7 @@ namespace DAnCEX11
         const std::string &inst_type,
         Event_Future holder);
 
-    virtual ~Disconnect_Instance () = default;
+    ~Disconnect_Instance () override = default;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */

@@ -53,7 +53,7 @@ namespace DAnCEX11
                               std::string node)
      : poa_ (std::move(poa)), nm_ (std::move(nm)), node_ (std::move(node)) {}
 
-    virtual ~NodeManager_ReplyHandler () = default;
+    ~NodeManager_ReplyHandler () override = default;
 
     future_type& result () { return this->result_; }
 

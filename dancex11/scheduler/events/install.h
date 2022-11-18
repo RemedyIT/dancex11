@@ -29,7 +29,7 @@ namespace DAnCEX11
         const std::string &instance_type,
         Event_Future holder);
 
-    virtual ~Install_Instance () = default;
+    ~Install_Instance () override = default;
 
   protected:
     void invoke_pre_interceptor (IDL::traits<DAnCEX11::DeploymentInterceptor>::ref_type) override;

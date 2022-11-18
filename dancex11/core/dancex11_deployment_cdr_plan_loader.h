@@ -24,7 +24,7 @@ namespace DAnCEX11
     : public Plan_Loader_base
   {
   public:
-    virtual ~CDRPlan_Loader () = default;
+    ~CDRPlan_Loader () override = default;
 
     bool read_plan (const std::string& filename,
                     Deployment::DeploymentPlan& plan) override;
@@ -42,7 +42,7 @@ namespace DAnCEX11
     : public ACE_Service_Object
   {
   public:
-    virtual ~CDRPlan_Loader_Svc ();
+    ~CDRPlan_Loader_Svc () override;
 
     /// Initializes object when dynamic linking occurs.
     int init (int argc, ACE_TCHAR *argv[]) override;

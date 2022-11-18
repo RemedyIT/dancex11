@@ -27,7 +27,7 @@ namespace DAnCEX11
     Process_Priority () = default;
 
     // Destructor
-    virtual ~Process_Priority () = default;
+    ~Process_Priority () override = default;
 
     std::string type () override;
 

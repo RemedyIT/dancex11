@@ -50,7 +50,7 @@ namespace DAnCEX11
     {
     }
 
-    virtual ~Completion_T () = default;
+    ~Completion_T () override = default;
 
     void
     update (const future_type &future) override

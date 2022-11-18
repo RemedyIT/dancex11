@@ -23,7 +23,7 @@ namespace DAnCEX11
   {
   public:
     /// The destructor
-    virtual ~Domain_DMHandler_Loader () = default;
+    ~Domain_DMHandler_Loader () override = default;
 
     /// Initializes handler on dynamic loading.
     int init (int argc, ACE_TCHAR *argv[]) override;

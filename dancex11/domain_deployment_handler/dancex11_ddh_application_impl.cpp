@@ -53,7 +53,7 @@ namespace DAnCEX11
                       IDL::traits<Deployment::NodeApplicationManager>::ref_type nam,
                       std::string node)
      : poa_ (std::move(poa)), nam_ (std::move(nam)), node_ (std::move(node)) {}
-    virtual ~NAM_ReplyHandler () = default;
+    ~NAM_ReplyHandler () override = default;
 
     future_type& result () { return this->result_; }
 
@@ -209,7 +209,7 @@ namespace DAnCEX11
     NA_ReplyHandler (IDL::traits<PortableServer::POA>::ref_type poa,
                      std::string node)
      : poa_ (std::move(poa)), node_ (std::move(node)) {}
-    virtual ~NA_ReplyHandler () = default;
+    ~NA_ReplyHandler () override = default;
 
     future_type& result () { return this->result_; }
 

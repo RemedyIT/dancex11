@@ -20,7 +20,7 @@ namespace DAnCEX11
     : public InstallationRepository
   {
   public:
-    virtual ~InstallationRepository_Impl () = default;
+    ~InstallationRepository_Impl () override = default;
 
     const std::string& plan () override;
 
@@ -65,7 +65,7 @@ namespace DAnCEX11
       private InstallationRepository_Impl
   {
   public:
-    virtual ~InstallationRepositoryManager_Impl () = default;
+    ~InstallationRepositoryManager_Impl () override = default;
 
     void map_repository (const std::string& plan,
                          const std::string& folder) override;
@@ -94,7 +94,7 @@ namespace DAnCEX11
   {
   public:
     InstallationRepositoryManagerSvc_Impl () = default;
-    virtual ~InstallationRepositoryManagerSvc_Impl () = default;
+    ~InstallationRepositoryManagerSvc_Impl () override = default;
 
     /// Initializes handler on dynamic loading.
     int init (int argc, ACE_TCHAR *argv[]) override;

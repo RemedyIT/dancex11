@@ -23,7 +23,7 @@ namespace DAnCEX11
   public:
     Config_Handler_Impl (Plugin_Manager&);
 
-    virtual ~Config_Handler_Impl ();
+    ~Config_Handler_Impl () override;
 
     std::string instance_type () override;
 

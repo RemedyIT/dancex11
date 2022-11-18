@@ -27,11 +27,9 @@ namespace DAnCEX11
     {}
     virtual ~Launcher_Base () = default;
 
-    bool
-    launch_plan (IDL::traits<Deployment::Deployment_Manager>::ref_type);
+    bool launch_plan (IDL::traits<Deployment::Deployment_Manager>::ref_type);
 
-    bool
-    teardown_plan (IDL::traits<Deployment::Deployment_Manager>::ref_type);
+    bool teardown_plan (IDL::traits<Deployment::Deployment_Manager>::ref_type);
 
   protected:
     virtual IDL::traits<Deployment::ApplicationManager>::ref_type

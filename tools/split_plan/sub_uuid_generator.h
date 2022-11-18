@@ -17,21 +17,23 @@ namespace DAnCEX11
   class DAnCE_Split_Plan_Export Copy_UUID_Generator
   {
   public:
-    Copy_UUID_Generator ();
+    Copy_UUID_Generator () = default;
+    ~Copy_UUID_Generator () = default;
 
-    void      generate_sub_uuid (const Deployment::DeploymentPlan &parent_plan,
-                                 Deployment::DeploymentPlan &sub_plan,
-                                 uint32_t sub_plan_index);
+    void generate_sub_uuid (const Deployment::DeploymentPlan &parent_plan,
+                            Deployment::DeploymentPlan &sub_plan,
+                            uint32_t sub_plan_index);
   };
 
   class DAnCE_Split_Plan_Export Unique_Sub_UUID_Generator
   {
   public:
-    Unique_Sub_UUID_Generator ();
+    Unique_Sub_UUID_Generator () = default;
+    ~Unique_Sub_UUID_Generator () = default;
 
-    void      generate_sub_uuid (const Deployment::DeploymentPlan &parent_plan,
-                                 Deployment::DeploymentPlan &sub_plan,
-                                 uint32_t sub_plan_index);
+    void generate_sub_uuid (const Deployment::DeploymentPlan &parent_plan,
+                            Deployment::DeploymentPlan &sub_plan,
+                            uint32_t sub_plan_index);
   };
 
 }

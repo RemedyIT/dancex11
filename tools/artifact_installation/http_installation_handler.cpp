@@ -22,7 +22,7 @@ namespace DAnCEX11
     public:
       HTTPInstallationRequestHandler (const ACE_CString& plan_uuid)
         : plan_uuid_ (plan_uuid) {}
-      virtual ~HTTPInstallationRequestHandler () = default;
+      ~HTTPInstallationRequestHandler () override = default;
 
     protected:
       virtual void handle_response (const ACE::HTTP::URL& url, const ACE::HTTP::Response& response)

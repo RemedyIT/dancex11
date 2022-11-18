@@ -23,7 +23,7 @@ namespace DAnCEX11
     : public Plan_Loader_base
   {
   public:
-    virtual ~CDPPlan_Loader () = default;
+    ~CDPPlan_Loader () override = default;
 
     bool read_plan (const std::string& filename,
                     Deployment::DeploymentPlan& plan) override;
@@ -41,7 +41,7 @@ namespace DAnCEX11
     : public ACE_Service_Object
   {
   public:
-    virtual ~CDPPlan_Loader_Svc ();
+    ~CDPPlan_Loader_Svc () override;
 
     /// Initializes object when dynamic linking occurs.
     int init (int argc, ACE_TCHAR *argv[]) override;
@@ -54,7 +54,6 @@ namespace DAnCEX11
 
   ACE_STATIC_SVC_DECLARE (CDPPlan_Loader_Svc)
   ACE_FACTORY_DECLARE (Config_Handlers, CDPPlan_Loader_Svc)
-
 };
 
 #endif /* DANCEX11_DEPLOYMENT_CDP_PLAN_LOADER_H */

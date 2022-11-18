@@ -85,14 +85,13 @@ namespace DAnCEX11
       using TLOCK = ACE_MT_SYNCH::MUTEX ;
       using TCONDITION = ACE_MT_SYNCH::CONDITION;
       using TPropertyMap = ArtifactInstallationHandler::TPropertyMap;
-      virtual ~ArtifactInstallation_Impl ();
+      ~ArtifactInstallation_Impl () override;
 
       void initialize () override;
 
       void clear () override;
 
-      void prepare (
-          const ::Deployment::DeploymentPlan& plan) override;
+      void prepare (const ::Deployment::DeploymentPlan& plan) override;
 
       void install (const std::string& plan_uuid,
             const ::Deployment::ArtifactDeploymentDescription & artifact) override;

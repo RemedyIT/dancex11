@@ -46,10 +46,9 @@ namespace DAnCEX11
         plugins_ (std::move(plugins)),
         sh_ (std::move(sh))
     {}
-    virtual ~Locality_Launcher () = default;
+    ~Locality_Launcher () override = default;
 
-    Deployment::DeploymentPlan
-    plan() override;
+    Deployment::DeploymentPlan plan() override;
 
     void plan (const Deployment::DeploymentPlan& _v) override;
 

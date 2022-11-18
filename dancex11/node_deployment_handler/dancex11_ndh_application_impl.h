@@ -40,7 +40,7 @@ namespace DAnCEX11
                           std::string node_name,
                           Plugin_Event_Scheduler_T<Deployment_Scheduler> &scheduler);
 
-    virtual ~NodeApplication_Impl();
+    ~NodeApplication_Impl() override;
 
     void finishLaunch (const ::Deployment::Connections & providedReference,
                        bool start) override;
