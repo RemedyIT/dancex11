@@ -19,6 +19,8 @@ usage:  dancex11_split_plan [options]
         -f FMT           Input plan format (default: determined from PLAN extension)
         -t SPLIT         Type of split to perform; N=node (default), L=locality
         -c CFG           Plugin configuration file
+        -e               Report warnings as errors
+        -r               Allow default external facet reference storage
 ------------------------------------------------------------------------------------
 
 == Plan Converter
