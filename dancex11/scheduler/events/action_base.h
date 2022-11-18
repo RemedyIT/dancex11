@@ -26,7 +26,7 @@ namespace DAnCEX11
         const std::string &name,
         const std::string &instance_type);
 
-    virtual ~Action_Base () = default;
+    ~Action_Base () override = default;
 
     int call () override;
 

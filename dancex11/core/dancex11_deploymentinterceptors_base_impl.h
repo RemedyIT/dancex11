@@ -25,7 +25,7 @@ namespace DAnCEX11
   public:
     DeploymentInterceptor_Base ();
 
-    virtual ~DeploymentInterceptor_Base ();
+    ~DeploymentInterceptor_Base () override;
 
     void configure (const Deployment::Properties & config) override;
 

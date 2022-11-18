@@ -18,7 +18,7 @@ namespace DAnCEX11
   {
   public:
     Deployment_Scheduler () = default;
-    virtual ~Deployment_Scheduler () = default;
+    ~Deployment_Scheduler () override = default;
 
     /// Schedule an event for execution
     int schedule_event (Deployment_Event *event);

@@ -87,7 +87,7 @@ namespace DAnCEX11
         source_ (std::forward<Args> (args)...)
     { this->source_ >> std::skipws; }
 
-    virtual ~Config_Stream_T () = default;
+    ~Config_Stream_T () override = default;
 
   protected:
     typename base::source_type& source () const override

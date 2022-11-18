@@ -25,7 +25,7 @@ namespace DAnCEX11
   public:
     Interceptor_Handler_Impl (Plugin_Manager&);
 
-    virtual ~Interceptor_Handler_Impl ();
+    ~Interceptor_Handler_Impl () override;
 
     std::string instance_type () override;
 

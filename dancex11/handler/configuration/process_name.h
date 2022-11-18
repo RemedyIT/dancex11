@@ -27,7 +27,7 @@ namespace DAnCEX11
     Process_Name () = default;
 
     // Destructor
-    virtual ~Process_Name () = default;
+    ~Process_Name () override = default;
 
     std::string type () override;
 

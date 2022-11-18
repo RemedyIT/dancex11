@@ -31,7 +31,7 @@ namespace DAnCEX11
                                  std::string domain_nc,
                                  std::shared_ptr<Plugin_Manager> plugins);
 
-    virtual ~NodeApplicationManager_Impl();
+    ~NodeApplicationManager_Impl() override;
 
     IDL::traits<Deployment::Application>::ref_type
     startLaunch (const Deployment::Properties & configProperty,

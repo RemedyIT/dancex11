@@ -19,8 +19,7 @@ namespace DAnCEX11
   class DAnCE_Artifact_Installation_Export ArtifactInstallationHandler
   {
     public:
-      typedef std::map<std::string,
-                       std::string> TPropertyMap;
+      using TPropertyMap = std::map<std::string, std::string>;
 
       virtual ~ArtifactInstallationHandler () = default;
 

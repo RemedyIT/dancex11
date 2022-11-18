@@ -21,7 +21,7 @@ namespace DAnCEX11
         public:
           static const std::string protocol;
 
-          virtual ~FileInstallationHandler () = default;
+          ~FileInstallationHandler () override = default;
 
           const std::string& protocol_prefix () override;
 
@@ -46,7 +46,7 @@ namespace DAnCEX11
       {
         public:
           FileInstallationHandlerSvc () = default;
-          virtual ~FileInstallationHandlerSvc () = default;
+          ~FileInstallationHandlerSvc () override = default;
 
           ArtifactInstallationHandler* handler_instance () override;
 

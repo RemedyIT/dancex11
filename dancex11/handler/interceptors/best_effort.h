@@ -22,7 +22,7 @@ namespace DAnCEX11
   public:
     Best_Effort () = default;
 
-    virtual ~Best_Effort ();
+    ~Best_Effort () override;
 
     void
     post_install (const Deployment::DeploymentPlan &plan,

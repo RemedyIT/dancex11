@@ -28,7 +28,7 @@ namespace DAnCEX11
     Locality_Handler_i ();
 
     // Destructor
-    virtual ~Locality_Handler_i ();
+    ~Locality_Handler_i () override;
 
     std::string instance_type () override;
 

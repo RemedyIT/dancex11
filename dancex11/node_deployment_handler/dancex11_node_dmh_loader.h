@@ -23,7 +23,7 @@ namespace DAnCEX11
   {
   public:
     /// The destructor
-    virtual ~Node_DMHandler_Loader ();
+    ~Node_DMHandler_Loader () override;
 
     /**
      * Create and activate an DMH instance.

@@ -44,7 +44,7 @@ namespace DAnCEX11
         plugins_ (std::move(plugins)),
         sh_ (std::move(sh))
     {}
-    virtual ~Node_Launcher () = default;
+    ~Node_Launcher () override = default;
 
     Deployment::DeploymentPlan plan() override;
 

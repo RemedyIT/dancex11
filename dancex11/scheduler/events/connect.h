@@ -30,7 +30,7 @@ namespace DAnCEX11
         const std::string &instance_type,
         Event_Future holder);
 
-    virtual ~Connect_Instance () = default;
+    ~Connect_Instance () override = default;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */

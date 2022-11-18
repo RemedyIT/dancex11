@@ -25,7 +25,7 @@ namespace DAnCEX11
   public:
     CPU_Affinity () = default;
 
-    virtual ~CPU_Affinity () = default;
+    ~CPU_Affinity () override = default;
 
     std::string type () override;
 

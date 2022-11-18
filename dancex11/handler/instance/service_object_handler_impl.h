@@ -23,7 +23,7 @@ namespace DAnCEX11
   public:
     Service_Object_Handler_Impl (Plugin_Manager&);
 
-    virtual ~Service_Object_Handler_Impl () = default;
+    ~Service_Object_Handler_Impl () override = default;
 
     std::string instance_type () override;
 

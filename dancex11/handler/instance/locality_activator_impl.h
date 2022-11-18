@@ -50,7 +50,7 @@ namespace DAnCEX11
                                IDL::traits<PortableServer::POA>::ref_type poa_);
 
     /// Destructor
-    virtual ~DAnCE_LocalityActivator_i ();
+    ~DAnCE_LocalityActivator_i () override;
 
     void locality_manager_callback (
         IDL::traits< ::DAnCEX11::LocalityManager>::ref_type serverref,
@@ -148,7 +148,7 @@ namespace DAnCEX11
     {
     public:
       Server_Child_Handler (Safe_Server_Info  si);
-      virtual ~Server_Child_Handler ();
+      ~Server_Child_Handler () override;
 
       int handle_close (ACE_HANDLE, ACE_Reactor_Mask) override;
 

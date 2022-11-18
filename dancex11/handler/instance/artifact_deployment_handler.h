@@ -27,7 +27,7 @@ namespace DAnCEX11
     Artifact_Deployment_Handler_i ();
 
     // Destructor
-    virtual ~Artifact_Deployment_Handler_i ();
+    ~Artifact_Deployment_Handler_i () override;
 
     std::string instance_type () override;
 
@@ -78,7 +78,7 @@ namespace DAnCEX11
   public:
     Artifact_Deployment_Initializer () = default;
 
-    virtual ~Artifact_Deployment_Initializer ();
+    ~Artifact_Deployment_Initializer () override;
 
     void preprocess_plan (Deployment::DeploymentPlan & plan) override;
   };

@@ -30,7 +30,7 @@ namespace DAnCEX11
                       std::shared_ptr<Plugin_Manager> plugins,
                       IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
 
-    virtual ~NodeManager_Impl();
+    ~NodeManager_Impl() override;
 
     void joinDomain (const ::Deployment::Domain & theDomain,
                      IDL::traits< ::Deployment::TargetManager>::ref_type manager,

@@ -34,7 +34,7 @@ namespace DAnCEX11
                                      ::Deployment::DeploymentPlan plan,
                                      Node_Locator &nodes);
 
-      virtual ~DomainApplicationManager_Impl();
+      ~DomainApplicationManager_Impl() override;
 
       IDL::traits< ::Deployment::Application>::ref_type
       startLaunch (const ::Deployment::Properties& configProperty,

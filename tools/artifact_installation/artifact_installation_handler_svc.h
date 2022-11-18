@@ -21,7 +21,7 @@ namespace DAnCEX11
       {
         public:
           ArtifactInstallationHandlerSvc () = default;
-          virtual ~ArtifactInstallationHandlerSvc () = default;
+          ~ArtifactInstallationHandlerSvc () override = default;
 
           /// Initialization hook.
           int init (int argc, ACE_TCHAR *argv[]) override;

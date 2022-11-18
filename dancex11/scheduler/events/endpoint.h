@@ -29,7 +29,7 @@ namespace DAnCEX11
         const std::string &inst_type,
         Event_Future holder);
 
-    virtual ~Endpoint_Reference () = default;
+    ~Endpoint_Reference () override = default;
 
     //@{
     /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */
