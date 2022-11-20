@@ -311,8 +311,12 @@ ACE_TMAIN (int argc, ACE_TCHAR *argv [])
       return 1;
     }
 
-    DANCEX11_LOGGER::priority_mask(
-        x11_logger::X11_LogMask::LP_WARNING|x11_logger::X11_LogMask::LP_ALL_ERROR);
+    // set default log priorities if not overruled by a user defined setting
+    if (!std::getenv ("DANCEX11_LOG_MASK"))
+    {
+      DANCEX11_LOGGER::priority_mask(
+          x11_logger::X11_LogMask::LP_WARNING|x11_logger::X11_LogMask::LP_ALL_ERROR);
+    }
 
     std::vector<std::string> orb_args;
     for (int n=0; n<argc ;++n)
