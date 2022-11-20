@@ -23,6 +23,39 @@ usage:  dancex11_split_plan [options]
         -r               Allow default external facet reference storage
 ------------------------------------------------------------------------------------
 
+=== Description
+
+This tool can be used to split domain or node level deployment plans into either node level (from domain)
+or locality level sub-plans (from either domain or node).
+The input plan can be in any supported plan format but the output format is fixed to CDR (binary) format.
+
+After splitting the tool will post-process the resulting sub-plans for "orphaned" connection descriptions.
+
+NOTE: Orphaned connection descriptions are connection descriptions that the DnCX11 deployment tools by
+default would not be able to connect because not all endpoints required for fulfilling the connection
+are described like for instance a connection description containing only an internal receptacle endpoint
+description.
+
+In case "orphaned" connections are detected these will be reported by outputting a log message. As custom
+deployment infrastructure additions (in the form of any sort of deployment tool plugin) might know how to
+handle these "orphaned" connections the messages by default will be a warning messages and the tool
+will not return an error exit code. +
+This default behaviour can be changed by adding the `-e` switch which will make the tool output error messages
+instead of warning messages and return an error exit code in case "orphaned" connections are
+detected.
+
+Also, by default, the tool will not take any standard interceptor support into account which may handle
+seemingly "orphaned" connections (like the standard interceptor support for CORBA NameService IOR
+and IOR file storage). +
+By adding the `-r` switch this standard support will be taken into account and "orphaned" connections
+of instances configured for this support and matching the requirements for this support will
+not be reported.
+
+Contrary to other deployment tools the DnCX11 logging priorities are by default set to include all errors
+as well as warnings. This behaviour can still be overruled by setting the `DANCEX11_LOG_MASK` environment
+variable. Hiding log messages this way will however *not* influence a possible error exit code in
+case the `-e` switch is supplied.
+
 == Plan Converter
 
 The DnCX11 Plan Converter is a utility application to assist in
