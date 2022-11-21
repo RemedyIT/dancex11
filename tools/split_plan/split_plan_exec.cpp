@@ -294,7 +294,7 @@ check_sub_plan (const Deployment::DeploymentPlan &plan, const std::string& plan_
       }
     }
   }
-	return rc;
+  return rc;
 }
 
 int
