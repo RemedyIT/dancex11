@@ -361,8 +361,7 @@ namespace DAnCEX11
   }
 
   bool
-  DeploymentManager_Module::init (int argc,
-                                  char *argv[])
+  DeploymentManager_Module::init (int argc, char *argv[])
   {
     try
     {
@@ -458,7 +457,6 @@ namespace DAnCEX11
     {
       std::string const svc_name =
           this->svc_objectid_ + "." + this->svc_objectkind_;
-
 
       // get IOR from construct based on specific endpoint port?
       if (this->options_.listen_port_ > 0)
