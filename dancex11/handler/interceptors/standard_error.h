@@ -22,7 +22,7 @@ namespace DAnCEX11
   public:
     Standard_Error () = default;
 
-    ~Standard_Error () override;
+    ~Standard_Error () override = default;
 
     void
     post_install (const Deployment::DeploymentPlan &plan,

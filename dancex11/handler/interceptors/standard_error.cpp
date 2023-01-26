@@ -13,10 +13,6 @@
 
 namespace DAnCEX11
 {
-  Standard_Error::~Standard_Error ()
-  {
-  }
-
   void
   Standard_Error::configure (const ::Deployment::Properties & )
   {

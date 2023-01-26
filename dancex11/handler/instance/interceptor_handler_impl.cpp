@@ -18,10 +18,6 @@ namespace DAnCEX11
   {
   }
 
-  Interceptor_Handler_Impl::~Interceptor_Handler_Impl ()
-  {
-  }
-
   CORBA::StringSeq
   Interceptor_Handler_Impl::dependencies ()
   {
