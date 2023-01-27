@@ -15,19 +15,7 @@
 namespace DAnCEX11
 {
   const std::string
-  Locality_Handler_i::instance_type_ =
-      DAnCEX11::DANCE_LOCALITYMANAGER;
-
-  // Implementation skeleton constructor
-  Locality_Handler_i::
-  Locality_Handler_i ()
-  {
-  }
-
-  // Implementation skeleton destructor
-  Locality_Handler_i::~Locality_Handler_i ()
-  {
-  }
+  Locality_Handler_i::instance_type_ = DAnCEX11::DANCE_LOCALITYMANAGER;
 
   void
   Locality_Handler_i::close ()

@@ -25,10 +25,10 @@ namespace DAnCEX11
   {
   public:
     // Constructor
-    Locality_Handler_i ();
+    Locality_Handler_i () = default;
 
     // Destructor
-    ~Locality_Handler_i () override;
+    ~Locality_Handler_i () override = default;
 
     std::string instance_type () override;
 

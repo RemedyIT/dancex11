@@ -20,17 +20,6 @@ namespace DAnCEX11
   Artifact_Deployment_Handler_i::instance_type_ =
     DAnCEX11::DANCE_ARTIFACT;
 
-  // Implementation skeleton constructor
-  Artifact_Deployment_Handler_i::
-  Artifact_Deployment_Handler_i ()
-  {
-  }
-
-  // Implementation skeleton destructor
-  Artifact_Deployment_Handler_i::~Artifact_Deployment_Handler_i ()
-  {
-  }
-
   void
   Artifact_Deployment_Handler_i::close ()
   {
@@ -186,11 +175,6 @@ namespace DAnCEX11
         DAnCEX11::ArtifactInstallation_Impl::instance ();
 
     this->installer_->initialize ();
-  }
-
-
-  Artifact_Deployment_Initializer::~Artifact_Deployment_Initializer ()
-  {
   }
 
   void

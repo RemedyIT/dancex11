@@ -13,10 +13,6 @@
 
 namespace DAnCEX11
 {
-  Best_Effort::~Best_Effort ()
-  {
-  }
-
   void
   Best_Effort::configure (const ::Deployment::Properties & )
   {

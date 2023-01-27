@@ -18,10 +18,6 @@ namespace DAnCEX11
   {
   }
 
-  Config_Handler_Impl::~Config_Handler_Impl ()
-  {
-  }
-
   CORBA::StringSeq
   Config_Handler_Impl::dependencies ()
   {

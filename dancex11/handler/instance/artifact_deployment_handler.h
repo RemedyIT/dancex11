@@ -24,10 +24,10 @@ namespace DAnCEX11
   {
   public:
     // Constructor
-    Artifact_Deployment_Handler_i ();
+    Artifact_Deployment_Handler_i () = default;
 
     // Destructor
-    ~Artifact_Deployment_Handler_i () override;
+    ~Artifact_Deployment_Handler_i () override = default;
 
     std::string instance_type () override;
 
@@ -78,7 +78,7 @@ namespace DAnCEX11
   public:
     Artifact_Deployment_Initializer () = default;
 
-    ~Artifact_Deployment_Initializer () override;
+    ~Artifact_Deployment_Initializer () override = default;
 
     void preprocess_plan (Deployment::DeploymentPlan & plan) override;
   };
