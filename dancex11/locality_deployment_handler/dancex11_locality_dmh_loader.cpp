@@ -35,10 +35,6 @@ namespace DAnCEX11
   // of the standardized factory method name.
   ACE_FACTORY_DEFINE (DANCEX11_LOCALITY_DH, DAnCEX11_DeploymentHandler_Impl)
 
-  Locality_DMHandler_Loader::~Locality_DMHandler_Loader ()
-  {
-  }
-
   int Locality_DMHandler_Loader::init (int argc, ACE_TCHAR *argv[])
   {
     ACE_Get_Opt get_opts (argc,
