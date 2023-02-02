@@ -57,7 +57,7 @@ namespace DAnCEX11
     DANCEX11_LOG_DEBUG ("LocalityManager_i::configure - " <<
                         "Received " << props.size () << " properties from init");
 
-    if (props.size () != 0)
+    if (!props.empty ())
     {
       if (DAnCEX11::Utility::get_property_value (DAnCEX11::LOCALITY_TIMEOUT,
                                               props,
