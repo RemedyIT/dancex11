@@ -1048,12 +1048,6 @@ namespace DAnCEX11
                             "Added ORB DottedDecimalAddresses (1) option");
       }
     }
-
-    // CORBA AMI collocation will break the threading models provided by AXCIOMA,
-    // so disable it at a global level
-    orb_args.push_back ("-ORBAMICollocation");
-    orb_args.push_back ("0");
-
     // append all other remaining options
     for (const std::string& a : this->options_.other_opts_)
     {
