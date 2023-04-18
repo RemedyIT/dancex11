@@ -33,7 +33,7 @@ namespace DAnCEX11
     LocalityManager_i (const std::string &uuid,
       std::shared_ptr<Plugin_Manager> plugins,
       IDL::traits<PortableServer::POA>::ref_type poa,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh);
 
     ~LocalityManager_i () override;
 
@@ -95,7 +95,7 @@ namespace DAnCEX11
 
     IDL::traits<PortableServer::POA>::ref_type poa_;
 
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
 
     using INSTANCE_LIST = std::list<uint32_t> ;
 

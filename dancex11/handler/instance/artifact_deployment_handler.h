@@ -88,10 +88,10 @@ extern "C"
 {
   void
   DAnCE_Artifact_Handler_Export create_DAnCEX11_Artifact_Deployment_Handler (
-    IDL::traits< ::DAnCEX11::InstanceDeploymentHandler>::ref_type& plugin);
+    IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& plugin);
   void
   DAnCE_Artifact_Handler_Export create_DAnCEX11_Artifact_Deployment_Initializer (
-    IDL::traits< ::DAnCEX11::DeploymentInterceptor>::ref_type& plugin);
+    IDL::traits<::DAnCEX11::DeploymentInterceptor>::ref_type& plugin);
 }
 
 #endif /* DANCEX11_LOCALITY)DANCEX11_ARTIFACT_DEPLOYMENT_HANDLER_IMPL_H_ */

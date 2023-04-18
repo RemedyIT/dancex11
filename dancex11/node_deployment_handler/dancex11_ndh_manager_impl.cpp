@@ -21,7 +21,7 @@ namespace DAnCEX11
       std::string name,
       std::string domain_nc,
       std::shared_ptr<Plugin_Manager> plugins,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
     : poa_ (std::move(poa)),
       sh_ (std::move(sh)),
       name_ (std::move(name)),
@@ -58,8 +58,8 @@ namespace DAnCEX11
 
   void
   NodeManager_Impl::joinDomain (const ::Deployment::Domain & /*theDomain*/,
-                                IDL::traits< ::Deployment::TargetManager>::ref_type /*manager*/,
-                                IDL::traits< ::Deployment::Logger>::ref_type /*log*/,
+                                IDL::traits<::Deployment::TargetManager>::ref_type /*manager*/,
+                                IDL::traits<::Deployment::Logger>::ref_type /*log*/,
                                 int32_t /*updateInterval*/)
   {
     DANCEX11_LOG_TRACE ("NodeManager_Impl::joinDomain");
@@ -75,10 +75,10 @@ namespace DAnCEX11
     throw CORBA::NO_IMPLEMENT ();
   }
 
-  IDL::traits< ::Deployment::ApplicationManager>::ref_type
+  IDL::traits<::Deployment::ApplicationManager>::ref_type
   NodeManager_Impl::preparePlan (
       const ::Deployment::DeploymentPlan & plan,
-      IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
+      IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
   {
     DANCEX11_LOG_TRACE ( "NodeManager_Impl::preparePlan");
 
@@ -88,7 +88,7 @@ namespace DAnCEX11
 
 #if !defined(NDEBUG)
     DANCEX11_LOG_TRACE ("NodeManager_impl::preparePlan - " <<
-                        IDL::traits< ::Deployment::DeploymentPlan>::write (plan));
+                        IDL::traits<::Deployment::DeploymentPlan>::write (plan));
 #endif
 
     // resourceCommitment will be used on next development stage
@@ -127,11 +127,11 @@ namespace DAnCEX11
     // narrow should return a nil reference if it fails.
     DANCEX11_LOG_DEBUG ("NodeManager_impl::preparePlan - "
                         "NodeApplicationManager for plan " << plan.UUID () << " completed");
-    return IDL::traits< ::Deployment::NodeApplicationManager>::narrow (nam);
+    return IDL::traits<::Deployment::NodeApplicationManager>::narrow (nam);
   }
 
   void
-  NodeManager_Impl::destroyManager (IDL::traits< ::Deployment::ApplicationManager>::ref_type appManager)
+  NodeManager_Impl::destroyManager (IDL::traits<::Deployment::ApplicationManager>::ref_type appManager)
   {
     DANCEX11_LOG_TRACE ("NodeManager_Impl::destroyManager");
 

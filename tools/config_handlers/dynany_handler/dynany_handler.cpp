@@ -44,7 +44,7 @@ namespace DAnCEX11
       IDL::traits<CORBA::Object>::ref_type temp = orb_->resolve_initial_references (
         "DynAnyFactory");
 
-      daf_ = IDL::traits< DynamicAny::DynAnyFactory>::narrow  (temp);
+      daf_ = IDL::traits<DynamicAny::DynAnyFactory>::narrow  (temp);
 
       if (!daf_)
       {
@@ -70,7 +70,7 @@ namespace DAnCEX11
       return orb_;
     }
 
-    IDL::traits< DynamicAny::DynAnyFactory>::ref_type
+    IDL::traits<DynamicAny::DynAnyFactory>::ref_type
     DynAny_Handler::daf ()
     {
       DANCEX11_LOG_TRACE("DynAny_Handler::daf");

@@ -35,7 +35,7 @@ namespace DAnCEX11
         std::string name,
         std::string domain_nc,
         std::shared_ptr<Plugin_Manager> plugins,
-        IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+        IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
       : DeploymentLaunchManager (),
         plan_ (std::move (plan)),
         poa_ (std::move(poa)),
@@ -60,10 +60,10 @@ namespace DAnCEX11
     std::string name_;
     std::string domain_nc_;
     std::shared_ptr<Plugin_Manager> plugins_;
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
     CORBA::servant_reference<DAnCEX11::NodeManager_Impl> nm_;
-    IDL::traits< ::Deployment::NodeApplicationManager>::ref_type nam_;
-    IDL::traits< ::Deployment::Application>::ref_type app_;
+    IDL::traits<::Deployment::NodeApplicationManager>::ref_type nam_;
+    IDL::traits<::Deployment::Application>::ref_type app_;
   };
 
   Deployment::DeploymentPlan
@@ -103,7 +103,7 @@ namespace DAnCEX11
 
     // have the node manager prepare the plan
     this->nam_ =
-        IDL::traits< ::Deployment::NodeApplicationManager>::narrow (this->nm_->preparePlan (this->plan_, nullptr));
+        IDL::traits<::Deployment::NodeApplicationManager>::narrow (this->nm_->preparePlan (this->plan_, nullptr));
 
     DANCEX11_LOG_DEBUG ("Node_Launcher::launch - "
                         "node application manager starting plan [" <<
@@ -152,7 +152,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Node_Launcher::launch - "
                               "destroying node application...");
 
-          IDL::traits< ::Deployment::Application>::ref_type app = this->app_;
+          IDL::traits<::Deployment::Application>::ref_type app = this->app_;
           this->app_.reset ();
           this->nam_->destroyApplication (app);
         }
@@ -160,7 +160,7 @@ namespace DAnCEX11
         DANCEX11_LOG_DEBUG ("Node_Launcher::launch - "
                             "destroying node application manager...");
 
-        IDL::traits< ::Deployment::NodeApplicationManager>::ref_type nam = this->nam_;
+        IDL::traits<::Deployment::NodeApplicationManager>::ref_type nam = this->nam_;
         this->nam_.reset ();
         this->nm_->destroyManager (nam);
 
@@ -192,7 +192,7 @@ namespace DAnCEX11
       DANCEX11_LOG_DEBUG ("Node_Launcher::shutdown - "
                           "destroying node application...");
 
-      IDL::traits< ::Deployment::Application>::ref_type app = this->app_;
+      IDL::traits<::Deployment::Application>::ref_type app = this->app_;
       this->app_.reset ();
       this->nam_->destroyApplication (app);
     }
@@ -202,7 +202,7 @@ namespace DAnCEX11
       DANCEX11_LOG_DEBUG ("Node_Launcher::shutdown - "
                           "destroying node application manager...");
 
-      IDL::traits< ::Deployment::NodeApplicationManager>::ref_type nam = this->nam_;
+      IDL::traits<::Deployment::NodeApplicationManager>::ref_type nam = this->nam_;
       this->nam_.reset ();
       this->nm_->destroyManager (nam);
     }
@@ -240,7 +240,7 @@ namespace DAnCEX11
   NodeDeploymentHandler::configure (
       const std::string& config,
       const ::Deployment::Properties& prop,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
   {
     DANCEX11_LOG_TRACE ("NodeDeploymentHandler::configure");
 
@@ -331,7 +331,7 @@ namespace DAnCEX11
     this->shutdown_handler_ = sh;
   }
 
-  IDL::traits< ::Deployment::Deployment_Manager>::ref_type
+  IDL::traits<::Deployment::Deployment_Manager>::ref_type
   NodeDeploymentHandler::activate_manager (
       const std::string& name)
   {
@@ -366,10 +366,10 @@ namespace DAnCEX11
     // Return node manager reference
     IDL::traits<CORBA::Object>::ref_type nm_obj =
         this->mng_poa_->id_to_reference (this->servant_id_);
-    return IDL::traits< ::Deployment::Deployment_Manager>::narrow (nm_obj);
+    return IDL::traits<::Deployment::Deployment_Manager>::narrow (nm_obj);
   }
 
-  IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::ref_type
+  IDL::traits<::DAnCEX11::DeploymentLaunchManager>::ref_type
   NodeDeploymentHandler::activate_launcher (
       const std::string& name)
   {
@@ -412,7 +412,7 @@ namespace DAnCEX11
     DANCEX11_LOG_DEBUG ("NodeDeploymentHandler::activate_launcher - " <<
                         "narrowing NodeLauncher servant reference");
 
-    return IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::narrow (nl_obj);
+    return IDL::traits<::DAnCEX11::DeploymentLaunchManager>::narrow (nl_obj);
   }
 
   void

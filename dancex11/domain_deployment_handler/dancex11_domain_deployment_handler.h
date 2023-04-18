@@ -38,13 +38,13 @@ namespace DAnCEX11
     configure (
         const std::string& config,
         const Deployment::Properties& prop,
-        IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh) override;
+        IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh) override;
 
-    IDL::traits< ::Deployment::Deployment_Manager>::ref_type
+    IDL::traits<::Deployment::Deployment_Manager>::ref_type
     activate_manager (
         const std::string& name) override;
 
-    IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::ref_type
+    IDL::traits<::DAnCEX11::DeploymentLaunchManager>::ref_type
     activate_launcher (
         const std::string& name) override;
 
@@ -64,7 +64,7 @@ namespace DAnCEX11
     IDL::traits<PortableServer::POA>::ref_type root_poa_;
     IDL::traits<PortableServer::POA>::ref_type mng_poa_;
 
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type shutdown_handler_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type shutdown_handler_;
 
     std::string domain_nc_;
 

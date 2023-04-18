@@ -37,7 +37,7 @@ namespace DAnCEX11
         std::string name,
         std::string uuid,
         std::shared_ptr<Plugin_Manager> plugins,
-        IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+        IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
       : DeploymentLaunchManager (),
         plan_ (std::move (plan)),
         poa_ (std::move(poa)),
@@ -66,10 +66,10 @@ namespace DAnCEX11
     std::string name_;
     std::string uuid_;
     std::shared_ptr<Plugin_Manager> plugins_;
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
     CORBA::servant_reference<DAnCEX11::LocalityManager_i> lm_;
-    IDL::traits< ::Deployment::ApplicationManager>::ref_type am_;
-    IDL::traits< ::Deployment::Application>::ref_type app_;
+    IDL::traits<::Deployment::ApplicationManager>::ref_type am_;
+    IDL::traits<::Deployment::Application>::ref_type app_;
   };
 
   Deployment::DeploymentPlan
@@ -190,14 +190,14 @@ namespace DAnCEX11
     DANCEX11_LOG_DEBUG ("Locality_Launcher::shutdown - "
                         "destroying locality application...");
 
-    IDL::traits< ::Deployment::Application>::ref_type app = this->app_;
+    IDL::traits<::Deployment::Application>::ref_type app = this->app_;
     this->app_.reset ();
     this->am_->destroyApplication (app);
 
     DANCEX11_LOG_DEBUG ("Locality_Launcher::shutdown - "
                         "destroying locality application manager...");
 
-    IDL::traits< ::Deployment::ApplicationManager>::ref_type am = this->am_;
+    IDL::traits<::Deployment::ApplicationManager>::ref_type am = this->am_;
     this->am_.reset ();
     this->lm_->destroyManager (am);
 
@@ -250,7 +250,7 @@ namespace DAnCEX11
   LocalityDeploymentHandler::configure (
       const std::string& config,
       const ::Deployment::Properties& prop,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
   {
     DANCEX11_LOG_TRACE ("LocalityDeploymentHandler::configure");
 
@@ -349,7 +349,7 @@ namespace DAnCEX11
     this->shutdown_handler_ = sh;
   }
 
-  IDL::traits< ::Deployment::Deployment_Manager>::ref_type
+  IDL::traits<::Deployment::Deployment_Manager>::ref_type
   LocalityDeploymentHandler::activate_manager (
       const std::string& name)
   {
@@ -459,7 +459,7 @@ namespace DAnCEX11
     return lm_ref;
   }
 
-  IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::ref_type
+  IDL::traits<::DAnCEX11::DeploymentLaunchManager>::ref_type
   LocalityDeploymentHandler::activate_launcher (
       const std::string& name)
   {
@@ -501,7 +501,7 @@ namespace DAnCEX11
     DANCEX11_LOG_DEBUG ("LocalityDeploymentHandler::activate_launcher - " <<
                         "narrowing LocalityLauncher servant reference");
 
-    return IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::narrow (ll_obj);
+    return IDL::traits<::DAnCEX11::DeploymentLaunchManager>::narrow (ll_obj);
   }
 
   void

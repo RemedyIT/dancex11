@@ -135,7 +135,7 @@ NodeApplication_Impl::prepare_instances (const LocalitySplitter::TSubPlans& plan
         DAnCEX11::Utility::throw_exception_from_any (event.contents_);
       }
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type lm_ref;
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type lm_ref;
     if (event.contents_.impl () &&
         (event.contents_  >>= lm_ref) &&
         lm_ref)
@@ -172,7 +172,7 @@ NodeApplication_Impl::prepare_instance (const std::string & name,
 {
   DANCEX11_LOG_TRACE ("NodeApplication_Impl::prepare_instance");
 
-  IDL::traits< ::Deployment::ApplicationManager>::ref_type app;
+  IDL::traits<::Deployment::ApplicationManager>::ref_type app;
 
   try
   {

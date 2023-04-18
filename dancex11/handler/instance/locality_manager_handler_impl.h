@@ -77,7 +77,7 @@ extern "C"
 {
   void
   DAnCE_Locality_Handler_Export create_DAnCEX11_Locality_Handler (
-    IDL::traits< ::DAnCEX11::InstanceDeploymentHandler>::ref_type& handler);
+    IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& handler);
 }
 
 #endif /* DANCEX11_LOCALITY)MANAGER_HANDLER_IMPL_H_ */

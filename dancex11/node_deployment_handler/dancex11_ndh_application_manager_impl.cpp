@@ -276,7 +276,7 @@ NodeApplicationManager_Impl::installArtifacts ()
         DANCEX11_LOG_DEBUG ("NodeApplicationManager_impl::installArtifacts - " <<
                             "Successfully installed artifacts for instance " <<
                             event.id_ << ": " <<
-                            IDL::traits< std::vector<std::string> >::write (install_paths));
+                            IDL::traits<std::vector<std::string> >::write (install_paths));
 
         if (instance_localities.find (event.id_) != instance_localities.end ())
         {

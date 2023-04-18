@@ -36,11 +36,11 @@ namespace DAnCEX11
 
       ~DomainApplicationManager_Impl() override;
 
-      IDL::traits< ::Deployment::Application>::ref_type
+      IDL::traits<::Deployment::Application>::ref_type
       startLaunch (const ::Deployment::Properties& configProperty,
                    ::Deployment::Connections& providedReference) override;
 
-      void destroyApplication (IDL::traits< ::Deployment::Application>::ref_type app) override;
+      void destroyApplication (IDL::traits<::Deployment::Application>::ref_type app) override;
 
       std::string getPlanUUID ();
 
@@ -54,7 +54,7 @@ namespace DAnCEX11
 
     private:
       const std::string
-      findNode4NM (IDL::traits< ::Deployment::NodeManager>::ref_type nm);
+      findNode4NM (IDL::traits<::Deployment::NodeManager>::ref_type nm);
 
       IDL::traits<PortableServer::POA>::ref_type poa_;
       Deployment::DeploymentPlan plan_;

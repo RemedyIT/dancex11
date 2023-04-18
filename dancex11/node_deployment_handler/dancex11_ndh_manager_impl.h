@@ -28,23 +28,23 @@ namespace DAnCEX11
                       std::string name,
                       std::string domain_nc,
                       std::shared_ptr<Plugin_Manager> plugins,
-                      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
+                      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh);
 
     ~NodeManager_Impl() override;
 
     void joinDomain (const ::Deployment::Domain & theDomain,
-                     IDL::traits< ::Deployment::TargetManager>::ref_type manager,
-                     IDL::traits< ::Deployment::Logger>::ref_type log,
+                     IDL::traits<::Deployment::TargetManager>::ref_type manager,
+                     IDL::traits<::Deployment::Logger>::ref_type log,
                      int32_t updateInterval) override;
 
     void leaveDomain () override;
 
-    IDL::traits< ::Deployment::ApplicationManager>::ref_type preparePlan (
+    IDL::traits<::Deployment::ApplicationManager>::ref_type preparePlan (
             const ::Deployment::DeploymentPlan & plan,
-            IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
+            IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
 
     void destroyManager (
-            IDL::traits< ::Deployment::ApplicationManager>::ref_type appManager) override;
+            IDL::traits<::Deployment::ApplicationManager>::ref_type appManager) override;
 
     ::Deployment::Resources getDynamicResources () override;
 
@@ -52,7 +52,7 @@ namespace DAnCEX11
 
   private:
     IDL::traits<PortableServer::POA>::ref_type poa_;
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
     std::string name_;
     std::string domain_nc_;
     using TManagers = std::map<std::string, CORBA::servant_reference<NodeApplicationManager_Impl>>;

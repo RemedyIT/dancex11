@@ -17,7 +17,7 @@ namespace DAnCEX11
       IDL::traits<PortableServer::POA>::ref_type poa,
       std::string name,
       std::string nc,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
     : poa_ (std::move(poa)),
       sh_ (std::move(sh)),
       name_ (std::move(name)),
@@ -49,9 +49,9 @@ namespace DAnCEX11
     }
   }
 
-  IDL::traits< ::Deployment::ApplicationManager>::ref_type
+  IDL::traits<::Deployment::ApplicationManager>::ref_type
   ExecutionManager_Impl::preparePlan (const ::Deployment::DeploymentPlan& plan,
-                                      IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
+                                      IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
   {
     DANCEX11_LOG_TRACE ( "ExecutionManager_Impl::preparePlan");
     // Check if plan is already deployed.
@@ -97,7 +97,7 @@ namespace DAnCEX11
                           plan.UUID () << " completed");
 
       DANCEX11_LOG_DEBUG ("ExecutionManager_Impl::preparePlan - finished");
-      return IDL::traits< ::Deployment::DomainApplicationManager>::narrow (manager);
+      return IDL::traits<::Deployment::DomainApplicationManager>::narrow (manager);
     }
     catch (const CORBA::Exception& /*ex*/)
     {
@@ -121,13 +121,13 @@ namespace DAnCEX11
     for (std::pair<std::string, CORBA::servant_reference<DomainApplicationManager_Impl>> iter : this->managers_)
     {
       IDL::traits<CORBA::Object>::ref_type manager = this->poa_->servant_to_reference(iter.second);
-      managers.push_back(IDL::traits< ::Deployment::DomainApplicationManager>::narrow (manager));
+      managers.push_back(IDL::traits<::Deployment::DomainApplicationManager>::narrow (manager));
     }
     return managers;
   }
 
   void
-  ExecutionManager_Impl::destroyManager(IDL::traits< ::Deployment::ApplicationManager>::ref_type manager)
+  ExecutionManager_Impl::destroyManager(IDL::traits<::Deployment::ApplicationManager>::ref_type manager)
   {
     DANCEX11_LOG_TRACE ("ExecutionManager_Impl::destroyManager");
 

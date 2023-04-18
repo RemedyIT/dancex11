@@ -27,7 +27,7 @@ namespace DAnCEX11
       : nam_ (nam), node_ (std::move (node)) {}
     NAM_Result (IDL::traits<Deployment::NodeApplicationManager>::ref_type nam,
                 std::string node,
-                IDL::traits< ::Deployment::Application>::ref_type app,
+                IDL::traits<::Deployment::Application>::ref_type app,
                 const Deployment::Connections &providedReference)
       : nam_ (nam), node_ (std::move (node)), app_ (app), providedReference_ (providedReference) {}
     NAM_Result (std::string err)
@@ -38,7 +38,7 @@ namespace DAnCEX11
 
     IDL::traits<Deployment::NodeApplicationManager>::ref_type nam_;
     std::string node_;
-    IDL::traits< ::Deployment::Application>::ref_type app_;
+    IDL::traits<::Deployment::Application>::ref_type app_;
     ::Deployment::Connections providedReference_;
     std::string error_;
   };
@@ -59,7 +59,7 @@ namespace DAnCEX11
 
     void
     startLaunch (
-        IDL::traits< ::Deployment::Application>::ref_type ami_return_val,
+        IDL::traits<::Deployment::Application>::ref_type ami_return_val,
         const ::Deployment::Connections& providedReference) override
     {
       this->result_.set ({this->nam_, this->node_, ami_return_val, providedReference});
@@ -1158,7 +1158,7 @@ namespace DAnCEX11
 
   std::string
   DomainApplication_Impl::findNodeTApp2Id (
-      IDL::traits< ::Deployment::Application>::ref_type app)
+      IDL::traits<::Deployment::Application>::ref_type app)
   {
     for (TApp2Id::iterator node_iter = this->app_node_ids_.begin();
         node_iter != this->app_node_ids_.end();

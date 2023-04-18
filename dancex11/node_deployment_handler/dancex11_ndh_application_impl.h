@@ -58,7 +58,7 @@ namespace DAnCEX11
 
     void shutdown_instances ();
 
-    using LOCALITY_MAP = std::map <std::string, IDL::traits< ::DAnCEX11::LocalityManager>::ref_type>;
+    using LOCALITY_MAP = std::map <std::string, IDL::traits<::DAnCEX11::LocalityManager>::ref_type>;
 
     using SUB_PLAN = std::pair <uint32_t, ::Deployment::DeploymentPlan>;
     using PLAN_MAP = std::map <std::string, SUB_PLAN>;

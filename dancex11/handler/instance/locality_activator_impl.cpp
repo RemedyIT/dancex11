@@ -119,7 +119,7 @@ namespace DAnCEX11
 
   void
   DAnCE_LocalityActivator_i::locality_manager_callback (
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type serverref,
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type serverref,
     const std::string & server_UUID,
     ::Deployment::Properties & config)
   {
@@ -339,7 +339,7 @@ namespace DAnCEX11
     return {};
   }
 
-  IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+  IDL::traits<::DAnCEX11::LocalityManager>::ref_type
   DAnCE_LocalityActivator_i::activate_remote_locality (Safe_Server_Info ssi)
   {
     DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::activate_remote_locality");
@@ -421,7 +421,7 @@ namespace DAnCEX11
     // resolve LM reference
     IDL::traits<CORBA::Object>::ref_type obj =
         this->orb_->string_to_object (lm_ior);
-    ssi->ref_ = IDL::traits< ::DAnCEX11::LocalityManager>::narrow (obj);
+    ssi->ref_ = IDL::traits<::DAnCEX11::LocalityManager>::narrow (obj);
 
     if (!ssi->ref_)
     {
@@ -447,7 +447,7 @@ namespace DAnCEX11
     return ssi->ref_;
   }
 
-  IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+  IDL::traits<::DAnCEX11::LocalityManager>::ref_type
   DAnCE_LocalityActivator_i::activate_local_locality (Safe_Server_Info ssi)
   {
     DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::activate_local_locality");
@@ -535,7 +535,7 @@ namespace DAnCEX11
         ssi->dmh_->activate_manager (svc_name);
 
     // narrow
-    ssi->ref_ = IDL::traits< ::DAnCEX11::LocalityManager>::narrow (ddm);
+    ssi->ref_ = IDL::traits<::DAnCEX11::LocalityManager>::narrow (ddm);
 
     if (!ssi->ref_)
     {
@@ -559,7 +559,7 @@ namespace DAnCEX11
     return ssi->ref_;
   }
 
-  IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+  IDL::traits<::DAnCEX11::LocalityManager>::ref_type
   DAnCE_LocalityActivator_i::activate_child_locality (Safe_Server_Info ssi)
   {
     DANCEX11_LOG_TRACE ("DAnCE_LocalityActivator_i::activate_child_locality");

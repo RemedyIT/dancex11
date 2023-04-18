@@ -27,7 +27,7 @@ namespace DAnCEX11
 
     NM_Result (IDL::traits<Deployment::NodeManager>::ref_type nm,
                std::string node,
-               IDL::traits< ::Deployment::ApplicationManager>::ref_type am)
+               IDL::traits<::Deployment::ApplicationManager>::ref_type am)
      : nm_ (std::move(nm)), node_ (std::move(node)), am_ (std::move(am)) {}
 
     NM_Result (std::string error)
@@ -38,7 +38,7 @@ namespace DAnCEX11
 
     IDL::traits<Deployment::NodeManager>::ref_type nm_;
     std::string node_;
-    IDL::traits< ::Deployment::ApplicationManager>::ref_type am_;
+    IDL::traits<::Deployment::ApplicationManager>::ref_type am_;
     std::string error_;
   };
 
@@ -78,7 +78,7 @@ namespace DAnCEX11
     // Deployment_Manager methods
     void
     preparePlan (
-        IDL::traits< ::Deployment::ApplicationManager>::ref_type ami_return_val) override
+        IDL::traits<::Deployment::ApplicationManager>::ref_type ami_return_val) override
     {
       DANCEX11_LOG_TRACE( "NodeManager_ReplyHandler::preparePlan");
 
@@ -248,7 +248,7 @@ namespace DAnCEX11
     this->node_ids_.clear ();
   }
 
-  IDL::traits< ::Deployment::Application>::ref_type
+  IDL::traits<::Deployment::Application>::ref_type
   DomainApplicationManager_Impl::startLaunch (const ::Deployment::Properties& configProperty,
                                               ::Deployment::Connections& providedReference)
   {
@@ -325,7 +325,7 @@ namespace DAnCEX11
   }
 
   void
-  DomainApplicationManager_Impl::destroyApplication (IDL::traits< ::Deployment::Application>::ref_type app)
+  DomainApplicationManager_Impl::destroyApplication (IDL::traits<::Deployment::Application>::ref_type app)
   {
     DANCEX11_LOG_TRACE ( "DomainApplicationManager_Impl::destroyApplication");
 
@@ -341,8 +341,8 @@ namespace DAnCEX11
         IDL::traits<CORBA::Object>::ref_type da_obj =
            this->poa_->servant_to_reference (da);
 
-        IDL::traits< ::Deployment::Application>::ref_type da_app_ =
-                   IDL::traits< ::Deployment::Application>::narrow (da_obj);
+        IDL::traits<::Deployment::Application>::ref_type da_app_ =
+                   IDL::traits<::Deployment::Application>::narrow (da_obj);
         if (da_app_->_is_equivalent(app))
         {
           found = true;
@@ -405,7 +405,7 @@ namespace DAnCEX11
     for (CORBA::servant_reference<DomainApplication_Impl> iter : this->running_app_)
     {
       IDL::traits<CORBA::Object>::ref_type app = this->poa_->servant_to_reference(iter);
-      running_app.push_back(IDL::traits< ::Deployment::Application>::narrow (app));
+      running_app.push_back(IDL::traits<::Deployment::Application>::narrow (app));
     }
     return running_app;
   }
@@ -477,7 +477,7 @@ namespace DAnCEX11
           completion.accept (reply->result ());
 
           //ResourceCommitmentManage is for future use
-          IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type rm;
+          IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type rm;
           nm_async->sendc_preparePlan (reply_ref,
                                        itplan->second,
                                        rm);
@@ -531,8 +531,8 @@ namespace DAnCEX11
 
         if (result.am_)
         {
-          IDL::traits< ::Deployment::NodeApplicationManager>::ref_type nam =
-            IDL::traits< ::Deployment::NodeApplicationManager>::narrow (result.am_);
+          IDL::traits<::Deployment::NodeApplicationManager>::ref_type nam =
+            IDL::traits<::Deployment::NodeApplicationManager>::narrow (result.am_);
 
           DANCEX11_LOG_DEBUG ("DomainApplicationManager_Impl::preparePlan - " <<
                                "preparePlan on node [" << result.node_ <<
@@ -540,8 +540,8 @@ namespace DAnCEX11
 
           // We save combination NAM and NM in TNam2Nm vector
           this->sub_app_mgr_.push_back(
-                  std::pair< IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,
-                             IDL::traits< ::Deployment::NodeManager>::ref_type>(nam, result.nm_));
+                  std::pair< IDL::traits<::Deployment::NodeApplicationManager>::ref_type,
+                             IDL::traits<::Deployment::NodeManager>::ref_type>(nam, result.nm_));
           // Save combination NM and node_id in TNm2Id vector
           this->node_ids_.push_back( DomainApplication_Impl::TNm2Id_PAIR (result.nm_, result.node_));
         }
@@ -773,7 +773,7 @@ namespace DAnCEX11
 
   const std::string
   DomainApplicationManager_Impl::findNode4NM(
-      IDL::traits< ::Deployment::NodeManager>::ref_type nm)
+      IDL::traits<::Deployment::NodeManager>::ref_type nm)
   {
     for (const DomainApplication_Impl::TNm2Id_PAIR& nmpair : this->node_ids_)
     {
