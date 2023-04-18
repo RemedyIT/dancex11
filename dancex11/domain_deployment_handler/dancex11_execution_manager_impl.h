@@ -24,16 +24,16 @@ namespace DAnCEX11
       ExecutionManager_Impl (IDL::traits<PortableServer::POA>::ref_type poa,
                              std::string name,
                              std::string nc,
-                             IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh);
+                             IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh);
 
       ~ExecutionManager_Impl () override;
 
-      IDL::traits< ::Deployment::ApplicationManager>::ref_type
+      IDL::traits<::Deployment::ApplicationManager>::ref_type
       preparePlan (const ::Deployment::DeploymentPlan& plan,
-                   IDL::traits< ::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
+                   IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type resourceCommitment) override;
 
       ::Deployment::DomainApplicationManagers getManagers () override;
-      void destroyManager (IDL::traits< ::Deployment::ApplicationManager>::ref_type manager) override;
+      void destroyManager (IDL::traits<::Deployment::ApplicationManager>::ref_type manager) override;
       void add_node_manager (const std::string& name, const std::string& ior);
 
       void load_cdd (const std::string &filename, const std::string& = {});
@@ -42,7 +42,7 @@ namespace DAnCEX11
 
       using TDomainManagers = std::map<std::string, CORBA::servant_reference<DomainApplicationManager_Impl>>;
       IDL::traits<PortableServer::POA>::ref_type poa_;
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
       std::string name_;
       TDomainManagers managers_;
       Node_Locator locator_;

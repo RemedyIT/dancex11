@@ -40,7 +40,7 @@ namespace DAnCEX11
         std::string name,
         std::string nc,
         std::shared_ptr<Plugin_Manager> plugins,
-        IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+        IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
       : DeploymentLaunchManager (),
         plan_ (std::move (plan)),
         nodes_ (std::move (nodes)),
@@ -71,10 +71,10 @@ namespace DAnCEX11
     std::string name_;
     std::string nc_;
     std::shared_ptr<Plugin_Manager> plugins_;
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh_;
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh_;
     CORBA::servant_reference<DAnCEX11::ExecutionManager_Impl> em_;
-    IDL::traits< ::Deployment::ApplicationManager>::ref_type am_;
-    IDL::traits< ::Deployment::Application>::ref_type app_;
+    IDL::traits<::Deployment::ApplicationManager>::ref_type am_;
+    IDL::traits<::Deployment::Application>::ref_type app_;
   };
 
   Deployment::DeploymentPlan
@@ -188,7 +188,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Domain_Launcher::launch - "
                               "destroying domain application...");
 
-          IDL::traits< ::Deployment::Application>::ref_type app = this->app_;
+          IDL::traits<::Deployment::Application>::ref_type app = this->app_;
           this->app_.reset ();
           this->am_->destroyApplication (app);
         }
@@ -206,7 +206,7 @@ namespace DAnCEX11
         DANCEX11_LOG_DEBUG ("Domain_Launcher::launch - "
                             "destroying domain application manager...");
 
-        IDL::traits< ::Deployment::ApplicationManager>::ref_type am = this->am_;
+        IDL::traits<::Deployment::ApplicationManager>::ref_type am = this->am_;
         this->am_.reset ();
         this->em_->destroyManager (am);
 
@@ -243,7 +243,7 @@ namespace DAnCEX11
       DANCEX11_LOG_DEBUG ("Domain_Launcher::shutdown - "
                           "destroying domain application...");
 
-      IDL::traits< ::Deployment::Application>::ref_type app = this->app_;
+      IDL::traits<::Deployment::Application>::ref_type app = this->app_;
       this->app_.reset ();
       this->am_->destroyApplication (app);
     }
@@ -253,7 +253,7 @@ namespace DAnCEX11
       DANCEX11_LOG_DEBUG ("Domain_Launcher::shutdown - "
                           "destroying domain application manager...");
 
-      IDL::traits< ::Deployment::ApplicationManager>::ref_type am = this->am_;
+      IDL::traits<::Deployment::ApplicationManager>::ref_type am = this->am_;
       this->am_.reset ();
       this->em_->destroyManager (am);
     }
@@ -300,7 +300,7 @@ namespace DAnCEX11
   DomainDeploymentHandler::configure (
       const std::string& config,
       const Deployment::Properties& prop,
-      IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+      IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
   {
     DANCEX11_LOG_TRACE ("DomainDeploymentHandler::configure");
 
@@ -391,7 +391,7 @@ namespace DAnCEX11
     this->shutdown_handler_ = sh;
   }
 
-  IDL::traits< ::Deployment::Deployment_Manager>::ref_type
+  IDL::traits<::Deployment::Deployment_Manager>::ref_type
   DomainDeploymentHandler::activate_manager (
       const std::string& name)
   {
@@ -452,10 +452,10 @@ namespace DAnCEX11
     // Return node manager reference
     IDL::traits<CORBA::Object>::ref_type em_obj =
         this->mng_poa_->id_to_reference (this->servant_id_);
-    return IDL::traits< ::Deployment::Deployment_Manager>::narrow (em_obj);
+    return IDL::traits<::Deployment::Deployment_Manager>::narrow (em_obj);
   }
 
-  IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::ref_type
+  IDL::traits<::DAnCEX11::DeploymentLaunchManager>::ref_type
   DomainDeploymentHandler::activate_launcher (
       const std::string& name)
   {
@@ -501,7 +501,7 @@ namespace DAnCEX11
     DANCEX11_LOG_DEBUG ("DomainDeploymentHandler::activate_launcher - " <<
                         "narrowing DomainLauncher servant reference");
 
-    return IDL::traits< ::DAnCEX11::DeploymentLaunchManager>::narrow (dl_obj);
+    return IDL::traits<::DAnCEX11::DeploymentLaunchManager>::narrow (dl_obj);
   }
 
   void

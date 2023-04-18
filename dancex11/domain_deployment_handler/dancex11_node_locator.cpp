@@ -57,7 +57,7 @@ namespace DAnCEX11
     }
   }
 
-  IDL::traits< ::Deployment::NodeManager>::ref_type
+  IDL::traits<::Deployment::NodeManager>::ref_type
   Node_Locator::locate_node (const std::string& name)
   {
     std::string ior;
@@ -172,7 +172,7 @@ namespace DAnCEX11
     return true;
   }
 
-  IDL::traits< ::Deployment::NodeManager>::ref_type
+  IDL::traits<::Deployment::NodeManager>::ref_type
   Node_Locator::resolve_ior (const std::string& name, const std::string& ior)
   {
     DANCEX11_LOG_TRACE ("Node_Locator::resolve_ior");
@@ -182,7 +182,7 @@ namespace DAnCEX11
 
     IDL::traits<CORBA::Object>::ref_type  obj = this->orb_->string_to_object (ior);
 
-    IDL::traits< ::Deployment::NodeManager>::ref_type nm = IDL::traits< ::Deployment::NodeManager>::narrow (obj);
+    IDL::traits<::Deployment::NodeManager>::ref_type nm = IDL::traits<::Deployment::NodeManager>::narrow (obj);
 
     if (!nm)
     {
@@ -201,11 +201,11 @@ namespace DAnCEX11
     this->nodes_.insert ( std::pair<std::string, std::string>(name, ior));
   }
 
-  IDL::traits< ::Deployment::NodeManager>::ref_type
+  IDL::traits<::Deployment::NodeManager>::ref_type
   Node_Locator::ns_lookup (const std::string& nodename)
   {
     DANCEX11_LOG_TRACE ("Node_Locator::ns_lookup");
-    IDL::traits< ::Deployment::NodeManager>::ref_type nm ;
+    IDL::traits<::Deployment::NodeManager>::ref_type nm ;
 
     if (!this->nc_)
     {
@@ -223,7 +223,7 @@ namespace DAnCEX11
 
       IDL::traits<CORBA::Object>::ref_type obj = this->nc_->resolve (name);
 
-      nm = IDL::traits< ::Deployment::NodeManager>::narrow (obj);
+      nm = IDL::traits<::Deployment::NodeManager>::narrow (obj);
 
       if (!nm)
       {

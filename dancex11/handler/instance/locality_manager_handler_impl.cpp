@@ -44,7 +44,7 @@ namespace DAnCEX11
 #if !defined(NDEBUG)
     DANCEX11_LOG_TRACE ("Locality_Handler_i::install_instance - " <<
                         "Deploying instance " << instanceRef << " of plan : " <<
-                        IDL::traits< ::Deployment::DeploymentPlan>::write (plan));
+                        IDL::traits<::Deployment::DeploymentPlan>::write (plan));
 #endif
 
     if (plan.instance ().size () <= instanceRef)
@@ -87,7 +87,7 @@ namespace DAnCEX11
     DANCEX11_LOG_TRACE ("Locality_Handler_i::install_instance - " <<
                         "Passing " << allprops.size () << " properties to activator");
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type lm_ref =
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type lm_ref =
         this->activator_->create_locality_manager (plan,
                                                    instanceRef,
                                                    allprops);
@@ -149,7 +149,7 @@ namespace DAnCEX11
 extern "C"
 {
   void create_DAnCEX11_Locality_Handler (
-    IDL::traits< ::DAnCEX11::InstanceDeploymentHandler>::ref_type& handler)
+    IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& handler)
   {
     handler = CORBA::make_reference< ::DAnCEX11::Locality_Handler_i> ();
   }

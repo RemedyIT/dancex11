@@ -79,7 +79,7 @@ namespace DAnCEX11
   };
 
   class DAnCE_Artifact_Installation_Export ArtifactInstallation_Impl
-    : public IDL::traits< ::DAnCEX11::ArtifactInstallation>::base_type
+    : public IDL::traits<::DAnCEX11::ArtifactInstallation>::base_type
   {
     public:
       using TLOCK = ACE_MT_SYNCH::MUTEX ;
@@ -152,7 +152,7 @@ namespace DAnCEX11
       TCONDITION artifacts_condition_;
 
     public:
-      static IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type instance ();
+      static IDL::traits<::DAnCEX11::ArtifactInstallation>::ref_type instance ();
 
       static int register_handler (ArtifactInstallationHandler* aih);
 
@@ -163,7 +163,7 @@ namespace DAnCEX11
       using THandlerMap = std::map<std::string, ArtifactInstallationHandler*>;
 
     private:
-      static IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type instance_;
+      static IDL::traits<::DAnCEX11::ArtifactInstallation>::ref_type instance_;
       static THandlerMap handlers_;
       static TLOCK handler_lock_;
   };

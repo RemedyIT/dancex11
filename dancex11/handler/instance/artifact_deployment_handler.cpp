@@ -49,7 +49,7 @@ namespace DAnCEX11
 #if !defined(NDEBUG)
     DANCEX11_LOG_TRACE ("Artifact_Deployment_Handler_i::install_instance - " <<
                         "Deploying artifact " << instanceRef << " of plan : " <<
-                        IDL::traits< ::Deployment::DeploymentPlan>::write (plan));
+                        IDL::traits<::Deployment::DeploymentPlan>::write (plan));
 #endif
 
     if (plan.instance ().size () <= instanceRef)
@@ -196,13 +196,13 @@ namespace DAnCEX11
 extern "C"
 {
   void create_DAnCEX11_Artifact_Deployment_Handler (
-    IDL::traits< ::DAnCEX11::InstanceDeploymentHandler>::ref_type& plugin)
+    IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& plugin)
   {
     plugin = CORBA::make_reference< ::DAnCEX11::Artifact_Deployment_Handler_i> ();
   }
 
   void create_DAnCEX11_Artifact_Deployment_Initializer (
-    IDL::traits< ::DAnCEX11::DeploymentInterceptor>::ref_type& plugin)
+    IDL::traits<::DAnCEX11::DeploymentInterceptor>::ref_type& plugin)
   {
     plugin = CORBA::make_reference< ::DAnCEX11::Artifact_Deployment_Initializer> ();
   }

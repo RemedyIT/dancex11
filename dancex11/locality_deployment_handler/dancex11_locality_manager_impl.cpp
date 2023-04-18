@@ -30,7 +30,7 @@ namespace DAnCEX11
   LocalityManager_i::LocalityManager_i (const std::string &uuid,
     std::shared_ptr<Plugin_Manager> plugins,
     IDL::traits<PortableServer::POA>::ref_type poa,
-    IDL::traits< ::DAnCEX11::ShutdownHandler>::ref_type sh)
+    IDL::traits<::DAnCEX11::ShutdownHandler>::ref_type sh)
     : uuid_ (uuid)
     , poa_ (std::move (poa))
     , sh_ (sh)

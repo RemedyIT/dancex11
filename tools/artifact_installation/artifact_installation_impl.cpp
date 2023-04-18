@@ -36,9 +36,9 @@ namespace DAnCEX11
 
     ArtifactInstallation_Impl::THandlerMap ArtifactInstallation_Impl::handlers_;
     ArtifactInstallation_Impl::TLOCK ArtifactInstallation_Impl::handler_lock_;
-    IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type ArtifactInstallation_Impl::instance_;
+    IDL::traits<::DAnCEX11::ArtifactInstallation>::ref_type ArtifactInstallation_Impl::instance_;
 
-    IDL::traits< ::DAnCEX11::ArtifactInstallation>::ref_type
+    IDL::traits<::DAnCEX11::ArtifactInstallation>::ref_type
     ArtifactInstallation_Impl::instance ()
     {
       if (!instance_)
@@ -49,7 +49,7 @@ namespace DAnCEX11
     }
 
     ArtifactInstallation_Impl::ArtifactInstallation_Impl ()
-      : IDL::traits< ::DAnCEX11::ArtifactInstallation>::base_type (),
+      : IDL::traits<::DAnCEX11::ArtifactInstallation>::base_type (),
         artifacts_condition_ (artifacts_lock_)
     {
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::constructor");

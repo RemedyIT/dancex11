@@ -53,13 +53,13 @@ namespace DAnCEX11
     ~DAnCE_LocalityActivator_i () override;
 
     void locality_manager_callback (
-        IDL::traits< ::DAnCEX11::LocalityManager>::ref_type serverref,
+        IDL::traits<::DAnCEX11::LocalityManager>::ref_type serverref,
         const std::string & server_UUID,
         ::Deployment::Properties& config) override;
 
     void configuration_complete (const std::string &server_UUID) override;
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type
     create_locality_manager (
           const ::Deployment::DeploymentPlan &plan,
           uint32_t instanceRef,
@@ -95,7 +95,7 @@ namespace DAnCEX11
 
       std::string uuid_;
       DAnCEX11::Utility::PROPERTY_MAP cmap_;
-      IDL::traits< ::DAnCEX11::LocalityManager>::ref_type ref_;
+      IDL::traits<::DAnCEX11::LocalityManager>::ref_type ref_;
       uint32_t activation_mode_ {};
       pid_t pid_ {ACE_INVALID_PID};
       ProcessStatus status_ {INACTIVE};
@@ -109,13 +109,13 @@ namespace DAnCEX11
 
     using Safe_Server_Info = std::shared_ptr<Server_Info>;
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type
     activate_remote_locality (Safe_Server_Info ssi);
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type
     activate_local_locality (Safe_Server_Info ssi);
 
-    IDL::traits< ::DAnCEX11::LocalityManager>::ref_type
+    IDL::traits<::DAnCEX11::LocalityManager>::ref_type
     activate_child_locality (Safe_Server_Info ssi);
 
     /// Builds command line options based on configuration information.

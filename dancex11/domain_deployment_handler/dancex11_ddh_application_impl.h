@@ -28,10 +28,10 @@ namespace DAnCEX11
   : public virtual CORBA::servant_traits< ::Deployment::DomainApplication>::base_type
     {
     public:
-      using TNm2Id_PAIR = std::pair <IDL::traits< ::Deployment::NodeManager>::ref_type , std::string>;
-      using TNam2Nm_PAIR = std::pair <IDL::traits< ::Deployment::NodeApplicationManager>::ref_type,IDL::traits< ::Deployment::NodeManager>::ref_type>;
-      using TApp2Mgr_PAIR = std::pair <IDL::traits< ::Deployment::Application>::ref_type, IDL::traits< ::Deployment::NodeApplicationManager>::ref_type>;
-      using TApp2Id_PAIR = std::pair <IDL::traits< ::Deployment::Application>::ref_type, std::string>;
+      using TNm2Id_PAIR = std::pair <IDL::traits<::Deployment::NodeManager>::ref_type , std::string>;
+      using TNam2Nm_PAIR = std::pair <IDL::traits<::Deployment::NodeApplicationManager>::ref_type,IDL::traits<::Deployment::NodeManager>::ref_type>;
+      using TApp2Mgr_PAIR = std::pair <IDL::traits<::Deployment::Application>::ref_type, IDL::traits<::Deployment::NodeApplicationManager>::ref_type>;
+      using TApp2Id_PAIR = std::pair <IDL::traits<::Deployment::Application>::ref_type, std::string>;
 
       using TNam2Nm = std::vector <TNam2Nm_PAIR>;
       using TNm2Id = std::vector <TNm2Id_PAIR>;
@@ -74,7 +74,7 @@ namespace DAnCEX11
       void stop () override;
 
     private:
-      std::string findNodeTApp2Id(IDL::traits< ::Deployment::Application>::ref_type app);
+      std::string findNodeTApp2Id(IDL::traits<::Deployment::Application>::ref_type app);
 
       IDL::traits<PortableServer::POA>::ref_type poa_;
       const std::string planUUID_;
