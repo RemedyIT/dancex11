@@ -16,6 +16,7 @@
 #include <string>
 #include <istream>
 #include <fstream>
+#include <cstdint>
 
 namespace DAnCEX11
 {
