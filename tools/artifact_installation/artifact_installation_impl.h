@@ -85,6 +85,7 @@ namespace DAnCEX11
       using TLOCK = ACE_MT_SYNCH::MUTEX ;
       using TCONDITION = ACE_MT_SYNCH::CONDITION;
       using TPropertyMap = ArtifactInstallationHandler::TPropertyMap;
+      ArtifactInstallation_Impl ();
       ~ArtifactInstallation_Impl () override;
 
       void initialize () override;
@@ -105,11 +106,6 @@ namespace DAnCEX11
                                          const std::string& artifact_name) override;
 
     private:
-      ArtifactInstallation_Impl ();
-
-      template <typename _Tp1, typename, typename ...Args>
-      friend CORBA::object_reference<_Tp1> CORBA::make_reference(Args&& ...args);
-
       using TProtocolStack = std::stack<std::string>;
 
       // key is artifact name
