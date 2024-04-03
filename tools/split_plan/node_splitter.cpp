@@ -5,7 +5,6 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
-
 #include "node_splitter.h"
 #include "dancex11/logger/log.h"
 #include "dancex11/core/dancex11_propertiesC.h"
