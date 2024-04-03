@@ -29,26 +29,6 @@
 #  define XSC_XML_HANDLERS_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
 #endif /* XSC_XML_HANDLERS_HAS_DLL == 1 */
 
-// Set XSC_XML_HANDLERS_NTRACE = 0 to turn on library specific tracing even if
-// tracing is turned off for ACE.
-#if !defined (XSC_XML_HANDLERS_NTRACE)
-#  if (ACE_NTRACE == 1)
-#    define XSC_XML_HANDLERS_NTRACE 1
-#  else /* (ACE_NTRACE == 1) */
-#    define XSC_XML_HANDLERS_NTRACE 0
-#  endif /* (ACE_NTRACE == 1) */
-#endif /* !XSC_XML_HANDLERS_NTRACE */
-
-#if (XSC_XML_HANDLERS_NTRACE == 1)
-#  define XSC_XML_HANDLERS_TRACE(X)
-#else /* (XSC_XML_HANDLERS_NTRACE == 1) */
-#  if !defined (ACE_HAS_TRACE)
-#    define ACE_HAS_TRACE
-#  endif /* ACE_HAS_TRACE */
-#  define XSC_XML_HANDLERS_TRACE(X) ACE_TRACE_IMPL(X)
-#  include "ace/Trace.h"
-#endif /* (XSC_XML_HANDLERS_NTRACE == 1) */
-
 #endif /* XSC_XML_HANDLERS_EXPORT_H */
 
 // End of auto generated file.

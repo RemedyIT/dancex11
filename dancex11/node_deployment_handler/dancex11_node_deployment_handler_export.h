@@ -36,26 +36,6 @@
 #  define DANCEX11_NODE_DH_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
 #endif /* DANCEX11_NODE_DH_HAS_DLL == 1 */
 
-// Set DANCEX11_NODE_DH_NTRACE = 0 to turn on library specific tracing even if
-// tracing is turned off for ACE.
-#if !defined (DANCEX11_NODE_DH_NTRACE)
-#  if (ACE_NTRACE == 1)
-#    define DANCEX11_NODE_DH_NTRACE 1
-#  else /* (ACE_NTRACE == 1) */
-#    define DANCEX11_NODE_DH_NTRACE 0
-#  endif /* (ACE_NTRACE == 1) */
-#endif /* !DANCEX11_NODE_DH_NTRACE */
-
-#if (DANCEX11_NODE_DH_NTRACE == 1)
-#  define DANCEX11_NODE_DH_TRACE(X)
-#else /* (DANCEX11_NODE_DH_NTRACE == 1) */
-#  if !defined (ACE_HAS_TRACE)
-#    define ACE_HAS_TRACE
-#  endif /* ACE_HAS_TRACE */
-#  define DANCEX11_NODE_DH_TRACE(X) ACE_TRACE_IMPL(X)
-#  include "ace/Trace.h"
-#endif /* (DANCEX11_NODE_DH_NTRACE == 1) */
-
 #endif /* DANCEX11_NODE_DEPLOYMENT_HANDLER_EXPORT_H */
 
 // End of auto generated file.
