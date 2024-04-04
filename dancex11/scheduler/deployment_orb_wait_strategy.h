@@ -43,12 +43,6 @@ namespace DAnCEX11
   };
 }
 
-#if defined (ACE_TEMPLATES_REQUIRE_SOURCE)
 #include "deployment_orb_wait_strategy.cpp"
-#endif /* ACE_TEMPLATES_REQUIRE_SOURCE */
-
-#if defined (ACE_TEMPLATES_REQUIRE_PRAGMA)
-#pragma implementation ("deployment_orb_wait_strategy.cpp")
-#endif /* ACE_TEMPLATES_REQUIRE_PRAGMA */
 
 #endif /* DEPLOYMENT_ORB_WAIT_STRATEGY_H_ */

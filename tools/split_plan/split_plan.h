@@ -62,12 +62,6 @@ namespace DAnCEX11
   };
 }
 
-#if defined (ACE_TEMPLATES_REQUIRE_SOURCE)
 #include "split_plan.cpp"
-#endif /* ACE_TEMPLATES_REQUIRE_SOURCE */
-
-#if defined (ACE_TEMPLATES_REQUIRE_PRAGMA)
-#pragma implementation ("split_plan.cpp")
-#endif /* ACE_TEMPLATES_REQUIRE_PRAGMA */
 
 #endif /* DAnCEX11_SPLIT_PLAN_H */

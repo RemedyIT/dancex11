@@ -121,8 +121,6 @@ namespace DAnCEX11
     bool load_node_config (parser_type&, Deployment::Domain&);
 
     bool finalize_component_plan (state_type&);
-    // MCO - 20150728 - not required anymore
-//    void finalize_component_artifact(state_type&, uint32_t, const std::string&);
 
     bool load_artifact_definition (parser_type&, state_type&);
     bool load_property_definition (parser_type&, Deployment::Property&);
