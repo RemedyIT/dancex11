@@ -45,12 +45,6 @@ namespace DAnCEX11
   };
 }
 
-#if defined (ACE_TEMPLATES_REQUIRE_SOURCE)
 #include "deployment_default_wait_strategy.cpp"
-#endif /* ACE_TEMPLATES_REQUIRE_SOURCE */
-
-#if defined (ACE_TEMPLATES_REQUIRE_PRAGMA)
-#pragma implementation ("deployment_default_wait_strategy.cpp")
-#endif /* ACE_TEMPLATES_REQUIRE_PRAGMA */
 
 #endif /* DEPLOYMENT_DEFAULT_WAIT_STRATEGY_H_ */

@@ -176,12 +176,6 @@ namespace DAnCEX11
   };
 }
 
-#if defined (ACE_TEMPLATES_REQUIRE_SOURCE)
 #include "dancex11/configurator/dancex11_config_parser.cpp"
-#endif /* ACE_TEMPLATES_REQUIRE_SOURCE */
-
-#if defined (ACE_TEMPLATES_REQUIRE_PRAGMA)
-#pragma implementation ("dancex11_config_parser.cpp")
-#endif /* ACE_TEMPLATES_REQUIRE_PRAGMA */
 
 #endif /* DAnCEX11_CONFIG_PARSER_H */

@@ -72,12 +72,6 @@ namespace DAnCEX11
 
 } /* DAnCE */
 
-#if defined (ACE_TEMPLATES_REQUIRE_SOURCE)
 #include "completion_counter_base.cpp"
-#endif /* ACE_TEMPLATES_REQUIRE_SOURCE */
-
-#if defined (ACE_TEMPLATES_REQUIRE_PRAGMA)
-#pragma implementation ("completion_counter_base.cpp")
-#endif /* ACE_TEMPLATES_REQUIRE_PRAGMA */
 
 #endif /* DAnCEX11_COMPLETION_COUNTER_H */
