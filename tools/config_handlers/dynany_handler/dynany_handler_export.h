@@ -7,7 +7,7 @@
 #ifndef DYNANY_HANDLER_EXPORT_H
 #define DYNANY_HANDLER_EXPORT_H
 
-#include "tao/x11/taox11_export_macros.h"
+#include "tao/x11/base/taox11_export_macros.h"
 
 #if !defined (DYNANY_HANDLER_HAS_DLL)
 #  define DYNANY_HANDLER_HAS_DLL 1

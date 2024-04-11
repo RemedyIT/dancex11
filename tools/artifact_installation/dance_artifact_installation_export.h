@@ -8,7 +8,7 @@
 #ifndef DANCEX11_ARTIFACT_INSTALLATION_EXPORT_H
 #define DANCEX11_ARTIFACT_INSTALLATION_EXPORT_H
 
-#include "tao/x11/taox11_export_macros.h"
+#include "tao/x11/base/taox11_export_macros.h"
 
 #if defined (TAOX11_AS_STATIC_LIBS) && !defined (DANCE_ARTIFACT_INSTALLATION_HAS_DLL)
 #  define DANCE_ARTIFACT_INSTALLATION_HAS_DLL 0

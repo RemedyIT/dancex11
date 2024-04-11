@@ -19,7 +19,7 @@ namespace XMI
 #include <vector>
 #include "ace/XML_Utils/XMLSchema/Types.hpp"
 #include "ace/XML_Utils/XMLSchema/id_map.hpp"
-#include "tao/x11/stddef.h"
+#include "tao/x11/base/stddef.h"
 namespace XMI
 {
   class XSC_XML_Handlers_Export Extension : public ::XSCRT::Type

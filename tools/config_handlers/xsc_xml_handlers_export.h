@@ -7,7 +7,7 @@
 #ifndef XSC_XML_HANDLERS_EXPORT_H
 #define XSC_XML_HANDLERS_EXPORT_H
 
-#include "tao/x11/taox11_export_macros.h"
+#include "tao/x11/base/taox11_export_macros.h"
 
 #if !defined (XSC_XML_HANDLERS_HAS_DLL)
 #  define XSC_XML_HANDLERS_HAS_DLL 1
