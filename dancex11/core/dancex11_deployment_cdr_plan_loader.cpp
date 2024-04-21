@@ -10,7 +10,7 @@
 
 #include "tao/CDR.h"
 
-#include "tao/x11/tao_corba.h"
+#include "tao/x11/base/tao_corba.h"
 
 #include "dancex11_deployment_cdr_plan_loader.h"
 #include "dancex11/logger/log.h"

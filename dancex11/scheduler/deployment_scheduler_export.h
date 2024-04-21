@@ -8,7 +8,7 @@
 #ifndef DEPLOYMENT_SCHEDULER_EXPORT_H
 #define DEPLOYMENT_SCHEDULER_EXPORT_H
 
-#include "tao/x11/taox11_export_macros.h"
+#include "tao/x11/base/taox11_export_macros.h"
 
 #if defined (TAOX11_AS_STATIC_LIBS) && !defined (DEPLOYMENT_SCHEDULER_HAS_DLL)
 #  define DEPLOYMENT_SCHEDULER_HAS_DLL 0

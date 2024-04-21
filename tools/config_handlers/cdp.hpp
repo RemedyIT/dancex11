@@ -24,7 +24,7 @@ namespace DAnCE
 #include <vector>
 #include "ace/XML_Utils/XMLSchema/Types.hpp"
 #include "ace/XML_Utils/XMLSchema/id_map.hpp"
-#include "tao/x11/stddef.h"
+#include "tao/x11/base/stddef.h"
 #include "ccd.hpp"
 
 namespace DAnCE

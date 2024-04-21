@@ -9,7 +9,7 @@
 #include "ace/OS_NS_stdio.h"
 #include "tao/CDR.h"
 
-#include "tao/x11/tao_corba.h"
+#include "tao/x11/base/tao_corba.h"
 
 #include "convert_plan_impl.h"
 #include "dancex11/deployment/deployment_planerrorC.h"

@@ -12,7 +12,7 @@
 #include <string>
 #include <vector>
 
-#include "tao/x11/stddef.h"
+#include "tao/x11/base/stddef.h"
 
 namespace DAnCEX11
 {
