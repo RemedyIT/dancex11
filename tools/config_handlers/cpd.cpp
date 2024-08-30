@@ -526,11 +526,11 @@ namespace DAnCE
     // PackagedComponentImplementation
 
     PackagedComponentImplementation::
-    PackagedComponentImplementation (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PackagedComponentImplementation (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -556,11 +556,11 @@ namespace DAnCE
     // ComponentPackageDescription
 
     ComponentPackageDescription::
-    ComponentPackageDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentPackageDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -627,11 +627,11 @@ namespace DAnCE
     // ConnectorPackageDescription
 
     ConnectorPackageDescription::
-    ConnectorPackageDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ConnectorPackageDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

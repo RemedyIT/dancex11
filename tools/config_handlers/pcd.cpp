@@ -361,11 +361,11 @@ namespace DAnCE
     // ComponentPackageImport
 
     ComponentPackageImport::
-    ComponentPackageImport (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentPackageImport (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -387,11 +387,11 @@ namespace DAnCE
     // PackageConfiguration
 
     PackageConfiguration::
-    PackageConfiguration (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PackageConfiguration (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

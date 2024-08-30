@@ -711,11 +711,11 @@ namespace DAnCE
     // Domain
 
     Domain::
-    Domain (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Domain (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -773,11 +773,11 @@ namespace DAnCE
     // Bridge
 
     Bridge::
-    Bridge (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Bridge (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -816,11 +816,11 @@ namespace DAnCE
     // Interconnect
 
     Interconnect::
-    Interconnect (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Interconnect (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -865,11 +865,11 @@ namespace DAnCE
     // Node
 
     Node::
-    Node (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Node (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -914,11 +914,11 @@ namespace DAnCE
     // SharedResource
 
     SharedResource::
-    SharedResource (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    SharedResource (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

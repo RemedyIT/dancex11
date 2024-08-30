@@ -345,11 +345,11 @@ namespace DAnCE
     // NamedImplementationArtifact
 
     NamedImplementationArtifact::
-    NamedImplementationArtifact (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    NamedImplementationArtifact (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -375,11 +375,11 @@ namespace DAnCE
     // ImplementationArtifactDescription
 
     ImplementationArtifactDescription::
-    ImplementationArtifactDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ImplementationArtifactDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

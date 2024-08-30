@@ -1447,11 +1447,11 @@ namespace DAnCE
     // ComponentPackageReference
 
     ComponentPackageReference::
-    ComponentPackageReference (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentPackageReference (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1484,11 +1484,11 @@ namespace DAnCE
     // SubcomponentInstantiationDescription
 
     SubcomponentInstantiationDescription::
-    SubcomponentInstantiationDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    SubcomponentInstantiationDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1560,11 +1560,11 @@ namespace DAnCE
     // SubcomponentPropertyReference
 
     SubcomponentPropertyReference::
-    SubcomponentPropertyReference (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    SubcomponentPropertyReference (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1590,11 +1590,11 @@ namespace DAnCE
     // AssemblyPropertyMapping
 
     AssemblyPropertyMapping::
-    AssemblyPropertyMapping (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    AssemblyPropertyMapping (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1669,11 +1669,11 @@ namespace DAnCE
     // Locality
 
     Locality::
-    Locality (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Locality (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1699,11 +1699,11 @@ namespace DAnCE
     // ComponentAssemblyDescription
 
     ComponentAssemblyDescription::
-    ComponentAssemblyDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentAssemblyDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1743,11 +1743,11 @@ namespace DAnCE
     // MonolithicImplementationDescription
 
     MonolithicImplementationDescription::
-    MonolithicImplementationDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    MonolithicImplementationDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1787,11 +1787,11 @@ namespace DAnCE
     // ComponentImplementationDescription
 
     ComponentImplementationDescription::
-    ComponentImplementationDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentImplementationDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -1876,11 +1876,11 @@ namespace DAnCE
     // ConnectorImplementationDescription
 
     ConnectorImplementationDescription::
-    ConnectorImplementationDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ConnectorImplementationDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

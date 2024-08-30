@@ -342,11 +342,11 @@ namespace DAnCE
     // ComponentInterfaceDescription
 
     ComponentInterfaceDescription::
-    ComponentInterfaceDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentInterfaceDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

@@ -478,11 +478,11 @@ namespace DAnCE
     // PlanSubcomponentPropertyReference
 
     PlanSubcomponentPropertyReference::
-    PlanSubcomponentPropertyReference (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PlanSubcomponentPropertyReference (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -508,11 +508,11 @@ namespace DAnCE
     // PlanPropertyMapping
 
     PlanPropertyMapping::
-    PlanPropertyMapping (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PlanPropertyMapping (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -550,11 +550,11 @@ namespace DAnCE
     // deploymentPlan
 
     deploymentPlan::
-    deploymentPlan (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    deploymentPlan (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

@@ -331,11 +331,11 @@ namespace XMI
   // Extension
 
   Extension::
-  Extension (::XSCRT::XML::Element<char> const& e)
-  :Base (e)
+  Extension (::XSCRT::XML::Element<char> const& element)
+  :Base (element)
   {
 
-    ::XSCRT::Parser<char> p (e);
+    ::XSCRT::Parser<char> p (element);
 
     while (p.more_attributes ())
     {
