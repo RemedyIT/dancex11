@@ -1475,7 +1475,7 @@ namespace DAnCE
           requiredType_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1536,7 +1536,7 @@ namespace DAnCE
           importedPackage (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1551,7 +1551,7 @@ namespace DAnCE
           id (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1581,7 +1581,7 @@ namespace DAnCE
           instance_ = std::make_unique<::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1617,7 +1617,7 @@ namespace DAnCE
           delegatesTo_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1637,7 +1637,7 @@ namespace DAnCE
       else if (v ==  ("DifferentNode")) v_ = DifferentNode_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else 
+      else
       {
       }
     }
@@ -1654,7 +1654,7 @@ namespace DAnCE
       else if (v ==  ("DifferentNode")) v_ = DifferentNode_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else 
+      else
       {
       }
     }
@@ -1690,7 +1690,7 @@ namespace DAnCE
           constrainedInstance_ = std::make_unique<::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1734,7 +1734,7 @@ namespace DAnCE
           locality_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1778,7 +1778,7 @@ namespace DAnCE
           primaryArtifact_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1852,7 +1852,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1867,7 +1867,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1941,7 +1941,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -1956,7 +1956,7 @@ namespace DAnCE
           href (t);
         }
 
-        else 
+        else
         {
         }
       }

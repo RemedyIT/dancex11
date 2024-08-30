@@ -764,7 +764,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -807,7 +807,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -856,7 +856,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -905,7 +905,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -945,7 +945,7 @@ namespace DAnCE
           property_ = std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (e);
         }
 
-        else 
+        else
         {
         }
       }

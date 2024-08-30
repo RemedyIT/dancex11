@@ -378,7 +378,7 @@ namespace DAnCE
           location_.push_back (t);
         }
 
-        else 
+        else
         {
         }
       }
@@ -452,7 +452,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else 
+        else
         {
         }
       }
