@@ -173,7 +173,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_supportedType(void) const
+    count_supportedType() const
     {
       return supportedType_.size ();
     }
@@ -192,7 +192,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_idlFile(void) const
+    count_idlFile() const
     {
       return idlFile_.size ();
     }
@@ -211,7 +211,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -230,7 +230,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_port(void) const
+    count_port() const
     {
       return port_.size ();
     }
@@ -249,7 +249,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -268,7 +268,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -413,7 +413,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -428,7 +428,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }

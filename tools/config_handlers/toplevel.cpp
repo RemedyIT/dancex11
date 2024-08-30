@@ -49,7 +49,7 @@ namespace DAnCE
     }
 
     size_t TopLevelPackageDescription::
-    count_package(void) const
+    count_package() const
     {
       return package_.size ();
     }
@@ -80,7 +80,7 @@ namespace DAnCE
           package_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }

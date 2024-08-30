@@ -49,7 +49,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageImport::
-    count_location(void) const
+    count_location() const
     {
       return location_.size ();
     }
@@ -301,7 +301,7 @@ namespace DAnCE
     }
 
     size_t PackageConfiguration::
-    count_selectRequirement(void) const
+    count_selectRequirement() const
     {
       return selectRequirement_.size ();
     }
@@ -320,7 +320,7 @@ namespace DAnCE
     }
 
     size_t PackageConfiguration::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -378,7 +378,7 @@ namespace DAnCE
           location_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -452,7 +452,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else
+        else 
         {
         }
       }

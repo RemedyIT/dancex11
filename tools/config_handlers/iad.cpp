@@ -195,7 +195,7 @@ namespace DAnCE
     }
 
     size_t ImplementationArtifactDescription::
-    count_location(void) const
+    count_location() const
     {
       return location_.size ();
     }
@@ -214,7 +214,7 @@ namespace DAnCE
     }
 
     size_t ImplementationArtifactDescription::
-    count_dependsOn(void) const
+    count_dependsOn() const
     {
       return dependsOn_.size ();
     }
@@ -233,7 +233,7 @@ namespace DAnCE
     }
 
     size_t ImplementationArtifactDescription::
-    count_execParameter(void) const
+    count_execParameter() const
     {
       return execParameter_.size ();
     }
@@ -252,7 +252,7 @@ namespace DAnCE
     }
 
     size_t ImplementationArtifactDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -271,7 +271,7 @@ namespace DAnCE
     }
 
     size_t ImplementationArtifactDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -366,7 +366,7 @@ namespace DAnCE
           referencedArtifact_ = std::make_unique< ::DAnCE::Config_Handlers::ImplementationArtifactDescription> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -434,7 +434,7 @@ namespace DAnCE
           contentLocation (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -449,7 +449,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }

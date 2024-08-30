@@ -134,7 +134,7 @@ namespace DAnCE
     }
 
     size_t PlanPropertyMapping::
-    count_source(void) const
+    count_source() const
     {
       return source_.size ();
     }
@@ -166,7 +166,7 @@ namespace DAnCE
     }
 
     size_t PlanPropertyMapping::
-    count_delegatesTo(void) const
+    count_delegatesTo() const
     {
       return delegatesTo_.size ();
     }
@@ -331,7 +331,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -350,7 +350,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_instance(void) const
+    count_instance() const
     {
       return instance_.size ();
     }
@@ -369,7 +369,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -388,7 +388,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_externalProperty(void) const
+    count_externalProperty() const
     {
       return externalProperty_.size ();
     }
@@ -407,7 +407,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_dependsOn(void) const
+    count_dependsOn() const
     {
       return dependsOn_.size ();
     }
@@ -426,7 +426,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_artifact(void) const
+    count_artifact() const
     {
       return artifact_.size ();
     }
@@ -445,7 +445,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -464,7 +464,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_localityConstraint(void) const
+    count_localityConstraint() const
     {
       return localityConstraint_.size ();
     }
@@ -499,7 +499,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::InstanceDeploymentDescription> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -541,7 +541,7 @@ namespace DAnCE
           delegatesTo_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -627,7 +627,7 @@ namespace DAnCE
           localityConstraint_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }

@@ -389,7 +389,7 @@ namespace XMI
         extenderID (t);
       }
 
-      else
+      else 
       {
       }
     }

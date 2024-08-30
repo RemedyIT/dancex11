@@ -128,7 +128,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_node(void) const
+    count_node() const
     {
       return node_.size ();
     }
@@ -147,7 +147,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_interconnect(void) const
+    count_interconnect() const
     {
       return interconnect_.size ();
     }
@@ -166,7 +166,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_bridge(void) const
+    count_bridge() const
     {
       return bridge_.size ();
     }
@@ -185,7 +185,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_sharedResource(void) const
+    count_sharedResource() const
     {
       return sharedResource_.size ();
     }
@@ -204,7 +204,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -304,7 +304,7 @@ namespace DAnCE
     }
 
     size_t Bridge::
-    count_connect(void) const
+    count_connect() const
     {
       return connect_.size ();
     }
@@ -323,7 +323,7 @@ namespace DAnCE
     }
 
     size_t Bridge::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -426,7 +426,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -445,7 +445,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_connect(void) const
+    count_connect() const
     {
       return connect_.size ();
     }
@@ -464,7 +464,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -565,7 +565,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -584,7 +584,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_sharedResource(void) const
+    count_sharedResource() const
     {
       return sharedResource_.size ();
     }
@@ -603,7 +603,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -764,7 +764,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -807,7 +807,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -856,7 +856,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -905,7 +905,7 @@ namespace DAnCE
           resource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -945,7 +945,7 @@ namespace DAnCE
           property_ = std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (e);
         }
 
-        else
+        else 
         {
         }
       }

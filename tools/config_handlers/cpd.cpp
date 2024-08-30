@@ -216,7 +216,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -235,7 +235,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -254,7 +254,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -441,7 +441,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -460,7 +460,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -479,7 +479,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -547,7 +547,7 @@ namespace DAnCE
           referencedImplementation_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentImplementationDescription> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -603,7 +603,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -618,7 +618,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -674,7 +674,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -689,7 +689,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }

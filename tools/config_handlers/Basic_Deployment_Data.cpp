@@ -521,7 +521,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_short(void) const
+    count_short() const
     {
       return short__.size ();
     }
@@ -540,7 +540,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_long(void) const
+    count_long() const
     {
       return long__.size ();
     }
@@ -559,7 +559,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_ushort(void) const
+    count_ushort() const
     {
       return ushort_.size ();
     }
@@ -578,7 +578,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_ulong(void) const
+    count_ulong() const
     {
       return ulong_.size ();
     }
@@ -597,7 +597,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_float(void) const
+    count_float() const
     {
       return float__.size ();
     }
@@ -616,7 +616,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_double(void) const
+    count_double() const
     {
       return double__.size ();
     }
@@ -635,7 +635,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_boolean(void) const
+    count_boolean() const
     {
       return boolean_.size ();
     }
@@ -654,7 +654,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_octet(void) const
+    count_octet() const
     {
       return octet_.size ();
     }
@@ -673,7 +673,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_enum(void) const
+    count_enum() const
     {
       return enum__.size ();
     }
@@ -692,7 +692,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_string(void) const
+    count_string() const
     {
       return string_.size ();
     }
@@ -711,7 +711,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_longlong(void) const
+    count_longlong() const
     {
       return longlong_.size ();
     }
@@ -730,7 +730,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_ulonglong(void) const
+    count_ulonglong() const
     {
       return ulonglong_.size ();
     }
@@ -749,7 +749,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_longdouble(void) const
+    count_longdouble() const
     {
       return longdouble_.size ();
     }
@@ -768,7 +768,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_element(void) const
+    count_element() const
     {
       return element_.size ();
     }
@@ -787,7 +787,7 @@ namespace DAnCE
     }
 
     size_t DataValue::
-    count_member(void) const
+    count_member() const
     {
       return member_.size ();
     }
@@ -945,7 +945,7 @@ namespace DAnCE
     }
 
     size_t EnumType::
-    count_member(void) const
+    count_member() const
     {
       return member_.size ();
     }
@@ -990,7 +990,7 @@ namespace DAnCE
     }
 
     size_t BoundedStringType::
-    count_bound(void) const
+    count_bound() const
     {
       return bound_.size ();
     }
@@ -1070,7 +1070,7 @@ namespace DAnCE
     }
 
     size_t StructType::
-    count_member(void) const
+    count_member() const
     {
       return member_.size ();
     }
@@ -1244,7 +1244,7 @@ namespace DAnCE
     }
 
     size_t ValueType::
-    count_member(void) const
+    count_member() const
     {
       return member_.size ();
     }
@@ -1812,7 +1812,7 @@ namespace DAnCE
     }
 
     size_t Resource::
-    count_resourceType(void) const
+    count_resourceType() const
     {
       return resourceType_.size ();
     }
@@ -1831,7 +1831,7 @@ namespace DAnCE
     }
 
     size_t Resource::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -1911,7 +1911,7 @@ namespace DAnCE
     }
 
     size_t Requirement::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -1991,7 +1991,7 @@ namespace DAnCE
     }
 
     size_t ResourceDeploymentDescription::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -2074,7 +2074,7 @@ namespace DAnCE
     }
 
     size_t ArtifactDeploymentDescription::
-    count_source(void) const
+    count_source() const
     {
       return source_.size ();
     }
@@ -2106,7 +2106,7 @@ namespace DAnCE
     }
 
     size_t ArtifactDeploymentDescription::
-    count_location(void) const
+    count_location() const
     {
       return location_.size ();
     }
@@ -2125,7 +2125,7 @@ namespace DAnCE
     }
 
     size_t ArtifactDeploymentDescription::
-    count_execParameter(void) const
+    count_execParameter() const
     {
       return execParameter_.size ();
     }
@@ -2144,7 +2144,7 @@ namespace DAnCE
     }
 
     size_t ArtifactDeploymentDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -2163,7 +2163,7 @@ namespace DAnCE
     }
 
     size_t ArtifactDeploymentDescription::
-    count_deployedResource(void) const
+    count_deployedResource() const
     {
       return deployedResource_.size ();
     }
@@ -2271,7 +2271,7 @@ namespace DAnCE
     }
 
     size_t MonolithicDeploymentDescription::
-    count_source(void) const
+    count_source() const
     {
       return source_.size ();
     }
@@ -2290,7 +2290,7 @@ namespace DAnCE
     }
 
     size_t MonolithicDeploymentDescription::
-    count_artifact(void) const
+    count_artifact() const
     {
       return artifact_.size ();
     }
@@ -2309,7 +2309,7 @@ namespace DAnCE
     }
 
     size_t MonolithicDeploymentDescription::
-    count_execParameter(void) const
+    count_execParameter() const
     {
       return execParameter_.size ();
     }
@@ -2328,7 +2328,7 @@ namespace DAnCE
     }
 
     size_t MonolithicDeploymentDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -2485,7 +2485,7 @@ namespace DAnCE
     }
 
     size_t InstanceResourceDeploymentDescription::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -2611,7 +2611,7 @@ namespace DAnCE
     }
 
     size_t InstanceDeploymentDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -2630,7 +2630,7 @@ namespace DAnCE
     }
 
     size_t InstanceDeploymentDescription::
-    count_deployedResource(void) const
+    count_deployedResource() const
     {
       return deployedResource_.size ();
     }
@@ -2649,7 +2649,7 @@ namespace DAnCE
     }
 
     size_t InstanceDeploymentDescription::
-    count_deployedSharedResource(void) const
+    count_deployedSharedResource() const
     {
       return deployedSharedResource_.size ();
     }
@@ -2831,7 +2831,7 @@ namespace DAnCE
     }
 
     size_t ComponentPortDescription::
-    count_supportedType(void) const
+    count_supportedType() const
     {
       return supportedType_.size ();
     }
@@ -2915,7 +2915,7 @@ namespace DAnCE
     }
 
     size_t ComponentPortDescription::
-    count_templateParam(void) const
+    count_templateParam() const
     {
       return templateParam_.size ();
     }
@@ -3235,7 +3235,7 @@ namespace DAnCE
     }
 
     size_t ExternalReferenceEndpoint::
-    count_supportedType(void) const
+    count_supportedType() const
     {
       return supportedType_.size ();
     }
@@ -3333,7 +3333,7 @@ namespace DAnCE
     }
 
     size_t ConnectionResourceDeploymentDescription::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -3440,7 +3440,7 @@ namespace DAnCE
     }
 
     size_t PlanConnectionDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -3459,7 +3459,7 @@ namespace DAnCE
     }
 
     size_t PlanConnectionDescription::
-    count_externalEndpoint(void) const
+    count_externalEndpoint() const
     {
       return externalEndpoint_.size ();
     }
@@ -3478,7 +3478,7 @@ namespace DAnCE
     }
 
     size_t PlanConnectionDescription::
-    count_internalEndpoint(void) const
+    count_internalEndpoint() const
     {
       return internalEndpoint_.size ();
     }
@@ -3497,7 +3497,7 @@ namespace DAnCE
     }
 
     size_t PlanConnectionDescription::
-    count_externalReference(void) const
+    count_externalReference() const
     {
       return externalReference_.size ();
     }
@@ -3516,7 +3516,7 @@ namespace DAnCE
     }
 
     size_t PlanConnectionDescription::
-    count_deployedResource(void) const
+    count_deployedResource() const
     {
       return deployedResource_.size ();
     }
@@ -3621,7 +3621,7 @@ namespace DAnCE
     }
 
     size_t Capability::
-    count_resourceType(void) const
+    count_resourceType() const
     {
       return resourceType_.size ();
     }
@@ -3640,7 +3640,7 @@ namespace DAnCE
     }
 
     size_t Capability::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -3819,7 +3819,7 @@ namespace DAnCE
     }
 
     size_t ImplementationRequirement::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -3948,7 +3948,7 @@ namespace DAnCE
     }
 
     size_t AssemblyConnectionDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -3967,7 +3967,7 @@ namespace DAnCE
     }
 
     size_t AssemblyConnectionDescription::
-    count_internalEndpoint(void) const
+    count_internalEndpoint() const
     {
       return internalEndpoint_.size ();
     }
@@ -3986,7 +3986,7 @@ namespace DAnCE
     }
 
     size_t AssemblyConnectionDescription::
-    count_externalEndpoint(void) const
+    count_externalEndpoint() const
     {
       return externalEndpoint_.size ();
     }
@@ -4005,7 +4005,7 @@ namespace DAnCE
     }
 
     size_t AssemblyConnectionDescription::
-    count_externalReference(void) const
+    count_externalReference() const
     {
       return externalReference_.size ();
     }
@@ -4095,7 +4095,7 @@ namespace DAnCE
     }
 
     size_t PlanLocality::
-    count_constrainedInstance(void) const
+    count_constrainedInstance() const
     {
       return constrainedInstance_.size ();
     }
@@ -4131,7 +4131,7 @@ namespace DAnCE
           idref (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4182,7 +4182,7 @@ namespace DAnCE
       else if (v ==  ("tk_component")) v_ = tk_component_l;
       else if (v ==  ("tk_home")) v_ = tk_home_l;
       else if (v ==  ("tk_event")) v_ = tk_event_l;
-      else
+      else 
       {
       }
     }
@@ -4230,7 +4230,7 @@ namespace DAnCE
       else if (v ==  ("tk_component")) v_ = tk_component_l;
       else if (v ==  ("tk_home")) v_ = tk_home_l;
       else if (v ==  ("tk_event")) v_ = tk_event_l;
-      else
+      else 
       {
       }
     }
@@ -4334,7 +4334,7 @@ namespace DAnCE
           boundedString (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4349,7 +4349,7 @@ namespace DAnCE
           id (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4459,7 +4459,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4494,7 +4494,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4530,7 +4530,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4556,7 +4556,7 @@ namespace DAnCE
           bound_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4592,7 +4592,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4622,7 +4622,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4668,7 +4668,7 @@ namespace DAnCE
           member_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4703,7 +4703,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4733,7 +4733,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::DataValue> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4763,7 +4763,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4794,7 +4794,7 @@ namespace DAnCE
           elementType_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4824,7 +4824,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::DataValue> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4854,7 +4854,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::Any> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4874,7 +4874,7 @@ namespace DAnCE
       else if (v ==  ("Maximum")) v_ = Maximum_l;
       else if (v ==  ("Attribute")) v_ = Attribute_l;
       else if (v ==  ("Selection")) v_ = Selection_l;
-      else
+      else 
       {
       }
     }
@@ -4891,7 +4891,7 @@ namespace DAnCE
       else if (v ==  ("Maximum")) v_ = Maximum_l;
       else if (v ==  ("Attribute")) v_ = Attribute_l;
       else if (v ==  ("Selection")) v_ = Selection_l;
-      else
+      else 
       {
       }
     }
@@ -4937,7 +4937,7 @@ namespace DAnCE
           value_ = std::make_unique< ::DAnCE::Config_Handlers::Any> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -4974,7 +4974,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5010,7 +5010,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5046,7 +5046,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5106,7 +5106,7 @@ namespace DAnCE
           deployedResource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5121,7 +5121,7 @@ namespace DAnCE
           id (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5170,7 +5170,7 @@ namespace DAnCE
           deployRequirement_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5185,7 +5185,7 @@ namespace DAnCE
           id (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5204,7 +5204,7 @@ namespace DAnCE
       else if (v ==  ("ResourceUsesInstance")) v_ = ResourceUsesInstance_l;
       else if (v ==  ("PortUsesResource")) v_ = PortUsesResource_l;
       else if (v ==  ("ResourceUsesPort")) v_ = ResourceUsesPort_l;
-      else
+      else 
       {
       }
     }
@@ -5220,7 +5220,7 @@ namespace DAnCE
       else if (v ==  ("ResourceUsesInstance")) v_ = ResourceUsesInstance_l;
       else if (v ==  ("PortUsesResource")) v_ = PortUsesResource_l;
       else if (v ==  ("ResourceUsesPort")) v_ = ResourceUsesPort_l;
-      else
+      else 
       {
       }
     }
@@ -5266,7 +5266,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5324,7 +5324,7 @@ namespace DAnCE
           deployedSharedResource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5339,7 +5339,7 @@ namespace DAnCE
           id (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5361,7 +5361,7 @@ namespace DAnCE
       else if (v ==  ("EventConsumer")) v_ = EventConsumer_l;
       else if (v ==  ("ExtendedPort")) v_ = ExtendedPort_l;
       else if (v ==  ("MirrorPort")) v_ = MirrorPort_l;
-      else
+      else 
       {
       }
     }
@@ -5380,7 +5380,7 @@ namespace DAnCE
       else if (v ==  ("EventConsumer")) v_ = EventConsumer_l;
       else if (v ==  ("ExtendedPort")) v_ = ExtendedPort_l;
       else if (v ==  ("MirrorPort")) v_ = MirrorPort_l;
-      else
+      else 
       {
       }
     }
@@ -5456,7 +5456,7 @@ namespace DAnCE
           templateParam_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5486,7 +5486,7 @@ namespace DAnCE
           type_ = std::make_unique< ::DAnCE::Config_Handlers::DataType> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5511,7 +5511,7 @@ namespace DAnCE
           portName_ = std::make_unique< ::XMLSchema::string<char>> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5552,7 +5552,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5594,7 +5594,7 @@ namespace DAnCE
           supportedType_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5635,7 +5635,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5696,7 +5696,7 @@ namespace DAnCE
           deployedResource_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5721,7 +5721,7 @@ namespace DAnCE
           requiredType_ = std::make_unique< ::XMLSchema::string<char>> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5758,7 +5758,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5812,7 +5812,7 @@ namespace DAnCE
           property_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5842,7 +5842,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5891,7 +5891,7 @@ namespace DAnCE
           externalReference_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -5908,7 +5908,7 @@ namespace DAnCE
       if (v ==  ("SameProcess")) v_ = SameProcess_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else
+      else 
       {
       }
     }
@@ -5922,7 +5922,7 @@ namespace DAnCE
       if (v ==  ("SameProcess")) v_ = SameProcess_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else
+      else 
       {
       }
     }
@@ -5956,7 +5956,7 @@ namespace DAnCE
           constrainedInstance_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }

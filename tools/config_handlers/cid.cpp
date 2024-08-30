@@ -257,7 +257,7 @@ namespace DAnCE
     }
 
     size_t SubcomponentInstantiationDescription::
-    count_selectRequirement(void) const
+    count_selectRequirement() const
     {
       return selectRequirement_.size ();
     }
@@ -276,7 +276,7 @@ namespace DAnCE
     }
 
     size_t SubcomponentInstantiationDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -501,7 +501,7 @@ namespace DAnCE
     }
 
     size_t AssemblyPropertyMapping::
-    count_delegatesTo(void) const
+    count_delegatesTo() const
     {
       return delegatesTo_.size ();
     }
@@ -639,7 +639,7 @@ namespace DAnCE
     }
 
     size_t ComponentAssemblyDescription::
-    count_instance(void) const
+    count_instance() const
     {
       return instance_.size ();
     }
@@ -658,7 +658,7 @@ namespace DAnCE
     }
 
     size_t ComponentAssemblyDescription::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -677,7 +677,7 @@ namespace DAnCE
     }
 
     size_t ComponentAssemblyDescription::
-    count_externalProperty(void) const
+    count_externalProperty() const
     {
       return externalProperty_.size ();
     }
@@ -696,7 +696,7 @@ namespace DAnCE
     }
 
     size_t ComponentAssemblyDescription::
-    count_locality(void) const
+    count_locality() const
     {
       return locality_.size ();
     }
@@ -750,7 +750,7 @@ namespace DAnCE
     }
 
     size_t MonolithicImplementationDescription::
-    count_nodeExecParameter(void) const
+    count_nodeExecParameter() const
     {
       return nodeExecParameter_.size ();
     }
@@ -769,7 +769,7 @@ namespace DAnCE
     }
 
     size_t MonolithicImplementationDescription::
-    count_componentExecParameter(void) const
+    count_componentExecParameter() const
     {
       return componentExecParameter_.size ();
     }
@@ -788,7 +788,7 @@ namespace DAnCE
     }
 
     size_t MonolithicImplementationDescription::
-    count_deployRequirement(void) const
+    count_deployRequirement() const
     {
       return deployRequirement_.size ();
     }
@@ -807,7 +807,7 @@ namespace DAnCE
     }
 
     size_t MonolithicImplementationDescription::
-    count_primaryArtifact(void) const
+    count_primaryArtifact() const
     {
       return primaryArtifact_.size ();
     }
@@ -1030,7 +1030,7 @@ namespace DAnCE
     }
 
     size_t ComponentImplementationDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -1049,7 +1049,7 @@ namespace DAnCE
     }
 
     size_t ComponentImplementationDescription::
-    count_capability(void) const
+    count_capability() const
     {
       return capability_.size ();
     }
@@ -1068,7 +1068,7 @@ namespace DAnCE
     }
 
     size_t ComponentImplementationDescription::
-    count_dependsOn(void) const
+    count_dependsOn() const
     {
       return dependsOn_.size ();
     }
@@ -1087,7 +1087,7 @@ namespace DAnCE
     }
 
     size_t ComponentImplementationDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -1343,7 +1343,7 @@ namespace DAnCE
     }
 
     size_t ConnectorImplementationDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -1362,7 +1362,7 @@ namespace DAnCE
     }
 
     size_t ConnectorImplementationDescription::
-    count_capability(void) const
+    count_capability() const
     {
       return capability_.size ();
     }
@@ -1381,7 +1381,7 @@ namespace DAnCE
     }
 
     size_t ConnectorImplementationDescription::
-    count_dependsOn(void) const
+    count_dependsOn() const
     {
       return dependsOn_.size ();
     }
@@ -1400,7 +1400,7 @@ namespace DAnCE
     }
 
     size_t ConnectorImplementationDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -1475,7 +1475,7 @@ namespace DAnCE
           requiredType_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1536,7 +1536,7 @@ namespace DAnCE
           importedPackage (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1551,7 +1551,7 @@ namespace DAnCE
           id (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1581,7 +1581,7 @@ namespace DAnCE
           instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1617,7 +1617,7 @@ namespace DAnCE
           delegatesTo_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1637,7 +1637,7 @@ namespace DAnCE
       else if (v ==  ("DifferentNode")) v_ = DifferentNode_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else
+      else 
       {
       }
     }
@@ -1654,7 +1654,7 @@ namespace DAnCE
       else if (v ==  ("DifferentNode")) v_ = DifferentNode_l;
       else if (v ==  ("DifferentProcess")) v_ = DifferentProcess_l;
       else if (v ==  ("NoConstraint")) v_ = NoConstraint_l;
-      else
+      else 
       {
       }
     }
@@ -1690,7 +1690,7 @@ namespace DAnCE
           constrainedInstance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1734,7 +1734,7 @@ namespace DAnCE
           locality_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1778,7 +1778,7 @@ namespace DAnCE
           primaryArtifact_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1852,7 +1852,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1867,7 +1867,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1941,7 +1941,7 @@ namespace DAnCE
           infoProperty_.push_back (t);
         }
 
-        else
+        else 
         {
         }
       }
@@ -1956,7 +1956,7 @@ namespace DAnCE
           href (t);
         }
 
-        else
+        else 
         {
         }
       }
