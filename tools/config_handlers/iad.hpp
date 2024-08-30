@@ -37,7 +37,7 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
       using name_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -46,7 +46,7 @@ namespace DAnCE
       // referencedArtifact
       public:
       ::DAnCE::Config_Handlers::ImplementationArtifactDescription const& referencedArtifact () const;
-      void referencedArtifact (::DAnCE::Config_Handlers::ImplementationArtifactDescription const& );
+      void referencedArtifact (::DAnCE::Config_Handlers::ImplementationArtifactDescription const&);
 
       protected:
       using referencedArtifact_type = std::unique_ptr<::DAnCE::Config_Handlers::ImplementationArtifactDescription>;
@@ -73,7 +73,7 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const& e);
 
       protected:
       using label_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -83,7 +83,7 @@ namespace DAnCE
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const& e);
 
       protected:
       using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -148,7 +148,7 @@ namespace DAnCE
       public:
       bool contentLocation_p () const;
       ::XMLSchema::string<char> const& contentLocation () const;
-      void contentLocation (::XMLSchema::string<char> const& );
+      void contentLocation (::XMLSchema::string<char> const& e);
 
       protected:
       using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -159,7 +159,7 @@ namespace DAnCE
       bool href_p () const;
       ::XMLSchema::string<char> const& href () const;
       ::XMLSchema::string<char>& href ();
-      void href (::XMLSchema::string<char> const& );
+      void href (::XMLSchema::string<char> const&);
 
       protected:
       using href_type = std::unique_ptr<::XMLSchema::string<char>>;

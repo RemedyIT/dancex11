@@ -38,7 +38,7 @@ namespace DAnCE
       // propertyName
       public:
       ::XMLSchema::string<char> const& propertyName () const;
-      void propertyName (::XMLSchema::string<char> const& );
+      void propertyName (::XMLSchema::string<char> const&);
 
       protected:
       using propertyName_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -47,7 +47,7 @@ namespace DAnCE
       // instance
       public:
       ::DAnCE::Config_Handlers::InstanceDeploymentDescription const& instance () const;
-      void instance (::DAnCE::Config_Handlers::InstanceDeploymentDescription const& );
+      void instance (::DAnCE::Config_Handlers::InstanceDeploymentDescription const&);
 
       protected:
       using instance_type = std::unique_ptr<::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
@@ -73,7 +73,7 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
       using name_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -93,7 +93,7 @@ namespace DAnCE
       // externalName
       public:
       ::XMLSchema::string<char> const& externalName () const;
-      void externalName (::XMLSchema::string<char> const& );
+      void externalName (::XMLSchema::string<char> const&);
 
       protected:
       using externalName_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -132,7 +132,7 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const& e);
 
       protected:
       using label_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -142,7 +142,7 @@ namespace DAnCE
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const& e);
 
       protected:
       using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -152,7 +152,7 @@ namespace DAnCE
       public:
       bool realizes_p () const;
       ::DAnCE::Config_Handlers::ComponentInterfaceDescription const& realizes () const;
-      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
+      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& e);
 
       protected:
       using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
