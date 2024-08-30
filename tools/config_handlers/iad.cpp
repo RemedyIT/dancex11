@@ -15,15 +15,15 @@ namespace DAnCE
     NamedImplementationArtifact::NamedImplementationArtifact (::XMLSchema::string<char> const& name__,
                                                               ::DAnCE::Config_Handlers::ImplementationArtifactDescription const& referencedArtifact__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , referencedArtifact_ (std::make_unique< ::DAnCE::Config_Handlers::ImplementationArtifactDescription> (referencedArtifact__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , referencedArtifact_ (std::make_unique<::DAnCE::Config_Handlers::ImplementationArtifactDescription> (referencedArtifact__))
     {
     }
 
     NamedImplementationArtifact::NamedImplementationArtifact (NamedImplementationArtifact const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , referencedArtifact_ (std::make_unique< ::DAnCE::Config_Handlers::ImplementationArtifactDescription> (*s.referencedArtifact_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , referencedArtifact_ (std::make_unique<::DAnCE::Config_Handlers::ImplementationArtifactDescription> (*s.referencedArtifact_))
     {
     }
 
@@ -77,15 +77,15 @@ namespace DAnCE
 
     ImplementationArtifactDescription::ImplementationArtifactDescription (ImplementationArtifactDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
     , location_ (s.location_)
     , dependsOn_ (s.dependsOn_)
     , execParameter_ (s.execParameter_)
     , infoProperty_ (s.infoProperty_)
     , deployRequirement_ (s.deployRequirement_)
-    , contentLocation_ (s.contentLocation_ ? std::make_unique< ::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , contentLocation_ (s.contentLocation_ ? std::make_unique<::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -150,7 +150,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -177,7 +177,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -299,7 +299,7 @@ namespace DAnCE
 
       else
       {
-        contentLocation_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        contentLocation_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -332,7 +332,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }
@@ -358,12 +358,12 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "referencedArtifact")
         {
-          referencedArtifact_ = std::make_unique< ::DAnCE::Config_Handlers::ImplementationArtifactDescription> (e);
+          referencedArtifact_ = std::make_unique<::DAnCE::Config_Handlers::ImplementationArtifactDescription> (e);
         }
 
         else 

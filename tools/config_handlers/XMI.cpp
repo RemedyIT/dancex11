@@ -16,14 +16,14 @@ namespace XMI
 
   Extension::Extension (Extension const& s) :
   ::XSCRT::Type (s)
-  , id_ (s.id_ ? std::make_unique< ::XMLSchema::ID<char>> (*s.id_) : nullptr)
-  , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-  , uuid_ (s.uuid_ ? std::make_unique< ::XMLSchema::string<char>> (*s.uuid_) : nullptr)
-  , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
-  , idref_ (s.idref_ ? std::make_unique< ::XMLSchema::IDREF<char>> (*s.idref_) : nullptr)
-  , version_ (s.version_ ? std::make_unique< ::XMLSchema::string<char>> (*s.version_) : nullptr)
-  , extender_ (s.extender_ ? std::make_unique< ::XMLSchema::string<char>> (*s.extender_) : nullptr)
-  , extenderID_ (s.extenderID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.extenderID_) : nullptr)
+  , id_ (s.id_ ? std::make_unique<::XMLSchema::ID<char>> (*s.id_) : nullptr)
+  , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+  , uuid_ (s.uuid_ ? std::make_unique<::XMLSchema::string<char>> (*s.uuid_) : nullptr)
+  , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
+  , idref_ (s.idref_ ? std::make_unique<::XMLSchema::IDREF<char>> (*s.idref_) : nullptr)
+  , version_ (s.version_ ? std::make_unique<::XMLSchema::string<char>> (*s.version_) : nullptr)
+  , extender_ (s.extender_ ? std::make_unique<::XMLSchema::string<char>> (*s.extender_) : nullptr)
+  , extenderID_ (s.extenderID_ ? std::make_unique<::XMLSchema::string<char>> (*s.extenderID_) : nullptr)
   {
   }
 
@@ -90,7 +90,7 @@ namespace XMI
 
     else
     {
-      id_ = std::make_unique< ::XMLSchema::ID<char>> (e);
+      id_ = std::make_unique<::XMLSchema::ID<char>> (e);
     }
   }
 
@@ -123,7 +123,7 @@ namespace XMI
 
     else
     {
-      label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      label_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 
@@ -156,7 +156,7 @@ namespace XMI
 
     else
     {
-      uuid_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      uuid_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 
@@ -189,7 +189,7 @@ namespace XMI
 
     else
     {
-      href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      href_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 
@@ -222,7 +222,7 @@ namespace XMI
 
     else
     {
-      idref_ = std::make_unique< ::XMLSchema::IDREF<char>> (e);
+      idref_ = std::make_unique<::XMLSchema::IDREF<char>> (e);
     }
   }
 
@@ -255,7 +255,7 @@ namespace XMI
 
     else
     {
-      version_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      version_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 
@@ -288,7 +288,7 @@ namespace XMI
 
     else
     {
-      extender_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      extender_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 
@@ -321,7 +321,7 @@ namespace XMI
 
     else
     {
-      extenderID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+      extenderID_ = std::make_unique<::XMLSchema::string<char>> (e);
     }
   }
 }

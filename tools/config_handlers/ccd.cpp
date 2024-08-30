@@ -19,17 +19,17 @@ namespace DAnCE
 
     ComponentInterfaceDescription::ComponentInterfaceDescription (ComponentInterfaceDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , specificType_ (s.specificType_ ? std::make_unique< ::XMLSchema::string<char>> (*s.specificType_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , specificType_ (s.specificType_ ? std::make_unique<::XMLSchema::string<char>> (*s.specificType_) : nullptr)
     , supportedType_ (s.supportedType_)
     , idlFile_ (s.idlFile_)
     , configProperty_ (s.configProperty_)
     , port_ (s.port_)
     , property_ (s.property_)
     , infoProperty_ (s.infoProperty_)
-    , contentLocation_ (s.contentLocation_ ? std::make_unique< ::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , contentLocation_ (s.contentLocation_ ? std::make_unique<::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -101,7 +101,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -128,7 +128,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -155,7 +155,7 @@ namespace DAnCE
 
       else
       {
-        specificType_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        specificType_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -296,7 +296,7 @@ namespace DAnCE
 
       else
       {
-        contentLocation_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        contentLocation_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -329,7 +329,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }

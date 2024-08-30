@@ -20,8 +20,8 @@ namespace DAnCE
 
     Domain::Domain (Domain const& s) :
     ::XSCRT::Type (s)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , node_ (s.node_)
     , interconnect_ (s.interconnect_)
     , bridge_ (s.bridge_)
@@ -83,7 +83,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -110,7 +110,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -215,15 +215,15 @@ namespace DAnCE
     Bridge::Bridge (::XMLSchema::string<char> const& name__,
                     connect_container_type const& connect__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     , connect_ (connect__)
     {
     }
 
     Bridge::Bridge (Bridge const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connect_ (s.connect_)
     , resource_ (s.resource_)
     {
@@ -286,7 +286,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -334,15 +334,15 @@ namespace DAnCE
     Interconnect::Interconnect (::XMLSchema::string<char> const& name__,
                                 connect_container_type const& connect__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     , connect_ (connect__)
     {
     }
 
     Interconnect::Interconnect (Interconnect const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connection_ (s.connection_)
     , connect_ (s.connect_)
     , resource_ (s.resource_)
@@ -408,7 +408,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -474,14 +474,14 @@ namespace DAnCE
 
     Node::Node (::XMLSchema::string<char> const& name__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     {
     }
 
     Node::Node (Node const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connection_ (s.connection_)
     , sharedResource_ (s.sharedResource_)
     , resource_ (s.resource_)
@@ -547,7 +547,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -616,19 +616,19 @@ namespace DAnCE
                                     ::DAnCE::Config_Handlers::Node const& node__,
                                     ::DAnCE::Config_Handlers::SatisfierProperty const& property__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , resourceType_ (std::make_unique< ::XMLSchema::string<char>> (resourceType__))
-    , node_ (std::make_unique< ::DAnCE::Config_Handlers::Node> (node__))
-    , property_ (std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (property__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , resourceType_ (std::make_unique<::XMLSchema::string<char>> (resourceType__))
+    , node_ (std::make_unique<::DAnCE::Config_Handlers::Node> (node__))
+    , property_ (std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (property__))
     {
     }
 
     SharedResource::SharedResource (SharedResource const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , resourceType_ (std::make_unique< ::XMLSchema::string<char>> (*s.resourceType_))
-    , node_ (std::make_unique< ::DAnCE::Config_Handlers::Node> (*s.node_))
-    , property_ (std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (*s.property_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , resourceType_ (std::make_unique<::XMLSchema::string<char>> (*s.resourceType_))
+    , node_ (std::make_unique<::DAnCE::Config_Handlers::Node> (*s.node_))
+    , property_ (std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (*s.property_))
     {
     }
 
@@ -786,7 +786,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -829,7 +829,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -878,7 +878,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -927,22 +927,22 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "resourceType")
         {
-          resourceType_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          resourceType_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "node")
         {
-          node_ = std::make_unique< ::DAnCE::Config_Handlers::Node> (e);
+          node_ = std::make_unique<::DAnCE::Config_Handlers::Node> (e);
         }
 
         else if (n == "property")
         {
-          property_ = std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (e);
+          property_ = std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (e);
         }
 
         else 

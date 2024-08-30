@@ -14,15 +14,15 @@ namespace DAnCE
 
     ComponentPackageReference::ComponentPackageReference (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& requiredType__)
     : ::XSCRT::Type ()
-    , requiredType_ (std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (requiredType__))
+    , requiredType_ (std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (requiredType__))
     {
     }
 
     ComponentPackageReference::ComponentPackageReference (ComponentPackageReference const& s) :
     ::XSCRT::Type (s)
-    , requiredUUID_ (s.requiredUUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.requiredUUID_) : nullptr)
-    , requiredName_ (s.requiredName_ ? std::make_unique< ::XMLSchema::string<char>> (*s.requiredName_) : nullptr)
-    , requiredType_ (std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.requiredType_))
+    , requiredUUID_ (s.requiredUUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.requiredUUID_) : nullptr)
+    , requiredName_ (s.requiredName_ ? std::make_unique<::XMLSchema::string<char>> (*s.requiredName_) : nullptr)
+    , requiredType_ (std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.requiredType_))
     {
     }
 
@@ -71,7 +71,7 @@ namespace DAnCE
 
       else
       {
-        requiredUUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        requiredUUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -98,7 +98,7 @@ namespace DAnCE
 
       else
       {
-        requiredName_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        requiredName_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -120,20 +120,20 @@ namespace DAnCE
 
     SubcomponentInstantiationDescription::SubcomponentInstantiationDescription (::XMLSchema::string<char> const& name__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     {
     }
 
     SubcomponentInstantiationDescription::SubcomponentInstantiationDescription (SubcomponentInstantiationDescription const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , basePackage_ (s.basePackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageDescription> (*s.basePackage_) : nullptr)
-    , specializedConfig_ (s.specializedConfig_ ? std::make_unique< ::DAnCE::Config_Handlers::PackageConfiguration> (*s.specializedConfig_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , basePackage_ (s.basePackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageDescription> (*s.basePackage_) : nullptr)
+    , specializedConfig_ (s.specializedConfig_ ? std::make_unique<::DAnCE::Config_Handlers::PackageConfiguration> (*s.specializedConfig_) : nullptr)
     , selectRequirement_ (s.selectRequirement_)
     , configProperty_ (s.configProperty_)
-    , referencedPackage_ (s.referencedPackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageReference> (*s.referencedPackage_) : nullptr)
-    , importedPackage_ (s.importedPackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageImport> (*s.importedPackage_) : nullptr)
-    , id_ (s.id_ ? std::make_unique< ::XMLSchema::ID<char>> (*s.id_) : nullptr)
+    , referencedPackage_ (s.referencedPackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageReference> (*s.referencedPackage_) : nullptr)
+    , importedPackage_ (s.importedPackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageImport> (*s.importedPackage_) : nullptr)
+    , id_ (s.id_ ? std::make_unique<::XMLSchema::ID<char>> (*s.id_) : nullptr)
     {
     }
 
@@ -212,7 +212,7 @@ namespace DAnCE
 
       else
       {
-        basePackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageDescription> (e);
+        basePackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageDescription> (e);
       }
     }
 
@@ -239,7 +239,7 @@ namespace DAnCE
 
       else
       {
-        specializedConfig_ = std::make_unique< ::DAnCE::Config_Handlers::PackageConfiguration> (e);
+        specializedConfig_ = std::make_unique<::DAnCE::Config_Handlers::PackageConfiguration> (e);
       }
     }
 
@@ -304,7 +304,7 @@ namespace DAnCE
 
       else
       {
-        referencedPackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageReference> (e);
+        referencedPackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageReference> (e);
       }
     }
 
@@ -331,7 +331,7 @@ namespace DAnCE
 
       else
       {
-        importedPackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageImport> (e);
+        importedPackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageImport> (e);
       }
     }
 
@@ -364,7 +364,7 @@ namespace DAnCE
 
       else
       {
-        id_ = std::make_unique< ::XMLSchema::ID<char>> (e);
+        id_ = std::make_unique<::XMLSchema::ID<char>> (e);
       }
     }
 
@@ -374,15 +374,15 @@ namespace DAnCE
     SubcomponentPropertyReference::SubcomponentPropertyReference (::XMLSchema::string<char> const& propertyName__,
                                                                   ::DAnCE::Config_Handlers::IdRef const& instance__)
     : ::XSCRT::Type ()
-    , propertyName_ (std::make_unique< ::XMLSchema::string<char>> (propertyName__))
-    , instance_ (std::make_unique< ::DAnCE::Config_Handlers::IdRef> (instance__))
+    , propertyName_ (std::make_unique<::XMLSchema::string<char>> (propertyName__))
+    , instance_ (std::make_unique<::DAnCE::Config_Handlers::IdRef> (instance__))
     {
     }
 
     SubcomponentPropertyReference::SubcomponentPropertyReference (SubcomponentPropertyReference const& s) :
     ::XSCRT::Type (s)
-    , propertyName_ (std::make_unique< ::XMLSchema::string<char>> (*s.propertyName_))
-    , instance_ (std::make_unique< ::DAnCE::Config_Handlers::IdRef> (*s.instance_))
+    , propertyName_ (std::make_unique<::XMLSchema::string<char>> (*s.propertyName_))
+    , instance_ (std::make_unique<::DAnCE::Config_Handlers::IdRef> (*s.instance_))
     {
     }
 
@@ -432,15 +432,15 @@ namespace DAnCE
     AssemblyPropertyMapping::AssemblyPropertyMapping (::XMLSchema::string<char> const& name__,
                                                       ::XMLSchema::string<char> const& externalName__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , externalName_ (std::make_unique< ::XMLSchema::string<char>> (externalName__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , externalName_ (std::make_unique<::XMLSchema::string<char>> (externalName__))
     {
     }
 
     AssemblyPropertyMapping::AssemblyPropertyMapping (AssemblyPropertyMapping const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , externalName_ (std::make_unique< ::XMLSchema::string<char>> (*s.externalName_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , externalName_ (std::make_unique<::XMLSchema::string<char>> (*s.externalName_))
     , delegatesTo_ (s.delegatesTo_)
     {
     }
@@ -538,15 +538,15 @@ namespace DAnCE
     Locality::Locality (::DAnCE::Config_Handlers::LocalityKind const& constraint__,
                         ::DAnCE::Config_Handlers::IdRef const& constrainedInstance__)
     : ::XSCRT::Type ()
-    , constraint_ (std::make_unique< ::DAnCE::Config_Handlers::LocalityKind> (constraint__))
-    , constrainedInstance_ (std::make_unique< ::DAnCE::Config_Handlers::IdRef> (constrainedInstance__))
+    , constraint_ (std::make_unique<::DAnCE::Config_Handlers::LocalityKind> (constraint__))
+    , constrainedInstance_ (std::make_unique<::DAnCE::Config_Handlers::IdRef> (constrainedInstance__))
     {
     }
 
     Locality::Locality (Locality const& s) :
     ::XSCRT::Type (s)
-    , constraint_ (std::make_unique< ::DAnCE::Config_Handlers::LocalityKind> (*s.constraint_))
-    , constrainedInstance_ (std::make_unique< ::DAnCE::Config_Handlers::IdRef> (*s.constrainedInstance_))
+    , constraint_ (std::make_unique<::DAnCE::Config_Handlers::LocalityKind> (*s.constraint_))
+    , constrainedInstance_ (std::make_unique<::DAnCE::Config_Handlers::IdRef> (*s.constrainedInstance_))
     {
     }
 
@@ -822,16 +822,16 @@ namespace DAnCE
 
     ComponentImplementationDescription::ComponentImplementationDescription (ComponentImplementationDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , implements_ (s.implements_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.implements_) : nullptr)
-    , assemblyImpl_ (s.assemblyImpl_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentAssemblyDescription> (*s.assemblyImpl_) : nullptr)
-    , monolithicImpl_ (s.monolithicImpl_ ? std::make_unique< ::DAnCE::Config_Handlers::MonolithicImplementationDescription> (*s.monolithicImpl_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , implements_ (s.implements_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.implements_) : nullptr)
+    , assemblyImpl_ (s.assemblyImpl_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentAssemblyDescription> (*s.assemblyImpl_) : nullptr)
+    , monolithicImpl_ (s.monolithicImpl_ ? std::make_unique<::DAnCE::Config_Handlers::MonolithicImplementationDescription> (*s.monolithicImpl_) : nullptr)
     , configProperty_ (s.configProperty_)
     , capability_ (s.capability_)
     , dependsOn_ (s.dependsOn_)
     , infoProperty_ (s.infoProperty_)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -904,7 +904,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -931,7 +931,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -958,7 +958,7 @@ namespace DAnCE
 
       else
       {
-        implements_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+        implements_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
       }
     }
 
@@ -985,7 +985,7 @@ namespace DAnCE
 
       else
       {
-        assemblyImpl_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentAssemblyDescription> (e);
+        assemblyImpl_ = std::make_unique<::DAnCE::Config_Handlers::ComponentAssemblyDescription> (e);
       }
     }
 
@@ -1012,7 +1012,7 @@ namespace DAnCE
 
       else
       {
-        monolithicImpl_ = std::make_unique< ::DAnCE::Config_Handlers::MonolithicImplementationDescription> (e);
+        monolithicImpl_ = std::make_unique<::DAnCE::Config_Handlers::MonolithicImplementationDescription> (e);
       }
     }
 
@@ -1121,7 +1121,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -1135,16 +1135,16 @@ namespace DAnCE
 
     ConnectorImplementationDescription::ConnectorImplementationDescription (ConnectorImplementationDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , implements_ (s.implements_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.implements_) : nullptr)
-    , assemblyImpl_ (s.assemblyImpl_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentAssemblyDescription> (*s.assemblyImpl_) : nullptr)
-    , monolithicImpl_ (s.monolithicImpl_ ? std::make_unique< ::DAnCE::Config_Handlers::MonolithicImplementationDescription> (*s.monolithicImpl_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , implements_ (s.implements_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.implements_) : nullptr)
+    , assemblyImpl_ (s.assemblyImpl_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentAssemblyDescription> (*s.assemblyImpl_) : nullptr)
+    , monolithicImpl_ (s.monolithicImpl_ ? std::make_unique<::DAnCE::Config_Handlers::MonolithicImplementationDescription> (*s.monolithicImpl_) : nullptr)
     , configProperty_ (s.configProperty_)
     , capability_ (s.capability_)
     , dependsOn_ (s.dependsOn_)
     , infoProperty_ (s.infoProperty_)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -1217,7 +1217,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -1244,7 +1244,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -1271,7 +1271,7 @@ namespace DAnCE
 
       else
       {
-        implements_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+        implements_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
       }
     }
 
@@ -1298,7 +1298,7 @@ namespace DAnCE
 
       else
       {
-        assemblyImpl_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentAssemblyDescription> (e);
+        assemblyImpl_ = std::make_unique<::DAnCE::Config_Handlers::ComponentAssemblyDescription> (e);
       }
     }
 
@@ -1325,7 +1325,7 @@ namespace DAnCE
 
       else
       {
-        monolithicImpl_ = std::make_unique< ::DAnCE::Config_Handlers::MonolithicImplementationDescription> (e);
+        monolithicImpl_ = std::make_unique<::DAnCE::Config_Handlers::MonolithicImplementationDescription> (e);
       }
     }
 
@@ -1434,7 +1434,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }
@@ -1472,7 +1472,7 @@ namespace DAnCE
 
         else if (n == "requiredType")
         {
-          requiredType_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+          requiredType_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
         }
 
         else 
@@ -1497,7 +1497,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "basePackage")
@@ -1573,12 +1573,12 @@ namespace DAnCE
 
         if (n == "propertyName")
         {
-          propertyName_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          propertyName_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "instance")
         {
-          instance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
+          instance_ = std::make_unique<::DAnCE::Config_Handlers::IdRef> (e);
         }
 
         else 
@@ -1603,12 +1603,12 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "externalName")
         {
-          externalName_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          externalName_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "delegatesTo")
@@ -1682,12 +1682,12 @@ namespace DAnCE
 
         if (n == "constraint")
         {
-          constraint_ = std::make_unique< ::DAnCE::Config_Handlers::LocalityKind> (e);
+          constraint_ = std::make_unique<::DAnCE::Config_Handlers::LocalityKind> (e);
         }
 
         else if (n == "constrainedInstance")
         {
-          constrainedInstance_ = std::make_unique< ::DAnCE::Config_Handlers::IdRef> (e);
+          constrainedInstance_ = std::make_unique<::DAnCE::Config_Handlers::IdRef> (e);
         }
 
         else 
