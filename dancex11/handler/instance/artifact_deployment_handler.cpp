@@ -198,12 +198,12 @@ extern "C"
   void create_DAnCEX11_Artifact_Deployment_Handler (
     IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& plugin)
   {
-    plugin = CORBA::make_reference< ::DAnCEX11::Artifact_Deployment_Handler_i> ();
+    plugin = CORBA::make_reference<::DAnCEX11::Artifact_Deployment_Handler_i> ();
   }
 
   void create_DAnCEX11_Artifact_Deployment_Initializer (
     IDL::traits<::DAnCEX11::DeploymentInterceptor>::ref_type& plugin)
   {
-    plugin = CORBA::make_reference< ::DAnCEX11::Artifact_Deployment_Initializer> ();
+    plugin = CORBA::make_reference<::DAnCEX11::Artifact_Deployment_Initializer> ();
   }
 }

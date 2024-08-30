@@ -49,7 +49,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageImport::
-    count_location(void) const
+    count_location() const
     {
       return location_.size ();
     }
@@ -64,15 +64,15 @@ namespace DAnCE
 
     PackageConfiguration::PackageConfiguration (PackageConfiguration const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , basePackage_ (s.basePackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageDescription> (*s.basePackage_) : nullptr)
-    , specializedConfig_ (s.specializedConfig_ ? std::make_unique< ::DAnCE::Config_Handlers::PackageConfiguration> (*s.specializedConfig_) : nullptr)
-    , importedPackage_ (s.importedPackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageImport> (*s.importedPackage_) : nullptr)
-    , referencedPackage_ (s.referencedPackage_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageReference> (*s.referencedPackage_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , basePackage_ (s.basePackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageDescription> (*s.basePackage_) : nullptr)
+    , specializedConfig_ (s.specializedConfig_ ? std::make_unique<::DAnCE::Config_Handlers::PackageConfiguration> (*s.specializedConfig_) : nullptr)
+    , importedPackage_ (s.importedPackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageImport> (*s.importedPackage_) : nullptr)
+    , referencedPackage_ (s.referencedPackage_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentPackageReference> (*s.referencedPackage_) : nullptr)
     , selectRequirement_ (s.selectRequirement_)
     , configProperty_ (s.configProperty_)
-    , contentLocation_ (s.contentLocation_ ? std::make_unique< ::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
+    , contentLocation_ (s.contentLocation_ ? std::make_unique<::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
     {
     }
 
@@ -84,32 +84,32 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.basePackage_)
           basePackage (*(s.basePackage_));
         else
-          basePackage_.reset (nullptr);
+          basePackage_.release ();
 
         if (s.specializedConfig_)
           specializedConfig (*(s.specializedConfig_));
         else
-          specializedConfig_.reset (nullptr);
+          specializedConfig_.release ();
 
         if (s.importedPackage_)
           importedPackage (*(s.importedPackage_));
         else
-          importedPackage_.reset (nullptr);
+          importedPackage_.release ();
 
         if (s.referencedPackage_)
           referencedPackage (*(s.referencedPackage_));
         else
-          referencedPackage_.reset (nullptr);
+          referencedPackage_.release ();
 
         selectRequirement_ = s.selectRequirement_;
 
@@ -118,7 +118,7 @@ namespace DAnCE
         if (s.contentLocation_)
           contentLocation (*(s.contentLocation_));
         else
-          contentLocation_.reset (nullptr);
+          contentLocation_.release ();
       }
 
       return *this;
@@ -148,7 +148,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -175,7 +175,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -202,7 +202,7 @@ namespace DAnCE
 
       else
       {
-        basePackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageDescription> (e);
+        basePackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageDescription> (e);
       }
     }
 
@@ -229,7 +229,7 @@ namespace DAnCE
 
       else
       {
-        specializedConfig_ = std::make_unique< ::DAnCE::Config_Handlers::PackageConfiguration> (e);
+        specializedConfig_ = std::make_unique<::DAnCE::Config_Handlers::PackageConfiguration> (e);
       }
     }
 
@@ -256,7 +256,7 @@ namespace DAnCE
 
       else
       {
-        importedPackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageImport> (e);
+        importedPackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageImport> (e);
       }
     }
 
@@ -283,7 +283,7 @@ namespace DAnCE
 
       else
       {
-        referencedPackage_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentPackageReference> (e);
+        referencedPackage_ = std::make_unique<::DAnCE::Config_Handlers::ComponentPackageReference> (e);
       }
     }
 
@@ -301,7 +301,7 @@ namespace DAnCE
     }
 
     size_t PackageConfiguration::
-    count_selectRequirement(void) const
+    count_selectRequirement() const
     {
       return selectRequirement_.size ();
     }
@@ -320,7 +320,7 @@ namespace DAnCE
     }
 
     size_t PackageConfiguration::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -348,7 +348,7 @@ namespace DAnCE
 
       else
       {
-        contentLocation_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        contentLocation_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }
@@ -361,11 +361,11 @@ namespace DAnCE
     // ComponentPackageImport
 
     ComponentPackageImport::
-    ComponentPackageImport (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentPackageImport (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -387,11 +387,11 @@ namespace DAnCE
     // PackageConfiguration
 
     PackageConfiguration::
-    PackageConfiguration (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PackageConfiguration (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

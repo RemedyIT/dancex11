@@ -25,7 +25,7 @@ namespace DAnCEX11
   class DomainApplication_Impl;
 
   class DomainApplication_Impl
-  : public virtual CORBA::servant_traits< ::Deployment::DomainApplication>::base_type
+  : public virtual CORBA::servant_traits<::Deployment::DomainApplication>::base_type
     {
     public:
       using TNm2Id_PAIR = std::pair <IDL::traits<::Deployment::NodeManager>::ref_type , std::string>;

@@ -15,15 +15,15 @@ namespace DAnCE
     PackagedComponentImplementation::PackagedComponentImplementation (::XMLSchema::string<char> const& name__,
                                                                       ::DAnCE::Config_Handlers::ComponentImplementationDescription const& referencedImplementation__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , referencedImplementation_ (std::make_unique< ::DAnCE::Config_Handlers::ComponentImplementationDescription> (referencedImplementation__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , referencedImplementation_ (std::make_unique<::DAnCE::Config_Handlers::ComponentImplementationDescription> (referencedImplementation__))
     {
     }
 
     PackagedComponentImplementation::PackagedComponentImplementation (PackagedComponentImplementation const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , referencedImplementation_ (std::make_unique< ::DAnCE::Config_Handlers::ComponentImplementationDescription> (*s.referencedImplementation_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , referencedImplementation_ (std::make_unique<::DAnCE::Config_Handlers::ComponentImplementationDescription> (*s.referencedImplementation_))
     {
     }
 
@@ -77,13 +77,13 @@ namespace DAnCE
 
     ComponentPackageDescription::ComponentPackageDescription (ComponentPackageDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , realizes_ (s.realizes_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , realizes_ (s.realizes_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
     , configProperty_ (s.configProperty_)
     , implementation_ (s.implementation_)
     , infoProperty_ (s.infoProperty_)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -95,17 +95,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -114,7 +114,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;
@@ -144,7 +144,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -171,7 +171,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -198,7 +198,7 @@ namespace DAnCE
 
       else
       {
-        realizes_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+        realizes_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
       }
     }
 
@@ -216,7 +216,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -235,7 +235,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -254,7 +254,7 @@ namespace DAnCE
     }
 
     size_t ComponentPackageDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -288,7 +288,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -302,13 +302,13 @@ namespace DAnCE
 
     ConnectorPackageDescription::ConnectorPackageDescription (ConnectorPackageDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , realizes_ (s.realizes_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , realizes_ (s.realizes_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
     , configProperty_ (s.configProperty_)
     , implementation_ (s.implementation_)
     , infoProperty_ (s.infoProperty_)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -320,17 +320,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -339,7 +339,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;
@@ -369,7 +369,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -396,7 +396,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -423,7 +423,7 @@ namespace DAnCE
 
       else
       {
-        realizes_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+        realizes_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
       }
     }
 
@@ -441,7 +441,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -460,7 +460,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -479,7 +479,7 @@ namespace DAnCE
     }
 
     size_t ConnectorPackageDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -513,7 +513,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }
@@ -526,11 +526,11 @@ namespace DAnCE
     // PackagedComponentImplementation
 
     PackagedComponentImplementation::
-    PackagedComponentImplementation (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PackagedComponentImplementation (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -539,12 +539,12 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "referencedImplementation")
         {
-          referencedImplementation_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentImplementationDescription> (e);
+          referencedImplementation_ = std::make_unique<::DAnCE::Config_Handlers::ComponentImplementationDescription> (e);
         }
 
         else
@@ -556,11 +556,11 @@ namespace DAnCE
     // ComponentPackageDescription
 
     ComponentPackageDescription::
-    ComponentPackageDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentPackageDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -627,11 +627,11 @@ namespace DAnCE
     // ConnectorPackageDescription
 
     ConnectorPackageDescription::
-    ConnectorPackageDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ConnectorPackageDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

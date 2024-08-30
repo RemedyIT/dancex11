@@ -40,7 +40,7 @@ namespace DAnCEX11
    * point in time.
    */
   class DAnCE_LocalityActivator_i final
-    : public virtual CORBA::servant_traits< ::DAnCEX11::LocalityManagerActivator>::base_type
+    : public virtual CORBA::servant_traits<::DAnCEX11::LocalityManagerActivator>::base_type
   {
   public:
     /// Constructor

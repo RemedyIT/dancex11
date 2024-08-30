@@ -15,15 +15,15 @@ namespace DAnCE
     PlanSubcomponentPropertyReference::PlanSubcomponentPropertyReference (::XMLSchema::string<char> const& propertyName__,
                                                                           ::DAnCE::Config_Handlers::InstanceDeploymentDescription const& instance__)
     : ::XSCRT::Type ()
-    , propertyName_ (std::make_unique< ::XMLSchema::string<char>> (propertyName__))
-    , instance_ (std::make_unique< ::DAnCE::Config_Handlers::InstanceDeploymentDescription> (instance__))
+    , propertyName_ (std::make_unique<::XMLSchema::string<char>> (propertyName__))
+    , instance_ (std::make_unique<::DAnCE::Config_Handlers::InstanceDeploymentDescription> (instance__))
     {
     }
 
     PlanSubcomponentPropertyReference::PlanSubcomponentPropertyReference (PlanSubcomponentPropertyReference const& s) :
     ::XSCRT::Type (s)
-    , propertyName_ (std::make_unique< ::XMLSchema::string<char>> (*s.propertyName_))
-    , instance_ (std::make_unique< ::DAnCE::Config_Handlers::InstanceDeploymentDescription> (*s.instance_))
+    , propertyName_ (std::make_unique<::XMLSchema::string<char>> (*s.propertyName_))
+    , instance_ (std::make_unique<::DAnCE::Config_Handlers::InstanceDeploymentDescription> (*s.instance_))
     {
     }
 
@@ -74,17 +74,17 @@ namespace DAnCE
                                               ::XMLSchema::string<char> const& externalName__,
                                               delegatesTo_container_type const& delegatesTo__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , externalName_ (std::make_unique< ::XMLSchema::string<char>> (externalName__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , externalName_ (std::make_unique<::XMLSchema::string<char>> (externalName__))
     , delegatesTo_ (delegatesTo__)
     {
     }
 
     PlanPropertyMapping::PlanPropertyMapping (PlanPropertyMapping const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
     , source_ (s.source_)
-    , externalName_ (std::make_unique< ::XMLSchema::string<char>> (*s.externalName_))
+    , externalName_ (std::make_unique<::XMLSchema::string<char>> (*s.externalName_))
     , delegatesTo_ (s.delegatesTo_)
     {
     }
@@ -134,7 +134,7 @@ namespace DAnCE
     }
 
     size_t PlanPropertyMapping::
-    count_source(void) const
+    count_source() const
     {
       return source_.size ();
     }
@@ -166,7 +166,7 @@ namespace DAnCE
     }
 
     size_t PlanPropertyMapping::
-    count_delegatesTo(void) const
+    count_delegatesTo() const
     {
       return delegatesTo_.size ();
     }
@@ -181,9 +181,9 @@ namespace DAnCE
 
     deploymentPlan::deploymentPlan (deploymentPlan const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , realizes_ (s.realizes_ ? std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , realizes_ (s.realizes_ ? std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (*s.realizes_) : nullptr)
     , implementation_ (s.implementation_)
     , instance_ (s.instance_)
     , connection_ (s.connection_)
@@ -203,17 +203,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         implementation_ = s.implementation_;
 
@@ -259,7 +259,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -286,7 +286,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -313,7 +313,7 @@ namespace DAnCE
 
       else
       {
-        realizes_ = std::make_unique< ::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
+        realizes_ = std::make_unique<::DAnCE::Config_Handlers::ComponentInterfaceDescription> (e);
       }
     }
 
@@ -331,7 +331,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_implementation(void) const
+    count_implementation() const
     {
       return implementation_.size ();
     }
@@ -350,7 +350,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_instance(void) const
+    count_instance() const
     {
       return instance_.size ();
     }
@@ -369,7 +369,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -388,7 +388,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_externalProperty(void) const
+    count_externalProperty() const
     {
       return externalProperty_.size ();
     }
@@ -407,7 +407,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_dependsOn(void) const
+    count_dependsOn() const
     {
       return dependsOn_.size ();
     }
@@ -426,7 +426,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_artifact(void) const
+    count_artifact() const
     {
       return artifact_.size ();
     }
@@ -445,7 +445,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -464,7 +464,7 @@ namespace DAnCE
     }
 
     size_t deploymentPlan::
-    count_localityConstraint(void) const
+    count_localityConstraint() const
     {
       return localityConstraint_.size ();
     }
@@ -478,11 +478,11 @@ namespace DAnCE
     // PlanSubcomponentPropertyReference
 
     PlanSubcomponentPropertyReference::
-    PlanSubcomponentPropertyReference (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PlanSubcomponentPropertyReference (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -491,12 +491,12 @@ namespace DAnCE
 
         if (n == "propertyName")
         {
-          propertyName_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          propertyName_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "instance")
         {
-          instance_ = std::make_unique< ::DAnCE::Config_Handlers::InstanceDeploymentDescription> (e);
+          instance_ = std::make_unique<::DAnCE::Config_Handlers::InstanceDeploymentDescription> (e);
         }
 
         else
@@ -508,11 +508,11 @@ namespace DAnCE
     // PlanPropertyMapping
 
     PlanPropertyMapping::
-    PlanPropertyMapping (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    PlanPropertyMapping (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -521,7 +521,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "source")
@@ -532,7 +532,7 @@ namespace DAnCE
 
         else if (n == "externalName")
         {
-          externalName_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          externalName_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "delegatesTo")
@@ -550,11 +550,11 @@ namespace DAnCE
     // deploymentPlan
 
     deploymentPlan::
-    deploymentPlan (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    deploymentPlan (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

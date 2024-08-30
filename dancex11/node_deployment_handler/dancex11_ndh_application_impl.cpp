@@ -417,7 +417,7 @@ NodeApplication_Impl::remove_instances ()
       using DAnCEX11::Utility::extract_and_throw_exception;
 
       if (event.exception_ &&
-          !(extract_and_throw_exception< ::Deployment::StopError > (event.contents_)))
+          !(extract_and_throw_exception<::Deployment::StopError > (event.contents_)))
       {
         DANCEX11_LOG_ERROR ("NodeApplication_Impl::remove_instances - " <<
                             "Unexpected exception thrown during removal of " <<

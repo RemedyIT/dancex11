@@ -19,17 +19,17 @@ namespace DAnCE
 
     ComponentInterfaceDescription::ComponentInterfaceDescription (ComponentInterfaceDescription const& s) :
     ::XSCRT::Type (s)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , specificType_ (s.specificType_ ? std::make_unique< ::XMLSchema::string<char>> (*s.specificType_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , specificType_ (s.specificType_ ? std::make_unique<::XMLSchema::string<char>> (*s.specificType_) : nullptr)
     , supportedType_ (s.supportedType_)
     , idlFile_ (s.idlFile_)
     , configProperty_ (s.configProperty_)
     , port_ (s.port_)
     , property_ (s.property_)
     , infoProperty_ (s.infoProperty_)
-    , contentLocation_ (s.contentLocation_ ? std::make_unique< ::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
-    , href_ (s.href_ ? std::make_unique< ::XMLSchema::string<char>> (*s.href_) : nullptr)
+    , contentLocation_ (s.contentLocation_ ? std::make_unique<::XMLSchema::string<char>> (*s.contentLocation_) : nullptr)
+    , href_ (s.href_ ? std::make_unique<::XMLSchema::string<char>> (*s.href_) : nullptr)
     {
     }
 
@@ -41,17 +41,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.specificType_)
           specificType (*(s.specificType_));
         else
-          specificType_.reset (nullptr);
+          specificType_.release ();
 
         supportedType_ = s.supportedType_;
 
@@ -68,10 +68,10 @@ namespace DAnCE
         if (s.contentLocation_)
           contentLocation (*(s.contentLocation_));
         else
-          contentLocation_.reset (nullptr);
+          contentLocation_.release ();
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;
@@ -101,7 +101,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -128,7 +128,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -155,7 +155,7 @@ namespace DAnCE
 
       else
       {
-        specificType_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        specificType_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -173,7 +173,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_supportedType(void) const
+    count_supportedType() const
     {
       return supportedType_.size ();
     }
@@ -192,7 +192,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_idlFile(void) const
+    count_idlFile() const
     {
       return idlFile_.size ();
     }
@@ -211,7 +211,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_configProperty(void) const
+    count_configProperty() const
     {
       return configProperty_.size ();
     }
@@ -230,7 +230,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_port(void) const
+    count_port() const
     {
       return port_.size ();
     }
@@ -249,7 +249,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_property(void) const
+    count_property() const
     {
       return property_.size ();
     }
@@ -268,7 +268,7 @@ namespace DAnCE
     }
 
     size_t ComponentInterfaceDescription::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -296,7 +296,7 @@ namespace DAnCE
 
       else
       {
-        contentLocation_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        contentLocation_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -329,7 +329,7 @@ namespace DAnCE
 
       else
       {
-        href_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        href_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
   }
@@ -342,11 +342,11 @@ namespace DAnCE
     // ComponentInterfaceDescription
 
     ComponentInterfaceDescription::
-    ComponentInterfaceDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    ComponentInterfaceDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {

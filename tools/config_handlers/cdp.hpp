@@ -38,20 +38,20 @@ namespace DAnCE
       // propertyName
       public:
       ::XMLSchema::string<char> const& propertyName () const;
-      void propertyName (::XMLSchema::string<char> const& );
+      void propertyName (::XMLSchema::string<char> const&);
 
       protected:
-      using propertyName_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      propertyName_unique_ptr_type propertyName_;
+      using propertyName_type = std::unique_ptr<::XMLSchema::string<char>>;
+      propertyName_type propertyName_;
 
       // instance
       public:
       ::DAnCE::Config_Handlers::InstanceDeploymentDescription const& instance () const;
-      void instance (::DAnCE::Config_Handlers::InstanceDeploymentDescription const& );
+      void instance (::DAnCE::Config_Handlers::InstanceDeploymentDescription const&);
 
       protected:
-      using instance_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
-      instance_unique_ptr_type instance_;
+      using instance_type = std::unique_ptr<::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
+      instance_type instance_;
 
       public:
       PlanSubcomponentPropertyReference (::XMLSchema::string<char> const& propertyName__,
@@ -73,15 +73,15 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // source
       public:
-      using source_container_type = std::vector< ::XMLSchema::string<char>>;
+      using source_container_type = std::vector<::XMLSchema::string<char>>;
       using source_const_iterator = source_container_type::const_iterator;
       source_const_iterator begin_source () const;
       source_const_iterator end_source () const;
@@ -93,15 +93,15 @@ namespace DAnCE
       // externalName
       public:
       ::XMLSchema::string<char> const& externalName () const;
-      void externalName (::XMLSchema::string<char> const& );
+      void externalName (::XMLSchema::string<char> const&);
 
       protected:
-      using externalName_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      externalName_unique_ptr_type externalName_;
+      using externalName_type = std::unique_ptr<::XMLSchema::string<char>>;
+      externalName_type externalName_;
 
       // delegatesTo
       public:
-      using delegatesTo_container_type = std::vector< ::DAnCE::Config_Handlers::PlanSubcomponentPropertyReference>;
+      using delegatesTo_container_type = std::vector<::DAnCE::Config_Handlers::PlanSubcomponentPropertyReference>;
       using delegatesTo_const_iterator = delegatesTo_container_type::const_iterator;
       delegatesTo_const_iterator begin_delegatesTo () const;
       delegatesTo_const_iterator end_delegatesTo () const;
@@ -132,35 +132,35 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // realizes
       public:
       bool realizes_p () const;
       ::DAnCE::Config_Handlers::ComponentInterfaceDescription const& realizes () const;
-      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
+      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const&);
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      realizes_unique_ptr_type realizes_;
+      using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      realizes_type realizes_;
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::MonolithicDeploymentDescription>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::MonolithicDeploymentDescription>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -171,7 +171,7 @@ namespace DAnCE
 
       // instance
       public:
-      using instance_container_type = std::vector< ::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
+      using instance_container_type = std::vector<::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
       using instance_const_iterator = instance_container_type::const_iterator;
       instance_const_iterator begin_instance () const;
       instance_const_iterator end_instance () const;
@@ -182,7 +182,7 @@ namespace DAnCE
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::PlanConnectionDescription>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::PlanConnectionDescription>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -193,7 +193,7 @@ namespace DAnCE
 
       // externalProperty
       public:
-      using externalProperty_container_type = std::vector< ::DAnCE::Config_Handlers::PlanPropertyMapping>;
+      using externalProperty_container_type = std::vector<::DAnCE::Config_Handlers::PlanPropertyMapping>;
       using externalProperty_const_iterator = externalProperty_container_type::const_iterator;
       externalProperty_const_iterator begin_externalProperty () const;
       externalProperty_const_iterator end_externalProperty () const;
@@ -204,7 +204,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::ImplementationDependency>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::ImplementationDependency>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -215,7 +215,7 @@ namespace DAnCE
 
       // artifact
       public:
-      using artifact_container_type = std::vector< ::DAnCE::Config_Handlers::ArtifactDeploymentDescription>;
+      using artifact_container_type = std::vector<::DAnCE::Config_Handlers::ArtifactDeploymentDescription>;
       using artifact_const_iterator = artifact_container_type::const_iterator;
       artifact_const_iterator begin_artifact () const;
       artifact_const_iterator end_artifact () const;
@@ -226,7 +226,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -237,7 +237,7 @@ namespace DAnCE
 
       // localityConstraint
       public:
-      using localityConstraint_container_type = std::vector< ::DAnCE::Config_Handlers::PlanLocality>;
+      using localityConstraint_container_type = std::vector<::DAnCE::Config_Handlers::PlanLocality>;
       using localityConstraint_const_iterator = localityConstraint_container_type::const_iterator;
       localityConstraint_const_iterator begin_localityConstraint () const;
       localityConstraint_const_iterator end_localityConstraint () const;

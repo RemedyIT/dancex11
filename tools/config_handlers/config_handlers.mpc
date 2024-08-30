@@ -9,7 +9,7 @@ project (DANCEX11_XSC_XML_Generation) : install, xscdefaults {
   xscflags += --cxx-export-header xsc_xml_handlers_export.h
   xscflags += --cxx-char-type char
   xscflags += --search-path "$(DANCEX11_ROOT)/etc/schema"
-  xscflags += --cxx-cpp11 --cxx-enable-random-access-sequences
+  xscflags += --cxx-cpp17 --cxx-enable-random-access-sequences
 
   custom_only = 1
 

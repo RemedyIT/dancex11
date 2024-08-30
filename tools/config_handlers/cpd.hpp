@@ -38,20 +38,20 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // referencedImplementation
       public:
       ::DAnCE::Config_Handlers::ComponentImplementationDescription const& referencedImplementation () const;
-      void referencedImplementation (::DAnCE::Config_Handlers::ComponentImplementationDescription const& );
+      void referencedImplementation (::DAnCE::Config_Handlers::ComponentImplementationDescription const&);
 
       protected:
-      using referencedImplementation_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentImplementationDescription>;
-      referencedImplementation_unique_ptr_type referencedImplementation_;
+      using referencedImplementation_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentImplementationDescription>;
+      referencedImplementation_type referencedImplementation_;
 
       public:
       PackagedComponentImplementation (::XMLSchema::string<char> const& name__,
@@ -74,35 +74,35 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // realizes
       public:
       bool realizes_p () const;
       ::DAnCE::Config_Handlers::ComponentInterfaceDescription const& realizes () const;
-      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
+      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const&);
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      realizes_unique_ptr_type realizes_;
+      using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      realizes_type realizes_;
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -113,7 +113,7 @@ namespace DAnCE
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::PackagedComponentImplementation>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::PackagedComponentImplementation>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -124,7 +124,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -138,11 +138,11 @@ namespace DAnCE
       bool href_p () const;
       ::XMLSchema::string<char> const& href () const;
       ::XMLSchema::string<char>& href ();
-      void href (::XMLSchema::string<char> const& );
+      void href (::XMLSchema::string<char> const&);
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ComponentPackageDescription ();
@@ -164,35 +164,35 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // realizes
       public:
       bool realizes_p () const;
       ::DAnCE::Config_Handlers::ComponentInterfaceDescription const& realizes () const;
-      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
+      void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const&);
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      realizes_unique_ptr_type realizes_;
+      using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      realizes_type realizes_;
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -203,7 +203,7 @@ namespace DAnCE
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::ConnectorImplementationDescription>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::ConnectorImplementationDescription>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -214,7 +214,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -228,11 +228,11 @@ namespace DAnCE
       bool href_p () const;
       ::XMLSchema::string<char> const& href () const;
       ::XMLSchema::string<char>& href ();
-      void href (::XMLSchema::string<char> const& );
+      void href (::XMLSchema::string<char> const&);
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ConnectorPackageDescription ();

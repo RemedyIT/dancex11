@@ -252,7 +252,7 @@ namespace DAnCEX11
     }
   }
 
-  IDL::traits < ::DAnCEX11::LocalityManager>::ref_type
+  IDL::traits <::DAnCEX11::LocalityManager>::ref_type
   DAnCE_LocalityActivator_i::create_locality_manager (const ::Deployment::DeploymentPlan &plan,
                                                       uint32_t instanceRef,
                                                       const ::Deployment::Properties & config)

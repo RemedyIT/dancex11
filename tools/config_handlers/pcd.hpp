@@ -38,7 +38,7 @@ namespace DAnCE
 
       // location
       public:
-      using location_container_type = std::vector< ::XMLSchema::string<char>>;
+      using location_container_type = std::vector<::XMLSchema::string<char>>;
       using location_const_iterator = location_container_type::const_iterator;
       location_const_iterator begin_location () const;
       location_const_iterator end_location () const;
@@ -67,65 +67,65 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // basePackage
       public:
       bool basePackage_p () const;
       ::DAnCE::Config_Handlers::ComponentPackageDescription const& basePackage () const;
-      void basePackage (::DAnCE::Config_Handlers::ComponentPackageDescription const& );
+      void basePackage (::DAnCE::Config_Handlers::ComponentPackageDescription const&);
 
       protected:
-      using basePackage_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentPackageDescription>;
-      basePackage_unique_ptr_type basePackage_;
+      using basePackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageDescription>;
+      basePackage_type basePackage_;
 
       // specializedConfig
       public:
       bool specializedConfig_p () const;
       ::DAnCE::Config_Handlers::PackageConfiguration const& specializedConfig () const;
-      void specializedConfig (::DAnCE::Config_Handlers::PackageConfiguration const& );
+      void specializedConfig (::DAnCE::Config_Handlers::PackageConfiguration const&);
 
       protected:
-      using specializedConfig_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::PackageConfiguration>;
-      specializedConfig_unique_ptr_type specializedConfig_;
+      using specializedConfig_type = std::unique_ptr<::DAnCE::Config_Handlers::PackageConfiguration>;
+      specializedConfig_type specializedConfig_;
 
       // importedPackage
       public:
       bool importedPackage_p () const;
       ::DAnCE::Config_Handlers::ComponentPackageImport const& importedPackage () const;
-      void importedPackage (::DAnCE::Config_Handlers::ComponentPackageImport const& );
+      void importedPackage (::DAnCE::Config_Handlers::ComponentPackageImport const&);
 
       protected:
-      using importedPackage_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentPackageImport>;
-      importedPackage_unique_ptr_type importedPackage_;
+      using importedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageImport>;
+      importedPackage_type importedPackage_;
 
       // referencedPackage
       public:
       bool referencedPackage_p () const;
       ::DAnCE::Config_Handlers::ComponentPackageReference const& referencedPackage () const;
-      void referencedPackage (::DAnCE::Config_Handlers::ComponentPackageReference const& );
+      void referencedPackage (::DAnCE::Config_Handlers::ComponentPackageReference const&);
 
       protected:
-      using referencedPackage_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentPackageReference>;
-      referencedPackage_unique_ptr_type referencedPackage_;
+      using referencedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageReference>;
+      referencedPackage_type referencedPackage_;
 
       // selectRequirement
       public:
-      using selectRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using selectRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using selectRequirement_const_iterator = selectRequirement_container_type::const_iterator;
       selectRequirement_const_iterator begin_selectRequirement () const;
       selectRequirement_const_iterator end_selectRequirement () const;
@@ -136,7 +136,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -149,11 +149,11 @@ namespace DAnCE
       public:
       bool contentLocation_p () const;
       ::XMLSchema::string<char> const& contentLocation () const;
-      void contentLocation (::XMLSchema::string<char> const& );
+      void contentLocation (::XMLSchema::string<char> const&);
 
       protected:
-      using contentLocation_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      contentLocation_unique_ptr_type contentLocation_;
+      using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
+      contentLocation_type contentLocation_;
 
       public:
       PackageConfiguration ();

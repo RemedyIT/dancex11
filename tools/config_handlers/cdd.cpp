@@ -20,8 +20,8 @@ namespace DAnCE
 
     Domain::Domain (Domain const& s) :
     ::XSCRT::Type (s)
-    , UUID_ (s.UUID_ ? std::make_unique< ::XMLSchema::string<char>> (*s.UUID_) : nullptr)
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , UUID_ (s.UUID_ ? std::make_unique<::XMLSchema::string<char>> (*s.UUID_) : nullptr)
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , node_ (s.node_)
     , interconnect_ (s.interconnect_)
     , bridge_ (s.bridge_)
@@ -38,12 +38,12 @@ namespace DAnCE
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         node_ = s.node_;
 
@@ -83,7 +83,7 @@ namespace DAnCE
 
       else
       {
-        UUID_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        UUID_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -110,7 +110,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -128,7 +128,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_node(void) const
+    count_node() const
     {
       return node_.size ();
     }
@@ -147,7 +147,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_interconnect(void) const
+    count_interconnect() const
     {
       return interconnect_.size ();
     }
@@ -166,7 +166,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_bridge(void) const
+    count_bridge() const
     {
       return bridge_.size ();
     }
@@ -185,7 +185,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_sharedResource(void) const
+    count_sharedResource() const
     {
       return sharedResource_.size ();
     }
@@ -204,7 +204,7 @@ namespace DAnCE
     }
 
     size_t Domain::
-    count_infoProperty(void) const
+    count_infoProperty() const
     {
       return infoProperty_.size ();
     }
@@ -215,15 +215,15 @@ namespace DAnCE
     Bridge::Bridge (::XMLSchema::string<char> const& name__,
                     connect_container_type const& connect__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     , connect_ (connect__)
     {
     }
 
     Bridge::Bridge (Bridge const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connect_ (s.connect_)
     , resource_ (s.resource_)
     {
@@ -239,7 +239,7 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         connect_ = s.connect_;
 
@@ -286,7 +286,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -304,7 +304,7 @@ namespace DAnCE
     }
 
     size_t Bridge::
-    count_connect(void) const
+    count_connect() const
     {
       return connect_.size ();
     }
@@ -323,7 +323,7 @@ namespace DAnCE
     }
 
     size_t Bridge::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -334,15 +334,15 @@ namespace DAnCE
     Interconnect::Interconnect (::XMLSchema::string<char> const& name__,
                                 connect_container_type const& connect__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     , connect_ (connect__)
     {
     }
 
     Interconnect::Interconnect (Interconnect const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connection_ (s.connection_)
     , connect_ (s.connect_)
     , resource_ (s.resource_)
@@ -359,7 +359,7 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         connection_ = s.connection_;
 
@@ -408,7 +408,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -426,7 +426,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -445,7 +445,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_connect(void) const
+    count_connect() const
     {
       return connect_.size ();
     }
@@ -464,7 +464,7 @@ namespace DAnCE
     }
 
     size_t Interconnect::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -474,14 +474,14 @@ namespace DAnCE
 
     Node::Node (::XMLSchema::string<char> const& name__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
     {
     }
 
     Node::Node (Node const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , label_ (s.label_ ? std::make_unique< ::XMLSchema::string<char>> (*s.label_) : nullptr)
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , label_ (s.label_ ? std::make_unique<::XMLSchema::string<char>> (*s.label_) : nullptr)
     , connection_ (s.connection_)
     , sharedResource_ (s.sharedResource_)
     , resource_ (s.resource_)
@@ -498,7 +498,7 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         connection_ = s.connection_;
 
@@ -547,7 +547,7 @@ namespace DAnCE
 
       else
       {
-        label_ = std::make_unique< ::XMLSchema::string<char>> (e);
+        label_ = std::make_unique<::XMLSchema::string<char>> (e);
       }
     }
 
@@ -565,7 +565,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_connection(void) const
+    count_connection() const
     {
       return connection_.size ();
     }
@@ -584,7 +584,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_sharedResource(void) const
+    count_sharedResource() const
     {
       return sharedResource_.size ();
     }
@@ -603,7 +603,7 @@ namespace DAnCE
     }
 
     size_t Node::
-    count_resource(void) const
+    count_resource() const
     {
       return resource_.size ();
     }
@@ -616,19 +616,19 @@ namespace DAnCE
                                     ::DAnCE::Config_Handlers::Node const& node__,
                                     ::DAnCE::Config_Handlers::SatisfierProperty const& property__)
     : ::XSCRT::Type ()
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (name__))
-    , resourceType_ (std::make_unique< ::XMLSchema::string<char>> (resourceType__))
-    , node_ (std::make_unique< ::DAnCE::Config_Handlers::Node> (node__))
-    , property_ (std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (property__))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (name__))
+    , resourceType_ (std::make_unique<::XMLSchema::string<char>> (resourceType__))
+    , node_ (std::make_unique<::DAnCE::Config_Handlers::Node> (node__))
+    , property_ (std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (property__))
     {
     }
 
     SharedResource::SharedResource (SharedResource const& s) :
     ::XSCRT::Type (s)
-    , name_ (std::make_unique< ::XMLSchema::string<char>> (*s.name_))
-    , resourceType_ (std::make_unique< ::XMLSchema::string<char>> (*s.resourceType_))
-    , node_ (std::make_unique< ::DAnCE::Config_Handlers::Node> (*s.node_))
-    , property_ (std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (*s.property_))
+    , name_ (std::make_unique<::XMLSchema::string<char>> (*s.name_))
+    , resourceType_ (std::make_unique<::XMLSchema::string<char>> (*s.resourceType_))
+    , node_ (std::make_unique<::DAnCE::Config_Handlers::Node> (*s.node_))
+    , property_ (std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (*s.property_))
     {
     }
 
@@ -711,11 +711,11 @@ namespace DAnCE
     // Domain
 
     Domain::
-    Domain (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Domain (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -773,11 +773,11 @@ namespace DAnCE
     // Bridge
 
     Bridge::
-    Bridge (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Bridge (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -786,7 +786,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -816,11 +816,11 @@ namespace DAnCE
     // Interconnect
 
     Interconnect::
-    Interconnect (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Interconnect (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -829,7 +829,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -865,11 +865,11 @@ namespace DAnCE
     // Node
 
     Node::
-    Node (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    Node (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -878,7 +878,7 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "label")
@@ -914,11 +914,11 @@ namespace DAnCE
     // SharedResource
 
     SharedResource::
-    SharedResource (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    SharedResource (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
@@ -927,22 +927,22 @@ namespace DAnCE
 
         if (n == "name")
         {
-          name_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          name_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "resourceType")
         {
-          resourceType_ = std::make_unique< ::XMLSchema::string<char>> (e);
+          resourceType_ = std::make_unique<::XMLSchema::string<char>> (e);
         }
 
         else if (n == "node")
         {
-          node_ = std::make_unique< ::DAnCE::Config_Handlers::Node> (e);
+          node_ = std::make_unique<::DAnCE::Config_Handlers::Node> (e);
         }
 
         else if (n == "property")
         {
-          property_ = std::make_unique< ::DAnCE::Config_Handlers::SatisfierProperty> (e);
+          property_ = std::make_unique<::DAnCE::Config_Handlers::SatisfierProperty> (e);
         }
 
         else

@@ -47,10 +47,10 @@ namespace DAnCEX11
 
     private:
       std::string const file_;
-      std::unique_ptr< ::Deployment::DeploymentPlan> idl_dp_;
-      std::unique_ptr< ::Deployment::Domain> idl_domain_;
+      std::unique_ptr<::Deployment::DeploymentPlan> idl_dp_;
+      std::unique_ptr<::Deployment::Domain> idl_domain_;
 
-      using XML_RESOLVER = ::XML::XML_Schema_Resolver< ::XML::Environment_Resolver>;
+      using XML_RESOLVER = ::XML::XML_Schema_Resolver<::XML::Environment_Resolver>;
       using XML_HELPER = ::XML::XML_Helper<XML_RESOLVER, ::XML::DANCEX11_XML_Error_Handler>;
 
       XML_HELPER xml_helper_;

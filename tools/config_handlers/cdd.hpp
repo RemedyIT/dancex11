@@ -41,25 +41,25 @@ namespace DAnCE
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // label
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // node
       public:
-      using node_container_type = std::vector< ::DAnCE::Config_Handlers::Node>;
+      using node_container_type = std::vector<::DAnCE::Config_Handlers::Node>;
       using node_const_iterator = node_container_type::const_iterator;
       node_const_iterator begin_node () const;
       node_const_iterator end_node () const;
@@ -70,7 +70,7 @@ namespace DAnCE
 
       // interconnect
       public:
-      using interconnect_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using interconnect_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using interconnect_const_iterator = interconnect_container_type::const_iterator;
       interconnect_const_iterator begin_interconnect () const;
       interconnect_const_iterator end_interconnect () const;
@@ -81,7 +81,7 @@ namespace DAnCE
 
       // bridge
       public:
-      using bridge_container_type = std::vector< ::DAnCE::Config_Handlers::Bridge>;
+      using bridge_container_type = std::vector<::DAnCE::Config_Handlers::Bridge>;
       using bridge_const_iterator = bridge_container_type::const_iterator;
       bridge_const_iterator begin_bridge () const;
       bridge_const_iterator end_bridge () const;
@@ -92,7 +92,7 @@ namespace DAnCE
 
       // sharedResource
       public:
-      using sharedResource_container_type = std::vector< ::DAnCE::Config_Handlers::SharedResource>;
+      using sharedResource_container_type = std::vector<::DAnCE::Config_Handlers::SharedResource>;
       using sharedResource_const_iterator = sharedResource_container_type::const_iterator;
       sharedResource_const_iterator begin_sharedResource () const;
       sharedResource_const_iterator end_sharedResource () const;
@@ -103,7 +103,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -131,25 +131,25 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // label
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // connect
       public:
-      using connect_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using connect_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using connect_const_iterator = connect_container_type::const_iterator;
       connect_const_iterator begin_connect () const;
       connect_const_iterator end_connect () const;
@@ -160,7 +160,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;
@@ -189,25 +189,25 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // label
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::Bridge>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::Bridge>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -218,7 +218,7 @@ namespace DAnCE
 
       // connect
       public:
-      using connect_container_type = std::vector< ::DAnCE::Config_Handlers::Node>;
+      using connect_container_type = std::vector<::DAnCE::Config_Handlers::Node>;
       using connect_const_iterator = connect_container_type::const_iterator;
       connect_const_iterator begin_connect () const;
       connect_const_iterator end_connect () const;
@@ -229,7 +229,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;
@@ -258,25 +258,25 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // label
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -287,7 +287,7 @@ namespace DAnCE
 
       // sharedResource
       public:
-      using sharedResource_container_type = std::vector< ::DAnCE::Config_Handlers::SharedResource>;
+      using sharedResource_container_type = std::vector<::DAnCE::Config_Handlers::SharedResource>;
       using sharedResource_const_iterator = sharedResource_container_type::const_iterator;
       sharedResource_const_iterator begin_sharedResource () const;
       sharedResource_const_iterator end_sharedResource () const;
@@ -298,7 +298,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;
@@ -326,38 +326,38 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // resourceType
       public:
       ::XMLSchema::string<char> const& resourceType () const;
-      void resourceType (::XMLSchema::string<char> const& );
+      void resourceType (::XMLSchema::string<char> const&);
 
       protected:
-      using resourceType_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      resourceType_unique_ptr_type resourceType_;
+      using resourceType_type = std::unique_ptr<::XMLSchema::string<char>>;
+      resourceType_type resourceType_;
 
       // node
       public:
       ::DAnCE::Config_Handlers::Node const& node () const;
-      void node (::DAnCE::Config_Handlers::Node const& );
+      void node (::DAnCE::Config_Handlers::Node const&);
 
       protected:
-      using node_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::Node>;
-      node_unique_ptr_type node_;
+      using node_type = std::unique_ptr<::DAnCE::Config_Handlers::Node>;
+      node_type node_;
 
       // property
       public:
       ::DAnCE::Config_Handlers::SatisfierProperty const& property () const;
-      void property (::DAnCE::Config_Handlers::SatisfierProperty const& );
+      void property (::DAnCE::Config_Handlers::SatisfierProperty const&);
 
       protected:
-      using property_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::SatisfierProperty>;
-      property_unique_ptr_type property_;
+      using property_type = std::unique_ptr<::DAnCE::Config_Handlers::SatisfierProperty>;
+      property_type property_;
 
       public:
       SharedResource (::XMLSchema::string<char> const& name__,

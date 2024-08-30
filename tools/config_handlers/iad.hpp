@@ -37,20 +37,20 @@ namespace DAnCE
       // name
       public:
       ::XMLSchema::string<char> const& name () const;
-      void name (::XMLSchema::string<char> const& );
+      void name (::XMLSchema::string<char> const&);
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // referencedArtifact
       public:
       ::DAnCE::Config_Handlers::ImplementationArtifactDescription const& referencedArtifact () const;
-      void referencedArtifact (::DAnCE::Config_Handlers::ImplementationArtifactDescription const& );
+      void referencedArtifact (::DAnCE::Config_Handlers::ImplementationArtifactDescription const&);
 
       protected:
-      using referencedArtifact_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ImplementationArtifactDescription>;
-      referencedArtifact_unique_ptr_type referencedArtifact_;
+      using referencedArtifact_type = std::unique_ptr<::DAnCE::Config_Handlers::ImplementationArtifactDescription>;
+      referencedArtifact_type referencedArtifact_;
 
       public:
       NamedImplementationArtifact (::XMLSchema::string<char> const& name__,
@@ -73,25 +73,25 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& );
+      void label (::XMLSchema::string<char> const&);
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& );
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // location
       public:
-      using location_container_type = std::vector< ::XMLSchema::string<char>>;
+      using location_container_type = std::vector<::XMLSchema::string<char>>;
       using location_const_iterator = location_container_type::const_iterator;
       location_const_iterator begin_location () const;
       location_const_iterator end_location () const;
@@ -102,7 +102,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::NamedImplementationArtifact>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::NamedImplementationArtifact>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -113,7 +113,7 @@ namespace DAnCE
 
       // execParameter
       public:
-      using execParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using execParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using execParameter_const_iterator = execParameter_container_type::const_iterator;
       execParameter_const_iterator begin_execParameter () const;
       execParameter_const_iterator end_execParameter () const;
@@ -124,7 +124,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -135,7 +135,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -148,22 +148,22 @@ namespace DAnCE
       public:
       bool contentLocation_p () const;
       ::XMLSchema::string<char> const& contentLocation () const;
-      void contentLocation (::XMLSchema::string<char> const& );
+      void contentLocation (::XMLSchema::string<char> const&);
 
       protected:
-      using contentLocation_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      contentLocation_unique_ptr_type contentLocation_;
+      using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
+      contentLocation_type contentLocation_;
 
       // href
       public:
       bool href_p () const;
       ::XMLSchema::string<char> const& href () const;
       ::XMLSchema::string<char>& href ();
-      void href (::XMLSchema::string<char> const& );
+      void href (::XMLSchema::string<char> const&);
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ImplementationArtifactDescription ();

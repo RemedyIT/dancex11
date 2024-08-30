@@ -49,7 +49,7 @@ namespace DAnCE
     }
 
     size_t TopLevelPackageDescription::
-    count_package(void) const
+    count_package() const
     {
       return package_.size ();
     }
@@ -63,11 +63,11 @@ namespace DAnCE
     // TopLevelPackageDescription
 
     TopLevelPackageDescription::
-    TopLevelPackageDescription (::XSCRT::XML::Element<char> const& e)
-    :Base (e)
+    TopLevelPackageDescription (::XSCRT::XML::Element<char> const& element)
+    :Base (element)
     {
 
-      ::XSCRT::Parser<char> p (e);
+      ::XSCRT::Parser<char> p (element);
 
       while (p.more_elements ())
       {
