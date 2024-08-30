@@ -23,7 +23,7 @@ namespace DAnCEX11
 {
 
   class NodeApplicationManager_Impl :
-    public virtual CORBA::servant_traits< ::Deployment::NodeApplicationManager>::base_type
+    public virtual CORBA::servant_traits<::Deployment::NodeApplicationManager>::base_type
   {
   public:
     NodeApplicationManager_Impl (IDL::traits<PortableServer::POA>::ref_type poa,

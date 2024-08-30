@@ -27,7 +27,7 @@ namespace DAnCEX11
   using NodeSplitter = DAnCEX11::Split_Plan <DAnCEX11::Node_Splitter>;
 
   class DomainApplicationManager_Impl
-  : public virtual CORBA::servant_traits< ::Deployment::DomainApplicationManager>::base_type
+  : public virtual CORBA::servant_traits<::Deployment::DomainApplicationManager>::base_type
     {
     public:
       DomainApplicationManager_Impl (IDL::traits<PortableServer::POA>::ref_type poa,

@@ -151,6 +151,6 @@ extern "C"
   void create_DAnCEX11_Locality_Handler (
     IDL::traits<::DAnCEX11::InstanceDeploymentHandler>::ref_type& handler)
   {
-    handler = CORBA::make_reference< ::DAnCEX11::Locality_Handler_i> ();
+    handler = CORBA::make_reference<::DAnCEX11::Locality_Handler_i> ();
   }
 }
