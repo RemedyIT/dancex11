@@ -55,8 +55,8 @@ namespace DAnCE
       void requiredUUID (::XMLSchema::string<char> const& );
 
       protected:
-      using requiredUUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      requiredUUID_unique_ptr_type requiredUUID_;
+      using requiredUUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      requiredUUID_type requiredUUID_;
 
       // requiredName
       public:
@@ -65,8 +65,8 @@ namespace DAnCE
       void requiredName (::XMLSchema::string<char> const& );
 
       protected:
-      using requiredName_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      requiredName_unique_ptr_type requiredName_;
+      using requiredName_type = std::unique_ptr<::XMLSchema::string<char>>;
+      requiredName_type requiredName_;
 
       // requiredType
       public:
@@ -74,8 +74,8 @@ namespace DAnCE
       void requiredType (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using requiredType_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      requiredType_unique_ptr_type requiredType_;
+      using requiredType_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      requiredType_type requiredType_;
 
       public:
       ComponentPackageReference (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& requiredType__);
@@ -99,8 +99,8 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // basePackage
       public:
@@ -109,8 +109,8 @@ namespace DAnCE
       void basePackage (::DAnCE::Config_Handlers::ComponentPackageDescription const& );
 
       protected:
-      using basePackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageDescription>;
-      basePackage_unique_ptr_type basePackage_;
+      using basePackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageDescription>;
+      basePackage_type basePackage_;
 
       // specializedConfig
       public:
@@ -119,8 +119,8 @@ namespace DAnCE
       void specializedConfig (::DAnCE::Config_Handlers::PackageConfiguration const& );
 
       protected:
-      using specializedConfig_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::PackageConfiguration>;
-      specializedConfig_unique_ptr_type specializedConfig_;
+      using specializedConfig_type = std::unique_ptr<::DAnCE::Config_Handlers::PackageConfiguration>;
+      specializedConfig_type specializedConfig_;
 
       // selectRequirement
       public:
@@ -151,8 +151,8 @@ namespace DAnCE
       void referencedPackage (::DAnCE::Config_Handlers::ComponentPackageReference const& );
 
       protected:
-      using referencedPackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageReference>;
-      referencedPackage_unique_ptr_type referencedPackage_;
+      using referencedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageReference>;
+      referencedPackage_type referencedPackage_;
 
       // importedPackage
       public:
@@ -161,8 +161,8 @@ namespace DAnCE
       void importedPackage (::DAnCE::Config_Handlers::ComponentPackageImport const& );
 
       protected:
-      using importedPackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageImport>;
-      importedPackage_unique_ptr_type importedPackage_;
+      using importedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageImport>;
+      importedPackage_type importedPackage_;
 
       // id
       public:
@@ -172,8 +172,8 @@ namespace DAnCE
       void id (::XMLSchema::ID<char> const& );
 
       protected:
-      using id_unique_ptr_type = std::unique_ptr<::XMLSchema::ID<char>>;
-      id_unique_ptr_type id_;
+      using id_type = std::unique_ptr<::XMLSchema::ID<char>>;
+      id_type id_;
 
       public:
       SubcomponentInstantiationDescription (::XMLSchema::string<char> const& name__);
@@ -197,8 +197,8 @@ namespace DAnCE
       void propertyName (::XMLSchema::string<char> const& );
 
       protected:
-      using propertyName_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      propertyName_unique_ptr_type propertyName_;
+      using propertyName_type = std::unique_ptr<::XMLSchema::string<char>>;
+      propertyName_type propertyName_;
 
       // instance
       public:
@@ -206,8 +206,8 @@ namespace DAnCE
       void instance (::DAnCE::Config_Handlers::IdRef const& );
 
       protected:
-      using instance_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::IdRef>;
-      instance_unique_ptr_type instance_;
+      using instance_type = std::unique_ptr<::DAnCE::Config_Handlers::IdRef>;
+      instance_type instance_;
 
       public:
       SubcomponentPropertyReference (::XMLSchema::string<char> const& propertyName__,
@@ -232,8 +232,8 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // externalName
       public:
@@ -241,8 +241,8 @@ namespace DAnCE
       void externalName (::XMLSchema::string<char> const& );
 
       protected:
-      using externalName_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      externalName_unique_ptr_type externalName_;
+      using externalName_type = std::unique_ptr<::XMLSchema::string<char>>;
+      externalName_type externalName_;
 
       // delegatesTo
       public:
@@ -317,8 +317,8 @@ namespace DAnCE
       void constraint (::DAnCE::Config_Handlers::LocalityKind const& );
 
       protected:
-      using constraint_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::LocalityKind>;
-      constraint_unique_ptr_type constraint_;
+      using constraint_type = std::unique_ptr<::DAnCE::Config_Handlers::LocalityKind>;
+      constraint_type constraint_;
 
       // constrainedInstance
       public:
@@ -326,8 +326,8 @@ namespace DAnCE
       void constrainedInstance (::DAnCE::Config_Handlers::IdRef const& );
 
       protected:
-      using constrainedInstance_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::IdRef>;
-      constrainedInstance_unique_ptr_type constrainedInstance_;
+      using constrainedInstance_type = std::unique_ptr<::DAnCE::Config_Handlers::IdRef>;
+      constrainedInstance_type constrainedInstance_;
 
       public:
       Locality (::DAnCE::Config_Handlers::LocalityKind const& constraint__,
@@ -473,8 +473,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -483,8 +483,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // implements
       public:
@@ -493,8 +493,8 @@ namespace DAnCE
       void implements (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using implements_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      implements_unique_ptr_type implements_;
+      using implements_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      implements_type implements_;
 
       // assemblyImpl
       public:
@@ -503,8 +503,8 @@ namespace DAnCE
       void assemblyImpl (::DAnCE::Config_Handlers::ComponentAssemblyDescription const& );
 
       protected:
-      using assemblyImpl_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentAssemblyDescription>;
-      assemblyImpl_unique_ptr_type assemblyImpl_;
+      using assemblyImpl_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentAssemblyDescription>;
+      assemblyImpl_type assemblyImpl_;
 
       // monolithicImpl
       public:
@@ -513,8 +513,8 @@ namespace DAnCE
       void monolithicImpl (::DAnCE::Config_Handlers::MonolithicImplementationDescription const& );
 
       protected:
-      using monolithicImpl_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::MonolithicImplementationDescription>;
-      monolithicImpl_unique_ptr_type monolithicImpl_;
+      using monolithicImpl_type = std::unique_ptr<::DAnCE::Config_Handlers::MonolithicImplementationDescription>;
+      monolithicImpl_type monolithicImpl_;
 
       // configProperty
       public:
@@ -568,8 +568,8 @@ namespace DAnCE
       void href (::XMLSchema::string<char> const& );
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ComponentImplementationDescription ();
@@ -594,8 +594,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -604,8 +604,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // implements
       public:
@@ -614,8 +614,8 @@ namespace DAnCE
       void implements (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using implements_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      implements_unique_ptr_type implements_;
+      using implements_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      implements_type implements_;
 
       // assemblyImpl
       public:
@@ -624,8 +624,8 @@ namespace DAnCE
       void assemblyImpl (::DAnCE::Config_Handlers::ComponentAssemblyDescription const& );
 
       protected:
-      using assemblyImpl_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentAssemblyDescription>;
-      assemblyImpl_unique_ptr_type assemblyImpl_;
+      using assemblyImpl_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentAssemblyDescription>;
+      assemblyImpl_type assemblyImpl_;
 
       // monolithicImpl
       public:
@@ -634,8 +634,8 @@ namespace DAnCE
       void monolithicImpl (::DAnCE::Config_Handlers::MonolithicImplementationDescription const& );
 
       protected:
-      using monolithicImpl_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::MonolithicImplementationDescription>;
-      monolithicImpl_unique_ptr_type monolithicImpl_;
+      using monolithicImpl_type = std::unique_ptr<::DAnCE::Config_Handlers::MonolithicImplementationDescription>;
+      monolithicImpl_type monolithicImpl_;
 
       // configProperty
       public:
@@ -689,8 +689,8 @@ namespace DAnCE
       void href (::XMLSchema::string<char> const& );
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ConnectorImplementationDescription ();

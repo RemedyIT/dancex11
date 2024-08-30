@@ -40,8 +40,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -50,8 +50,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // specificType
       public:
@@ -60,8 +60,8 @@ namespace DAnCE
       void specificType (::XMLSchema::string<char> const& );
 
       protected:
-      using specificType_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      specificType_unique_ptr_type specificType_;
+      using specificType_type = std::unique_ptr<::XMLSchema::string<char>>;
+      specificType_type specificType_;
 
       // supportedType
       public:
@@ -136,8 +136,8 @@ namespace DAnCE
       void contentLocation (::XMLSchema::string<char> const& );
 
       protected:
-      using contentLocation_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      contentLocation_unique_ptr_type contentLocation_;
+      using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
+      contentLocation_type contentLocation_;
 
       // href
       public:
@@ -147,8 +147,8 @@ namespace DAnCE
       void href (::XMLSchema::string<char> const& );
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ComponentInterfaceDescription ();

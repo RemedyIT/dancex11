@@ -41,8 +41,8 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      name_unique_ptr_type name_;
+      using name_type = std::unique_ptr<::XMLSchema::string<char>>;
+      name_type name_;
 
       // referencedImplementation
       public:
@@ -50,8 +50,8 @@ namespace DAnCE
       void referencedImplementation (::DAnCE::Config_Handlers::ComponentImplementationDescription const& );
 
       protected:
-      using referencedImplementation_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentImplementationDescription>;
-      referencedImplementation_unique_ptr_type referencedImplementation_;
+      using referencedImplementation_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentImplementationDescription>;
+      referencedImplementation_type referencedImplementation_;
 
       public:
       PackagedComponentImplementation (::XMLSchema::string<char> const& name__,
@@ -77,8 +77,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -87,8 +87,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // realizes
       public:
@@ -97,8 +97,8 @@ namespace DAnCE
       void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      realizes_unique_ptr_type realizes_;
+      using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      realizes_type realizes_;
 
       // configProperty
       public:
@@ -141,8 +141,8 @@ namespace DAnCE
       void href (::XMLSchema::string<char> const& );
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ComponentPackageDescription ();
@@ -167,8 +167,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -177,8 +177,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // realizes
       public:
@@ -187,8 +187,8 @@ namespace DAnCE
       void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
-      realizes_unique_ptr_type realizes_;
+      using realizes_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      realizes_type realizes_;
 
       // configProperty
       public:
@@ -231,8 +231,8 @@ namespace DAnCE
       void href (::XMLSchema::string<char> const& );
 
       protected:
-      using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      href_unique_ptr_type href_;
+      using href_type = std::unique_ptr<::XMLSchema::string<char>>;
+      href_type href_;
 
       public:
       ConnectorPackageDescription ();

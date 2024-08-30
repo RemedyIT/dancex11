@@ -70,8 +70,8 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      label_unique_ptr_type label_;
+      using label_type = std::unique_ptr<::XMLSchema::string<char>>;
+      label_type label_;
 
       // UUID
       public:
@@ -80,8 +80,8 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      UUID_unique_ptr_type UUID_;
+      using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
+      UUID_type UUID_;
 
       // basePackage
       public:
@@ -90,8 +90,8 @@ namespace DAnCE
       void basePackage (::DAnCE::Config_Handlers::ComponentPackageDescription const& );
 
       protected:
-      using basePackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageDescription>;
-      basePackage_unique_ptr_type basePackage_;
+      using basePackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageDescription>;
+      basePackage_type basePackage_;
 
       // specializedConfig
       public:
@@ -100,8 +100,8 @@ namespace DAnCE
       void specializedConfig (::DAnCE::Config_Handlers::PackageConfiguration const& );
 
       protected:
-      using specializedConfig_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::PackageConfiguration>;
-      specializedConfig_unique_ptr_type specializedConfig_;
+      using specializedConfig_type = std::unique_ptr<::DAnCE::Config_Handlers::PackageConfiguration>;
+      specializedConfig_type specializedConfig_;
 
       // importedPackage
       public:
@@ -110,8 +110,8 @@ namespace DAnCE
       void importedPackage (::DAnCE::Config_Handlers::ComponentPackageImport const& );
 
       protected:
-      using importedPackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageImport>;
-      importedPackage_unique_ptr_type importedPackage_;
+      using importedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageImport>;
+      importedPackage_type importedPackage_;
 
       // referencedPackage
       public:
@@ -120,8 +120,8 @@ namespace DAnCE
       void referencedPackage (::DAnCE::Config_Handlers::ComponentPackageReference const& );
 
       protected:
-      using referencedPackage_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageReference>;
-      referencedPackage_unique_ptr_type referencedPackage_;
+      using referencedPackage_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentPackageReference>;
+      referencedPackage_type referencedPackage_;
 
       // selectRequirement
       public:
@@ -152,8 +152,8 @@ namespace DAnCE
       void contentLocation (::XMLSchema::string<char> const& );
 
       protected:
-      using contentLocation_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
-      contentLocation_unique_ptr_type contentLocation_;
+      using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
+      contentLocation_type contentLocation_;
 
       public:
       PackageConfiguration ();
