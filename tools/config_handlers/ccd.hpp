@@ -65,7 +65,7 @@ namespace DAnCE
 
       // supportedType
       public:
-      using supportedType_container_type = std::vector< ::XMLSchema::string<char>>;
+      using supportedType_container_type = std::vector<::XMLSchema::string<char>>;
       using supportedType_const_iterator = supportedType_container_type::const_iterator;
       supportedType_const_iterator begin_supportedType () const;
       supportedType_const_iterator end_supportedType () const;
@@ -76,7 +76,7 @@ namespace DAnCE
 
       // idlFile
       public:
-      using idlFile_container_type = std::vector< ::XMLSchema::string<char>>;
+      using idlFile_container_type = std::vector<::XMLSchema::string<char>>;
       using idlFile_const_iterator = idlFile_container_type::const_iterator;
       idlFile_const_iterator begin_idlFile () const;
       idlFile_const_iterator end_idlFile () const;
@@ -87,7 +87,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -98,7 +98,7 @@ namespace DAnCE
 
       // port
       public:
-      using port_container_type = std::vector< ::DAnCE::Config_Handlers::ComponentPortDescription>;
+      using port_container_type = std::vector<::DAnCE::Config_Handlers::ComponentPortDescription>;
       using port_const_iterator = port_container_type::const_iterator;
       port_const_iterator begin_port () const;
       port_const_iterator end_port () const;
@@ -109,7 +109,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::ComponentPropertyDescription>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::ComponentPropertyDescription>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -120,7 +120,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;

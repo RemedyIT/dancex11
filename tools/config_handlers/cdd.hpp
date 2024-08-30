@@ -59,7 +59,7 @@ namespace DAnCE
 
       // node
       public:
-      using node_container_type = std::vector< ::DAnCE::Config_Handlers::Node>;
+      using node_container_type = std::vector<::DAnCE::Config_Handlers::Node>;
       using node_const_iterator = node_container_type::const_iterator;
       node_const_iterator begin_node () const;
       node_const_iterator end_node () const;
@@ -70,7 +70,7 @@ namespace DAnCE
 
       // interconnect
       public:
-      using interconnect_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using interconnect_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using interconnect_const_iterator = interconnect_container_type::const_iterator;
       interconnect_const_iterator begin_interconnect () const;
       interconnect_const_iterator end_interconnect () const;
@@ -81,7 +81,7 @@ namespace DAnCE
 
       // bridge
       public:
-      using bridge_container_type = std::vector< ::DAnCE::Config_Handlers::Bridge>;
+      using bridge_container_type = std::vector<::DAnCE::Config_Handlers::Bridge>;
       using bridge_const_iterator = bridge_container_type::const_iterator;
       bridge_const_iterator begin_bridge () const;
       bridge_const_iterator end_bridge () const;
@@ -92,7 +92,7 @@ namespace DAnCE
 
       // sharedResource
       public:
-      using sharedResource_container_type = std::vector< ::DAnCE::Config_Handlers::SharedResource>;
+      using sharedResource_container_type = std::vector<::DAnCE::Config_Handlers::SharedResource>;
       using sharedResource_const_iterator = sharedResource_container_type::const_iterator;
       sharedResource_const_iterator begin_sharedResource () const;
       sharedResource_const_iterator end_sharedResource () const;
@@ -103,7 +103,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -149,7 +149,7 @@ namespace DAnCE
 
       // connect
       public:
-      using connect_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using connect_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using connect_const_iterator = connect_container_type::const_iterator;
       connect_const_iterator begin_connect () const;
       connect_const_iterator end_connect () const;
@@ -160,7 +160,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;
@@ -207,7 +207,7 @@ namespace DAnCE
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::Bridge>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::Bridge>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -218,7 +218,7 @@ namespace DAnCE
 
       // connect
       public:
-      using connect_container_type = std::vector< ::DAnCE::Config_Handlers::Node>;
+      using connect_container_type = std::vector<::DAnCE::Config_Handlers::Node>;
       using connect_const_iterator = connect_container_type::const_iterator;
       connect_const_iterator begin_connect () const;
       connect_const_iterator end_connect () const;
@@ -229,7 +229,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;
@@ -276,7 +276,7 @@ namespace DAnCE
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::Interconnect>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::Interconnect>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -287,7 +287,7 @@ namespace DAnCE
 
       // sharedResource
       public:
-      using sharedResource_container_type = std::vector< ::DAnCE::Config_Handlers::SharedResource>;
+      using sharedResource_container_type = std::vector<::DAnCE::Config_Handlers::SharedResource>;
       using sharedResource_const_iterator = sharedResource_container_type::const_iterator;
       sharedResource_const_iterator begin_sharedResource () const;
       sharedResource_const_iterator end_sharedResource () const;
@@ -298,7 +298,7 @@ namespace DAnCE
 
       // resource
       public:
-      using resource_container_type = std::vector< ::DAnCE::Config_Handlers::Resource>;
+      using resource_container_type = std::vector<::DAnCE::Config_Handlers::Resource>;
       using resource_const_iterator = resource_container_type::const_iterator;
       resource_const_iterator begin_resource () const;
       resource_const_iterator end_resource () const;

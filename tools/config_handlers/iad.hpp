@@ -91,7 +91,7 @@ namespace DAnCE
 
       // location
       public:
-      using location_container_type = std::vector< ::XMLSchema::string<char>>;
+      using location_container_type = std::vector<::XMLSchema::string<char>>;
       using location_const_iterator = location_container_type::const_iterator;
       location_const_iterator begin_location () const;
       location_const_iterator end_location () const;
@@ -102,7 +102,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::NamedImplementationArtifact>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::NamedImplementationArtifact>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -113,7 +113,7 @@ namespace DAnCE
 
       // execParameter
       public:
-      using execParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using execParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using execParameter_const_iterator = execParameter_container_type::const_iterator;
       execParameter_const_iterator begin_execParameter () const;
       execParameter_const_iterator end_execParameter () const;
@@ -124,7 +124,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -135,7 +135,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;

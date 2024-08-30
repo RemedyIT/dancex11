@@ -289,7 +289,7 @@ namespace DAnCE
 
       // short
       public:
-      using short_container_type = std::vector< ::XMLSchema::short_>;
+      using short_container_type = std::vector<::XMLSchema::short_>;
       using short_const_iterator = short_container_type::const_iterator;
       short_const_iterator begin_short () const;
       short_const_iterator end_short () const;
@@ -300,7 +300,7 @@ namespace DAnCE
 
       // long
       public:
-      using long_container_type = std::vector< ::XMLSchema::int_>;
+      using long_container_type = std::vector<::XMLSchema::int_>;
       using long_const_iterator = long_container_type::const_iterator;
       long_const_iterator begin_long () const;
       long_const_iterator end_long () const;
@@ -311,7 +311,7 @@ namespace DAnCE
 
       // ushort
       public:
-      using ushort_container_type = std::vector< ::XMLSchema::unsignedShort>;
+      using ushort_container_type = std::vector<::XMLSchema::unsignedShort>;
       using ushort_const_iterator = ushort_container_type::const_iterator;
       ushort_const_iterator begin_ushort () const;
       ushort_const_iterator end_ushort () const;
@@ -322,7 +322,7 @@ namespace DAnCE
 
       // ulong
       public:
-      using ulong_container_type = std::vector< ::XMLSchema::unsignedInt>;
+      using ulong_container_type = std::vector<::XMLSchema::unsignedInt>;
       using ulong_const_iterator = ulong_container_type::const_iterator;
       ulong_const_iterator begin_ulong () const;
       ulong_const_iterator end_ulong () const;
@@ -333,7 +333,7 @@ namespace DAnCE
 
       // float
       public:
-      using float_container_type = std::vector< ::XMLSchema::float_>;
+      using float_container_type = std::vector<::XMLSchema::float_>;
       using float_const_iterator = float_container_type::const_iterator;
       float_const_iterator begin_float () const;
       float_const_iterator end_float () const;
@@ -344,7 +344,7 @@ namespace DAnCE
 
       // double
       public:
-      using double_container_type = std::vector< ::XMLSchema::double_>;
+      using double_container_type = std::vector<::XMLSchema::double_>;
       using double_const_iterator = double_container_type::const_iterator;
       double_const_iterator begin_double () const;
       double_const_iterator end_double () const;
@@ -355,7 +355,7 @@ namespace DAnCE
 
       // boolean
       public:
-      using boolean_container_type = std::vector< ::XMLSchema::boolean>;
+      using boolean_container_type = std::vector<::XMLSchema::boolean>;
       using boolean_const_iterator = boolean_container_type::const_iterator;
       boolean_const_iterator begin_boolean () const;
       boolean_const_iterator end_boolean () const;
@@ -366,7 +366,7 @@ namespace DAnCE
 
       // octet
       public:
-      using octet_container_type = std::vector< ::XMLSchema::unsignedByte>;
+      using octet_container_type = std::vector<::XMLSchema::unsignedByte>;
       using octet_const_iterator = octet_container_type::const_iterator;
       octet_const_iterator begin_octet () const;
       octet_const_iterator end_octet () const;
@@ -377,7 +377,7 @@ namespace DAnCE
 
       // enum
       public:
-      using enum_container_type = std::vector< ::XMLSchema::string<char>>;
+      using enum_container_type = std::vector<::XMLSchema::string<char>>;
       using enum_const_iterator = enum_container_type::const_iterator;
       enum_const_iterator begin_enum () const;
       enum_const_iterator end_enum () const;
@@ -388,7 +388,7 @@ namespace DAnCE
 
       // string
       public:
-      using string_container_type = std::vector< ::XMLSchema::string<char>>;
+      using string_container_type = std::vector<::XMLSchema::string<char>>;
       using string_const_iterator = string_container_type::const_iterator;
       string_const_iterator begin_string () const;
       string_const_iterator end_string () const;
@@ -399,7 +399,7 @@ namespace DAnCE
 
       // longlong
       public:
-      using longlong_container_type = std::vector< ::XMLSchema::long_>;
+      using longlong_container_type = std::vector<::XMLSchema::long_>;
       using longlong_const_iterator = longlong_container_type::const_iterator;
       longlong_const_iterator begin_longlong () const;
       longlong_const_iterator end_longlong () const;
@@ -410,7 +410,7 @@ namespace DAnCE
 
       // ulonglong
       public:
-      using ulonglong_container_type = std::vector< ::XMLSchema::unsignedLong>;
+      using ulonglong_container_type = std::vector<::XMLSchema::unsignedLong>;
       using ulonglong_const_iterator = ulonglong_container_type::const_iterator;
       ulonglong_const_iterator begin_ulonglong () const;
       ulonglong_const_iterator end_ulonglong () const;
@@ -421,7 +421,7 @@ namespace DAnCE
 
       // longdouble
       public:
-      using longdouble_container_type = std::vector< ::XMLSchema::double_>;
+      using longdouble_container_type = std::vector<::XMLSchema::double_>;
       using longdouble_const_iterator = longdouble_container_type::const_iterator;
       longdouble_const_iterator begin_longdouble () const;
       longdouble_const_iterator end_longdouble () const;
@@ -432,7 +432,7 @@ namespace DAnCE
 
       // element
       public:
-      using element_container_type = std::vector< ::DAnCE::Config_Handlers::DataValue>;
+      using element_container_type = std::vector<::DAnCE::Config_Handlers::DataValue>;
       using element_const_iterator = element_container_type::const_iterator;
       element_const_iterator begin_element () const;
       element_const_iterator end_element () const;
@@ -443,7 +443,7 @@ namespace DAnCE
 
       // member
       public:
-      using member_container_type = std::vector< ::DAnCE::Config_Handlers::NamedValue>;
+      using member_container_type = std::vector<::DAnCE::Config_Handlers::NamedValue>;
       using member_const_iterator = member_container_type::const_iterator;
       member_const_iterator begin_member () const;
       member_const_iterator end_member () const;
@@ -533,7 +533,7 @@ namespace DAnCE
 
       // member
       public:
-      using member_container_type = std::vector< ::XMLSchema::string<char>>;
+      using member_container_type = std::vector<::XMLSchema::string<char>>;
       using member_const_iterator = member_container_type::const_iterator;
       member_const_iterator begin_member () const;
       member_const_iterator end_member () const;
@@ -562,7 +562,7 @@ namespace DAnCE
 
       // bound
       public:
-      using bound_container_type = std::vector< ::XMLSchema::unsignedInt>;
+      using bound_container_type = std::vector<::XMLSchema::unsignedInt>;
       using bound_const_iterator = bound_container_type::const_iterator;
       bound_const_iterator begin_bound () const;
       bound_const_iterator end_bound () const;
@@ -607,7 +607,7 @@ namespace DAnCE
 
       // member
       public:
-      using member_container_type = std::vector< ::DAnCE::Config_Handlers::StructMemberType>;
+      using member_container_type = std::vector<::DAnCE::Config_Handlers::StructMemberType>;
       using member_const_iterator = member_container_type::const_iterator;
       member_const_iterator begin_member () const;
       member_const_iterator end_member () const;
@@ -706,7 +706,7 @@ namespace DAnCE
 
       // member
       public:
-      using member_container_type = std::vector< ::DAnCE::Config_Handlers::ValueMemberType>;
+      using member_container_type = std::vector<::DAnCE::Config_Handlers::ValueMemberType>;
       using member_const_iterator = member_container_type::const_iterator;
       member_const_iterator begin_member () const;
       member_const_iterator end_member () const;
@@ -1059,7 +1059,7 @@ namespace DAnCE
 
       // resourceType
       public:
-      using resourceType_container_type = std::vector< ::XMLSchema::string<char>>;
+      using resourceType_container_type = std::vector<::XMLSchema::string<char>>;
       using resourceType_const_iterator = resourceType_container_type::const_iterator;
       resourceType_const_iterator begin_resourceType () const;
       resourceType_const_iterator end_resourceType () const;
@@ -1070,7 +1070,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::SatisfierProperty>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::SatisfierProperty>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -1116,7 +1116,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -1162,7 +1162,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -1199,7 +1199,7 @@ namespace DAnCE
 
       // source
       public:
-      using source_container_type = std::vector< ::XMLSchema::string<char>>;
+      using source_container_type = std::vector<::XMLSchema::string<char>>;
       using source_const_iterator = source_container_type::const_iterator;
       source_const_iterator begin_source () const;
       source_const_iterator end_source () const;
@@ -1219,7 +1219,7 @@ namespace DAnCE
 
       // location
       public:
-      using location_container_type = std::vector< ::XMLSchema::string<char>>;
+      using location_container_type = std::vector<::XMLSchema::string<char>>;
       using location_const_iterator = location_container_type::const_iterator;
       location_const_iterator begin_location () const;
       location_const_iterator end_location () const;
@@ -1230,7 +1230,7 @@ namespace DAnCE
 
       // execParameter
       public:
-      using execParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using execParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using execParameter_const_iterator = execParameter_container_type::const_iterator;
       execParameter_const_iterator begin_execParameter () const;
       execParameter_const_iterator end_execParameter () const;
@@ -1241,7 +1241,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -1252,7 +1252,7 @@ namespace DAnCE
 
       // deployedResource
       public:
-      using deployedResource_container_type = std::vector< ::DAnCE::Config_Handlers::ResourceDeploymentDescription>;
+      using deployedResource_container_type = std::vector<::DAnCE::Config_Handlers::ResourceDeploymentDescription>;
       using deployedResource_const_iterator = deployedResource_container_type::const_iterator;
       deployedResource_const_iterator begin_deployedResource () const;
       deployedResource_const_iterator end_deployedResource () const;
@@ -1300,7 +1300,7 @@ namespace DAnCE
 
       // source
       public:
-      using source_container_type = std::vector< ::XMLSchema::string<char>>;
+      using source_container_type = std::vector<::XMLSchema::string<char>>;
       using source_const_iterator = source_container_type::const_iterator;
       source_const_iterator begin_source () const;
       source_const_iterator end_source () const;
@@ -1311,7 +1311,7 @@ namespace DAnCE
 
       // artifact
       public:
-      using artifact_container_type = std::vector< ::DAnCE::Config_Handlers::IdRef>;
+      using artifact_container_type = std::vector<::DAnCE::Config_Handlers::IdRef>;
       using artifact_const_iterator = artifact_container_type::const_iterator;
       artifact_const_iterator begin_artifact () const;
       artifact_const_iterator end_artifact () const;
@@ -1322,7 +1322,7 @@ namespace DAnCE
 
       // execParameter
       public:
-      using execParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using execParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using execParameter_const_iterator = execParameter_container_type::const_iterator;
       execParameter_const_iterator begin_execParameter () const;
       execParameter_const_iterator end_execParameter () const;
@@ -1333,7 +1333,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -1436,7 +1436,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -1501,7 +1501,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -1512,7 +1512,7 @@ namespace DAnCE
 
       // deployedResource
       public:
-      using deployedResource_container_type = std::vector< ::DAnCE::Config_Handlers::InstanceResourceDeploymentDescription>;
+      using deployedResource_container_type = std::vector<::DAnCE::Config_Handlers::InstanceResourceDeploymentDescription>;
       using deployedResource_const_iterator = deployedResource_container_type::const_iterator;
       deployedResource_const_iterator begin_deployedResource () const;
       deployedResource_const_iterator end_deployedResource () const;
@@ -1523,7 +1523,7 @@ namespace DAnCE
 
       // deployedSharedResource
       public:
-      using deployedSharedResource_container_type = std::vector< ::DAnCE::Config_Handlers::InstanceResourceDeploymentDescription>;
+      using deployedSharedResource_container_type = std::vector<::DAnCE::Config_Handlers::InstanceResourceDeploymentDescription>;
       using deployedSharedResource_const_iterator = deployedSharedResource_container_type::const_iterator;
       deployedSharedResource_const_iterator begin_deployedSharedResource () const;
       deployedSharedResource_const_iterator end_deployedSharedResource () const;
@@ -1624,7 +1624,7 @@ namespace DAnCE
 
       // supportedType
       public:
-      using supportedType_container_type = std::vector< ::XMLSchema::string<char>>;
+      using supportedType_container_type = std::vector<::XMLSchema::string<char>>;
       using supportedType_const_iterator = supportedType_container_type::const_iterator;
       supportedType_const_iterator begin_supportedType () const;
       supportedType_const_iterator end_supportedType () const;
@@ -1680,7 +1680,7 @@ namespace DAnCE
 
       // templateParam
       public:
-      using templateParam_container_type = std::vector< ::XMLSchema::string<char>>;
+      using templateParam_container_type = std::vector<::XMLSchema::string<char>>;
       using templateParam_const_iterator = templateParam_container_type::const_iterator;
       templateParam_const_iterator begin_templateParam () const;
       templateParam_const_iterator end_templateParam () const;
@@ -1855,7 +1855,7 @@ namespace DAnCE
 
       // supportedType
       public:
-      using supportedType_container_type = std::vector< ::XMLSchema::string<char>>;
+      using supportedType_container_type = std::vector<::XMLSchema::string<char>>;
       using supportedType_const_iterator = supportedType_container_type::const_iterator;
       supportedType_const_iterator begin_supportedType () const;
       supportedType_const_iterator end_supportedType () const;
@@ -1910,7 +1910,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -1958,7 +1958,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -1969,7 +1969,7 @@ namespace DAnCE
 
       // externalEndpoint
       public:
-      using externalEndpoint_container_type = std::vector< ::DAnCE::Config_Handlers::ComponentExternalPortEndpoint>;
+      using externalEndpoint_container_type = std::vector<::DAnCE::Config_Handlers::ComponentExternalPortEndpoint>;
       using externalEndpoint_const_iterator = externalEndpoint_container_type::const_iterator;
       externalEndpoint_const_iterator begin_externalEndpoint () const;
       externalEndpoint_const_iterator end_externalEndpoint () const;
@@ -1980,7 +1980,7 @@ namespace DAnCE
 
       // internalEndpoint
       public:
-      using internalEndpoint_container_type = std::vector< ::DAnCE::Config_Handlers::PlanSubcomponentPortEndpoint>;
+      using internalEndpoint_container_type = std::vector<::DAnCE::Config_Handlers::PlanSubcomponentPortEndpoint>;
       using internalEndpoint_const_iterator = internalEndpoint_container_type::const_iterator;
       internalEndpoint_const_iterator begin_internalEndpoint () const;
       internalEndpoint_const_iterator end_internalEndpoint () const;
@@ -1991,7 +1991,7 @@ namespace DAnCE
 
       // externalReference
       public:
-      using externalReference_container_type = std::vector< ::DAnCE::Config_Handlers::ExternalReferenceEndpoint>;
+      using externalReference_container_type = std::vector<::DAnCE::Config_Handlers::ExternalReferenceEndpoint>;
       using externalReference_const_iterator = externalReference_container_type::const_iterator;
       externalReference_const_iterator begin_externalReference () const;
       externalReference_const_iterator end_externalReference () const;
@@ -2002,7 +2002,7 @@ namespace DAnCE
 
       // deployedResource
       public:
-      using deployedResource_container_type = std::vector< ::DAnCE::Config_Handlers::ConnectionResourceDeploymentDescription>;
+      using deployedResource_container_type = std::vector<::DAnCE::Config_Handlers::ConnectionResourceDeploymentDescription>;
       using deployedResource_const_iterator = deployedResource_container_type::const_iterator;
       deployedResource_const_iterator begin_deployedResource () const;
       deployedResource_const_iterator end_deployedResource () const;
@@ -2063,7 +2063,7 @@ namespace DAnCE
 
       // resourceType
       public:
-      using resourceType_container_type = std::vector< ::XMLSchema::string<char>>;
+      using resourceType_container_type = std::vector<::XMLSchema::string<char>>;
       using resourceType_const_iterator = resourceType_container_type::const_iterator;
       resourceType_const_iterator begin_resourceType () const;
       resourceType_const_iterator end_resourceType () const;
@@ -2074,7 +2074,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::SatisfierProperty>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::SatisfierProperty>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -2149,7 +2149,7 @@ namespace DAnCE
 
       // property
       public:
-      using property_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using property_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using property_const_iterator = property_container_type::const_iterator;
       property_const_iterator begin_property () const;
       property_const_iterator end_property () const;
@@ -2221,7 +2221,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -2232,7 +2232,7 @@ namespace DAnCE
 
       // internalEndpoint
       public:
-      using internalEndpoint_container_type = std::vector< ::DAnCE::Config_Handlers::SubcomponentPortEndpoint>;
+      using internalEndpoint_container_type = std::vector<::DAnCE::Config_Handlers::SubcomponentPortEndpoint>;
       using internalEndpoint_const_iterator = internalEndpoint_container_type::const_iterator;
       internalEndpoint_const_iterator begin_internalEndpoint () const;
       internalEndpoint_const_iterator end_internalEndpoint () const;
@@ -2243,7 +2243,7 @@ namespace DAnCE
 
       // externalEndpoint
       public:
-      using externalEndpoint_container_type = std::vector< ::DAnCE::Config_Handlers::ComponentExternalPortEndpoint>;
+      using externalEndpoint_container_type = std::vector<::DAnCE::Config_Handlers::ComponentExternalPortEndpoint>;
       using externalEndpoint_const_iterator = externalEndpoint_container_type::const_iterator;
       externalEndpoint_const_iterator begin_externalEndpoint () const;
       externalEndpoint_const_iterator end_externalEndpoint () const;
@@ -2254,7 +2254,7 @@ namespace DAnCE
 
       // externalReference
       public:
-      using externalReference_container_type = std::vector< ::DAnCE::Config_Handlers::ExternalReferenceEndpoint>;
+      using externalReference_container_type = std::vector<::DAnCE::Config_Handlers::ExternalReferenceEndpoint>;
       using externalReference_const_iterator = externalReference_container_type::const_iterator;
       externalReference_const_iterator begin_externalReference () const;
       externalReference_const_iterator end_externalReference () const;
@@ -2326,7 +2326,7 @@ namespace DAnCE
 
       // constrainedInstance
       public:
-      using constrainedInstance_container_type = std::vector< ::DAnCE::Config_Handlers::IdRef>;
+      using constrainedInstance_container_type = std::vector<::DAnCE::Config_Handlers::IdRef>;
       using constrainedInstance_const_iterator = constrainedInstance_container_type::const_iterator;
       constrainedInstance_const_iterator begin_constrainedInstance () const;
       constrainedInstance_const_iterator end_constrainedInstance () const;

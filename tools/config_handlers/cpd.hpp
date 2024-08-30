@@ -102,7 +102,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -113,7 +113,7 @@ namespace DAnCE
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::PackagedComponentImplementation>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::PackagedComponentImplementation>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -124,7 +124,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -192,7 +192,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -203,7 +203,7 @@ namespace DAnCE
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::ConnectorImplementationDescription>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::ConnectorImplementationDescription>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -214,7 +214,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;

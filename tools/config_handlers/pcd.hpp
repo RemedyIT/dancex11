@@ -38,7 +38,7 @@ namespace DAnCE
 
       // location
       public:
-      using location_container_type = std::vector< ::XMLSchema::string<char>>;
+      using location_container_type = std::vector<::XMLSchema::string<char>>;
       using location_const_iterator = location_container_type::const_iterator;
       location_const_iterator begin_location () const;
       location_const_iterator end_location () const;
@@ -125,7 +125,7 @@ namespace DAnCE
 
       // selectRequirement
       public:
-      using selectRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using selectRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using selectRequirement_const_iterator = selectRequirement_container_type::const_iterator;
       selectRequirement_const_iterator begin_selectRequirement () const;
       selectRequirement_const_iterator end_selectRequirement () const;
@@ -136,7 +136,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;

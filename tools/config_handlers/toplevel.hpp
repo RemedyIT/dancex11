@@ -35,7 +35,7 @@ namespace DAnCE
 
       // package
       public:
-      using package_container_type = std::vector< ::DAnCE::Config_Handlers::PackageConfiguration>;
+      using package_container_type = std::vector<::DAnCE::Config_Handlers::PackageConfiguration>;
       using package_const_iterator = package_container_type::const_iterator;
       package_const_iterator begin_package () const;
       package_const_iterator end_package () const;

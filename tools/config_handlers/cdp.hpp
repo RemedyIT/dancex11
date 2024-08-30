@@ -81,7 +81,7 @@ namespace DAnCE
 
       // source
       public:
-      using source_container_type = std::vector< ::XMLSchema::string<char>>;
+      using source_container_type = std::vector<::XMLSchema::string<char>>;
       using source_const_iterator = source_container_type::const_iterator;
       source_const_iterator begin_source () const;
       source_const_iterator end_source () const;
@@ -101,7 +101,7 @@ namespace DAnCE
 
       // delegatesTo
       public:
-      using delegatesTo_container_type = std::vector< ::DAnCE::Config_Handlers::PlanSubcomponentPropertyReference>;
+      using delegatesTo_container_type = std::vector<::DAnCE::Config_Handlers::PlanSubcomponentPropertyReference>;
       using delegatesTo_const_iterator = delegatesTo_container_type::const_iterator;
       delegatesTo_const_iterator begin_delegatesTo () const;
       delegatesTo_const_iterator end_delegatesTo () const;
@@ -160,7 +160,7 @@ namespace DAnCE
 
       // implementation
       public:
-      using implementation_container_type = std::vector< ::DAnCE::Config_Handlers::MonolithicDeploymentDescription>;
+      using implementation_container_type = std::vector<::DAnCE::Config_Handlers::MonolithicDeploymentDescription>;
       using implementation_const_iterator = implementation_container_type::const_iterator;
       implementation_const_iterator begin_implementation () const;
       implementation_const_iterator end_implementation () const;
@@ -171,7 +171,7 @@ namespace DAnCE
 
       // instance
       public:
-      using instance_container_type = std::vector< ::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
+      using instance_container_type = std::vector<::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
       using instance_const_iterator = instance_container_type::const_iterator;
       instance_const_iterator begin_instance () const;
       instance_const_iterator end_instance () const;
@@ -182,7 +182,7 @@ namespace DAnCE
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::PlanConnectionDescription>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::PlanConnectionDescription>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -193,7 +193,7 @@ namespace DAnCE
 
       // externalProperty
       public:
-      using externalProperty_container_type = std::vector< ::DAnCE::Config_Handlers::PlanPropertyMapping>;
+      using externalProperty_container_type = std::vector<::DAnCE::Config_Handlers::PlanPropertyMapping>;
       using externalProperty_const_iterator = externalProperty_container_type::const_iterator;
       externalProperty_const_iterator begin_externalProperty () const;
       externalProperty_const_iterator end_externalProperty () const;
@@ -204,7 +204,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::ImplementationDependency>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::ImplementationDependency>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -215,7 +215,7 @@ namespace DAnCE
 
       // artifact
       public:
-      using artifact_container_type = std::vector< ::DAnCE::Config_Handlers::ArtifactDeploymentDescription>;
+      using artifact_container_type = std::vector<::DAnCE::Config_Handlers::ArtifactDeploymentDescription>;
       using artifact_const_iterator = artifact_container_type::const_iterator;
       artifact_const_iterator begin_artifact () const;
       artifact_const_iterator end_artifact () const;
@@ -226,7 +226,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -237,7 +237,7 @@ namespace DAnCE
 
       // localityConstraint
       public:
-      using localityConstraint_container_type = std::vector< ::DAnCE::Config_Handlers::PlanLocality>;
+      using localityConstraint_container_type = std::vector<::DAnCE::Config_Handlers::PlanLocality>;
       using localityConstraint_const_iterator = localityConstraint_container_type::const_iterator;
       localityConstraint_const_iterator begin_localityConstraint () const;
       localityConstraint_const_iterator end_localityConstraint () const;

@@ -124,7 +124,7 @@ namespace DAnCE
 
       // selectRequirement
       public:
-      using selectRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::Requirement>;
+      using selectRequirement_container_type = std::vector<::DAnCE::Config_Handlers::Requirement>;
       using selectRequirement_const_iterator = selectRequirement_container_type::const_iterator;
       selectRequirement_const_iterator begin_selectRequirement () const;
       selectRequirement_const_iterator end_selectRequirement () const;
@@ -135,7 +135,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -246,7 +246,7 @@ namespace DAnCE
 
       // delegatesTo
       public:
-      using delegatesTo_container_type = std::vector< ::DAnCE::Config_Handlers::SubcomponentPropertyReference>;
+      using delegatesTo_container_type = std::vector<::DAnCE::Config_Handlers::SubcomponentPropertyReference>;
       using delegatesTo_const_iterator = delegatesTo_container_type::const_iterator;
       delegatesTo_const_iterator begin_delegatesTo () const;
       delegatesTo_const_iterator end_delegatesTo () const;
@@ -348,7 +348,7 @@ namespace DAnCE
 
       // instance
       public:
-      using instance_container_type = std::vector< ::DAnCE::Config_Handlers::SubcomponentInstantiationDescription>;
+      using instance_container_type = std::vector<::DAnCE::Config_Handlers::SubcomponentInstantiationDescription>;
       using instance_const_iterator = instance_container_type::const_iterator;
       instance_const_iterator begin_instance () const;
       instance_const_iterator end_instance () const;
@@ -359,7 +359,7 @@ namespace DAnCE
 
       // connection
       public:
-      using connection_container_type = std::vector< ::DAnCE::Config_Handlers::AssemblyConnectionDescription>;
+      using connection_container_type = std::vector<::DAnCE::Config_Handlers::AssemblyConnectionDescription>;
       using connection_const_iterator = connection_container_type::const_iterator;
       connection_const_iterator begin_connection () const;
       connection_const_iterator end_connection () const;
@@ -370,7 +370,7 @@ namespace DAnCE
 
       // externalProperty
       public:
-      using externalProperty_container_type = std::vector< ::DAnCE::Config_Handlers::AssemblyPropertyMapping>;
+      using externalProperty_container_type = std::vector<::DAnCE::Config_Handlers::AssemblyPropertyMapping>;
       using externalProperty_const_iterator = externalProperty_container_type::const_iterator;
       externalProperty_const_iterator begin_externalProperty () const;
       externalProperty_const_iterator end_externalProperty () const;
@@ -381,7 +381,7 @@ namespace DAnCE
 
       // locality
       public:
-      using locality_container_type = std::vector< ::DAnCE::Config_Handlers::Locality>;
+      using locality_container_type = std::vector<::DAnCE::Config_Handlers::Locality>;
       using locality_const_iterator = locality_container_type::const_iterator;
       locality_const_iterator begin_locality () const;
       locality_const_iterator end_locality () const;
@@ -408,7 +408,7 @@ namespace DAnCE
 
       // nodeExecParameter
       public:
-      using nodeExecParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using nodeExecParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using nodeExecParameter_const_iterator = nodeExecParameter_container_type::const_iterator;
       nodeExecParameter_const_iterator begin_nodeExecParameter () const;
       nodeExecParameter_const_iterator end_nodeExecParameter () const;
@@ -419,7 +419,7 @@ namespace DAnCE
 
       // componentExecParameter
       public:
-      using componentExecParameter_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using componentExecParameter_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using componentExecParameter_const_iterator = componentExecParameter_container_type::const_iterator;
       componentExecParameter_const_iterator begin_componentExecParameter () const;
       componentExecParameter_const_iterator end_componentExecParameter () const;
@@ -430,7 +430,7 @@ namespace DAnCE
 
       // deployRequirement
       public:
-      using deployRequirement_container_type = std::vector< ::DAnCE::Config_Handlers::ImplementationRequirement>;
+      using deployRequirement_container_type = std::vector<::DAnCE::Config_Handlers::ImplementationRequirement>;
       using deployRequirement_const_iterator = deployRequirement_container_type::const_iterator;
       deployRequirement_const_iterator begin_deployRequirement () const;
       deployRequirement_const_iterator end_deployRequirement () const;
@@ -441,7 +441,7 @@ namespace DAnCE
 
       // primaryArtifact
       public:
-      using primaryArtifact_container_type = std::vector< ::DAnCE::Config_Handlers::NamedImplementationArtifact>;
+      using primaryArtifact_container_type = std::vector<::DAnCE::Config_Handlers::NamedImplementationArtifact>;
       using primaryArtifact_const_iterator = primaryArtifact_container_type::const_iterator;
       primaryArtifact_const_iterator begin_primaryArtifact () const;
       primaryArtifact_const_iterator end_primaryArtifact () const;
@@ -518,7 +518,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -529,7 +529,7 @@ namespace DAnCE
 
       // capability
       public:
-      using capability_container_type = std::vector< ::DAnCE::Config_Handlers::Capability>;
+      using capability_container_type = std::vector<::DAnCE::Config_Handlers::Capability>;
       using capability_const_iterator = capability_container_type::const_iterator;
       capability_const_iterator begin_capability () const;
       capability_const_iterator end_capability () const;
@@ -540,7 +540,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::ImplementationDependency>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::ImplementationDependency>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -551,7 +551,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
@@ -639,7 +639,7 @@ namespace DAnCE
 
       // configProperty
       public:
-      using configProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using configProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using configProperty_const_iterator = configProperty_container_type::const_iterator;
       configProperty_const_iterator begin_configProperty () const;
       configProperty_const_iterator end_configProperty () const;
@@ -650,7 +650,7 @@ namespace DAnCE
 
       // capability
       public:
-      using capability_container_type = std::vector< ::DAnCE::Config_Handlers::Capability>;
+      using capability_container_type = std::vector<::DAnCE::Config_Handlers::Capability>;
       using capability_const_iterator = capability_container_type::const_iterator;
       capability_const_iterator begin_capability () const;
       capability_const_iterator end_capability () const;
@@ -661,7 +661,7 @@ namespace DAnCE
 
       // dependsOn
       public:
-      using dependsOn_container_type = std::vector< ::DAnCE::Config_Handlers::ImplementationDependency>;
+      using dependsOn_container_type = std::vector<::DAnCE::Config_Handlers::ImplementationDependency>;
       using dependsOn_const_iterator = dependsOn_container_type::const_iterator;
       dependsOn_const_iterator begin_dependsOn () const;
       dependsOn_const_iterator end_dependsOn () const;
@@ -672,7 +672,7 @@ namespace DAnCE
 
       // infoProperty
       public:
-      using infoProperty_container_type = std::vector< ::DAnCE::Config_Handlers::Property>;
+      using infoProperty_container_type = std::vector<::DAnCE::Config_Handlers::Property>;
       using infoProperty_const_iterator = infoProperty_container_type::const_iterator;
       infoProperty_const_iterator begin_infoProperty () const;
       infoProperty_const_iterator end_infoProperty () const;
