@@ -33,28 +33,28 @@ namespace XMI
     if (std::addressof(s) != this)
     {
       if (s.id_) id (*(s.id_));
-      else id_.reset (nullptr);
+      else id_.release ();
 
       if (s.label_) label (*(s.label_));
-      else label_.reset (nullptr);
+      else label_.release ();
 
       if (s.uuid_) uuid (*(s.uuid_));
-      else uuid_.reset (nullptr);
+      else uuid_.release ();
 
       if (s.href_) href (*(s.href_));
-      else href_.reset (nullptr);
+      else href_.release ();
 
       if (s.idref_) idref (*(s.idref_));
-      else idref_.reset (nullptr);
+      else idref_.release ();
 
       if (s.version_) version (*(s.version_));
-      else version_.reset (nullptr);
+      else version_.release ();
 
       if (s.extender_) extender (*(s.extender_));
-      else extender_.reset (nullptr);
+      else extender_.release ();
 
       if (s.extenderID_) extenderID (*(s.extenderID_));
-      else extenderID_.reset (nullptr);
+      else extenderID_.release ();
     }
 
     return *this;

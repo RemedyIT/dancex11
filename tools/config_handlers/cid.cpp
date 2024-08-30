@@ -34,12 +34,12 @@ namespace DAnCE
         if (s.requiredUUID_)
           requiredUUID (*(s.requiredUUID_));
         else
-          requiredUUID_.reset (nullptr);
+          requiredUUID_.release ();
 
         if (s.requiredName_)
           requiredName (*(s.requiredName_));
         else
-          requiredName_.reset (nullptr);
+          requiredName_.release ();
 
         requiredType (*s.requiredType_);
       }
@@ -147,12 +147,12 @@ namespace DAnCE
         if (s.basePackage_)
           basePackage (*(s.basePackage_));
         else
-          basePackage_.reset (nullptr);
+          basePackage_.release ();
 
         if (s.specializedConfig_)
           specializedConfig (*(s.specializedConfig_));
         else
-          specializedConfig_.reset (nullptr);
+          specializedConfig_.release ();
 
         selectRequirement_ = s.selectRequirement_;
 
@@ -161,15 +161,15 @@ namespace DAnCE
         if (s.referencedPackage_)
           referencedPackage (*(s.referencedPackage_));
         else
-          referencedPackage_.reset (nullptr);
+          referencedPackage_.release ();
 
         if (s.importedPackage_)
           importedPackage (*(s.importedPackage_));
         else
-          importedPackage_.reset (nullptr);
+          importedPackage_.release ();
 
         if (s.id_) id (*(s.id_));
-        else id_.reset (nullptr);
+        else id_.release ();
       }
 
       return *this;
@@ -843,27 +843,27 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.implements_)
           implements (*(s.implements_));
         else
-          implements_.reset (nullptr);
+          implements_.release ();
 
         if (s.assemblyImpl_)
           assemblyImpl (*(s.assemblyImpl_));
         else
-          assemblyImpl_.reset (nullptr);
+          assemblyImpl_.release ();
 
         if (s.monolithicImpl_)
           monolithicImpl (*(s.monolithicImpl_));
         else
-          monolithicImpl_.reset (nullptr);
+          monolithicImpl_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -874,7 +874,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;
@@ -1156,27 +1156,27 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.implements_)
           implements (*(s.implements_));
         else
-          implements_.reset (nullptr);
+          implements_.release ();
 
         if (s.assemblyImpl_)
           assemblyImpl (*(s.assemblyImpl_));
         else
-          assemblyImpl_.reset (nullptr);
+          assemblyImpl_.release ();
 
         if (s.monolithicImpl_)
           monolithicImpl (*(s.monolithicImpl_));
         else
-          monolithicImpl_.reset (nullptr);
+          monolithicImpl_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -1187,7 +1187,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;

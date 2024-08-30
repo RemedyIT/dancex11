@@ -203,17 +203,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         implementation_ = s.implementation_;
 

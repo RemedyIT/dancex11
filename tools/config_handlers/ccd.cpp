@@ -41,17 +41,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.specificType_)
           specificType (*(s.specificType_));
         else
-          specificType_.reset (nullptr);
+          specificType_.release ();
 
         supportedType_ = s.supportedType_;
 
@@ -68,10 +68,10 @@ namespace DAnCE
         if (s.contentLocation_)
           contentLocation (*(s.contentLocation_));
         else
-          contentLocation_.reset (nullptr);
+          contentLocation_.release ();
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;

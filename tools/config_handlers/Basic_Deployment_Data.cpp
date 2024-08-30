@@ -29,10 +29,10 @@ namespace DAnCE
       if (std::addressof(s) != this)
       {
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
 
         if (s.idref_) idref (*(s.idref_));
-        else idref_.reset (nullptr);
+        else idref_.release ();
       }
 
       return *this;
@@ -164,40 +164,40 @@ namespace DAnCE
         if (s.enum__)
           enum_ (*(s.enum__));
         else
-          enum__.reset (nullptr);
+          enum__.release ();
 
         if (s.struct__)
           struct_ (*(s.struct__));
         else
-          struct__.reset (nullptr);
+          struct__.release ();
 
         if (s.value_)
           value (*(s.value_));
         else
-          value_.reset (nullptr);
+          value_.release ();
 
         if (s.sequence_)
           sequence (*(s.sequence_));
         else
-          sequence_.reset (nullptr);
+          sequence_.release ();
 
         if (s.alias_)
           alias (*(s.alias_));
         else
-          alias_.reset (nullptr);
+          alias_.release ();
 
         if (s.array_)
           array (*(s.array_));
         else
-          array_.reset (nullptr);
+          array_.release ();
 
         if (s.boundedString_)
           boundedString (*(s.boundedString_));
         else
-          boundedString_.reset (nullptr);
+          boundedString_.release ();
 
         if (s.id_) id (*(s.id_));
-        else id_.reset (nullptr);
+        else id_.release ();
       }
 
       return *this;
@@ -1465,7 +1465,7 @@ namespace DAnCE
         if (s.bound_)
           bound (*(s.bound_));
         else
-          bound_.reset (nullptr);
+          bound_.release ();
 
         elementType (*s.elementType_);
       }
@@ -2040,7 +2040,7 @@ namespace DAnCE
         deployedResource_ = s.deployedResource_;
 
         if (s.id_) id (*(s.id_));
-        else id_.reset (nullptr);
+        else id_.release ();
       }
 
       return *this;
@@ -2237,7 +2237,7 @@ namespace DAnCE
         deployRequirement_ = s.deployRequirement_;
 
         if (s.id_) id (*(s.id_));
-        else id_.reset (nullptr);
+        else id_.release ();
       }
 
       return *this;
@@ -2538,7 +2538,7 @@ namespace DAnCE
         deployedSharedResource_ = s.deployedSharedResource_;
 
         if (s.id_) id (*(s.id_));
-        else id_.reset (nullptr);
+        else id_.release ();
       }
 
       return *this;
@@ -2756,7 +2756,7 @@ namespace DAnCE
         if (s.specificType_)
           specificType (*(s.specificType_));
         else
-          specificType_.reset (nullptr);
+          specificType_.release ();
 
         supportedType_ = s.supportedType_;
 
@@ -3050,7 +3050,7 @@ namespace DAnCE
         if (s.provider_)
           provider (*(s.provider_));
         else
-          provider_.reset (nullptr);
+          provider_.release ();
 
         kind (*s.kind_);
 
@@ -3159,7 +3159,7 @@ namespace DAnCE
         if (s.portName_)
           portName (*(s.portName_));
         else
-          portName_.reset (nullptr);
+          portName_.release ();
 
         supportedType_ = s.supportedType_;
       }
@@ -3369,7 +3369,7 @@ namespace DAnCE
         if (s.source_)
           source (*(s.source_));
         else
-          source_.reset (nullptr);
+          source_.release ();
 
         deployRequirement_ = s.deployRequirement_;
 
@@ -3675,17 +3675,17 @@ namespace DAnCE
         if (s.resourceUsage_)
           resourceUsage (*(s.resourceUsage_));
         else
-          resourceUsage_.reset (nullptr);
+          resourceUsage_.release ();
 
         if (s.resourcePort_)
           resourcePort (*(s.resourcePort_));
         else
-          resourcePort_.reset (nullptr);
+          resourcePort_.release ();
 
         if (s.componentPort_)
           componentPort (*(s.componentPort_));
         else
-          componentPort_.reset (nullptr);
+          componentPort_.release ();
 
         resourceType (*s.resourceType_);
 

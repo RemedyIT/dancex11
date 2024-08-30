@@ -95,17 +95,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -114,7 +114,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;
@@ -320,17 +320,17 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.realizes_)
           realizes (*(s.realizes_));
         else
-          realizes_.reset (nullptr);
+          realizes_.release ();
 
         configProperty_ = s.configProperty_;
 
@@ -339,7 +339,7 @@ namespace DAnCE
         infoProperty_ = s.infoProperty_;
 
         if (s.href_) href (*(s.href_));
-        else href_.reset (nullptr);
+        else href_.release ();
       }
 
       return *this;

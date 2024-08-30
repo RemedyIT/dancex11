@@ -84,32 +84,32 @@ namespace DAnCE
         if (s.label_)
           label (*(s.label_));
         else
-          label_.reset (nullptr);
+          label_.release ();
 
         if (s.UUID_)
           UUID (*(s.UUID_));
         else
-          UUID_.reset (nullptr);
+          UUID_.release ();
 
         if (s.basePackage_)
           basePackage (*(s.basePackage_));
         else
-          basePackage_.reset (nullptr);
+          basePackage_.release ();
 
         if (s.specializedConfig_)
           specializedConfig (*(s.specializedConfig_));
         else
-          specializedConfig_.reset (nullptr);
+          specializedConfig_.release ();
 
         if (s.importedPackage_)
           importedPackage (*(s.importedPackage_));
         else
-          importedPackage_.reset (nullptr);
+          importedPackage_.release ();
 
         if (s.referencedPackage_)
           referencedPackage (*(s.referencedPackage_));
         else
-          referencedPackage_.reset (nullptr);
+          referencedPackage_.release ();
 
         selectRequirement_ = s.selectRequirement_;
 
@@ -118,7 +118,7 @@ namespace DAnCE
         if (s.contentLocation_)
           contentLocation (*(s.contentLocation_));
         else
-          contentLocation_.reset (nullptr);
+          contentLocation_.release ();
       }
 
       return *this;
