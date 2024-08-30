@@ -34,7 +34,7 @@ namespace XMI
     void id (::XMLSchema::ID<char> const& );
 
     protected:
-    using id_unique_ptr_type = std::unique_ptr< ::XMLSchema::ID<char>>;
+    using id_unique_ptr_type = std::unique_ptr<::XMLSchema::ID<char>>;
     id_unique_ptr_type id_;
 
     // label
@@ -45,7 +45,7 @@ namespace XMI
     void label (::XMLSchema::string<char> const& );
 
     protected:
-    using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     label_unique_ptr_type label_;
 
     // uuid
@@ -56,7 +56,7 @@ namespace XMI
     void uuid (::XMLSchema::string<char> const& );
 
     protected:
-    using uuid_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using uuid_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     uuid_unique_ptr_type uuid_;
 
     // href
@@ -67,7 +67,7 @@ namespace XMI
     void href (::XMLSchema::string<char> const& );
 
     protected:
-    using href_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using href_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     href_unique_ptr_type href_;
 
     // idref
@@ -78,7 +78,7 @@ namespace XMI
     void idref (::XMLSchema::IDREF<char> const& );
 
     protected:
-    using idref_unique_ptr_type = std::unique_ptr< ::XMLSchema::IDREF<char>>;
+    using idref_unique_ptr_type = std::unique_ptr<::XMLSchema::IDREF<char>>;
     idref_unique_ptr_type idref_;
 
     // version
@@ -89,7 +89,7 @@ namespace XMI
     void version (::XMLSchema::string<char> const& );
 
     protected:
-    using version_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using version_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     version_unique_ptr_type version_;
 
     // extender
@@ -100,7 +100,7 @@ namespace XMI
     void extender (::XMLSchema::string<char> const& );
 
     protected:
-    using extender_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using extender_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     extender_unique_ptr_type extender_;
 
     // extenderID
@@ -111,7 +111,7 @@ namespace XMI
     void extenderID (::XMLSchema::string<char> const& );
 
     protected:
-    using extenderID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+    using extenderID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
     extenderID_unique_ptr_type extenderID_;
 
     public:

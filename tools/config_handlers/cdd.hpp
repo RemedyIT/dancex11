@@ -44,7 +44,7 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       UUID_unique_ptr_type UUID_;
 
       // label
@@ -54,7 +54,7 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       label_unique_ptr_type label_;
 
       // node
@@ -134,7 +134,7 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       name_unique_ptr_type name_;
 
       // label
@@ -144,7 +144,7 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       label_unique_ptr_type label_;
 
       // connect
@@ -192,7 +192,7 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       name_unique_ptr_type name_;
 
       // label
@@ -202,7 +202,7 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       label_unique_ptr_type label_;
 
       // connection
@@ -261,7 +261,7 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       name_unique_ptr_type name_;
 
       // label
@@ -271,7 +271,7 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       label_unique_ptr_type label_;
 
       // connection
@@ -329,7 +329,7 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       name_unique_ptr_type name_;
 
       // resourceType
@@ -338,7 +338,7 @@ namespace DAnCE
       void resourceType (::XMLSchema::string<char> const& );
 
       protected:
-      using resourceType_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using resourceType_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       resourceType_unique_ptr_type resourceType_;
 
       // node
@@ -347,7 +347,7 @@ namespace DAnCE
       void node (::DAnCE::Config_Handlers::Node const& );
 
       protected:
-      using node_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::Node>;
+      using node_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::Node>;
       node_unique_ptr_type node_;
 
       // property
@@ -356,7 +356,7 @@ namespace DAnCE
       void property (::DAnCE::Config_Handlers::SatisfierProperty const& );
 
       protected:
-      using property_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::SatisfierProperty>;
+      using property_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::SatisfierProperty>;
       property_unique_ptr_type property_;
 
       public:

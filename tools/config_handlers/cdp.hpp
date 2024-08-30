@@ -41,7 +41,7 @@ namespace DAnCE
       void propertyName (::XMLSchema::string<char> const& );
 
       protected:
-      using propertyName_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using propertyName_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       propertyName_unique_ptr_type propertyName_;
 
       // instance
@@ -50,7 +50,7 @@ namespace DAnCE
       void instance (::DAnCE::Config_Handlers::InstanceDeploymentDescription const& );
 
       protected:
-      using instance_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
+      using instance_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::InstanceDeploymentDescription>;
       instance_unique_ptr_type instance_;
 
       public:
@@ -76,7 +76,7 @@ namespace DAnCE
       void name (::XMLSchema::string<char> const& );
 
       protected:
-      using name_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using name_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       name_unique_ptr_type name_;
 
       // source
@@ -96,7 +96,7 @@ namespace DAnCE
       void externalName (::XMLSchema::string<char> const& );
 
       protected:
-      using externalName_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using externalName_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       externalName_unique_ptr_type externalName_;
 
       // delegatesTo
@@ -135,7 +135,7 @@ namespace DAnCE
       void label (::XMLSchema::string<char> const& );
 
       protected:
-      using label_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using label_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       label_unique_ptr_type label_;
 
       // UUID
@@ -145,7 +145,7 @@ namespace DAnCE
       void UUID (::XMLSchema::string<char> const& );
 
       protected:
-      using UUID_unique_ptr_type = std::unique_ptr< ::XMLSchema::string<char>>;
+      using UUID_unique_ptr_type = std::unique_ptr<::XMLSchema::string<char>>;
       UUID_unique_ptr_type UUID_;
 
       // realizes
@@ -155,7 +155,7 @@ namespace DAnCE
       void realizes (::DAnCE::Config_Handlers::ComponentInterfaceDescription const& );
 
       protected:
-      using realizes_unique_ptr_type = std::unique_ptr< ::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
+      using realizes_unique_ptr_type = std::unique_ptr<::DAnCE::Config_Handlers::ComponentInterfaceDescription>;
       realizes_unique_ptr_type realizes_;
 
       // implementation
