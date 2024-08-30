@@ -194,7 +194,7 @@ namespace DAnCE
       public:
       bool enum_p () const;
       ::DAnCE::Config_Handlers::EnumType const& enum_ () const;
-      void enum_ (::DAnCE::Config_Handlers::EnumType const& e);
+      void enum_ (::DAnCE::Config_Handlers::EnumType const&);
 
       protected:
       using enum__type = std::unique_ptr<::DAnCE::Config_Handlers::EnumType>;
@@ -204,7 +204,7 @@ namespace DAnCE
       public:
       bool struct_p () const;
       ::DAnCE::Config_Handlers::StructType const& struct_ () const;
-      void struct_ (::DAnCE::Config_Handlers::StructType const& e);
+      void struct_ (::DAnCE::Config_Handlers::StructType const&);
 
       protected:
       using struct__type = std::unique_ptr<::DAnCE::Config_Handlers::StructType>;
@@ -214,7 +214,7 @@ namespace DAnCE
       public:
       bool value_p () const;
       ::DAnCE::Config_Handlers::ValueType const& value () const;
-      void value (::DAnCE::Config_Handlers::ValueType const& e);
+      void value (::DAnCE::Config_Handlers::ValueType const&);
 
       protected:
       using value_type = std::unique_ptr<::DAnCE::Config_Handlers::ValueType>;
@@ -224,7 +224,7 @@ namespace DAnCE
       public:
       bool sequence_p () const;
       ::DAnCE::Config_Handlers::SequenceType const& sequence () const;
-      void sequence (::DAnCE::Config_Handlers::SequenceType const& e);
+      void sequence (::DAnCE::Config_Handlers::SequenceType const&);
 
       protected:
       using sequence_type = std::unique_ptr<::DAnCE::Config_Handlers::SequenceType>;
@@ -234,7 +234,7 @@ namespace DAnCE
       public:
       bool alias_p () const;
       ::DAnCE::Config_Handlers::AliasType const& alias () const;
-      void alias (::DAnCE::Config_Handlers::AliasType const& e);
+      void alias (::DAnCE::Config_Handlers::AliasType const&);
 
       protected:
       using alias_type = std::unique_ptr<::DAnCE::Config_Handlers::AliasType>;
@@ -244,7 +244,7 @@ namespace DAnCE
       public:
       bool array_p () const;
       ::DAnCE::Config_Handlers::ArrayType const& array () const;
-      void array (::DAnCE::Config_Handlers::ArrayType const& e);
+      void array (::DAnCE::Config_Handlers::ArrayType const&);
 
       protected:
       using array_type = std::unique_ptr<::DAnCE::Config_Handlers::ArrayType>;
@@ -254,7 +254,7 @@ namespace DAnCE
       public:
       bool boundedString_p () const;
       ::DAnCE::Config_Handlers::BoundedStringType const& boundedString () const;
-      void boundedString (::DAnCE::Config_Handlers::BoundedStringType const& e);
+      void boundedString (::DAnCE::Config_Handlers::BoundedStringType const&);
 
       protected:
       using boundedString_type = std::unique_ptr<::DAnCE::Config_Handlers::BoundedStringType>;
@@ -853,7 +853,7 @@ namespace DAnCE
       public:
       bool bound_p () const;
       ::XMLSchema::unsignedInt const& bound () const;
-      void bound (::XMLSchema::unsignedInt const& e);
+      void bound (::XMLSchema::unsignedInt const&);
 
       protected:
       using bound_type = std::unique_ptr<::XMLSchema::unsignedInt>;
@@ -1616,7 +1616,7 @@ namespace DAnCE
       public:
       bool specificType_p () const;
       ::XMLSchema::string<char> const& specificType () const;
-      void specificType (::XMLSchema::string<char> const& e);
+      void specificType (::XMLSchema::string<char> const&);
 
       protected:
       using specificType_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -1783,7 +1783,7 @@ namespace DAnCE
       public:
       bool provider_p () const;
       ::XMLSchema::string<char> const& provider () const;
-      void provider (::XMLSchema::string<char> const& e);
+      void provider (::XMLSchema::string<char> const&);
 
       protected:
       using provider_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -1847,7 +1847,7 @@ namespace DAnCE
       public:
       bool portName_p () const;
       ::XMLSchema::string<char> const& portName () const;
-      void portName (::XMLSchema::string<char> const& e);
+      void portName (::XMLSchema::string<char> const&);
 
       protected:
       using portName_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -1950,7 +1950,7 @@ namespace DAnCE
       public:
       bool source_p () const;
       ::XMLSchema::string<char> const& source () const;
-      void source (::XMLSchema::string<char> const& e);
+      void source (::XMLSchema::string<char> const&);
 
       protected:
       using source_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -2103,7 +2103,7 @@ namespace DAnCE
       public:
       bool resourceUsage_p () const;
       ::DAnCE::Config_Handlers::ResourceUsageKind const& resourceUsage () const;
-      void resourceUsage (::DAnCE::Config_Handlers::ResourceUsageKind const& e);
+      void resourceUsage (::DAnCE::Config_Handlers::ResourceUsageKind const&);
 
       protected:
       using resourceUsage_type = std::unique_ptr<::DAnCE::Config_Handlers::ResourceUsageKind>;
@@ -2113,7 +2113,7 @@ namespace DAnCE
       public:
       bool resourcePort_p () const;
       ::XMLSchema::string<char> const& resourcePort () const;
-      void resourcePort (::XMLSchema::string<char> const& e);
+      void resourcePort (::XMLSchema::string<char> const&);
 
       protected:
       using resourcePort_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -2123,7 +2123,7 @@ namespace DAnCE
       public:
       bool componentPort_p () const;
       ::XMLSchema::string<char> const& componentPort () const;
-      void componentPort (::XMLSchema::string<char> const& e);
+      void componentPort (::XMLSchema::string<char> const&);
 
       protected:
       using componentPort_type = std::unique_ptr<::XMLSchema::string<char>>;

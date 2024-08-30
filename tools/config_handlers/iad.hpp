@@ -73,7 +73,7 @@ namespace DAnCE
       public:
       bool label_p () const;
       ::XMLSchema::string<char> const& label () const;
-      void label (::XMLSchema::string<char> const& e);
+      void label (::XMLSchema::string<char> const&);
 
       protected:
       using label_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -83,7 +83,7 @@ namespace DAnCE
       public:
       bool UUID_p () const;
       ::XMLSchema::string<char> const& UUID () const;
-      void UUID (::XMLSchema::string<char> const& e);
+      void UUID (::XMLSchema::string<char> const&);
 
       protected:
       using UUID_type = std::unique_ptr<::XMLSchema::string<char>>;
@@ -148,7 +148,7 @@ namespace DAnCE
       public:
       bool contentLocation_p () const;
       ::XMLSchema::string<char> const& contentLocation () const;
-      void contentLocation (::XMLSchema::string<char> const& e);
+      void contentLocation (::XMLSchema::string<char> const&);
 
       protected:
       using contentLocation_type = std::unique_ptr<::XMLSchema::string<char>>;
