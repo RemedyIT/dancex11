@@ -701,7 +701,7 @@ namespace DAnCEX11
               return it_art->second->location ();
             }
         }
-      return 0;
+      return {};
     }
 
     int ArtifactInstallation_Impl::register_handler (ArtifactInstallationHandler* aih)
