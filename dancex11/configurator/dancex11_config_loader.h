@@ -86,10 +86,10 @@ namespace DAnCEX11
 
   private:
     using DeploymentRefMap = std::map<string_type, uint32_t>;
-    using LocalityInstanceMap = std::map<std::string, std::vector<uint32_t> >;
+    using LocalityInstanceMap = std::map<std::string, std::vector<uint32_t>>;
     using NodeLocalityMap = std::map<std::string, LocalityInstanceMap>;
     using EndpointIndex = std::pair<uint32_t, uint32_t>;
-    using InstanceEndpointMap = std::map<std::string, std::vector<EndpointIndex> >;
+    using InstanceEndpointMap = std::map<std::string, std::vector<EndpointIndex>>;
 
     struct state_type
     {

@@ -229,14 +229,10 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidProperty >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidNodeExecParameter >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidComponentExecParameter >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidProperty> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidNodeExecParameter> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidComponentExecParameter> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::install_instances - " <<
@@ -342,10 +338,8 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidProperty >
-            (event.contents_)))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidProperty> (event.contents_)))
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::collect_references - " <<
                             "Error: Unknown exception propagated");
@@ -498,10 +492,8 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidConnection >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidConnection> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::finishLaunch - " <<
@@ -570,8 +562,7 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::finishLaunch - " <<
@@ -699,10 +690,8 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_) ||
-            DAnCEX11::Utility::extract_and_throw_exception< Deployment::InvalidConnection >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_) ||
+            DAnCEX11::Utility::extract_and_throw_exception<Deployment::InvalidConnection> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::disconnect_connections - " <<
@@ -774,8 +763,7 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StartError >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StartError> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::start - " <<
@@ -853,8 +841,7 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StopError >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StopError> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::stop - " <<
@@ -933,8 +920,7 @@ namespace DAnCEX11
       }
 
       if (event.exception_ &&
-          !(DAnCEX11::Utility::extract_and_throw_exception< Deployment::StopError >
-            (event.contents_))
+          !(DAnCEX11::Utility::extract_and_throw_exception<Deployment::StopError> (event.contents_))
           )
       {
         DANCEX11_LOG_ERROR ("LocalityManager_i::destroyApplication - " <<
