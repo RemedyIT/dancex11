@@ -2448,7 +2448,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<char> >::write (seq));
+                              IDL::traits <std::vector<char>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2469,7 +2469,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<uint8_t> >::write (seq));
+                              IDL::traits <std::vector<uint8_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2490,7 +2490,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<bool> >::write (seq));
+                              IDL::traits <std::vector<bool>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2511,7 +2511,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<int16_t> >::write (seq));
+                              IDL::traits <std::vector<int16_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2532,7 +2532,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<int32_t> >::write (seq));
+                              IDL::traits <std::vector<int32_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2553,7 +2553,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<int64_t> >::write (seq));
+                              IDL::traits <std::vector<int64_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2574,7 +2574,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<uint16_t> >::write (seq));
+                              IDL::traits <std::vector<uint16_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2595,7 +2595,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<uint32_t> >::write (seq));
+                              IDL::traits <std::vector<uint32_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2616,7 +2616,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<uint64_t> >::write (seq));
+                              IDL::traits <std::vector<uint64_t>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2637,7 +2637,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<float> >::write (seq));
+                              IDL::traits <std::vector<float>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2658,7 +2658,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<double> >::write (seq));
+                              IDL::traits <std::vector<double>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
@@ -2679,7 +2679,7 @@ namespace DAnCEX11
           DANCEX11_LOG_DEBUG ("Config_Loader::load_property_sequence - "
                               "loaded property sequence value at #" <<
                               parser_.line () << ": " << std::endl <<
-                              IDL::traits <std::vector<std::string> >::write (seq));
+                              IDL::traits <std::vector<std::string>>::write (seq));
 #endif
           if (parser_.current_token() == "]")
           {
