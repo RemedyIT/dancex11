@@ -33,7 +33,7 @@ namespace DAnCEX11
       static IDL::traits<DynamicAny::DynAny>::ref_type
       extract_into_dynany (const DataType &type,
                            const DataValue &value,
-                          IDL::traits<CORBA::TypeCode>::ref_type = {});
+                           IDL::traits<CORBA::TypeCode>::ref_type = {});
 
       static IDL::traits<CORBA::TypeCode>::ref_type
       create_typecode (const DataType &type);

@@ -6,8 +6,12 @@
  */
 
 #include "datatype_handler.h"
+#include "common.h"
+#include "dynany_handler/dynany_handler.h"
 #include "tao/x11/anytypecode/typecode.h"
-#include "tao/x11/anytypecode/typecode_constants.h"
+#include "tao/x11/anytypecode/ValueModifierC.h"
+#include "tao/x11/anytypecode/VisibilityC.h"
+#include "tao/x11/ifr_client/IFR_ExtendedC.h"
 #include "dancex11/logger/log.h"
 namespace DAnCEX11
 {
@@ -18,69 +22,37 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE("DAnCEX11::Config_Handlers::convert_datatype");
 
-      IDL::traits<CORBA::TypeCode>::ref_type dest;
+      if (src.kind ().integral () != DAnCE::Config_Handlers::TCKind::tk_value)
+        return DYNANY_HANDLER->create_typecode (src);
 
-      switch (src.kind().integral ())
+      DAnCE::Config_Handlers::ValueType const* value = src.value_if_set ();
+      if (!value)
+        throw Config_Error ("", "Value type description required");
+
+      CORBA::ValueModifier modifier {};
+      if (value->modifier () == "none") modifier = CORBA::VM_NONE;
+      else if (value->modifier () == "custom") modifier = CORBA::VM_CUSTOM;
+      else if (value->modifier () == "abstract") modifier = CORBA::VM_ABSTRACT;
+      else if (value->modifier () == "truncatable") modifier = CORBA::VM_TRUNCATABLE;
+      else throw Config_Error (value->name (), "Invalid value type modifier");
+
+      CORBA::ValueMemberSeq members;
+      for (DAnCE::Config_Handlers::ValueMemberType const& source_member : value->member ())
       {
-      case DAnCE::Config_Handlers::TCKind::tk_null_l:
-        dest = CORBA::_tc_null;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_short_l:
-        dest = CORBA::_tc_short;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_long_l:
-        dest = CORBA::_tc_long;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_ushort_l:
-        dest = CORBA::_tc_ushort;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_ulong_l:
-        dest = CORBA::_tc_ulong;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_float_l:
-        dest = CORBA::_tc_float;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_double_l:
-        dest = CORBA::_tc_double;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_boolean_l:
-        dest = CORBA::_tc_boolean;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_char_l:
-        dest = CORBA::_tc_char;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_octet_l:
-        dest = CORBA::_tc_octet;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_string_l:
-        dest = CORBA::_tc_string;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_longlong_l:
-        dest = CORBA::_tc_longlong;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_ulonglong_l:
-        dest = CORBA::_tc_ulonglong;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_longdouble_l:
-        dest = CORBA::_tc_longdouble;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_wchar_l:
-        dest = CORBA::_tc_wchar;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_wstring_l:
-        dest = CORBA::_tc_wstring;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_any_l:
-        dest = CORBA::_tc_any;
-        break;
-      case DAnCE::Config_Handlers::TCKind::tk_TypeCode_l:
-        dest = CORBA::_tc_TypeCode;
-        break;
-      default:
-        DANCEX11_LOG_ERROR ("DAnCEX11::Config_Handlers::convert_datatype, invalid typecode in any");
-        throw 1;
+        CORBA::Visibility visibility {};
+        if (source_member.visibility () == "public") visibility = CORBA::PUBLIC_MEMBER;
+        else if (source_member.visibility () == "private") visibility = CORBA::PRIVATE_MEMBER;
+        else throw Config_Error (source_member.name (), "Invalid value member visibility");
+
+        members.emplace_back (source_member.name (), "", value->typeId (), "1.0",
+                              DYNANY_HANDLER->create_typecode (source_member.type ()),
+                              IDL::traits<CORBA::IDLType>::ref_type {}, visibility);
       }
 
+      IDL::traits<CORBA::TypeCode>::ref_type dest = DYNANY_HANDLER->orb ()->create_value_tc (
+        value->typeId (), value->name (), modifier,
+        DYNANY_HANDLER->create_typecode (value->baseType ()), members);
+      DYNANY_HANDLER->register_typecode (value->typeId (), dest);
       return dest;
     }
   }

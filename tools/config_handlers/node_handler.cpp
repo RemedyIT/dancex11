@@ -22,12 +22,12 @@ namespace DAnCEX11
 
       dest.name (src.name ());
 
-      std::copy(src.begin_resourceType (),
-                src.end_resourceType (),
+      std::copy(src.resourceType ().begin (),
+                src.resourceType ().end (),
                 std::back_inserter(dest.resourceType()));
 
-      std::transform(src.begin_property (),
-                     src.end_property (),
+      std::transform(src.property ().begin (),
+                     src.property ().end (),
                      std::back_inserter(dest.property()),
                      DAnCEX11::Config_Handlers::convert_satisfierproperty);
 
@@ -43,13 +43,14 @@ namespace DAnCEX11
 
       dest.name (src.name ());
 
-      if (src.label_p ())
+      ::XMLSchema::string<char> const* label = src.label_if_set ();
+      if (label)
       {
-        dest.label (src.label ());
+        dest.label (*label);
       }
 
-      std::transform(src.begin_resource (),
-                     src.end_resource (),
+      std::transform(src.resource ().begin (),
+                     src.resource ().end (),
                      std::back_inserter(dest.resource()),
                      DAnCEX11::Config_Handlers::convert_resource);
 

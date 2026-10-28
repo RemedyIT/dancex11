@@ -16,6 +16,9 @@ namespace DAnCEX11
 {
   namespace Config_Handlers
   {
+    Deployment::Resource
+    convert_resource (const DAnCE::Config_Handlers::Resource& src);
+
     Deployment::Node
     convert_node (const DAnCE::Config_Handlers::Node& src);
   }

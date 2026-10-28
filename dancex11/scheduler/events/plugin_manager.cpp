@@ -59,8 +59,7 @@ namespace DAnCEX11
         DANCEX11_LOG_ERROR ("Plugin_Manager::load_plugin - " <<
                             "Unable to load plugin <" << artifact << ">:<" << entrypoint <<
                             ">, nil result from factory");
-        throw ::Deployment::PlanError (artifact,
-                                       "Nil result from factory");
+        throw ::Deployment::PlanError (artifact, "Nil result from factory");
       }
 
       DANCEX11_LOG_DEBUG ("Plugin_Manager::load_plugin - " <<
@@ -246,8 +245,7 @@ namespace DAnCEX11
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_installation_handler - "
                             "Unknown C++ exception while configuring plugin from <" << artifact <<
                             ">:<" << entrypoint << ">");
-        throw ::Deployment::PlanError (artifact,
-                                       "Unknown C++ exception during handler configuration");
+        throw ::Deployment::PlanError (artifact, "Unknown C++ exception during handler configuration");
       }
   }
 
@@ -290,16 +288,14 @@ namespace DAnCEX11
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_interceptor - " <<
                             "CORBA Exception caught while loading artifact <" << artifact << ">:<" <<
                             entrypoint << "> - " << err.str ());
-        throw ::Deployment::PlanError (artifact,
-                                       err.str ());
+        throw ::Deployment::PlanError (artifact, err.str ());
       }
     catch (...)
       {
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_interceptor - " <<
                             "Unknown C++ exception while configuring plugin from <" << artifact << ">:<" <<
                             entrypoint << ">");
-        throw ::Deployment::PlanError (artifact,
-                                      "Unknown C++ exception during handler configuration\n");
+        throw ::Deployment::PlanError (artifact, "Unknown C++ exception during handler configuration\n");
       }
   }
 
@@ -348,16 +344,14 @@ namespace DAnCEX11
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_configuration_plugin - " <<
                             "CORBA Exception caught while loading artifact <" << artifact << ">:<" << entrypoint <<
                             "> - " << err.str ());
-        throw ::Deployment::PlanError (artifact,
-                                        err.str ());
+        throw ::Deployment::PlanError (artifact, err.str ());
       }
     catch (...)
       {
         DANCEX11_LOG_ERROR ("Plugin_Manager::register_configuration_plugin - " <<
                             "Unknown C++ exception while configuring plugin from <" << artifact << ">:<" <<
                             entrypoint << ">");
-        throw ::Deployment::PlanError (artifact,
-                                      "Unknown C++ exception during plugin configuration\n");
+        throw ::Deployment::PlanError (artifact, "Unknown C++ exception during plugin configuration\n");
       }
   }
 

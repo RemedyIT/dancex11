@@ -11,6 +11,7 @@
 #define CONFIG_HANDLERS_COMMON_H
 
 #include <string>
+#include <string_view>
 
 namespace DAnCEX11
 {
@@ -29,9 +30,9 @@ namespace DAnCEX11
         error_ (std::move(error))
       {};
 
-      const std::string add_name (const std::string &name) const
+      std::string add_name (std::string_view name) const
       {
-        return name + ":" + this->name_;
+        return std::string (name) + ":" + this->name_;
       }
 
       const std::string& get_name () const

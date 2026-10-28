@@ -7,6 +7,7 @@
 
 #include "pspe_handler.h"
 #include "idd_handler.h"
+#include "common.h"
 #include "dancex11/logger/log.h"
 
 namespace DAnCEX11
@@ -26,15 +27,26 @@ namespace DAnCEX11
 
       // Lookup the reference for our mdd, when we find it we use the index, if we can't find
       // it we set it to max to indicate that we failed
-      auto result = instancedeploymentdescription_map.find (src.instance ().idref ().id ());
+      ::XMLSchema::IDREF<char> const* idref = src.instance ().idref_if_set ();
+      if (!idref)
+        throw Config_Error ("", "Missing idref for instance endpoint");
+
+      std::unordered_map<std::string, size_t>::const_iterator const result =
+        instancedeploymentdescription_map.find (idref->id ());
       if (result != instancedeploymentdescription_map.end ())
         dest.instanceRef(static_cast<uint32_t>(result->second));
       else
-        dest.instanceRef(std::numeric_limits<uint32_t>::max());
+        throw Config_Error (idref->id (), "Instance reference does not identify an instance");
 
-      if (src.provider_p ())
+      ::XMLSchema::string<char> const* provider = src.provider_if_set ();
+      if (provider)
         {
-          dest.provider (src.provider () == "true");
+          if (*provider == "true")
+            dest.provider (true);
+          else if (*provider == "false")
+            dest.provider (false);
+          else
+            throw Config_Error ("provider", "Expected 'true' or 'false'");
         }
       else
         {
@@ -43,28 +55,28 @@ namespace DAnCEX11
 
       switch (src.kind ().integral ())
         {
-        case DAnCE::Config_Handlers::CCMComponentPortKind::Facet_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::Facet:
           dest.kind (Deployment::CCMComponentPortKind::Facet);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::SimplexReceptacle_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::SimplexReceptacle:
           dest.kind(Deployment::CCMComponentPortKind::SimplexReceptacle);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::MultiplexReceptacle_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::MultiplexReceptacle:
           dest.kind (Deployment::CCMComponentPortKind::MultiplexReceptacle);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventEmitter_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventEmitter:
           dest.kind (Deployment::CCMComponentPortKind::EventEmitter);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventPublisher_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventPublisher:
           dest.kind (Deployment::CCMComponentPortKind::EventPublisher);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventConsumer_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventConsumer:
           dest.kind ( Deployment::CCMComponentPortKind::EventConsumer);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::ExtendedPort_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::ExtendedPort:
           dest.kind ( Deployment::CCMComponentPortKind::ExtendedPort);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::MirrorPort_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::MirrorPort:
           dest.kind ( Deployment::CCMComponentPortKind::MirrorPort);
           break;
        }

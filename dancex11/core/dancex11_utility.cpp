@@ -24,12 +24,12 @@ namespace DAnCEX11
   {
     void
     build_property_map (PROPERTY_MAP &map,
-      const Deployment::Properties &prop,
+      Deployment::Properties const& prop,
       bool overwrite)
     {
       DANCEX11_LOG_TRACE("DAnCEX11::Utility::build_property_map");
 
-      for (const Deployment::Property &property : prop)
+      for (Deployment::Property const& property : prop)
       {
         if (overwrite || map.find (property.name ()) == map.end ())
         {
@@ -43,13 +43,13 @@ namespace DAnCEX11
 
     void
     build_property_sequence (::Deployment::Properties &prop,
-        const PROPERTY_MAP &pmap)
+        PROPERTY_MAP const& pmap)
     {
       for (PROPERTY_MAP::const_iterator i = pmap.begin ();
            i != pmap.end ();
            ++i)
         {
-          prop.push_back (::Deployment::Property (i->first, i->second));
+          prop.emplace_back (i->first, i->second);
 
           DANCEX11_LOG_INFO ("build_property_sequence: " <<
                              "Added value for property <" << i->first << ">");
@@ -57,7 +57,7 @@ namespace DAnCEX11
     }
 
     bool
-    write_IOR (const std::string &pathname, const std::string& ior)
+    write_IOR (std::string const& pathname, std::string const& ior)
     {
       // Output the IOR to the <ior_output_file>
       std::ofstream fos (pathname);
@@ -74,17 +74,17 @@ namespace DAnCEX11
 
     void
     append_properties (Deployment::Properties &dest,
-      const Deployment::Properties &src)
+      Deployment::Properties const& src)
     {
-      for (const Deployment::Property &prop : src)
+      for (Deployment::Property const& prop : src)
         {
           dest.push_back (prop);
         }
     }
 
     bool
-    get_resource_value (const std::string &type,
-      const Deployment::Resources &resources,
+    get_resource_value (std::string const& type,
+      Deployment::Resources const& resources,
       Deployment::Resource &val)
     {
       DANCEX11_LOG_TRACE ("DAnCEX11::Utility::get_resource_value<const char *>");
@@ -95,7 +95,7 @@ namespace DAnCEX11
       for (Deployment::Resource resource : resources)
         {
           /// search for the resource with resourceType
-          for (const std::string &resource_type : resource.resourceType ())
+          for (std::string const& resource_type : resource.resourceType ())
             {
               if (type == resource_type)
                 {
@@ -113,11 +113,11 @@ namespace DAnCEX11
     }
 
     std::string
-    get_instance_type (const Deployment::Properties &prop)
+    get_instance_type (Deployment::Properties const& prop)
     {
       DANCEX11_LOG_TRACE ("DAnCEX11::Utility::get_instance_type");
 
-      for (const Deployment::Property &property : prop)
+      for (Deployment::Property const& property : prop)
         {
           DANCEX11_LOG_INFO ("DAnCEX11::Utility::get_instance_type - " <<
                              "Checking property <" << property.name () << ">");
@@ -158,10 +158,10 @@ namespace DAnCEX11
     }
 
     bool
-    throw_exception_from_any (const CORBA::Any &excep)
+    throw_exception_from_any (CORBA::Any const& excep)
     {
       IDL::traits<CORBA::TypeCode>::ref_type tc = excep.type ();
-      const std::string &ex_id = tc->id ();
+      std::string const& ex_id = tc->id ();
       DANCEX11_LOG_DEBUG ("DAnCEX11::Utility::throw_exception_from_any - " <<
                           "Found typecode " << ex_id);
       if (ex_id == Deployment::_tc_PlanError->id ())
@@ -203,7 +203,7 @@ namespace DAnCEX11
     }
 
     CORBA::Any
-    create_any_from_user_exception (const CORBA::UserException& ex)
+    create_any_from_user_exception (CORBA::UserException const& ex)
     {
       CORBA::Any ex_any;
       ex_any <<= ex;
@@ -211,7 +211,7 @@ namespace DAnCEX11
     }
 
     std::string
-    stringify_exception_from_any (const CORBA::Any &excep)
+    stringify_exception_from_any (CORBA::Any const& excep)
     {
       std::string const ex_id = excep.type ()->id ();
 
@@ -278,21 +278,19 @@ namespace DAnCEX11
       return result;
     }
 
-    std::vector< std::string >
-    tokenize (const char *str, char c)
+    std::vector<std::string>
+    tokenize (std::string_view str, char c)
     {
-      std::vector< std::string > result;
+      std::vector<std::string> result;
 
-      do
+      while (true)
         {
-          const char *begin = str;
-          while(*str != c && *str)
-            {
-              str++;
-            }
-          result.push_back (std::string (begin, str));
+          std::string_view::size_type const delim = str.find (c);
+          result.emplace_back (str.substr (0, delim));
+          if (delim == std::string_view::npos)
+            break;
+          str.remove_prefix (delim + 1);
         }
-      while (0 != *str++);
 
       return result;
     }

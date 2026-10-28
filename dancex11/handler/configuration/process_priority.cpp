@@ -31,8 +31,7 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_ERROR ("Process_Priority::configure - " <<
                             "Unable to extract priority value from config property");
-        throw ::Deployment::PlanError (prop.name (),
-                                       "Unable to extract priority value from config property");
+        throw ::Deployment::PlanError (prop.name (), "Unable to extract priority value from config property");
       }
 
     ACE_hthread_t handle;

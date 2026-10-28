@@ -11,6 +11,7 @@
 #include "dancex11/logger/log.h"
 
 #include <sstream>
+#include <utility>
 
 namespace DAnCEX11
 {
@@ -137,9 +138,9 @@ namespace DAnCEX11
       DANCEX11_LOG_INFO ("DAnCEX11::Utility::update_property_value<T> - " <<
                          "Property for name '" << name << "' not found; adding property");
 
-      properties.push_back (Deployment::Property ());
-      properties.back ().name (name);
-      properties.back ().value () <<= val;
+      CORBA::Any any;
+      any <<= val;
+      properties.emplace_back (name, std::move (any));
     }
 
     /// Tests flag, if false, sets it to true and replaces the name and

@@ -100,8 +100,7 @@ namespace DAnCEX11
       DANCEX11_LOG_CRITICAL ("NodeManager_impl::preparePlan - " <<
                              "ApplicationManager for UUID " << plan.UUID () <<
                              " already exists");
-      throw ::Deployment::PlanError(plan.UUID (),
-                                    "Plan with same UUID already exists");
+      throw ::Deployment::PlanError(plan.UUID (), "Plan with same UUID already exists");
     }
     DANCEX11_LOG_DEBUG ("NodeManager_impl::preparePlan - creating NodeApplicationManager...");
     CORBA::servant_reference<NodeApplicationManager_Impl> manager =

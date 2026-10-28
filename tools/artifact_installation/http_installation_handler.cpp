@@ -9,9 +9,9 @@
 #include "http_installation_handler.h"
 #include "installation_repository_manager.h"
 #include "dancex11/logger/log.h"
+#include <sstream>
 #include "ace/INet/HTTP_URL.h"
 #include "ace/INet/HTTP_ClientRequestHandler.h"
-#include "ace/INet/String_IOStream.h"
 #include "ace/Service_Config.h"
 
 namespace DAnCEX11
@@ -20,7 +20,7 @@ namespace DAnCEX11
     : public ACE::HTTP::ClientRequestHandler
   {
     public:
-      HTTPInstallationRequestHandler (const ACE_CString& plan_uuid)
+      HTTPInstallationRequestHandler (std::string const& plan_uuid)
         : plan_uuid_ (plan_uuid) {}
       ~HTTPInstallationRequestHandler () override = default;
 
@@ -29,38 +29,38 @@ namespace DAnCEX11
         {
           if (!response.get_status ().is_ok ())
             {
-              ACE::IOS::CString_OStream serr;
+              std::ostringstream serr;
               if (response.get_status ().is_valid ())
                 serr << "negative HTTP response " << (int)response.get_status ().get_status ()
-                      << response.get_status ().get_reason ().c_str ();
+                      << response.get_status ().get_reason ();
               else
                 serr << "invalid HTTP response";
-              serr << " : url=" << url.to_string ().c_str ();
+              serr << " : url=" << url.to_string ();
 
-              throw Deployment::PlanError (plan_uuid_.c_str (), serr.str ().c_str ());
+              throw Deployment::PlanError (plan_uuid_, serr.str ());
             }
         }
 
       virtual void handle_request_error (const ACE::HTTP::URL& url)
         {
-          ACE::IOS::CString_OStream serr;
-          serr << "Failed to handle request for " << url.to_string ().c_str ()
+          std::ostringstream serr;
+          serr << "Failed to handle request for " << url.to_string ()
                << " (" << ACE_OS::last_error () << ')';
 
-          throw Deployment::PlanError (plan_uuid_.c_str (), serr.str ().c_str ());
+          throw Deployment::PlanError (plan_uuid_, serr.str ());
         }
 
       virtual void handle_connection_error (const ACE::HTTP::URL& url)
         {
-          ACE::IOS::CString_OStream serr;
-          serr << "Failed to set up connection for " << url.to_string ().c_str ()
+          std::ostringstream serr;
+          serr << "Failed to set up connection for " << url.to_string ()
                << " (" << ACE_OS::last_error () << ')';
 
-          throw Deployment::PlanError (plan_uuid_.c_str (), serr.str ().c_str ());
+          throw Deployment::PlanError (plan_uuid_, serr.str ());
         }
 
     private:
-      ACE_CString plan_uuid_;
+      std::string plan_uuid_;
   };
 
   /*
@@ -127,10 +127,10 @@ namespace DAnCEX11
           ACE::HTTP::URL http_url;
           if (!http_url.parse (location.c_str ()))
             {
-              ACE::IOS::CString_OStream serr;
+              std::ostringstream serr;
               serr << "failed to parse artifact location : "
                    << location;
-              throw Deployment::PlanError (plan_uuid.c_str (), serr.str ().c_str ());
+              throw Deployment::PlanError (plan_uuid, serr.str ());
             }
           else
             {
@@ -145,7 +145,7 @@ namespace DAnCEX11
               std::unique_ptr<ostream> pofs (repo->create_artifact(path, exclusive));
               if (pofs.get ()!=0 && (*pofs))
                 {
-                  HTTPInstallationRequestHandler request_handler (plan_uuid.c_str ());
+                  HTTPInstallationRequestHandler request_handler (plan_uuid);
 
                   http_url.open (request_handler);
                   if (request_handler.response_stream ())
@@ -155,38 +155,38 @@ namespace DAnCEX11
                       // check state
                       if (!(*pofs))
                         {
-                          ACE::IOS::CString_OStream serr;
+                          std::ostringstream serr;
                           serr << "failed to copy artifact from "
                               << location
                               << " to "
-                              << path.c_str ();
-                          throw Deployment::PlanError (plan_uuid.c_str (), serr.str ().c_str ());
+                              << path;
+                          throw Deployment::PlanError (plan_uuid, serr.str ());
                         }
-                      location = path.c_str ();
+                      location = path;
                     }
                   else
                     {
                       // We should never get here since the request handler should already
                       // have thrown appropriate exceptions
-                      ACE::IOS::CString_OStream serr;
-                      serr << "Failed to handle request for " << http_url.to_string ().c_str ()
+                      std::ostringstream serr;
+                      serr << "Failed to handle request for " << http_url.to_string ()
                           << " (" << ACE_OS::last_error () << ')';
 
-                      throw Deployment::PlanError (plan_uuid.c_str (), serr.str ().c_str ());
+                      throw Deployment::PlanError (plan_uuid, serr.str ());
                     }
                 }
               else
                 {
-                  ACE::IOS::CString_OStream serr;
+                  std::ostringstream serr;
                   serr << "failed to create repository artifact version for "
                       << path;
-                  throw Deployment::PlanError (plan_uuid.c_str (), serr.str ().c_str ());
+                  throw Deployment::PlanError (plan_uuid, serr.str ());
                 }
             }
         }
       else
         {
-          throw Deployment::PlanError (plan_uuid.c_str (), "failed to open installation repository");
+          throw Deployment::PlanError (plan_uuid, "failed to open installation repository");
         }
     }
 
@@ -204,19 +204,19 @@ namespace DAnCEX11
                 {
                   std::string err = "failed to remove artifact : ";
                   err += location;
-                  throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+                  throw Deployment::PlanError (plan_uuid, err);
                 }
             }
           else
             {
               std::string err = "cannot remove non-existing artifact : ";
               err += location;
-              throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
         }
       else
         {
-          throw Deployment::PlanError (plan_uuid.c_str (), "failed to open installation repository");
+          throw Deployment::PlanError (plan_uuid, "failed to open installation repository");
         }
     }
 

@@ -22,8 +22,8 @@ namespace DAnCEX11
       dest.name (src.name ());
       dest.resourceType (src.resourceType ());
 
-      std::transform(src.begin_property (),
-                     src.end_property (),
+      std::transform(src.property ().begin (),
+                     src.property ().end (),
                      std::back_inserter(dest.property()),
                      DAnCEX11::Config_Handlers::convert_property);
 

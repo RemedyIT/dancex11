@@ -15,6 +15,9 @@
 #include "Basic_Deployment_Data.hpp"
 
 #include <map>
+#include <functional>
+#include <string>
+#include <string_view>
 
 namespace DAnCEX11
 {
@@ -51,11 +54,11 @@ namespace DAnCEX11
 
       IDL::traits<CORBA::TypeCode>::ref_type create_typecode (const DataType &type);
 
-      void register_typecode (const std::string& typeID,
+      void register_typecode (std::string_view typeID,
                               IDL::traits<CORBA::TypeCode>::ref_type tc);
 
       IDL::traits<CORBA::TypeCode>::ref_type
-      get_typecode (const std::string& typeID);
+      get_typecode (std::string_view typeID);
 
       static DynAny_Handler* getInstance ();
 
@@ -66,7 +69,10 @@ namespace DAnCEX11
 
       IDL::traits<DynamicAny::DynAnyFactory>::ref_type daf_ {};
 
-      std::map <std::string, IDL::traits<CORBA::TypeCode>::ref_type> typecode_map_;
+      using TypecodeMap = std::map<std::string,
+                                    IDL::traits<CORBA::TypeCode>::ref_type,
+                                    std::less<>>;
+      TypecodeMap typecode_map_;
     };
   }
 }

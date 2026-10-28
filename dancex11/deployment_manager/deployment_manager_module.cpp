@@ -500,8 +500,7 @@ namespace DAnCEX11
                                   "Resolving DM from NC as \"" <<
                                   svc_name << "\".");
               CosNaming::Name name;
-              name.push_back (CosNaming::NameComponent (this->svc_objectid_,
-                                                        this->svc_objectkind_));
+              name.emplace_back (this->svc_objectid_, this->svc_objectkind_);
               this->dm_ = instance_nc->resolve (name);
             }
             else
@@ -590,32 +589,32 @@ namespace DAnCEX11
     CORBA::Any any;
     // add standard DM properties if applicable
     any <<= dm_name;
-    dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_INSTANCE_NAME, any));
+    dmh_prop.emplace_back (DAnCEX11::DM_INSTANCE_NAME, any);
     if (this->options_.listen_port_ > 0)
     {
       any <<= this->options_.listen_port_;
-      dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_INSTANCE_PORT, any));
+      dmh_prop.emplace_back (DAnCEX11::DM_INSTANCE_PORT, any);
     }
     if (!this->options_.listen_addr_.empty ())
     {
       any <<= this->options_.listen_addr_;
-      dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_INSTANCE_ADDRESS, any));
+      dmh_prop.emplace_back (DAnCEX11::DM_INSTANCE_ADDRESS, any);
     }
     if (this->options_.numeric_addresses_)
     {
       any <<= this->options_.numeric_addresses_;
-      dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_NUMERIC_ADDRESSES, any));
+      dmh_prop.emplace_back (DAnCEX11::DM_NUMERIC_ADDRESSES, any);
     }
     if (!this->options_.host_for_ref_.empty ())
     {
       any <<= this->options_.host_for_ref_;
-      dmh_prop.push_back (Deployment::Property (DAnCEX11::DM_INSTANCE_REFHOST, any));
+      dmh_prop.emplace_back (DAnCEX11::DM_INSTANCE_REFHOST, any);
     }
     if (!this->options_.deployment_nc_.empty ())
     {
       // pass naming context reference for domain/deployment objects to DMH
       any <<= this->options_.deployment_nc_;
-      dmh_prop.push_back (Deployment::Property (DAnCEX11::DOMAIN_NC, any));
+      dmh_prop.emplace_back (DAnCEX11::DOMAIN_NC, any);
     }
 
     // this also loads the configured plugins which could include service object
@@ -884,8 +883,7 @@ namespace DAnCEX11
                                   "Registering DM in NC as \"" <<
                                   service_id << "\".");
               CosNaming::Name name;
-              name.push_back (CosNaming::NameComponent (this->svc_objectid_,
-                                                        this->svc_objectkind_));
+              name.emplace_back (this->svc_objectid_, this->svc_objectkind_);
               instance_nc->rebind (name, this->dm_);
             }
             else
@@ -976,8 +974,7 @@ namespace DAnCEX11
                               "Deregistering DM from NC as \"" <<
                               this->svc_objectid_ << "." << this->svc_objectkind_ << "\".");
           CosNaming::Name name;
-          name.push_back (CosNaming::NameComponent (this->svc_objectid_,
-                                                    this->svc_objectkind_));
+          name.emplace_back (this->svc_objectid_, this->svc_objectkind_);
           instance_nc->unbind (name);
         }
         else

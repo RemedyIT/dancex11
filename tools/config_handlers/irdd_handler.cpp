@@ -22,19 +22,19 @@ namespace DAnCEX11
 
       switch (src.resourceUsage ().integral ())
       {
-        case DAnCE::Config_Handlers::ResourceUsageKind::None_l:
+        case DAnCE::Config_Handlers::ResourceUsageKind::None:
           dest.resourceUsage (Deployment::ResourceUsageKind::None);
           break;
-        case DAnCE::Config_Handlers::ResourceUsageKind::InstanceUsesResource_l:
+        case DAnCE::Config_Handlers::ResourceUsageKind::InstanceUsesResource:
           dest.resourceUsage (Deployment::ResourceUsageKind::InstanceUsesResource);
           break;
-        case DAnCE::Config_Handlers::ResourceUsageKind::ResourceUsesInstance_l:
+        case DAnCE::Config_Handlers::ResourceUsageKind::ResourceUsesInstance:
           dest.resourceUsage (Deployment::ResourceUsageKind::ResourceUsesInstance);
           break;
-        case DAnCE::Config_Handlers::ResourceUsageKind::PortUsesResource_l:
+        case DAnCE::Config_Handlers::ResourceUsageKind::PortUsesResource:
           dest.resourceUsage (Deployment::ResourceUsageKind::PortUsesResource);
           break;
-        case DAnCE::Config_Handlers::ResourceUsageKind::ResourceUsesPort_l:
+        case DAnCE::Config_Handlers::ResourceUsageKind::ResourceUsesPort:
           dest.resourceUsage (Deployment::ResourceUsageKind::ResourceUsesPort);
           break;
       }
@@ -42,8 +42,8 @@ namespace DAnCEX11
       dest.requirementName (src.requirementName ());
       dest.resourceName (src.resourceName ());
 
-      std::transform(src.begin_property (),
-                     src.end_property (),
+      std::transform(src.property ().begin (),
+                     src.property ().end (),
                      std::back_inserter(dest.property()),
                      DAnCEX11::Config_Handlers::convert_property);
 

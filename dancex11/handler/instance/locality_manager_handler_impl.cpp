@@ -53,8 +53,7 @@ namespace DAnCEX11
                                "Invalid instance reference " <<
                                instanceRef << " provided " <<
                                "to install_instance");
-        throw ::Deployment::PlanError (plan.UUID (),
-                                       "Invalid instance reference");
+        throw ::Deployment::PlanError (plan.UUID (), "Invalid instance reference");
       }
 
     const ::Deployment::InstanceDeploymentDescription &idd =
@@ -66,8 +65,7 @@ namespace DAnCEX11
                                "Invalid implementation reference " <<
                                idd.implementationRef () << " provided " <<
                                "to install_instance");
-        throw ::Deployment::PlanError (plan.UUID (),
-                                       "Invalid Implementation reference");
+        throw ::Deployment::PlanError (plan.UUID (), "Invalid Implementation reference");
       }
 
     const ::Deployment::MonolithicDeploymentDescription &mdd =

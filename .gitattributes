@@ -63,3 +63,27 @@ Change?og*    eol=lf
 *.eps   -text
 *.ps    -text
 *.rbx   -text
+
+# XSC-generated configuration handler sources
+tools/config_handlers/Basic_Deployment_Data.cpp linguist-generated=true
+tools/config_handlers/Basic_Deployment_Data.hpp linguist-generated=true
+tools/config_handlers/Deployment.cpp linguist-generated=true
+tools/config_handlers/Deployment.hpp linguist-generated=true
+tools/config_handlers/XMI.cpp linguist-generated=true
+tools/config_handlers/XMI.hpp linguist-generated=true
+tools/config_handlers/ccd.cpp linguist-generated=true
+tools/config_handlers/ccd.hpp linguist-generated=true
+tools/config_handlers/cdd.cpp linguist-generated=true
+tools/config_handlers/cdd.hpp linguist-generated=true
+tools/config_handlers/cdp.cpp linguist-generated=true
+tools/config_handlers/cdp.hpp linguist-generated=true
+tools/config_handlers/cid.cpp linguist-generated=true
+tools/config_handlers/cid.hpp linguist-generated=true
+tools/config_handlers/cpd.cpp linguist-generated=true
+tools/config_handlers/cpd.hpp linguist-generated=true
+tools/config_handlers/iad.cpp linguist-generated=true
+tools/config_handlers/iad.hpp linguist-generated=true
+tools/config_handlers/pcd.cpp linguist-generated=true
+tools/config_handlers/pcd.hpp linguist-generated=true
+tools/config_handlers/toplevel.cpp linguist-generated=true
+tools/config_handlers/toplevel.hpp linguist-generated=true

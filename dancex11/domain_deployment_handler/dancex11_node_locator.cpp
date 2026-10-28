@@ -219,7 +219,7 @@ namespace DAnCEX11
     try
     {
       CosNaming::Name name;
-      name.push_back(CosNaming::NameComponent (nodename, "NodeManager"));
+      name.emplace_back (nodename, "NodeManager");
 
       IDL::traits<CORBA::Object>::ref_type obj = this->nc_->resolve (name);
 

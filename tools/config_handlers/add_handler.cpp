@@ -24,26 +24,26 @@ namespace DAnCEX11
       dest.name (src.name ());
       dest.node (src.node ());
 
-      std::copy(src.begin_location (),
-                src.end_location (),
+      std::copy(src.location ().begin (),
+                src.location ().end (),
                 std::back_inserter(dest.location()));
 
-      std::copy(src.begin_source (),
-                src.end_source (),
+      std::copy(src.source ().begin (),
+                src.source ().end (),
                 std::back_inserter(dest.source()));
 
-      std::transform(src.begin_execParameter (),
-                     src.end_execParameter (),
+      std::transform(src.execParameter ().begin (),
+                     src.execParameter ().end (),
                      std::back_inserter(dest.execParameter()),
                      DAnCEX11::Config_Handlers::convert_property);
 
-      std::transform(src.begin_deployedResource (),
-                     src.end_deployedResource (),
+      std::transform(src.deployedResource ().begin (),
+                     src.deployedResource ().end (),
                      std::back_inserter(dest.deployedResource()),
                      DAnCEX11::Config_Handlers::convert_resourcedeploymentdescription);
 
-      std::transform(src.begin_deployRequirement (),
-                     src.end_deployRequirement (),
+      std::transform(src.deployRequirement ().begin (),
+                     src.deployRequirement ().end (),
                      std::back_inserter(dest.deployRequirement()),
                      DAnCEX11::Config_Handlers::convert_requirement);
 

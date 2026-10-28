@@ -627,8 +627,7 @@ namespace DAnCEX11
                                     "Resolving DM from NC as \"" <<
                                     svc_name << "\".");
                 CosNaming::Name name;
-                name.push_back (CosNaming::NameComponent (this->svc_objectid_,
-                                                          svc_kind));
+                name.emplace_back (this->svc_objectid_, svc_kind);
                 dm_obj = instance_nc->resolve (name);
               }
               else

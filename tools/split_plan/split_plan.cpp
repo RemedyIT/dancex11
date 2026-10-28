@@ -95,7 +95,7 @@ namespace DAnCEX11
 
             for (uint32_t i = 0; i < num_localities; ++i)
               {
-                default_loc.push_back (Deployment::PlanLocality ());
+                default_loc.emplace_back ();
                 default_loc[i].constraint (Deployment::PlanLocalityKind::PlanNoConstraint);
               }
 
@@ -143,7 +143,7 @@ namespace DAnCEX11
       {
         // get the sub plan and key for current instance
         TSubPlanKey& sub_plan_key = sub_plan_list[i].first;
-        std::list < uint32_t > &instances = sub_plan_list[i].second;
+        std::list<uint32_t>& instances = sub_plan_list[i].second;
 
         for (uint32_t i = 0; i < plan.instance ().size (); ++i)
           {

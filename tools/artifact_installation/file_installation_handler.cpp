@@ -77,10 +77,7 @@ namespace DAnCEX11
           ArtifactInstallationProperties propreader (properties, this->protocol_prefix());
 
           ifstream* ifs {};
-          ACE_NEW_NORETURN (ifs,
-                            ifstream (location.c_str (),
-                                      std::ios_base::in |
-                                      std::ios_base::binary));
+          ACE_NEW_NORETURN (ifs, ifstream (location, std::ios_base::in | std::ios_base::binary));
           std::unique_ptr<ifstream> pifs (ifs);
           if (pifs.get ()!=0 && (*pifs))
             {
@@ -104,7 +101,7 @@ namespace DAnCEX11
                       err += location;
                       err += " to ";
                       err += path;
-                      throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+                      throw Deployment::PlanError (plan_uuid, err);
                     }
                   location = path;
                 }
@@ -112,20 +109,20 @@ namespace DAnCEX11
                 {
                   std::string err = "failed to create repository artifact version for ";
                   err += path;
-                  throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+                  throw Deployment::PlanError (plan_uuid, err);
                 }
             }
           else
             {
               std::string err = "failed to open artifact location : ";
               err += location;
-              throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
 
         }
       else
         {
-          throw Deployment::PlanError (plan_uuid.c_str (), "failed to open installation repository");
+          throw Deployment::PlanError (plan_uuid, "failed to open installation repository");
         }
     }
 
@@ -143,19 +140,19 @@ namespace DAnCEX11
                 {
                   std::string err = "failed to remove artifact : ";
                   err += location;
-                  throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+                  throw Deployment::PlanError (plan_uuid, err);
                 }
             }
           else
             {
               std::string err = "cannot remove non-existing artifact : ";
               err += location;
-              throw Deployment::PlanError (plan_uuid.c_str (), err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
         }
       else
         {
-          throw Deployment::PlanError (plan_uuid.c_str (), "failed to open installation repository");
+          throw Deployment::PlanError (plan_uuid, "failed to open installation repository");
         }
     }
 

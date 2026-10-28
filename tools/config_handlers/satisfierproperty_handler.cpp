@@ -26,22 +26,22 @@ namespace DAnCEX11
 
       switch (src.kind ().integral ())
       {
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Quantity_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Quantity:
           dest.kind( Deployment::SatisfierPropertyKind::Quantity);
           break;
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Capacity_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Capacity:
           dest.kind (Deployment::SatisfierPropertyKind::Capacity);
           break;
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Minimum_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Minimum:
           dest.kind (Deployment::SatisfierPropertyKind::Minimum);
           break;
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Maximum_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Maximum:
           dest.kind (Deployment::SatisfierPropertyKind::Maximum);
           break;
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Attribute_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Attribute:
           dest.kind (Deployment::SatisfierPropertyKind::Attribute);
           break;
-        case DAnCE::Config_Handlers::SatisfierPropertyKind::Selection_l:
+        case DAnCE::Config_Handlers::SatisfierPropertyKind::Selection:
           dest.kind (Deployment::SatisfierPropertyKind::Selection);
           break;
       }
@@ -52,7 +52,7 @@ namespace DAnCEX11
         }
       catch (const Config_Error &ex)
         {
-          throw Config_Error (src.name (), ex.get_error() );
+          throw Config_Error (src.name (), ex.get_error ());
         }
 
       return dest;

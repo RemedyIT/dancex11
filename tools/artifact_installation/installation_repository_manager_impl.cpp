@@ -245,11 +245,7 @@ namespace DAnCEX11
     if (this->has_artifact (path))
     {
       ifstream* ifs {};
-      ACE_NEW_RETURN (ifs,
-                      ifstream (path.c_str (),
-                                std::ios_base::in |
-                                    std::ios_base::binary),
-                      0);
+      ACE_NEW_RETURN (ifs, ifstream (path, std::ios_base::in | std::ios_base::binary), nullptr);
       safe_ifs = std::unique_ptr<ifstream>(ifs);
       if (!(*ifs))
       {
@@ -284,15 +280,11 @@ namespace DAnCEX11
         return ofs;
     }
 
-    ACE_NEW_RETURN (ofs,
-                    ofstream (path.c_str (),
-                              std::ios_base::out |
-                                std::ios_base::binary),
-                    0);
+    ACE_NEW_RETURN (ofs, ofstream (path, std::ios_base::out | std::ios_base::binary), nullptr);
     std::unique_ptr<ofstream> safe_ofs (ofs);
     if (!(*ofs))
     {
-      return 0;
+      return nullptr;
     }
 
     // everything succeeded

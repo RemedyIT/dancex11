@@ -22,46 +22,49 @@ namespace DAnCEX11
 
       Deployment::ComponentInterfaceDescription dest {};
 
-      if (src.UUID_p ())
+      ::XMLSchema::string<char> const* uuid = src.UUID_if_set ();
+      if (uuid)
       {
-        dest.UUID (src.UUID ());
+        dest.UUID (*uuid);
       }
 
-      if (src.label_p ())
+      ::XMLSchema::string<char> const* label = src.label_if_set ();
+      if (label)
       {
-        dest.label (src.label ());
+        dest.label (*label);
       }
 
-      if (src.specificType_p ())
+      ::XMLSchema::string<char> const* specific_type = src.specificType_if_set ();
+      if (specific_type)
       {
-        dest.specificType (src.specificType ());
+        dest.specificType (*specific_type);
       }
 
-      std::copy(src.begin_supportedType (),
-                src.end_supportedType (),
+      std::copy(src.supportedType ().begin (),
+                src.supportedType ().end (),
                 std::back_inserter(dest.supportedType()));
 
-      std::copy(src.begin_idlFile (),
-                src.end_idlFile (),
+      std::copy(src.idlFile ().begin (),
+                src.idlFile ().end (),
                 std::back_inserter(dest.idlFile()));
 
-      std::transform(src.begin_configProperty (),
-                     src.begin_configProperty (),
+      std::transform(src.configProperty ().begin (),
+                     src.configProperty ().end (),
                      std::back_inserter(dest.configProperty()),
                      DAnCEX11::Config_Handlers::convert_property);
 
-      std::transform(src.begin_port (),
-                     src.end_port (),
+      std::transform(src.port ().begin (),
+                     src.port ().end (),
                      std::back_inserter(dest.port()),
                      DAnCEX11::Config_Handlers::convert_componentportdescription);
 
-      std::transform(src.begin_property (),
-                     src.end_property (),
+      std::transform(src.property ().begin (),
+                     src.property ().end (),
                      std::back_inserter(dest.property()),
                      DAnCEX11::Config_Handlers::convert_componentpropertydescription);
 
-      std::transform(src.begin_infoProperty (),
-                     src.end_infoProperty (),
+      std::transform(src.infoProperty ().begin (),
+                     src.infoProperty ().end (),
                      std::back_inserter(dest.infoProperty()),
                      DAnCEX11::Config_Handlers::convert_property);
 

@@ -53,8 +53,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_ERROR ("Process_Name::configure - " <<
                           "Unable to extract process name from config property");
-      throw ::Deployment::PlanError (prop.name (),
-                                      "Unable to extract process name from config property");
+      throw ::Deployment::PlanError (prop.name (), "Unable to extract process name from config property");
     }
 #else
     X11_UNUSED_ARG (prop);

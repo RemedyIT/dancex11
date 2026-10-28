@@ -25,6 +25,13 @@ namespace DAnCEX11
                                           IDL::traits<CORBA::TypeCode>::ref_type req_tc)
     {
       DANCEX11_LOG_TRACE("DynEnum_Handler::extract_into_dynany");
+      ::DAnCE::Config_Handlers::EnumType const* enum_type = type._cxx_enum_if_set ();
+      if (!enum_type)
+        throw Config_Error ("", "Enum type description required");
+
+      ::DAnCE::Config_Handlers::DataValue::enum_container_type const& enum_values = value._cxx_enum ();
+      if (enum_values.empty ())
+        throw Config_Error (enum_type->typeId (), "Enum value required");
 
       try
       {
@@ -41,31 +48,25 @@ namespace DAnCEX11
         IDL::traits<DynamicAny::DynEnum>::ref_type retval = IDL::traits<DynamicAny::DynEnum>::narrow (
           temp);
 
-        retval->set_as_string (value.begin_enum ()->c_str ());
+        retval->set_as_string (enum_values.front ());
 
         return retval;
       }
       catch (const DynamicAny::DynAny::InvalidValue &)
       {
         DANCEX11_LOG_ERROR ("Invalid value provided in XML when trying to "
-                            "initialize an instance of enumerated type " << type.enum_ ().typeId ());
-        throw Config_Error (type.enum_ ().typeId (),
-                            "Invalid value provided in XML");
+                            "initialize an instance of enumerated type " << enum_type->typeId ());
+        throw Config_Error (enum_type->typeId (), "Invalid value provided in XML");
       }
       catch (const Config_Error &ex)
       {
         DANCEX11_LOG_ERROR ("DynEnum_Handler caught Config_Error");
-        if (type.enum_p ())
-          throw Config_Error (ex.add_name (type.enum_ ().typeId ()),
-                              ex.get_error());
-        else
-          throw ex;
+        throw Config_Error (ex.add_name (enum_type->typeId ()), ex.get_error ());
       }
       catch (...)
       {
         DANCEX11_LOG_ERROR ("DynEnum_Handler caught unknown exception");
-        throw Config_Error (type.enum_ ().typeId (),
-                            "Unknown exception");
+        throw Config_Error (enum_type->typeId (), "Unknown exception");
       }
     }
 
@@ -74,31 +75,25 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE("DynEnum_Handler::create_typecode");
 
-      if (!type.enum_p ())
+      ::DAnCE::Config_Handlers::EnumType const* enum_type = type._cxx_enum_if_set ();
+      if (!enum_type)
       {
         DANCEX11_LOG_ERROR ("ERROR: Enum type description required");
-        throw Config_Error ("","Did not find expected enum type description,"\
-                            "tk_kind may be wrong.");
+        throw Config_Error ("", "Did not find expected enum type description, tk_kind may be wrong.");
       }
 
       // Construct TypeCode for the enum
       CORBA::EnumMemberSeq members;
 
-      for (EnumType::member_const_iterator i = type.enum_ ().begin_member ();
-           i != type.enum_ ().end_member ();
-           ++i)
-        {
-          members.push_back (*i);
-        }
+      for (::XMLSchema::string<char> const& member : enum_type->member ())
+        members.push_back (member);
 
-      IDL::traits<CORBA::TypeCode>::ref_type tc =
-        DYNANY_HANDLER->orb ()->create_enum_tc (
-          type.enum_ ().typeId (),
-          type.enum_ ().name (),
-          members);
+      IDL::traits<CORBA::TypeCode>::ref_type tc = DYNANY_HANDLER->orb ()->create_enum_tc (
+        enum_type->typeId (),
+        enum_type->name (),
+        members);
 
-      DYNANY_HANDLER->register_typecode ((type.enum_ ().typeId ()),
-                                         tc);
+      DYNANY_HANDLER->register_typecode (enum_type->typeId (), tc);
 
       return tc;
     }

@@ -1963,8 +1963,8 @@ namespace DAnCEX11
           state_.components_.connection ().push_back (std::move (conn));
 
           // record endpoint references for later instance resolution
-          state_.instance_ep_map_[instId_].push_back (EndpointIndex (conn_idx, 0));
-          state_.instance_ep_map_[peer_instId].push_back (EndpointIndex (conn_idx, 1));
+          state_.instance_ep_map_[instId_].emplace_back (conn_idx, 0);
+          state_.instance_ep_map_[peer_instId].emplace_back (conn_idx, 1);
         }
 
         return true;
@@ -2111,7 +2111,7 @@ namespace DAnCEX11
         state_.components_.connection ().push_back (std::move (conn));
 
         // record endpoint references for later instance resolution
-        state_.instance_ep_map_[instId_].push_back (EndpointIndex (conn_idx, 0));
+        state_.instance_ep_map_[instId_].emplace_back (conn_idx, 0);
       }
 
       return true;

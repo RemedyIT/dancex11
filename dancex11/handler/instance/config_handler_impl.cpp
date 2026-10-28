@@ -48,8 +48,7 @@ namespace DAnCEX11
       DANCEX11_LOG_ERROR ("Config_Handler_Impl::install_instance - " <<
                           "Invalid instance reference " << instanceRef << " provided " <<
                           "to install_instance");
-      throw Deployment::PlanError (plan.UUID (),
-                                      "Invalid instance reference");
+      throw Deployment::PlanError (plan.UUID (), "Invalid instance reference");
     }
 
     Deployment::InstanceDeploymentDescription const &idd =
@@ -60,8 +59,7 @@ namespace DAnCEX11
       DANCEX11_LOG_ERROR ("Config_Handler_Impl::install_instance - " <<
                           "Invalid implementation reference " << idd.implementationRef () << " provided " <<
                           "to install_instance");
-      throw ::Deployment::PlanError (plan.UUID (),
-                                      "Invalid Implementation reference");
+      throw ::Deployment::PlanError (plan.UUID (), "Invalid Implementation reference");
     }
 
     Deployment::MonolithicDeploymentDescription const &mdd =
@@ -77,8 +75,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_ERROR ("Config_Handler_Impl::install_instance - " <<
                           "No entrypoint found for plug-in initialization");
-      throw ::Deployment::StartError (idd.name (),
-        "No entrypoint found for plug-in initialization\n");
+      throw ::Deployment::StartError (idd.name (), "No entrypoint found for plug-in initialization\n");
     }
 
     std::string artifact;
@@ -88,8 +85,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_ERROR ("Config_Handler_Impl::install_instance - " <<
                           "No artifact found for plug-in initialization");
-      throw ::Deployment::StartError (idd.name (),
-        "No artifact found for plug-in initialization\n");
+      throw ::Deployment::StartError (idd.name (), "No artifact found for plug-in initialization\n");
     }
 
     uint32_t open_mode = ACE_DEFAULT_SHLIB_MODE;

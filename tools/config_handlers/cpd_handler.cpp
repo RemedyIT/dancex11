@@ -25,43 +25,44 @@ namespace DAnCEX11
       dest.exclusiveUser (src.exclusiveUser ());
       dest.optional (src.optional ());
 
-      if (src.specificType_p ())
+      ::XMLSchema::string<char> const* specific_type = src.specificType_if_set ();
+      if (specific_type)
       {
-        dest.specificType (src.specificType ());
+        dest.specificType (*specific_type);
       }
 
-      std::copy(src.begin_supportedType (),
-                src.end_supportedType (),
+      std::copy(src.supportedType ().begin (),
+                src.supportedType ().end (),
                 std::back_inserter(dest.supportedType()));
 
-      std::copy(src.begin_templateParam (),
-                src.end_templateParam (),
+      std::copy(src.templateParam ().begin (),
+                src.templateParam ().end (),
                 std::back_inserter(dest.templateParam()));
 
       switch (src.kind ().integral ())
       {
-        case DAnCE::Config_Handlers::CCMComponentPortKind::Facet_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::Facet:
           dest.kind (Deployment::CCMComponentPortKind::Facet);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::SimplexReceptacle_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::SimplexReceptacle:
           dest.kind (Deployment::CCMComponentPortKind::SimplexReceptacle);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::MultiplexReceptacle_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::MultiplexReceptacle:
           dest.kind (Deployment::CCMComponentPortKind::MultiplexReceptacle);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventEmitter_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventEmitter:
           dest.kind (Deployment::CCMComponentPortKind::EventEmitter);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventPublisher_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventPublisher:
           dest.kind (Deployment::CCMComponentPortKind::EventPublisher);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::EventConsumer_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::EventConsumer:
           dest.kind (Deployment::CCMComponentPortKind::EventConsumer);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::ExtendedPort_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::ExtendedPort:
           dest.kind (Deployment::CCMComponentPortKind::ExtendedPort);
           break;
-        case DAnCE::Config_Handlers::CCMComponentPortKind::MirrorPort_l:
+        case DAnCE::Config_Handlers::CCMComponentPortKind::MirrorPort:
           dest.kind (Deployment::CCMComponentPortKind::MirrorPort);
           break;
       }

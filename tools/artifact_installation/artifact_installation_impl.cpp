@@ -231,8 +231,7 @@ namespace DAnCEX11
 
                           std::string err ("unknown installation protocol ");
                           err += protocol;
-                          throw Deployment::PlanError (plan_uuid,
-                                                       err.c_str ());
+                          throw Deployment::PlanError (plan_uuid, err);
                         }
 
                       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::install -" <<
@@ -243,8 +242,7 @@ namespace DAnCEX11
                                           " to location " << location);
 
                       // register installed version for later removal
-                      ar_guard->versions ().push_back (
-                          ArtifactRegistry::Version(protocol, location));
+                      ar_guard->versions ().emplace_back (protocol, location);
 
                       // remove handled protocol
                       prot_stack.pop ();
@@ -262,8 +260,7 @@ namespace DAnCEX11
               else
                 {
                   // just register the artifact without protocol
-                  ar_guard->versions ().push_back (
-                      ArtifactRegistry::Version(std::string(),location));
+                  ar_guard->versions ().emplace_back (std::string (), location);
                 }
 
               // we successfully installed the artifact so increment the install count
@@ -288,7 +285,7 @@ namespace DAnCEX11
                                   " : " << ex.reason ());
 
               // artifact installation failed for this location; clean up anything left behind
-              this->remove_i (plan_uuid, name.c_str (), &ar_guard, false);
+              this->remove_i (plan_uuid, name, &ar_guard, false);
 
               // if we have alternates we continue otherwise we fail finally
               if (++loc_n >= artifact.location ().size ())
@@ -319,8 +316,7 @@ namespace DAnCEX11
             {
               std::string err ("malformed location ");
               err += location;
-              throw Deployment::PlanError (plan_uuid,
-                                           err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
 
           std::string const prot = loctmp.substr (0, p);
@@ -343,8 +339,7 @@ namespace DAnCEX11
             {
               std::string err ("malformed location ");
               err += location;
-              throw Deployment::PlanError (plan_uuid,
-                                           err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
 
           // remove path separator
@@ -362,9 +357,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           handler_guard_,
                           handler_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid.c_str (),
-                            "ArtifactInstallation handler lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "ArtifactInstallation handler lock failed"));
 
       // find protocol handler
       THandlerMap::iterator ith = handlers_.find (protocol);
@@ -388,9 +381,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           artifacts_guard_,
                           artifacts_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid.c_str (),
-                            "artifacts lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "artifacts lock failed"));
 
       while (true)
         {
@@ -402,11 +393,9 @@ namespace DAnCEX11
             {
               ACE_NEW_NORETURN (ar, ArtifactRegistry (this->artifacts_condition_,
                                                       true));
-              if (ar == 0)
+              if (ar == nullptr)
                 {
-                  throw Deployment::PlanError (
-                    plan_uuid.c_str (),
-                    "out of memory");
+                  throw Deployment::PlanError (plan_uuid, "out of memory");
                 }
               plan_map[name] = ar;
               return ar; // we created it locked so we're ready
@@ -422,9 +411,7 @@ namespace DAnCEX11
               // registry is locked by another thread so wait
               if (this->artifacts_condition_.wait () != 0)
                 {
-                  throw Deployment::PlanError (
-                    plan_uuid.c_str (),
-                    "artifact registry lock failed");
+                  throw Deployment::PlanError (plan_uuid, "artifact registry lock failed");
                 }
             }
           else
@@ -434,7 +421,7 @@ namespace DAnCEX11
               return ar;
             }
         }
-      return 0;
+      return nullptr;
     }
 
     ArtifactRegistry*
@@ -446,9 +433,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           artifacts_guard_,
                           artifacts_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid.c_str (),
-                            "artifacts lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "artifacts lock failed"));
 
       while (true)
         {
@@ -459,9 +444,7 @@ namespace DAnCEX11
             {
               std::string err ("unknown artifact ");
               err += name;
-              throw Deployment::PlanError (
-                plan_uuid.c_str (),
-                err.c_str ());
+              throw Deployment::PlanError (plan_uuid, err);
             }
           ArtifactRegistry* ar = it_art->second;
 
@@ -471,9 +454,7 @@ namespace DAnCEX11
               // registry is locked by another thread so wait
               if (this->artifacts_condition_.wait () != 0)
                 {
-                  throw Deployment::PlanError (
-                    plan_uuid.c_str (),
-                    "artifact registry lock failed");
+                  throw Deployment::PlanError (plan_uuid, "artifact registry lock failed");
                 }
             }
           else
@@ -483,7 +464,7 @@ namespace DAnCEX11
               return ar;
             }
         }
-      return 0;
+      return nullptr;
     }
 
     void ArtifactInstallation_Impl::remove (
@@ -522,7 +503,7 @@ namespace DAnCEX11
            ita != artifacts_map.end ();
            ++ita)
         {
-          this->remove_i (plan_uuid, ita->first.c_str (), ita->second);
+          this->remove_i (plan_uuid, ita->first, ita->second);
         }
     }
 
@@ -536,9 +517,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           handler_guard_,
                           handler_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid.c_str (),
-                            "ArtifactInstallation handler lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "ArtifactInstallation handler lock failed"));
 
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::remove_intermediates -" <<
                           " removing intermediate versions for artifact " << artifact_name <<
@@ -581,14 +560,11 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           handler_guard_,
                           handler_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid,
-                            "ArtifactInstallation handler lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "ArtifactInstallation handler lock failed"));
 
-      std::unique_ptr<ArtifactRegistry> safe_artifact_reg (do_delete ? artifact_reg : 0);
+      std::unique_ptr<ArtifactRegistry> safe_artifact_reg (do_delete ? artifact_reg : nullptr);
 
-      for (ArtifactRegistry::TVersions::iterator iti =
-             artifact_reg->versions ().begin ();
+      for (ArtifactRegistry::TVersions::iterator iti = artifact_reg->versions ().begin ();
            iti != artifact_reg->versions ().end ();
            ++iti)
         {
@@ -641,9 +617,7 @@ namespace DAnCEX11
               ACE_GUARD_REACTION (TLOCK,
                                   artifacts_guard_,
                                   artifacts_lock_,
-                                  throw Deployment::PlanError (
-                                    plan_uuid.c_str (),
-                                    "artifacts lock failed"));
+                                  throw Deployment::PlanError (plan_uuid, "artifacts lock failed"));
 
               DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::remove -" <<
                                   " removing versions for artifact " << name <<
@@ -667,9 +641,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           artifacts_guard_,
                           artifacts_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid.c_str (),
-                            "artifacts lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "artifacts lock failed"));
 
       TArtifactsRegistry::iterator it_reg = this->artifacts_.find (plan_uuid);
       if (it_reg != this->artifacts_.end ())
@@ -688,9 +660,7 @@ namespace DAnCEX11
       ACE_GUARD_REACTION (TLOCK,
                           artifacts_guard_,
                           artifacts_lock_,
-                          throw Deployment::PlanError (
-                            plan_uuid,
-                            "artifacts lock failed"));
+                          throw Deployment::PlanError (plan_uuid, "artifacts lock failed"));
 
       TArtifactsRegistry::iterator it_reg = this->artifacts_.find (plan_uuid);
       if (it_reg != this->artifacts_.end ())
@@ -708,7 +678,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::register_handler");
 
-      if (aih != 0)
+      if (aih != nullptr)
         {
           ACE_GUARD_RETURN (TLOCK, guard_, handler_lock_, -1);
 
@@ -724,7 +694,7 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE ("ArtifactInstallation_Impl::deregister_handler");
 
-      if (aih != 0)
+      if (aih != nullptr)
         {
           ACE_GUARD_RETURN (TLOCK, guard_, handler_lock_, -1);
 

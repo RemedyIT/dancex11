@@ -36,9 +36,9 @@ namespace DAnCEX11
       DANCEX11_LOG_TRACE("DynString_Handler::extract_into_dynany - created DynAny: " << retval);
 
       std::string s;
-      if (value.count_string ())
+      if (!value.string ().empty ())
       {
-        s = (*value.begin_string ());
+        s = value.string ().front ();
       }
 
       DANCEX11_LOG_TRACE("DynString_Handler::extract_into_dynany - inserting string: [" << s << "]");
@@ -53,23 +53,26 @@ namespace DAnCEX11
     {
       DANCEX11_LOG_TRACE("DynString_Handler::create_typecode");
 
-      if (type.kind ().integral () != TCKind::tk_string_l)
+      if (type.kind ().integral () != TCKind::tk_string)
       {
         DANCEX11_LOG_ERROR ("ERROR: String type description required");
-        throw Config_Error ("","Expected <string> element, incorrect tc_kind.");
+        throw Config_Error ("", "Expected <string> element, incorrect tc_kind.");
       }
 
       uint32_t bound {} ;
-      if (type.boundedString_p ())
+      ::DAnCE::Config_Handlers::BoundedStringType const* bounded_string = type.boundedString_if_set ();
+      if (bounded_string)
       {
-        if (type.boundedString ().count_bound ())
+        if (bounded_string->bound ().size () > 1)
+          throw Config_Error ("", "A bounded string type can have at most one bound");
+
+        if (!bounded_string->bound ().empty ())
         {
-          bound = *type.boundedString ().begin_bound ();
+          bound = bounded_string->bound ().front ();
         }
       }
 
-      IDL::traits<CORBA::TypeCode>::ref_type tc =
-        DYNANY_HANDLER->orb ()->create_string_tc (bound);
+      IDL::traits<CORBA::TypeCode>::ref_type tc = DYNANY_HANDLER->orb ()->create_string_tc (bound);
 
       return tc;
     }

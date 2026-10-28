@@ -36,8 +36,7 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_ERROR ("Any_Handler::extract_into_any -"
                            " Caught CORBA Exception while extracting into dynany:" << ex);
-        throw Config_Error ("",
-                            "CORBA Exception while extracting into dynany");
+        throw Config_Error ("", "CORBA Exception while extracting into dynany");
       }
       catch (const Config_Error &ex)
       {

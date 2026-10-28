@@ -8,8 +8,10 @@ project (DANCEX11_XSC_XML_Generation) : install, xscdefaults {
   xscflags += --cxx-namespace-regex "/.*Deployment.*/DAnCE::Config_Handlers/"
   xscflags += --cxx-export-header xsc_xml_handlers_export.h
   xscflags += --cxx-char-type char
+  xscflags += --cxx-orb taox11
+  xscflags += --cxx-read-only
   xscflags += --search-path "$(DANCEX11_ROOT)/etc/schema"
-  xscflags += --cxx-cpp17 --cxx-enable-random-access-sequences
+  xscflags += --cxx-cpp17
 
   custom_only = 1
 

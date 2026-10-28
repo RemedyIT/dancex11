@@ -28,36 +28,37 @@ namespace DAnCEX11
 
       dest.name (src.name ());
 
-      if (src.source_p ())
+      ::XMLSchema::string<char> const* source = src.source_if_set ();
+      if (source)
         {
-          dest.source().push_back (src.source ());
+          dest.source().push_back (*source);
         }
 
-      std::transform(src.begin_deployRequirement (),
-                     src.end_deployRequirement (),
+      std::transform(src.deployRequirement ().begin (),
+                     src.deployRequirement ().end (),
                      std::back_inserter(dest.deployRequirement()),
                      DAnCEX11::Config_Handlers::convert_requirement);
 
-      std::transform(src.begin_externalEndpoint (),
-                     src.end_externalEndpoint (),
+      std::transform(src.externalEndpoint ().begin (),
+                     src.externalEndpoint ().end (),
                      std::back_inserter(dest.externalEndpoint()),
                      DAnCEX11::Config_Handlers::convert_componentexternalportendpoint);
 
-      std::transform(src.begin_internalEndpoint (),
-                     src.end_internalEndpoint (),
+      std::transform(src.internalEndpoint ().begin (),
+                     src.internalEndpoint ().end (),
                      std::back_inserter(dest.internalEndpoint()),
                      [&](const DAnCE::Config_Handlers::PlanSubcomponentPortEndpoint& src)
                      {
                        return DAnCEX11::Config_Handlers::convert_plansubcomponentportendpoint(src, instancedeploymentdescription_map);
                      });
 
-      std::transform(src.begin_externalReference (),
-                     src.end_externalReference (),
+      std::transform(src.externalReference ().begin (),
+                     src.externalReference ().end (),
                      std::back_inserter(dest.externalReference()),
                      DAnCEX11::Config_Handlers::convert_externalreferenceendpoint);
 
-      std::transform(src.begin_deployedResource (),
-                     src.end_deployedResource (),
+      std::transform(src.deployedResource ().begin (),
+                     src.deployedResource ().end (),
                      std::back_inserter(dest.deployedResource()),
                      DAnCEX11::Config_Handlers::convert_connectionresourcedeploymentdescription);
 

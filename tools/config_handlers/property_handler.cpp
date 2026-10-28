@@ -28,7 +28,7 @@ namespace DAnCEX11
         }
       catch (const Config_Error &ex)
         {
-          throw Config_Error (src.name (), ex.get_error());
+          throw Config_Error (src.name (), ex.get_error ());
         }
 
       return dest;

@@ -424,10 +424,10 @@ namespace DAnCEX11
         // add minimal default LocalityManager instance to sub plan
         uint32_t impl_index =
             ACE_Utils::truncate_cast<uint32_t> (sub_plan.implementation ().size ());
-        sub_plan.implementation ().push_back (::Deployment::MonolithicDeploymentDescription ());
+        sub_plan.implementation ().emplace_back ();
         uint32_t inst_index =
             ACE_Utils::truncate_cast<uint32_t> (sub_plan.instance ().size ());
-        sub_plan.instance ().push_back (::Deployment::InstanceDeploymentDescription ());
+        sub_plan.instance ().emplace_back ();
         sub_plan.instance ().back ().implementationRef (impl_index);
 
         // set correct implementation type

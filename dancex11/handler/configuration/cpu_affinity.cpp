@@ -33,14 +33,12 @@ namespace DAnCEX11
       {
         DANCEX11_LOG_ERROR ("CPU_Affinity::configure - " <<
                             "Unable to extract CPU affinity string");
-        throw ::Deployment::StartError (prop.name (),
-                                        "Unable to extract CPU affinity string");
+        throw ::Deployment::StartError (prop.name (), "Unable to extract CPU affinity string");
       }
 
     cpu_set_t mask;
     CPU_ZERO (std::addressof(mask));
-    std::vector< std::string > tokens =
-      DAnCEX11::Utility::tokenize (affinity.c_str(), ',');
+    std::vector<std::string> tokens = DAnCEX11::Utility::tokenize (affinity, ',');
     for (const std::string &token : tokens)
       {
         int i = atoi (token.c_str ());
@@ -54,8 +52,7 @@ namespace DAnCEX11
           {
             DANCEX11_LOG_ERROR ("CPU_Affinity::configure - " <<
                                 "All affinity values should be greater than 0");
-            throw ::Deployment::StartError (prop.name (),
-                                            "All affinity values should be greater than 0");
+            throw ::Deployment::StartError (prop.name (), "All affinity values should be greater than 0");
           }
       }
     pid_t const pid = ACE_OS::getpid ();

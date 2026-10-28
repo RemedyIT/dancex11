@@ -50,8 +50,9 @@ namespace DAnCEX11
   }
 
   IDL::traits<::Deployment::ApplicationManager>::ref_type
-  ExecutionManager_Impl::preparePlan (const ::Deployment::DeploymentPlan& plan,
-                                      IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
+  ExecutionManager_Impl::preparePlan (
+    ::Deployment::DeploymentPlan const& plan,
+    IDL::traits<::Deployment::ResourceCommitmentManager>::ref_type /*resourceCommitment*/)
   {
     DANCEX11_LOG_TRACE ( "ExecutionManager_Impl::preparePlan");
     // Check if plan is already deployed.
@@ -64,8 +65,7 @@ namespace DAnCEX11
       DANCEX11_LOG_CRITICAL ("ExecutionManager_impl::preparePlan - " <<
                               "DomainApplicationManager for UUID " << plan.UUID () <<
                               " already exists");
-      throw ::Deployment::PlanError(plan.UUID (),
-                                    "Plan with same UUID already exists");
+      throw ::Deployment::PlanError(plan.UUID (), "Plan with same UUID already exists");
     }
 
     try

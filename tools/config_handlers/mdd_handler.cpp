@@ -10,6 +10,7 @@
 #include "property_handler.h"
 #include "req_handler.h"
 #include "cdp.hpp"
+#include "common.h"
 #include "dancex11/logger/log.h"
 
 namespace DAnCEX11
@@ -26,29 +27,34 @@ namespace DAnCEX11
 
       dest.name(src.name ());
 
-      std::copy(src.begin_source (),
-                src.end_source (),
+      std::copy(src.source ().begin (),
+                src.source ().end (),
                 std::back_inserter(dest.source()));
 
-      std::transform(src.begin_artifact (),
-                     src.end_artifact (),
+      std::transform(src.artifact ().begin (),
+                     src.artifact ().end (),
                      std::back_inserter(dest.artifactRef()),
                      [&](const DAnCE::Config_Handlers::IdRef& id)
                      {
-                       auto result = artifact_map.find (id.idref().id ());
+                       ::XMLSchema::IDREF<char> const* idref = id.idref_if_set ();
+                       if (!idref)
+                         throw Config_Error ("", "Missing idref for artifact reference");
+
+                       std::unordered_map<std::string, size_t>::const_iterator const result =
+                         artifact_map.find (idref->id ());
                        if (result != artifact_map.end ())
                          return static_cast<uint32_t>(result->second);
                        else
-                         return std::numeric_limits<uint32_t>::max();
+                         throw Config_Error (idref->id (), "Artifact reference does not identify an artifact");
                      });
 
-      std::transform(src.begin_execParameter (),
-                     src.end_execParameter (),
+      std::transform(src.execParameter ().begin (),
+                     src.execParameter ().end (),
                      std::back_inserter(dest.execParameter()),
                      DAnCEX11::Config_Handlers::convert_property);
 
-      std::transform(src.begin_deployRequirement (),
-                     src.end_deployRequirement (),
+      std::transform(src.deployRequirement ().begin (),
+                     src.deployRequirement ().end (),
                      std::back_inserter(dest.deployRequirement()),
                      DAnCEX11::Config_Handlers::convert_requirement);
 
